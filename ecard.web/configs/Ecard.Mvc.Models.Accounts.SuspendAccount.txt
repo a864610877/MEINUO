@@ -1,0 +1,1 @@
+﻿accountNoExisting=卡号不存在，或卡号状态异常

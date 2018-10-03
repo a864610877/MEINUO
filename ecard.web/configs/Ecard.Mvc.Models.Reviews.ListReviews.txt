@@ -1,0 +1,10 @@
+﻿CommodityNo.name=商品编号
+CommodityNo.order=1
+OrderBy.order=1
+pageHtml.order=1
+PageIndex.order=1
+PageSize.order=1
+State.name=状态
+State.order=1
+UserName.name=用户名
+UserName.order=1

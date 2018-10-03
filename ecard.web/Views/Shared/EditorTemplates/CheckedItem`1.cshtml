@@ -1,0 +1,19 @@
+﻿@model CheckedItem
+@{
+    var description = Model.Item as IDescriptionEntity;
+    var named = Model.Item as INamedEntity;
+    var text = Model.Item.ToString();
+    if (named != null)
+    {
+        text = named.GetDisplayName();
+    }
+    if (description != null)
+    {
+        text = description.GetDisplayName() + "," + description.Description;
+    }
+}
+<li>
+    @Html.CheckBoxFor(x => x.Checked)
+    @Html.HiddenFor(x => x.Id)
+    @text
+</li>

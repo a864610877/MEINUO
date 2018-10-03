@@ -1,0 +1,12 @@
+﻿endTime.name=结束时间
+endTime.order=1
+OrderBy.order=1
+pageHtml.order=1
+PageIndex.order=1
+PageSize.order=1
+salerName.name=推荐人
+salerName.order=1
+startTime.name=开始时间
+startTime.order=1
+userName.name=被推荐人
+userName.order=1

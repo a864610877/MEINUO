@@ -1,0 +1,91 @@
+﻿@model EcardModelItem<RecoveryUserPassword>
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@Model.Site.DisplayName - Login</title>
+    <!--CSS-->
+    <link rel="stylesheet" href='@Url.Content("~/Content/themes/base/signin.css")' type="text/css" />
+    <link rel="stylesheet" href='@Url.Content("~/Content/themes/base/signin-style.css")' type="text/css" />
+    <script src='@Url.Content("~/scripts/jquery.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/scripts/superfish.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/scripts/facebox.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/scripts/signin_loader.js")' type="text/javascript"></script> 
+</head>
+<body>
+    <!--Content-->
+    <div id="content">
+        <div id="login" class="container">
+            <!--Login-->
+            <div class="box">
+                <div class="header">
+                    <h2>
+                        重置密码 @Model.Site.DisplayName (@Model.Site.Version)</h2>
+                </div>
+                <div class="content">
+                    <div class="tabs">
+                        <!--navigation-->
+                        <ul class="navigation clearfix"> 
+                            <li><a href="#tab3">重置密码</a></li>
+                        </ul>
+                        <!--tab1-->
+                        <div class="tab" id="tab1">
+                           @if (string.IsNullOrEmpty(Model.Item.Error))
+                           {
+                                using (Html.BeginForm("Recovery"))
+                                {
+                            <p class="field">
+                                <label>
+                                    用户名
+                                </label>
+                                @Html.DisplayFor(x => x.Item.DisplayName, new { @class = "full" })
+                            </p>
+                            <p class="field">
+                                <label for="username">
+                                    新密码
+                                </label>
+                                @Html.PasswordFor(x => x.Item.Password, new { @class = "full" })
+                            </p> 
+                            <p class="field">
+                                <button type="submit">
+                                    登录</button> 
+                            </p>
+                                }
+                           }else
+                           {
+                               <p>@Model.Item.Error</p>
+                               <p><a href="../SignIn">返回登录</a></p>
+                           }
+                        </div>  
+                    </div>
+                    <!--End .content-->
+                </div>
+                <!--End .box-->
+            </div>
+            <!--End .container-->
+        </div>
+        <!--End #content-->
+    </div>
+    <script type="text/javascript">
+        $("#recoveryButton").click(function (e) {
+            e.preventDefault();
+            var userName = $("#recoveryUserName").val();
+            if (!userName || userName.trim().length == 0) {
+                $("#recoveryMsg").text("请输入用户名");
+                return;
+            }
+            var $this = $(this);
+            $("#recoveryMsg").text("处理中...");
+            $.get("user/startrecovery?name=" + userName, function (data) {
+                if (data === true)
+                    $("#recoveryMsg").text("重置密码成功，请到信箱查看。");
+                else
+                    $("#recoveryMsg").text("重置密码失败，请重试。");
+            });
+        });
+    </script>
+</body>
+</html>

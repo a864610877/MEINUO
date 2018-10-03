@@ -1,0 +1,6 @@
+﻿EnabledOpenAccount.name=EnabledOpenAccount
+EnabledOpenAccount.order=1
+EnabledRecharging.name=EnabledRecharging
+EnabledRecharging.order=1
+EnabledShopDealAccount.name=EnabledShopDealAccount
+EnabledShopDealAccount.order=1

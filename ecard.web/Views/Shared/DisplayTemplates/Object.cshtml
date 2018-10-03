@@ -1,0 +1,32 @@
+﻿@using System.Collections
+@using Moonlit
+@model Object
+@foreach (var prop in ViewModelDescriptor.GetTypeDescriptor(ViewData.Model).Properties.Where(x => x.Show).OrderBy(x => x.Order))
+{
+    if (prop.Hidden)
+    {
+    @Html.Editor(prop.PropertyName, prop.TemplateHint)
+    }
+    else
+    {
+    <li>
+        @Html.LabelLocalize(prop)
+        @Html.ValidationMessage(prop.PropertyName)
+        
+            @if (typeof(IItemList).IsAssignableFrom(prop.PropertyType))
+            {
+                ViewDataDictionary dict = new ViewDataDictionary(ViewData);
+                dict["propertyName"] = prop.PropertyName;
+                var items = prop.GetValue(Model);
+                
+                @Html.Partial(prop.TemplateHint, items, dict)
+            }
+            else
+            {
+            <div>
+                @Html.Editor(prop.PropertyName, prop.TemplateHint)
+            </div> 
+            } 
+    </li>
+    }
+}

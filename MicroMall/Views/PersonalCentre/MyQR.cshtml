@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "MyQR";
+}
+@{
+    ViewBag.Title = "个人中心";
+    ViewBag.TopName = "我的二维码";
+    ViewBag.BackUrl = "/User/Index";
+    Layout = "~/Views/Shared/_top.cshtml";
+}
+<link href="/css/swiper-4.3.5.min.css" rel="stylesheet" />
+<link href="/css/myCode.css?v1.0" rel="stylesheet" />
+<script src="/js/swiper/swiper-4.3.5.min.js"></script>
+<link href="/css/weui.min.css" rel="stylesheet" />
+<link href="/css/weui-master/dist/example/example.css" rel="stylesheet" />
+<script src="/js/fz.js"></script>
+<div class="content">
+    @if (Model==null)
+    {
+        <div class="page__bd">
+            <div class="weui-loadmore weui-loadmore_line">
+                <span class="weui-loadmore__tips">您还没有二维码哦!</span>
+            </div>
+            <div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+                <span class="weui-loadmore__tips"></span>
+            </div>
+        </div>
+    }
+    else
+    { 
+       <div class="swiper-container">
+         <div class="swiper-wrapper">
+            @*@foreach (var m in Model)
+            {*@
+                <div class="swiper-slide">
+                    <div class="img_code 1" id="@Model.Id"><img src="@Model.CodeUrl" /></div>
+                </div>
+           @* }*@
+         </div>
+       </div>
+    }
+    
+</div>
+<div class="code_bottom">
+    <div class="fx">长按图片可发送给朋友</div>
+    <div class="add" onclick="createQr()">一键生成新的二维码</div>
+    @*<div class="delete" onclick="delete_ms()">删除</div>*@
+</div>
+<div class="js_dialog" id="iosDialog1" style="display: none;">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog">
+        <div class="weui-dialog__hd"><strong class="weui-dialog__title">确认删除</strong></div>
+        <div class="weui-dialog__bd">确定删除当前二维码</div>
+        <div class="weui-dialog__ft">
+            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" onclick="qx(this)">取消</a>
+            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" onclick="qd(this)">确定</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        //var mySwiper = new Swiper('.swiper-container', {
+        //    loop: true,
+        //    grabCursor: true,
+        //    paginationClickable: true
+        //})
+    })
+    function delete_ms() {
+        //获取二维码ID
+        //var id = $(".swiper-slide-active").find(".img_code").attr("id");
+        //if (id == "" || id == undefined || id == "undefined") {
+        //    return;
+        //}
+        $('#iosDialog1').fadeIn(200);
+    }
+    function qx(obj) {
+        $(obj).parents('.js_dialog').fadeOut(200);
+    }
+    function qd(obj) {
+        $(obj).parents('.js_dialog').fadeOut(200);
+        delete_code()
+    }
+    function delete_code() {
+        //获取二维码ID
+        //var id = $(".swiper-slide-active").find(".img_code").attr("id");
+        //if (id == "" || id == undefined || id == "undefined") {
+        //    return;
+        //}
+        
+        $.ajax({
+            type: "POST",
+            url: '/PersonalCentre/DeleteCodeImg',
+            data: {  },
+            success: function (result) {
+                result = $.parseJSON(result);
+                if (result.state == "success") {
+                    popup({
+                        type: 'load', msg: result.message, delay: 1500, callBack: function () {
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    popup({ type: 'error', msg: result.message, delay: 2000, bg: true, clickDomCancel: true });
+                }
+            }
+        });
+    }
+
+    function createQr()
+    {
+        $.openLoading("生成中");
+        $.ajax({
+            type: "POST",
+            url: '/PersonalCentre/CreatePoster',
+            data: {},
+            success: function (result) {
+                $.closeLoading();
+                if (result.Code == "0") {
+                    $.openDialogUrl("生成成功", "/PersonalCentre/MyQR");
+                } else {
+                    $.openDialog(result.Msg);
+                }
+            },
+            error: function () {
+                $.closeLoading();
+                $.openDialog("系统异常，请检查网络");
+            }
+        });
+    }
+</script>

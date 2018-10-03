@@ -1,0 +1,6 @@
+﻿Carry.name=派送中
+Carry.order=1
+Completed.name=已完成
+Completed.order=1
+Partially.name=部分完成
+Partially.order=1

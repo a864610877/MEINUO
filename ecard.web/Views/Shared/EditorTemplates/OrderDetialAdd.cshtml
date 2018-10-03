@@ -1,0 +1,35 @@
+﻿@model List<Ecard.Mvc.Models.Commodities.ListCommodity>
+<div class="hastable">
+    <table class="sort-table">
+        <thead>
+            <tr>
+                <th class="header ">
+                    <a class="sorter" href="#">商品名称</a>
+                </th> 
+                <th class="header ">
+                    <a class="sorter" href="#">数量 </a>
+                </th>
+                <th class="header ">
+                    <a class="sorter" href="#">单价 </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+      
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                var item = Model[i];
+                <tr>
+                    <td>@item.Name
+                    </td> 
+                    <td>
+                     <input type="text" value="1" name="@Html.ViewData.TemplateInfo.GetFullArrayHtmlFieldName(i, "Name")+"Amount""/>
+                    </td>
+                    <td>
+                     <input type="text" value="@item.Price" name="@Html.ViewData.TemplateInfo.GetFullArrayHtmlFieldName(i, "Name")+"Price""/>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

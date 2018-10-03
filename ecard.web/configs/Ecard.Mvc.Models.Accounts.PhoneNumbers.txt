@@ -1,0 +1,8 @@
+﻿Label1.name=Label1
+Label1.order=1
+Label2.name=Label2
+Label2.order=1
+Value1.name=Value1
+Value1.order=1
+Value2.name=Value2
+Value2.order=1

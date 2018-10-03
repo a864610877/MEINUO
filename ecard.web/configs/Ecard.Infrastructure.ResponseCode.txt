@@ -1,0 +1,15 @@
+﻿AccountConflict.name=帐户数据冲突
+AccountStateInvalid.name=卡状态无效
+Cracker.name=非法卡
+InvalidateAmount.name=无效金额或余额不足
+InvalidateDealWay.name=InvalidateDealWay
+InvalidatePassword.name=密码错误
+InvalidatePos.name=无效终端
+InvalidateShop.name=无效商户
+NonFoundAccount.name=帐号未找到
+NonFoundDeal.name=原交易未找到
+NonRecharging.name=该帐号无充值功能
+NonRenewal.name=此卡不可延期
+Success.name=操作成功
+SystemError.name=系统错误
+ValidityDate.name=帐户过期

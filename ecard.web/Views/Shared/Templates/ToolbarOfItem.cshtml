@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ActionMethodDescriptor>
+  <td>
+    @foreach (var method in Model)
+    {
+        @Html.ToolbarButton(method.Action, method.Controller, method.Routes)
+    } </td>

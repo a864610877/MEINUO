@@ -1,0 +1,6 @@
+﻿IsAvailable.name=绑定
+IsAvailable.order=2
+IsUnavailable.name=未绑定
+IsUnavailable.order=3
+None.name=不限
+None.order=1

@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/momocha.css?v2" />
+    <script type='text/javascript' src='../js/jquery-2.1.0.js'></script>
+    <script type="text/javascript" src="../js/momocha.js?v2"></script>
+    <link rel="stylesheet" href="../css/feiaishi.css?v2" />
+    <script src="../js/jquery.min.js"></script>
+    <link href="../css/weui.min.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li>
+                <a href="index.html">商城首页</a>
+            </li>
+            <li class="ahover">
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">订单中心</a>
+            <a href="javascript:void(0)" class="bar-ico gwc-delete" rel="off"></a>
+        </header>
+        <div class="qrdd-index">
+            <div class="ddzx-xuanz">
+                <a href="ddzx.html?goodStatus=0" id="Status0" class="ahover">全部</a>
+                <a href="ddzx.html?goodStatus=1" id="Status1">待付款</a>
+                <a href="ddzx.html?goodStatus=2" id="Status2">待发货</a>
+                <a href="ddzx.html?goodStatus=3" id="Status3">待收货</a>
+                <a href="ddzx.html?goodStatus=4" id="Status4">已完成</a>
+
+            </div>
+
+            <div class="ddh-father" id="MyOrderList">
+
+                <!--<div class="momocha-hentiao ddh ">订单编号：xxxxxxxxxxxx</div>
+                <div class="ddxinxi">
+                    <ul>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ddh-jg momocha-Appinterval">商品合计：<i>¥40000.00</i><i>运费：¥40.00</i></div>
+                    <div class="momocha-Appinterval  ddcz ">
+                        <span>
+                            <a href="javascript:void(0)" class=" ahover">取消订单</a>
+                            <a href="javascript:void(0)" class="ico-yes ahover ">等待付款</a>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="momocha-hentiao ddh ">订单编号：xxxxxxxxxxxx</div>
+                <div class="ddxinxi">
+                    <ul>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ddh-jg momocha-Appinterval">商品合计：<i>¥40000.00</i><i>运费：¥40.00</i></div>
+                    <div class="momocha-Appinterval  ddcz ">
+                        <span>
+                            <a href="javascript:void(0)" class="ico-no ahover">等待发货</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="momocha-hentiao ddh ">订单编号：xxxxxxxxxxxx</div>
+                <div class="ddxinxi">
+                    <ul>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ddh-jg momocha-Appinterval">商品合计：<i>¥40000.00</i><i>运费：¥40.00</i></div>
+                    <div class="momocha-Appinterval  ddcz ">
+                        <span>
+                            <a href="javascript:void(0)" class="ico-yes ahover">确认收货</a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="momocha-hentiao ddh ">订单编号：xxxxxxxxxxxx</div>
+                <div class="ddxinxi">
+                    <ul>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="qrdd-img"><a href="spm.html"><img src="/img/banner1.jpg"></a></div>
+                            <div class="qrdd-nr">
+                                <div class="biaoti"><a href="spm.html">honvve正品全网通4G联通移动电信双卡5.5寸超薄指纹解锁智能手机</a></div>
+                                <div class="fubiaoti">白色，16G，双摄像头，500话费，白色，16G</div>
+                                <div class="quantity">
+                                    <div class="qrdd-jiage">¥40000.00</div><div class="qrdd-js">X1</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ddh-jg momocha-Appinterval">商品合计：<i>¥40000.00</i><i>运费：¥40.00</i></div>
+                    <div class="momocha-Appinterval  ddcz ">
+                        <span>
+                            <a href="javascript:void(0)" class="ico-no ahover">订单已完成</a>
+                        </span>
+                    </div>
+                </div>-->
+
+            </div>
+            <p class="ssd_xsd_xdesrx" style="z-index: 9999; color: gray; display:none"></p>
+        </div>
+    </div>
+    <input type="hidden" id="pageIndex" value="0" />
+    <input type="hidden" id="orderStatus" value="0" />
+    <script src="../js/fz.js"></script>
+    <script src="../js/ddzx.js?v2.2"></script>
+    <script type="text/javascript">
+
+        //$("p.ddzx-xuanz a").click(function () {
+        //    $("p.ddzx-xuanz a").removeClass("ahover");
+        //    $(this).toggleClass("ahover");
+        //})
+        var status = getQueryString("goodStatus");
+
+        window.onload = onload();
+        function onload() {
+            if (status == "undefined" || status == "" || status == null) {
+                $.openDialog("参数错误");
+                return;
+            }
+            getahover(status);
+
+            if (status == 0) {
+
+                loadhtml(1, 0);
+            } else {
+                $("#orderStatus").val(status);
+                loadhtml(1, status);
+            }
+
+
+
+        }
+
+        function getahover(status) {
+            $(".ddzx-xuanz a").removeClass("ahover");
+            if (status == 1) {
+                $("#Status1").addClass("ahover");
+            } else if (status == 2) {
+                $("#Status2").addClass("ahover");
+            } else if (status == 3) {
+                $("#Status3").addClass("ahover");
+            } else if (status == 4) {
+                $("#Status4").addClass("ahover");
+            } else {
+                $("#Status0").addClass("ahover");
+            }
+        }
+
+
+    </script>
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+</body>
+</html>

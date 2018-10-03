@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>首页</title>
+
+    <link rel="stylesheet" href="../css/momocha.css?v1" />
+    <!--<script type='text/javascript' src='/js/jquery-2.1.0.js'></script>-->
+    <script src="../js/jquery-2.1.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/momocha.js?v1"></script>
+    <link rel="stylesheet" href="../css/feiaishi.css?v1" />
+
+    <link rel="stylesheet" href="../css/idangerous.swiper.css">
+    <link rel="stylesheet" href="../css/idangerous.swiper.scrollbar.css">
+    <link href="../css/weui.min.css" rel="stylesheet" />
+    <style>
+        p {
+            width: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li class="ahover">
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:void(0)" class="bar-ico">菲爱仕</a>
+            <input class="bar-search search-ico" type="search" placeholder="输入商品名称快速搜索" value="" id="JuMeiSearchName" />
+            <!--<a href="javascript:void(0)" class="bar-ico bar-nav" rel="off">导航</a>-->
+            <a href="javascript:void(0)" class="bar-ico bar-nav bar-nav-on" rel="off"></a>
+        </header>
+
+        <div id="banner" class="swiper-container ">
+            <div class="swiper-wrapper momocha-banner " id="ImageAdsList">
+
+            </div>
+            <div class="pagination"></div>
+        </div>
+        <div class="momocha-index-nr">
+
+
+        </div>
+        <script src="../js/idangerous.swiper-2.0.min.js"></script>
+        <script src="../js/fz.js?v1.1"></script>
+        <script type="text/javascript">
+
+            document.getElementById('JuMeiSearchName').addEventListener('keydown', function (e) {
+                if (e.keyCode == 13 || e.keyCode == 9) {
+                    var commodityName = $.trim($("#JuMeiSearchName").val());
+                    if (commodityName == null || commodityName.length < 1 || commodityName == "undefined") {
+                        $.openDialog("请输入商品名称");
+                        //alert("请输入商品名称");
+                        return;
+                    }
+                    window.location.href = ("goodsSearchList.html?commodityName=" + escape(commodityName));
+                }
+            })
+
+            $(function () {
+
+                //Init Navigation
+                var nav = $('.swiper-nav').swiper({
+                    slidesPerView: 'auto',
+                    freeMode: true,
+                    noSwiping: true,
+                    freeModeFluid: true,
+                    calculateHeight: true,
+                    visibilityFullFit: true,
+                    onSlideClick: function (nav) {
+                        pages.swipeTo(nav.clickedSlideIndex)
+                    }
+                })
+
+                //Function to Fix Pages Height
+                function fixPagesHeight() {
+                    $('.swiper-pages').css({
+                        height: $(window).height() - nav.height - 48
+                    })
+                }
+                $(window).on('resize', function () {
+                    fixPagesHeight()
+                })
+                fixPagesHeight()
+
+                //Init Pages
+                var pages = $('.swiper-pages').swiper({
+                    noSwiping: true,
+                    onSlideChangeStart: function () {
+                        $(".swiper-nav .active").removeClass('active')
+                        $(".swiper-nav .swiper-slide").eq(pages.activeIndex).addClass('active')
+                    },
+                })
+
+                //var mySwiper = new Swiper('#banner', {
+                //    loop: true,
+                //    autoplay: 5000,
+                //    calculateHeight: true,
+                //    pagination: '.pagination',
+
+                //    //其他设置
+                //});
+
+                //Scroll Containers
+                $('.scroll-container').each(function () {
+                    $(this).swiper({
+
+                        mode: 'vertical',
+                        scrollContainer: true,
+                        mousewheelControl: true,
+                        scrollbar: {
+                            container: $(this).find('.swiper-scrollbar')[0]
+                        }
+                    })
+                })
+
+                //Gallery
+                var swiperGallery = $('.swiper-gallery').swiper({
+                    mode: 'vertical',
+                    slidesPerView: 'auto',
+                    freeMode: true,
+                    freeModeFluid: true,
+                    scrollbar: {
+                        container: $('.swiper-gallery .swiper-scrollbar')[0]
+                    }
+                })
+                //$.openLoading("加载中...");
+
+                //$.ajax("/ImageAds/Index", {
+                //    data: {
+                //    },
+                //    type: "post",
+                //    dataType: "json",
+                //    success: function (data) {
+                //        $.closeLoading();
+                //        if (data != null && data.AdsList.length > 0) {
+                //            var html = '';
+                //            for (var i = 0; i < data.AdsList.length; i++) {
+                //                var str = getAdvertismentDiv(data.AdsList[i].ImageUrl, data.AdsList[i].link);
+                //                html += str;
+                //            }
+
+                //            $("#ImageAdsList").html(html);
+                //            //var mySwiper = new Swiper('.swiper-container', {
+                //            //    autoplay: 3000, //自动滑动 滚动速度
+                //            //    pagination: '.swiper-pagination', //分页器的class的名字
+                //            //    prevButton: '.swiper-button-prev',
+                //            //    nextButton: '.swiper-button-next',
+                //            //    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                //            //    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+
+                //            //    loop: true, //循环
+
+                //            //})
+
+                //            var mySwiper = new Swiper('#banner', {
+                //                loop: true,
+                //                autoplay: 5000,
+                //                calculateHeight: true,
+                //                pagination: '.pagination',
+
+                //                //其他设置
+                //            });
+
+                //            setTimeout(function () {
+                //                $.getScript('../js/momocha-min.js', function () {
+                //                    fit();
+                //                    mosidebar();
+                //                    spnr();
+                //                    act0();
+                //                });
+                //            }, 200);
+
+
+                //        }
+
+                //    },
+                //    error: function () {
+                //        $.closeLoading();
+                //        $.openDialog("网络错误");
+                //    }
+
+                //});
+
+
+                $.openLoading();
+                $.ajax("/JuMeiMall/JuMeiMallIndex", {
+                    data: {
+                    },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $.closeLoading();
+                        var html = '';
+                        if (data.CateMallList != null && data.CateMallList.length > 0) {
+                            for (var i = 0; i < data.CateMallList.length; i++) {
+                                var str = appendSection(data.CateMallList[i].Categoryname, data.CateMallList[i].commodityCategoryId, data.JuMeiMallList);
+                                html += str;
+                            }
+                            $(".momocha-index-nr").html(html);
+
+                            //setTimeout(function () {
+                            //    $.getScript('../js/momocha-min.js', function () {
+                            //        fit();
+                            //        mosidebar();
+                            //        spnr();
+                            //        act0();
+                            //    });
+                            //}, 200);
+                        }
+                        if (data != null && data.AdsList.length > 0) {
+                            var html = '';
+                            for (var i = 0; i < data.AdsList.length; i++) {
+                                var str = getAdvertismentDiv(data.AdsList[i].ImageUrl, data.AdsList[i].link);
+                                html += str;
+                            }
+
+                            $("#ImageAdsList").html(html);
+
+                        }
+                        var mySwiper = new Swiper('#banner', {
+                            loop: true,
+                            autoplay: 5000,
+                            calculateHeight: true,
+                            pagination: '.pagination',
+
+                            //其他设置
+                        });
+
+                        setTimeout(function () {
+                            $.getScript('../js/momocha-min.js', function () {
+                                fit();
+                                mosidebar();
+                                spnr();
+                                act0();
+                            });
+                        }, 200);
+
+
+                    },
+                    error: function () {
+                        $.closeLoading();
+                        $(".momocha-index-nr").html("");
+                        $.openDialog("网络错误");
+                    }
+
+                });
+            //}
+
+
+            })
+
+            function getAdvertismentDiv(ImageUrl, link) {
+                var sectionStr = '';
+                var section = '<div class="swiper-slide">';
+                section += '<a href="' + link + '">';
+                section += '<img src="' + ImageUrl + '" class="swiper-no-swiping">';
+                section += '</a>';
+                section += '</div>';
+
+                sectionStr += section;
+                return sectionStr;
+            }
+
+
+            function appendSection(commodityCateName, commodityCateID, JuMeiMallList) {
+                var sectionStr = '';
+                var section = '<div class="momocha-shop">';
+                section += '<div class="momocha-litle litleico">' + commodityCateName;
+                section += '<a onclick="OpenGoodsCategoryList(' + commodityCateID + ')">MORE+</a>';
+                section += '</div>';
+
+                var li = '<ul>';
+                var count = 0;
+                for (var i = 0; i < JuMeiMallList.length; i++) {
+                    if (JuMeiMallList[i].commodityCategoryId == commodityCateID) {
+                        count++;
+                        li += appendGoodsSection(JuMeiMallList[i].commodityId, JuMeiMallList[i].images, JuMeiMallList[i].commodityName, JuMeiMallList[i].commodityPrice, JuMeiMallList[i].sellQuantity, JuMeiMallList[i].commodityRemark);
+                    }
+
+                }
+                if (count ==0) {
+                    return sectionStr;
+                }
+                li += '</ul>';
+                section += li;
+
+
+                section += '</div>';
+
+
+                sectionStr += section;
+
+                return sectionStr;
+
+
+            }
+
+
+
+
+            function appendGoodsSection(commodityId, images, commodityName, commodityPrice, sellQuantity, commodityRemark) {
+                var sectionStr = '';
+                var section = '<li>';
+                section += '<a onclick="OpenGoodsDetail(' + commodityId + ')" >';
+                section += '<img src="' + images + ' " />';
+                section += '<p>' + commodityName + '</p>';
+                section += '<p>' + commodityRemark + '</p>';
+                section += '<p>¥' + commodityPrice + '</p>';
+
+
+                section += '</a>';
+
+                section += '</li>';
+                sectionStr += section;
+                return sectionStr;
+
+            }
+
+
+
+
+            //跳转
+            function OpenGoodsCategoryList(commodityCateID) {
+                window.location.href = ("goodsCategoryList.html?id=" + commodityCateID);
+
+            }
+            function OpenGoodsDetail(commodityId) {
+                window.location.href = ("goodsDetail.html?id=" + commodityId);
+
+            }
+        </script>
+
+
+
+    </div>
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+</body>
+
+</html>

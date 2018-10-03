@@ -1,0 +1,11 @@
+﻿boor.order=1
+boor.shortName=boor
+DisplayName.order=2
+DisplayName.shortName=显示名称
+DisplayName.shortNameFormat={0}
+Name.order=1
+Name.shortName=角色名称
+Name.shortNameFormat={0}
+State.order=3
+State.shortName=状态
+State.shortNameFormat={0}

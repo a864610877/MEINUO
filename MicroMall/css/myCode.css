@@ -1,0 +1,60 @@
+body {
+        height: 100%;
+        margin-bottom: 5rem;
+        padding-bottom: 5rem;
+        background: #F5F5F5;
+    }
+    .code_bottom {
+        width: 25.875rem;
+        height: 5rem;
+        background:#CCC;
+        position:fixed;
+        bottom:0;
+        overflow:hidden;
+        z-index:99999;
+    }
+    .code_bottom .fx {
+        width: 100%;
+        height: 2.5rem;
+        background-color: #708090;
+        float: left;
+        text-align: center;
+        color: #FFF;
+        line-height: 2.5rem;
+    }
+    .code_bottom .add {
+        float: left;
+        width: 25.9375rem;
+        height: 2.5rem;
+        background: #00BFFF;
+        text-align: center;
+        color: #FFF;
+        line-height: 2.5rem;
+    }
+    .code_bottom .delete {
+        float: right;
+        width: 12.9375rem;
+        height: 2.5rem;
+        background: #DC143C;
+        text-align: center;
+        color: #FFF;
+        line-height: 2.5rem;
+    }
+
+    .content {
+        width: 100%;
+        position:absolute;
+        left:0;
+        right:0;
+        top:3rem;
+        bottom:5rem;
+    }
+    .content .img_code {
+        text-align: center;
+        margin:3rem;
+    }
+    .content .img_code img {
+        width: 100%;
+        box-shadow: 0 0 2rem #777;
+        border-radius: 0.5rem;
+    }

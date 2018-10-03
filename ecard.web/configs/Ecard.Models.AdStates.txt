@@ -1,0 +1,6 @@
+﻿all.name=全部
+all.order=1
+putaway.name=上架
+putaway.order=1
+soldOut.name=下架
+soldOut.order=1

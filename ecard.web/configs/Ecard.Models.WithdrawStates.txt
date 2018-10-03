@@ -1,0 +1,8 @@
+﻿All.name=全部
+All.order=1
+failure.name=失败
+failure.order=1
+notaudit.name=待审核
+notaudit.order=1
+success.name=成功
+success.order=1

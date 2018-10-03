@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "AddAddress";
+}
+
+<header data-am-widget="header" class="am-header am-header-default bgFFF mb5">
+    <div class="am-header-left am-header-nav">
+        <a href="/PersonalCentre/MyAddress" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        添加收货地址
+    </h1>
+</header>
+<!-- <div class="userInfo">
+  <ul>
+    <li>张天爱</li>
+    <li>18965658989</li>
+    <li><a href="#">广东省 深圳市 宝安区 西乡街道<span class="am-icon-angle-right am-fr"></span></a></li>
+    <li>深圳市宝安区西乡街道华侨新村六巷88号a栋666号</li>
+  </ul>
+</div> -->
+<div class="add_addrs fs15">
+    <ul>
+        <li><input type="text" id="name" placeholder="姓名" name="" value=""></li>
+        <li><input type="text" placeholder="手机" id="mobile" value=""></li>
+        <!-- <li><a href="#">广东省 深圳市 宝安区 西乡街道<span class="am-icon-angle-right am-fr"></span></a></li> -->
+        <li>
+            <div class="ui-form-item ui-border-b">
+                <!-- <label>单位地址</label> -->
+                <div class="ui-select">
+                    <input id="expressArea" data-name="custUa" data-required="true"  data-label="单位地址" placeholder="选择省市区" readonly style="padding-left:0;" value=""><span class="am-icon-angle-right am-fr"></span>
+                </div>
+                <div class="browser">
+                    <!--选择地区弹层-->
+                    <section id="areaLayer" class="express-area-box">
+                        <header>
+                            <h3>选择省市区</h3>
+                            <div class="selet-area-wrap">
+                                <p><span class="one"></span></p>
+                                <p><span class="two"></span></p>
+                                <p><span class="three"></span></p>
+                            </div>
+                            <div class="hot-city">
+                                <p>热门城市</p>
+                                <ul>
+                                    <li onclick="selectPP(0,1)">北京</li>
+                                    <li onclick="selectPP(10,1)">上海</li>
+                                    <li onclick="quickselectC(18,0)">广州</li>
+                                    <li onclick="quickselectC(18,1)">深圳</li>
+                                    <li onclick="quickselectC(12,0)">杭州</li>
+                                    <li onclick="quickselectC(11,0)">南京</li>
+                                    <li onclick="quickselectC(11,4)">苏州</li>
+                                    <li onclick="selectPP(1,1)">天津</li>
+                                    <li onclick="quickselectC(16,0)">武汉</li>
+                                    <li onclick="quickselectC(17,0)">长沙</li>
+                                    <li onclick="selectPP(21,1)">重庆</li>
+                                    <li onclick="quickselectC(22,0)">成都</li>
+                                </ul>
+                                <p>选择省份/地区</p>
+                            </div>
+                            <a id="backUp" class="back" href="javascript:void(0)" title="返回"></a>
+                            <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+                        </header>
+                        <article id="areaBox">
+                            <ul id="areaList" class="area-list"></ul>
+                        </article>
+                    </section>
+                    <!--遮罩层-->
+                    <div id="areaMask" class="mask"></div>
+                </div>
+            </div>
+        </li>
+        <li style="padding-bottom:30px;"><input type="text" placeholder="详细地址" id="detailAddress" name="" value=""></li>
+    </ul>
+</div>
+<div class="h55"><!-- 占位符 --></div>
+<div class="down_order bgFFF">
+    <a href="#" onclick="Add()" class="jiesuan jiesuan2 am-fr">确认保存</a>
+</div>
+<script src="/js/jquery.area.js?v1.1"></script>
+<script type="text/javascript">
+    function Add() {
+        var name = $("#name").val();
+        var mobile = $("#mobile").val();
+        var expressArea = $("#expressArea").val();
+        var detailAddress = $("#detailAddress").val();
+
+        if (name == "") {
+            $.openDialog("请输入姓名");
+            return;
+        }
+        if (mobile == "") {
+            $.openDialog("请输入手机号");
+            return;
+        }
+        if (expressArea == "") {
+            $.openDialog("请选择选择省市区");
+            return;
+        }
+        if (detailAddress == "") {
+            $.openDialog("请输入详细地址");
+            return;
+        }
+        $.openLoading("添加中");
+        $.ajax({
+            url: "/PersonalCentre/AddAddress",
+            data: { recipients: name, mobile: mobile, expressArea: expressArea, detailAddress: detailAddress },
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                $.closeLoading();
+                if (data.Code == 0) {
+                    $.openDialog("添加成功");
+                    $("#name").val('');
+                    $("#mobile").val('');
+                    $("#detailAddress").val('');
+                }
+                else if (data.Code == -2) {
+                    $.openDialogUrl("请重新登录",data.Msg);
+                }
+                else {
+                    $.openDialog(data.Msg);
+                }
+            },
+            error: function () {
+                $.closeLoading();
+                $.openDialog("系统异常，请检查网络");
+            }
+        });
+    }
+
+</script>
+

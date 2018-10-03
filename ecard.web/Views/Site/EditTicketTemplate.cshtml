@@ -1,0 +1,67 @@
+﻿@model EcardModelItem<EditTicketTemplate>
+@using (Html.BeginForm())
+{  <div class="create_div">
+   <ul class="forminfo" style="padding-top:10px;">
+        @Html.EditorFor(x => x.Item)
+    </ul>
+            <div id="tipsDiv" style=" margin: 20px; text-align: left;">
+            <h3 style="font-size: large; margin-left:-15px; color: #0000FF">Tips:您可用的变量如下</h3>
+            <p >
+            操作员:#operator#
+            </p><p>
+            序列号:#serial-no#
+            </p><p>
+            当前时间:#now#
+            </p><p>
+            会员姓名:#username#
+            </p><p>
+            卡类型:#account-type#
+            </p><p>
+            交易类型:#type#
+            </p><p>
+            卡号:#account-name#
+            </p><p>
+            交易金额:#amount#
+            </p><p>
+            卡余额:#account-amount#</p><p>
+            支付方式:#deal-way#</p><p>
+            是否开发票:#is-recharged#
+            </p><p>
+            转出卡号(转账用):#account-name#
+            </p><p>
+            转入卡号(转账用):#account-to-name#</p><p>
+            转出卡号余额:#account-amount#</p><p>
+            卡有效期:#account-expireddate#
+            </p><p>
+            旧卡号:#account-name#
+            </p><p>
+            新卡号:#account-new-name#
+        </div>
+    <div style=" clear:both" />
+    <div class="submitDiv"> <input type="submit" class="scbtn" value="提交" />
+          </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $(".create_field input").focus(function () {
+                $("[forprop='" + $(this).attr("id") + "']").show("1500");
+            });
+            $(".create_field select").click(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").show("1500");
+            });
+            $(".create_field input").blur(function () {
+                $("[forprop='" + $(this).attr("id") + "']").hide("1500");
+            });
+            $(".create_field select").mouseleave(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").hide("1500");
+            });
+        });
+    
+    </script>
+}
+
+<style type="text/css">
+.createTable textarea {
+    width: 90%;
+}
+</style>

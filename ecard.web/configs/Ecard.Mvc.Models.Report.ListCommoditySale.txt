@@ -1,0 +1,15 @@
+﻿amount.order=1
+amount.shortName=销售额
+amount.shortNameFormat={0}
+commodityId.order=1
+commodityId.shortName=commodityId
+commodityId.shortNameFormat={0}
+commodityName.order=1
+commodityName.shortName=商品
+commodityName.shortNameFormat={0}
+quantity.order=1
+quantity.shortName=销售数量
+quantity.shortNameFormat={0}
+rebateAmount.order=1
+rebateAmount.shortName=返佣金额
+rebateAmount.shortNameFormat={0}

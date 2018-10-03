@@ -1,0 +1,190 @@
+html {
+        background: #F5F5F5;
+    }
+
+    body {
+        margin: 0;
+    }
+    .content {
+        overflow: hidden;
+        padding-bottom: 10rem;
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    li {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+    .li {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        overflow: hidden;
+        background: #fff;
+        border-bottom: 0.062px solid #B9B9B9;
+        color: #545454;
+    }
+    .li_div {
+        margin: 1.2rem;
+        margin-bottom: 0.1rem;
+        line-height: 1.8rem;
+        float: left;
+        margin-top: 0.5rem;
+    }
+    .li_div a {
+        float: right;
+        margin-top: 0.5rem;
+        margin-left: 2.8rem;
+        margin-right: 0.2rem;
+        text-decoration: none;
+        color:#000;
+    } 
+    .li_div div {
+        height: 2.2rem;
+        line-height: 2.1rem;
+    }
+    .li_div .address {
+        float: left;
+        height: auto;
+        padding-bottom: 0.6rem;
+    }
+    .userAddress {
+        width: 80%;
+        height: 2.5rem;
+        background: #B59F76;
+        border-radius: 0.5rem;
+        text-align: center;
+        line-height: 2.3rem;
+        color: #FFF;
+        margin: 0 auto;
+        margin-top: 0.8rem;
+    }
+    .list {
+        width: 100%;
+        margin-top: 0.18rem;
+        overflow: hidden;
+        margin-bottom: 10rem;
+    }
+
+    .list ul li {
+        width: 97%;
+        padding: 0.8rem;
+        background: #FFF;
+        font-size: 0.96rem;
+        color: #333333;
+        margin-top: 0.7rem;
+        padding-right: 0rem;
+        overflow: hidden;
+        padding-bottom: 0;
+    }
+
+
+    .orderNo {
+    }
+
+    .productImg {
+        margin-top: 1rem;
+        width: 5.625rem;
+        height: 5.625rem;
+    }
+
+        .productImg img {
+            width: 5.625rem;
+        }
+
+    .productTitle {
+        float: left;
+        margin-top: -5.5rem;
+        margin-left: 6.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.3rem;
+        padding-right: 1.5rem;
+    }
+    .op {
+        margin-bottom:0.5rem;
+        word-break: break-all;
+        word-wrap: break-word;
+        color: #888888;
+        font-size: 0.8rem;
+    }
+    .productPrice {
+        margin-top: -2.4rem;
+        margin-left: 6.5rem;
+        float:left;
+        width: 16.5rem;
+    }
+    .countNumber {
+        width: 103%;
+        height: 3.125rem;
+        border-top: 0.063rem solid #D8D8D8;
+        background: #FFF;
+        margin-left: -0.77rem;
+        margin-top: 0.8rem;
+        line-height:2.9rem;
+        float:left;
+    }
+    .number {
+        width: 2.5rem;
+        height: 1.875rem;
+        border: 0.0625rem solid #B59F76;
+        float: left;
+        border-left: 0rem;
+        border-right: 0rem;
+        line-height: 1.7rem;
+        text-align: center;
+        color: #555;
+    }
+    .btn {
+        width: 1.875rem;
+        height: 1.875rem;
+        border: 0.0625rem solid #B59F76;
+        float: left;
+        font-size: 2rem;
+        color: #666;
+        text-align: center;
+        line-height: 1.4rem;
+    }
+    .countName {
+        float:left;
+        margin-left:0.8rem;
+    }
+    .buyNumber {
+        float:right;
+        margin-top:0.56rem;
+        margin-right:1rem;
+    }
+    .Totle {
+        width: 100%;
+        height: 3.4375rem;
+        background: #FFF;
+        position: fixed;
+        bottom: 3.4375rem;
+        border-top: 0.063rem solid #F0F0F0;
+    }
+    .Totle .totlePrice {
+        float: left;
+        font-size: 1.1rem;
+        line-height: 3.1rem;
+        margin-left: 2rem;
+        color:#333;
+    }
+        .Totle span {
+            /*color: #B59F76;*/
+            color:#d53030;
+        }
+        .Totle .buyBtn {
+            float: right;
+            width: 9.375rem;
+            height: 100%;
+            background-color: #B59F76;
+            text-align: center;
+            line-height: 3.2rem;
+            color: #FFF;
+        }

@@ -1,0 +1,20 @@
+﻿@using Ecard.Mvc.ActionFilters
+@model ShopUserModel
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    <div class="portlet-header ui-widget-header"> 用户信息</div>
+    <div class="portlet-content">
+        <ul class="side-menu">
+            <li>用户姓名: @Model.UserName <br/> <br/></li> 
+            <li>本次登录: @(Model.LastSignInTime.HasValue ? Model.LastSignInTime.Value.ToString("yyyy-MM-dd HH:mm") : "")<br/> <br/></li> 
+        </ul>
+    </div>
+</div>
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    <div class="portlet-header ui-widget-header"> 商户名称</div>
+    <div class="portlet-content">
+        <ul class="side-menu">
+            <li>商户号:  @Model.ShopName<br/> <br/></li> 
+            <li>商户名称:  @Model.ShopDisplayName<br/> <br/></li> 
+        </ul>
+    </div>
+</div>

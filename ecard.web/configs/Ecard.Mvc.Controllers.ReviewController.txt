@@ -1,0 +1,4 @@
+﻿description=Ecard.Mvc.Controllers.ReviewController
+List.description=评论列表
+List.name=评论列表
+name=Ecard.Mvc.Controllers.ReviewController

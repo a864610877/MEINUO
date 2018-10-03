@@ -1,0 +1,10 @@
+﻿columns=,类型,总金额,应付金额
+description=系统运营余额汇总
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=刷新
+sql=report.AllSystemSummary
+summary.count=0
+title=系统运营静态余额
+titleA=titleA

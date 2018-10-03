@@ -1,0 +1,4 @@
+﻿Amount.name=Amount
+Amount.order=1
+UserName.name=UserName
+UserName.order=1

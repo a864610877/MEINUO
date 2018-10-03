@@ -1,0 +1,12 @@
+﻿Amount.order=2
+Amount.shortName=金额
+Amount.shortNameFormat={0}
+DisplayName.order=1
+DisplayName.shortName=规则名称
+DisplayName.shortNameFormat={0}
+Point.order=3
+Point.shortName=积分
+Point.shortNameFormat={0}
+State.order=5
+State.shortName=状态
+State.shortNameFormat={0}

@@ -1,0 +1,13 @@
+﻿AccountLevel.name=会员级别
+AccountLevel.order=1
+description=管理所有的礼品
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=resume.success
+State.name=状态
+State.order=3
+suspend.success=suspend.success
+title=礼品管理
+titleA=礼品管理

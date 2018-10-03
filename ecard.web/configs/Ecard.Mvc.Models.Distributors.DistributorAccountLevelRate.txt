@@ -1,0 +1,6 @@
+﻿AccountLevelPolicyId.name=AccountLevelPolicyId
+AccountLevelPolicyId.order=1
+AccountLevelPolicyText.name=AccountLevelPolicyText
+AccountLevelPolicyText.order=1
+Rate.name=Rate
+Rate.order=1

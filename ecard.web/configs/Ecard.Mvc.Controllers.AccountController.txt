@@ -1,0 +1,11 @@
+﻿AccountList.description=会员列表
+AccountList.name=会员列表
+Delete.description=删除
+description=Ecard.Mvc.Controllers.AccountController
+Edit.description=编辑
+GetSaleAmount.description=GetSaleAmount
+name=Ecard.Mvc.Controllers.AccountController
+PointList.description=积分操作记录
+PointList.name=PointList
+ReferList.description=推荐记录
+ReferList.name=ReferList

@@ -1,0 +1,12 @@
+﻿@model Ecard.Mvc.Models.ActionModel 
+@{
+    var postClass = Model.IsPost ? "post" : "";
+    var notextclass = string.IsNullOrEmpty(Model.Text) ? "btn_no_text" : "";
+}
+@*<li class="click" url="@(Url.Action(Model.Action, Model.Controller, Model.RouteValues))" name="@Model.Action" data-confirm='@Model.FormatedConfirmMessage' isclick="false"><span>
+  <img src="/images/@Model.Icon" /></span>@Model.Text</li>*@
+
+             <a class='tablelink'title="@Model.Description"  name="@Model.Action"  onclick="OperatorThis('@Model.Action','@(Url.Action(Model.Action, Model.Controller, Model.RouteValues))')" href="#"  data-confirm='@Model.FormatedConfirmMessage'>
+               @Model.Description </a>
+
+

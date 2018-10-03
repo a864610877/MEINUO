@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>确认订单</title>
+    <link rel="stylesheet" href="../css/momocha.css?v1.2" />
+    <script type='text/javascript' src='../js/jquery-2.1.0.js'></script>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/momocha.js?v1.2"></script>
+    <link rel="stylesheet" href="../css/feiaishi.css?v1.2" />
+    <link href="../css/weui.min.css" rel="stylesheet" />
+    <!--<link href="../css/mui.min.css" rel="stylesheet" />
+    <link href="../css/mui.indexedlist.css" rel="stylesheet" />-->
+    <!--<script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/mui.indexedlist.js"></script>-->
+</head>
+
+<body>
+   
+    <div class="ddzf-play">
+        <div class="ddzfck">
+            <a onclick="settlement()" >微信支付</a>
+            <a onclick="Apply()">支付宝支付</a>
+        </div>
+        <div class="ddzf-black"></div>
+    </div>
+    <div class="momocha-sidebar">
+        <ul>
+            <li class="ahover">
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">确认订单</a>
+            <a href="javascript:void(0)" class="bar-ico gwc-delete" rel="off"></a>
+        </header>
+        <div class="qrdd-index">
+
+            <div class="act1-father qedd-sh">
+
+                <div class="momocha-hentiao act1" rel="off" id="dis1">请选择收货地址</div>
+                <div class="momocha-hentiao2 sh-yes act1-children2" rel="off" id="dis2">
+                    <a href="javascript:void(0)">
+                        <div class="add-xuanzr">当前选定收货地址为(点击可以重新选择)：</div>
+                        <div class="name-number" id="AddCont"><i>收货人:郭炜炜</i><i>12345678900</i></div>
+                        <div class="add" id="AddDtlCon">收货地址：广东省中山市小榄某某某小区2</div>
+                    </a>
+                </div>
+                <ul class="sh-li act1-children" id="AddressList"></ul>
+            </div>
+
+            <div class="momocha-hentiao top10">订单信息</div>
+            <div class="ddxinxi">
+                <ul id="BuyList"></ul>
+            </div>
+
+            <div class="momocha-hentiao guest "><i>留言:</i><input type="text" id="remarkId" maxlength="100" placeholder="选填，对本次交易的说明（建议）"></div>
+
+        </div>
+        <div class="jiesuan">
+            <div class="quanxuan"></div>
+            <div class="heji">
+                <div class="jiaqian" id="TotalAmount">商品合计：<i>¥0.00</i></div>
+                <div class="yunfei" id="Freight">运费：<i>¥0.00</i></div>
+            </div>
+            <div class="jiesuan-on">
+                <a class="ddzf" href="javascript:void(0)">结算</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <input type="hidden" id="userAddressId" value="0" />
+    <input type="hidden" id="orderNo" value="" />
+    <script src="../js/fz.js?v1.8"></script>
+    <!--<script src="../js/WeChat.js?123"></script>-->
+    <script type="text/javascript">
+
+
+        var orderNo = getQueryString("orderNo");
+        if (orderNo == null || orderNo == "" || orderNo == "undefined") {
+            $.openDialog("订单号参数错误");
+            setInterval(function () { window.location.href = "ddzx.html?goodStatus=0"; }, 2000); //跳转到订单详情
+        }
+
+        var totalAmt = 0.00;
+
+
+        window.onload = load();
+
+        function load() {
+            $("#orderNo").val(orderNo);
+            $.openLoading("载入中...");
+            $.ajax({
+                type: "post",
+                data: {
+                    orderNo: orderNo
+                },
+                dataType: "json",
+                url: "/JuMeiMall/BuyDetails",
+                success: function (json) {
+                    $.closeLoading();
+                    if (json != null) {
+                        if (json.Code != null && json.Code != "undefined" && json.Code == 110) {
+
+                            window.location.href = json.Msg;//获取Session
+
+                        } else if (json.OrderDetailsList != null && json.OrderDetailsList.length > 0 && json.payState == 1) {
+                            comIdList = json.OrderDetailsList;
+                            var html = '';
+                            for (var i = 0; i < json.OrderDetailsList.length; i++) {
+                                var str = SetBuyDetails(json.OrderDetailsList[i].Title, json.OrderDetailsList[i].Image, json.OrderDetailsList[i].Price, json.OrderDetailsList[i].quantity, json.OrderDetailsList[i].Id, json.OrderDetailsList[i].specification);
+                                html += str;
+                            }
+                            $("#BuyList").html(html);
+
+                            $("#TotalAmount").html('商品合计：<i>￥' + json.TotalAmt + '</i>');
+                            totalAmt = json.TotalAmt + json.Freight;//总金额，用于支付
+
+                            $("#Freight").html('运费：<i>￥' + json.Freight + '</i>');
+                            setTimeout(function () {
+                                $.getScript('../js/momocha-min.js', function () {
+                                    fit();
+                                    mosidebar();
+                                    spnr();
+                                    act0();
+                                });
+                            }, 200);
+                        } else {
+                            $.openDialog(json.Msg);
+                            setInterval(function () { window.location.href = "ddzx.html?goodStatus=0"; }, 2000); //跳转到订单详情
+                        }
+
+
+                    }
+
+
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("获取订单失败，请稍后再试");
+                }
+            });
+
+            $.openLoading("载入中...");
+            $.ajax({
+                type: "post",
+                data:{},
+                dataType: "json",
+                url: "/JuMeiMall/GetAddressList",
+                success: function (json) {
+                    $.closeLoading();
+                    if (json != null) {
+                        if (json.Code != null && json.Code != "undefined" && json.Code == 110) {
+
+                            window.location.href = json.Msg;//获取Session
+
+                        } else if (json.AddressList != null && json.AddressList.length > 0) {
+                            var html = '';
+                            //地址List
+                            for (var i = 0; i < json.AddressList.length; i++) {
+                                var str = GetAddressHtml(json.AddressList[i].userAddressId,
+                                    json.AddressList[i].province,
+                                    json.AddressList[i].city,
+                                    json.AddressList[i].detailedAddress,
+                                    json.AddressList[i].moblie,
+                                    json.AddressList[i].recipients,
+                                    json.AddressList[i].zipCode,
+                                    json.AddressList[i].ProvinceName);
+                                html += str;
+                            }
+                            $("#AddressList").html(html);
+                            if (json.defaultAddressId != "undefined" && json.defaultAddressId != 0) {
+
+                                GetDefAddressWindows(json.defaultAddressId, json.defaultRecipients, json.defaultMoblie, json.defaultProvinceName, json.defaultDetailedAddress);
+                            }
+                            setTimeout(function () {
+                                $.getScript('../js/momocha-min.js', function () {
+                                    fit();
+                                    mosidebar();
+                                    spnr();
+                                    act0();
+                                });
+                            }, 200);
+
+
+                        } else {
+                            $.openDialog('您的收货地址目前为空哦，快去设置您的收货地址吧');
+                            setInterval(function () { window.location.href = "add-tianjia.html"; }, 2000); //跳转到收货地址
+                        }
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("网络错误，获取会员地址失败，请稍后再试");
+                }
+            });
+
+        }
+
+        function SetBuyDetails(Title, Image, Price, quantity, Id, specification) {
+            var html = '';
+            html += '<li>';
+            html += '<div class="qrdd-img">';
+            html += '<a onclick="OpenGoodsDtl(' + Id + ')"><img src="' + Image + '"></a>';
+            html += '</div>';
+            html += '<div class="qrdd-nr">';
+            html += '<div class="biaoti">';
+            html += '<a onclick="OpenGoodsDtl(' + Id + ')">' + Title + '</a>';
+            html += '</div>';
+            html += '<div class="fubiaoti">' + specification + '</div>';
+            html += '<div class="quantity">';
+            html += '<div class="qrdd-jiage">￥' + Price + '</div>';
+            html += '<div class="qrdd-js">x' + quantity + '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</li>';
+
+            return html;
+
+        }
+
+
+
+
+        //地址列表拼接
+        function GetAddressHtml(userAddressId, province, city, detailedAddress, moblie, recipients, zipCode, ProvinceName) {
+
+
+            var html = '';
+            var htmlAddressBuyDetail = '';
+
+
+            htmlAddressBuyDetail = '<div class="name-number"><i>收货人:' + recipients + '</i><i>' + moblie + '</i></div>';
+            var html1 = '<i>收货人: ' + recipients + '</i><i>' + moblie + '</i>';
+
+            htmlAddressBuyDetail += '<div class="add">收货地址：' + detailedAddress + '</div>';
+            var html2 = '收货地址：' + detailedAddress;
+            html += '<li onclick="CloseAddressWindows(\'' + userAddressId + '\',\'' + html1 + '\',\'' + html2 + '\')">';
+            html += '<a href="javascript:void(0)">';
+            html += htmlAddressBuyDetail;
+            html += '</a>';
+            html += '</li>';
+
+            return html;
+        }
+
+        function CloseAddressWindows(userAddressId, html1, html2) {
+            $("#userAddressId").val(userAddressId);
+            $("#AddCont").html(html1);
+            $("#AddDtlCon").html(html2);
+            $("#dis1").css('display', 'none');
+            $("#dis2").css('display', 'block');
+            $("#AddressList").css('display', 'none');
+        }
+
+        //默认地址
+        function GetDefAddressWindows(userAddressId, recipients, moblie, ProvinceName, detailedAddress) {
+
+            //var htmlAddressBuyDetail = '';
+
+
+            //htmlAddressBuyDetail = '<div class="name-number"><i>收货人:' + recipients + '</i><i>' + moblie + '</i></div>';
+            //htmlAddressBuyDetail += '<div class="add">收货地址：' + ProvinceName + detailedAddress + '</div>';
+            var html1 = '<i>收货人: ' + recipients + '</i><i>' + moblie + '</i>';
+            var html2 = '收货地址：' + detailedAddress;
+            $("#userAddressId").val(userAddressId);
+            $("#AddCont").html(html1);
+            $("#AddDtlCon").html(html2);
+            $("#dis1").css('display', 'none');
+            $("#dis2").css('display', 'block');
+            //$("#AdressDetail").html('<a href="javascript:void(0)"><div class="add-xuanzr">当前选定的收货地址为(点击可重新选择)：</div>' + htmlAddressBuyDetail + '</a>');
+        }
+        //提交结算
+        function settlement() {
+
+            if ($("#userAddressId").val() == "0" || $("#userAddressId").val() == "") {
+                $.openDialog("请选择收货地址！");
+                return;
+            }
+            //if (typeof WeixinJSBridge == "undefined") {
+            //    if (document.addEventListener) {
+            //        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            //    } else if (document.attachEvent) {
+            //        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            //        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            //    }
+            //}
+            fAlreadyPay();
+        }
+
+
+
+        //支付前处理订单数据
+        function fAlreadyPay() {
+            var remark = $("#remarkId").val();
+
+            var userAddressId = parseInt($("#userAddressId").val());
+            if (userAddressId != 0) {
+                $.openLoading("加载中,请稍后...");
+                $.ajax({
+                    type: "post",
+                    data: {
+                        orderNo: orderNo,
+                        remark: remark,
+                        userAddressId: userAddressId,
+                        totalAmt: totalAmt
+
+                    },
+                    url: "/JuMeiMall/UpdateOrdersPaid",
+                    success: function (json) {
+                        $.closeLoading();
+                        if (json != null) {
+                            if (json.Code == 0) {
+                                $.webChatPay(json.Msg);
+                                //if (typeof WeixinJSBridge == "undefined") {
+                                //    if (document.addEventListener) {
+                                //        document.addEventListener('WeixinJSBridgeReady', fPostCharge, false);
+                                //    } else if (document.attachEvent) {
+                                //        document.attachEvent('WeixinJSBridgeReady', fPostCharge);
+                                //        document.attachEvent('onWeixinJSBridgeReady', fPostCharge);
+                                //    }
+                                //} else {
+                                //    fPostCharge();
+                                //}
+
+                            } else {
+                                $.openDialog(json.Msg);
+
+
+                            }
+                        }
+                    },
+                    error: function () {
+                        $.closeLoading();
+
+                        $.openDialog('网络错误，请截图并联系管理员，订单号：' + orderNo);
+
+                    }
+                })
+            }
+
+        }
+
+        function fPostCharge() {
+            if (totalAmt > 0) {
+                $.openLoading("正在调用微信支付接口,请稍后...");
+                $.ajax({
+                    type: "post",
+                    data: {
+                        totalfee: totalAmt,
+                        orderNo: orderNo,
+
+                    },
+                    url: "/JuMeiMall/MeterRecharge",
+                    success: function (json) {
+                        $.closeLoading();
+                        onBridgeReady(json);
+                    },
+                    error: function () {
+                        $.closeLoading();
+                        $.openDialog('微信支付模块失败，请稍后再试...');
+                    }
+                })
+            }
+            else {
+                $.openDialog('调充值金额不可以为0或者为负数,请确认后再试...');
+            }
+        }
+
+        function Apply() {
+            if ($("#userAddressId").val() == "0" || $("#userAddressId").val() == "") {
+                $.openDialog("请选择收货地址！");
+                return;
+            }
+            var userAddressId = parseInt($("#userAddressId").val());
+            var orderNo = $("#orderNo").val();
+            window.location.href = "/NotifyUrl/Alipay.aspx?orderNo=" + orderNo + "&userAddressId=" + userAddressId;
+        }
+
+
+        //调用微信支付模块
+        function onBridgeReady(json) {
+            WeixinJSBridge.invoke(
+           'getBrandWCPayRequest', {
+               "appId": json.appId,     //公众号名称，由商户传入
+               "timeStamp": json.timeStamp,         //时间戳，自1970年以来的秒数
+               "nonceStr": json.nonceStr, //随机串
+               "package": json.packageValue,
+               "signType": "MD5",         //微信签名方式:
+               "paySign": json.paySign //微信签名
+           },
+           function (res) {
+               if (res.err_msg == "get_brand_wcpay_request:ok") {
+                   //alert("支付成功,请稍后查询余额,如有疑问,请联系管理员.");
+                   //fAlreadyPay();
+                   window.location.href = "ddzx.html?goodStatus=0";
+               } else {
+
+                   $.openDialog('已取消微信商品支付');
+               }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+           });
+        }
+    </script>
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+</body>
+
+</html>

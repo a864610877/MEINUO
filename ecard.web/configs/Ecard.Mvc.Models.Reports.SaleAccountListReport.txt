@@ -1,0 +1,16 @@
+﻿AccountShop.name=发卡行
+AccountShop.order=3
+columns=行号,流水号,卡号,发卡行,卡种,会员卡发卡操作员
+description=会员卡发卡明细表
+End.name=结束时间
+End.order=2
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.SaleAccountList
+Start.name=开始时间
+Start.order=1
+summary.count=0
+title=会员卡发卡明细表
+titleA=会员卡发卡明细表

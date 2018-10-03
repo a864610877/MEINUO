@@ -1,0 +1,8 @@
+﻿All.name=全部
+All.order=1
+Approved.name=已批准
+Approved.order=3
+Normal.name=无结果
+Normal.order=2
+Refused.name=已拒绝
+Refused.order=4

@@ -1,0 +1,23 @@
+﻿@model PageModel
+@{
+    Layout = null;
+}
+
+<div class="sec_guid">
+    <h2>
+        @Html.GetCurrentMenu(3).DisplayName</h2>
+    <ul class="sec_guid_nav">
+        @for (int i = 0; i < Html.GetCurrentMenu(3).Parent.Children.Count(); i++)
+        {
+            var menu = Html.GetCurrentMenu(3).Parent.Children.ToArray()[i];
+            if (menu.IsSameAction(@Html.GetCurrentMenu(3)))
+            {
+            <li class="on"><a href="@Url.Action(menu.Action, menu.Controller, new { isPartial = true })">@menu.DisplayName</a></li>
+            }
+            else
+            {
+            <li><a href="@Url.Action(menu.Action, menu.Controller)">@menu.DisplayName</a></li>
+            }
+        }
+    </ul>
+</div>

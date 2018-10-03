@@ -1,0 +1,14 @@
+﻿columns=行号,卡号,会员姓名,有效期(月),到期日期,卡内余额
+description=会员卡余额汇总报表
+End.name=结束日期
+End.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.ExpiredAccounts
+Start.name=过期日期
+Start.order=1
+summary.count=0
+title=会员卡余额汇总报表
+titleA=会员卡余额汇总报表

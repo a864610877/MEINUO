@@ -1,0 +1,11 @@
+﻿AccountId.name=AccountId
+AccountId.order=1
+description=预授权
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+Query=查询
+State.name=状态
+State.order=1
+title=预授权
+titleA=预授权

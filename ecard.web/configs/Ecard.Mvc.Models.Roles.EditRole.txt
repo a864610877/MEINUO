@@ -1,0 +1,17 @@
+﻿description=编辑角色
+DisplayName.explain=DisplayName
+DisplayName.name=角色显示名称
+DisplayName.order=2
+messages.success=保存成功
+Name.explain=Name
+Name.name=角色名
+Name.order=1
+Permissions.name=权限
+Permissions.order=3
+RoleId.order=1
+title=编辑角色
+titleA=编辑角色
+Users.name=用户名
+Users.order=4
+UserType.name=用户类型
+UserType.order=1

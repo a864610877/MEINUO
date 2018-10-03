@@ -1,0 +1,16 @@
+﻿delete.success=删除积分规则 {0}
+description=添加、修改、删除、启用、停用积分策略
+DisplayName.name=积分名称
+DisplayName.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1 
+query=查询
+resume.fail=规则 {0} 已存在
+resume.success=启用积分规则 {0}
+State.name=状态
+State.order=1
+suspend.success=停用积分规则 {0}
+title=积分策略维护
+titleA=积分策略维护
+规则 {0} 已存在=规则 {0} 已存在

@@ -1,0 +1,119 @@
+﻿@using Moonlit
+@model  Ecard.Mvc.Models.SetWeChats.EditSetWeChat
+<link href="/css/shop_style.css" rel="stylesheet" />
+<style>
+    .order_details select {
+        background: #FFF none repeat scroll 0% 0%;
+        border: 1px solid #CCC;
+        height: 22px;
+        width: 140px;
+    }
+</style>
+<div class="mainbar_wrapper">
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">网站管理 > </a></li>
+            <li><a href="#">微信设置</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container-fluid dingdan_xiang">
+        <h2 class="add_tittle">微信信息</h2>
+        <div class="order_details">
+            <table>
+
+                <tbody>
+                    <tr>
+
+                        <td  class="dingdan_tittle">AppId：</td>
+                        <td ><input type="text" class="dingdan_text1" value="@Model.appID" id="appID" /><input type="hidden" id="setWeChatId"  value="@Model.setWeChatId"></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">AppSecret：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.AppSecret" id="AppSecret" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">Token：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.token" id="token" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">Access_token：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.access_token" id="access_token" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">MCHID(商户号)：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.MCHID" id="MCHID" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">KEY(商户支付密钥)：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.KEY" id="KEY" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">NOTIFY_URL(商户支付结果回调url)：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.NOTIFY_URL" id="NOTIFY_URL" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">USER_NOTIFY_URL(用户授权回调url)：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.USER_NOTIFY_URL" id="USER_NOTIFY_URL" /></td>
+                    </tr>
+                    <tr>
+                        <td class="dingdan_tittle">USERRegister_NOTIFY_URL(用户注册回调url)：</td>
+                        <td><input type="text" class="dingdan_text1" value="@Model.USERRegister_NOTIFY_URL" id="USERRegister_NOTIFY_URL" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="baoxun" style="margin-left:485px; margin-top:30px;">
+            <button class="baoxunxiugai tianjiafabu" id="ChatEdit">保存</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+
+        $("#ChatEdit").click(function () {
+            if (confirm("确定保存此次修改吗？")) {
+                var setWeChatId = $("#setWeChatId").val();
+
+                var appID = $("#appID").val();
+                var AppSecret = $("#AppSecret").val();
+                var token = $("#token").val();
+                var access_token = $("#access_token").val();
+                var MCHID = $("#MCHID").val();
+                var KEY = $("#KEY").val();
+                var NOTIFY_URL = $("#NOTIFY_URL").val();
+                var USER_NOTIFY_URL = $("#USER_NOTIFY_URL").val();
+                var USERRegister_NOTIFY_URL = $("#USERRegister_NOTIFY_URL").val();
+                $.ajax({
+                    url: "/WeChat/Edit",
+                    data: {
+                        appID: appID, AppSecret: AppSecret, token: token, setWeChatId: setWeChatId,
+                        access_token: access_token, MCHID: MCHID, KEY: KEY, NOTIFY_URL: NOTIFY_URL, USER_NOTIFY_URL: USER_NOTIFY_URL,
+                        USERRegister_NOTIFY_URL: USERRegister_NOTIFY_URL
+                    },
+                    type: "post",
+                    //cache: false,
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.Code == 1) {
+                            alert(data.CodeText)
+                        }
+                        else {
+                            alert(data.CodeText)
+                        }
+                    },
+                    error: function () {
+                        window.location.href = "/Home/UserError";
+                    }
+                })
+            }
+
+        })
+    })
+
+</script>                                             

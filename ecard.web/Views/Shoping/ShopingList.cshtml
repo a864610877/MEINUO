@@ -1,0 +1,111 @@
+﻿<!--------中间更换内容------->
+@using Moonlit
+@model  Ecard.Mvc.Models.Shoping.ListShopings
+@{
+
+    var roles = Model.User.Roles.ToList();
+}
+<link href="/css/shop_style.css" rel="stylesheet" />
+<script src="/js/ShopingList.js"></script>
+<style>
+
+</style>
+
+<div class="mainbar_wrapper">
+
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">>&nbsp; 商品列表</a></li>
+
+        </ul>
+    </div>
+
+    <div class="tool_view" style=" height:auto;">
+        <table id="selectTd">
+            <tr>
+                @Html.EditorForModel("condition")
+                <td>
+                    <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+                </td>
+            </tr>
+        </table>
+
+        <div class="clear"></div>
+
+
+    </div>
+</div>
+
+
+<div class="clear"></div>
+<div class="gost_list">
+
+    <div class="addaa">
+@if (roles[0].IsSuper || roles[0].Permissions.Contains("commodityadd"))
+        {
+        <a href="/Shoping/ShopingManager" class="addbtn btn-primary add-goods">+发布商品</a>
+}
+    </div>
+
+
+</div>
+
+<div class="gost_list">
+    <div class="gosttitle1">
+        <h2>商品信息</h2>
+        <p>
+@if (roles[0].IsSuper || roles[0].Permissions.Contains("CommoditySoldout"))
+        {
+            <a href="javascript:void(0)" onclick="OperatorThis('ShoinpSoldout', '/Shoping/ShoinpSoldout')">[批量下架]</a>
+}
+@if (roles[0].IsSuper || roles[0].Permissions.Contains("CommodityPutaway"))
+        {
+            <a href="javascript:void(0)" onclick="OperatorThis('ShoinpsPutaway', '/Shoping/ShoinpsPutaway')">[批量上架]</a>
+}
+        </p>
+    </div>
+
+    <div class="gostxinxi">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" onclick="bigChange(this)" name=" goodslist_checkbox_all" id="goodslist_checkbox_all"></th>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+
+                        <tr>
+                            <td><input type="checkbox" onclick="smallChange(this)" name="commodityId" value="@item.commodityId"></td>
+                            @Html.Tds(item, Model.GetItemType())
+                            @Html.ToolbarOfItem(Model.GetItemToobalActions(item))
+                        </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="list_bottom">
+            <div id="pagehtml">
+                @Html.Raw(Model.pageHtml)
+            </div>
+            <div class="piliang">
+@if (roles[0].IsSuper || roles[0].Permissions.Contains("commoditydelete"))
+        {
+                <p><a href="javascript:void(0)" onclick="OperatorThis('DeleteShopings', '/Shoping/DeleteShopings')">[批量删除]</a>提示：勾选可以进行批量删除。</p>
+}
+            </div>
+        </div>
+    </div>
+</div>
+<!--------中间更换内容------->

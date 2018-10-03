@@ -1,0 +1,12 @@
+﻿commodityNo.explain=商品编码
+commodityNo.name=商品编码
+commodityNo.order=1
+Id.order=1
+messages.success=编辑商品
+num.explain=秒杀数量
+num.name=秒杀数量
+num.order=1
+price.explain=秒杀价格
+price.name=秒杀价格
+price.order=1
+title=编辑

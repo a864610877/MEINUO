@@ -1,0 +1,8 @@
+﻿Create.description=添加级别
+Create.name=添加级别
+Delete.description=删除
+description=Ecard.Mvc.Controllers.GradesController
+Edit.description=编辑
+List.description=级别管理
+List.name=级别管理
+name=Ecard.Mvc.Controllers.GradesController

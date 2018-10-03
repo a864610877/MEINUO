@@ -1,0 +1,16 @@
+﻿Amount.name=卡内余额
+create.Text=售卡
+DepositAmount.name=押金
+description=会员卡发放后卡帐户即成为可用状态
+ExpiredDate.name=有效期
+fail=会员卡发放失败
+failToReadAccount=读卡失败
+HowToDeal.Name=支付方式
+Name.name=卡号
+pleaseInputAccountName=请插入卡
+SaleFee.name=手续费
+success=会员卡发放成功
+title=会员卡发放
+titleA=会员卡发放
+waitingForCommunicate=正在会员卡发放，请稍候
+waitingForInsertCard=请插入卡片

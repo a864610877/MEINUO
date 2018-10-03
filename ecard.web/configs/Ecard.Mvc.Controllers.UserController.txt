@@ -1,0 +1,4 @@
+﻿CreateDog.description=创建U盾
+CreateDog.toolbarIcon=gear
+description=Ecard.Mvc.Controllers.UserController
+name=Ecard.Mvc.Controllers.UserController

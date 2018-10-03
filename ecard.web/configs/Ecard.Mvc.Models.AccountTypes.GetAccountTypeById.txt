@@ -1,0 +1,8 @@
+﻿Amount.text=初始金额
+DepositAmount.text=押金
+DisplayName.text=类别名称
+ExpiredMonths.text=有效期(月数)
+IsRecharging.text=能否充值
+IsRenew.text=能否延期
+Point.text=初始积分
+RenewMonths.text=每次延期时间(月数)

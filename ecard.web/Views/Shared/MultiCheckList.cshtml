@@ -1,0 +1,29 @@
+﻿@using Moonlit
+@model IItemList 
+@{
+    var itemType = Model.GetItemType();
+    var prefix = ViewData["propertyName"];
+}
+<table class="tablelist">
+ <thead>
+    <tr>
+       <th><input id="ckAll" type="checkbox"  onclick="selectAll()"/></th>
+        @Html.Ths(Model.Items, itemType)</tr></thead>
+      <tbody id="tbodysNum"> 
+    @using (var scope = new IteratorScope())
+    {
+        foreach (var item in Model.Items)
+        {
+        <tr>
+            <td>
+                @(Html.CheckBox(prefix + "[" + IteratorScope.Current.Index + "].Checked", ((CheckedItem)item).Checked, new { @class = "checkbox ckitem" }))
+                @(Html.Hidden(prefix + "[" + IteratorScope.Current.Index + "].Id", ((CheckedItem)item).Id, new { @class = "checkbox" }))
+            </td>
+            @Html.Tds(((CheckedItem)item).Item, itemType)
+        </tr>
+                scope.Next();
+         }
+     }
+     </tbody> 
+</table>
+

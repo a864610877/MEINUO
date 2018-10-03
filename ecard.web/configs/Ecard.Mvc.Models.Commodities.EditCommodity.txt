@@ -1,0 +1,13 @@
+﻿CommodityId.order=1
+description=编辑商品
+DisplayName.explain=DisplayName
+DisplayName.name=商品名称
+DisplayName.order=2
+messages.success=保存商品 {0} 成功
+Name.explain=Name
+Name.name=商品编号
+Name.order=1
+Price.explain=Price
+Price.name=价格
+Price.order=3
+title=编辑商品

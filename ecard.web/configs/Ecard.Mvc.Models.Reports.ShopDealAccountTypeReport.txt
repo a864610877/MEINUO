@@ -1,0 +1,15 @@
+﻿columns=行号,商户编码,商户名
+description=帐户消费汇总表
+End.name=结束时间
+End.order=2
+missAccountTypes=请先创建帐户类型
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+Start.name=开始时间
+Start.order=1
+summary.count=1
+summary1.title=汇总
+title=帐户消费汇总表
+titleA=帐户消费汇总表

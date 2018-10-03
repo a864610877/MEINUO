@@ -1,0 +1,66 @@
+﻿@model dynamic
+              <div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>
+<div class="rightinfo"> 
+<ul class='@Html.ViewContext.RouteData.Values["controller"] forminfo' forminfo>
+    @Html.Display("Item")
+    <li class="buttons" style="margin-top: 22px; margin-left:220px;">
+        @{
+            ICommandProvider commandProvider = Model.Item as ICommandProvider;
+            if (commandProvider != null)
+            {
+                foreach (var command in commandProvider.GetCommands())
+                {
+                    @Html.ActionButton(command)
+                }
+            }
+        }
+        <input  type="button" id="renturn_Back" onclick="returnBack()" value="会员管理" class="scbtn" style=" margin-left:20px;"/>
+    </li>
+</ul>
+</div>
+<script type="text/javascript">
+    $("#Item_Name").attr("disabled", "disabled");
+    $("#Item_State").attr("disabled", "disabled");
+    $("#Item_OwnerName").attr("disabled", "disabled");
+    $("#Item_OwnerDisplayName").attr("disabled", "disabled"); 
+    function actionLink(link) {
+        var Password = $("#Item_Password").val();
+        var PasswordConfirm = $("#Item_PasswordConfirm").val();
+        if (Password == "" || Password == "undefined" || Password != PasswordConfirm) {
+            alert("密码填写有误");
+            return false;
+        }
+        else {
+            $.ajax({
+                url: link,
+                data: {Password:Password,PasswordConfirm:PasswordConfirm },
+                type: "post",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+
+                    if (data.Code == 1) {
+                        $(".tipinfo2 img").attr("src", "../../images/Succeed01.png");
+                    }
+                    else {
+                        $(".tipinfo2 img").attr("src", "../../images/error02.png");
+                    }
+                    $(".tipright2 P").text(data.CodeText);
+                    $(".ShowHide").fadeIn(100);
+                    $(".tip2").fadeIn(200);
+                }
+            })
+        }
+
+    }
+
+    function returnBack() {
+        window.location.href = "/Account/List";
+    }
+</script>

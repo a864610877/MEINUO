@@ -1,0 +1,70 @@
+﻿@using Moonlit
+@model  MessagePanel
+@using (Html.BeginForm("MessagePanel", "Site"))
+{ 
+   
+    <div style="width: 98%; margin: 6px 10px 10px 16px; float: left">
+        <div>
+            <div class="searchmainDiv">
+                <div class="searchtext" >
+                    <ul>
+                        @Html.EditorForModel("condition")
+                        <li>@Html.Submit(Model.Localize("query"))</li>
+                    </ul>
+                    <div style="width:100%">
+                   
+                   <div  style=" width:30%; float:left;"><label for="Message" > 输入要发送的内容</label>
+                    @Html.EditorFor(x => x.Message)</div>
+                     <div style=" width:50%; float:right; text-align:left; padding:5px; margin:5px;">
+                    变量说明：<br />
+                        #account-amount# = 余额<br /> #account-point# = 积分
+                        <br /> #account-name# = 卡号<br />#account-expireddate# = 有效期<br /> #username# = 会员姓名<br /> #sitename# = 站点名称)
+                   
+                    </div>
+                    
+                  
+                    </div>
+                </div>
+                <br />
+                <div class="searchCommand">@Html.ToolbarOfList(Model.GetToolbarActions())
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;">
+        </div>
+        <div class="listbox">
+            <div class="listbox_tital">
+                <div style="float: left; display: inline-block;">
+                    @Model.Localize("title")</div>
+                <div style="float: right;">
+                    <input type="submit" value="查询结果" class="label_button_up button" onclick="return false;" />
+                </div>
+            </div>
+            <table class="sort-table" style="width: 100%; margin-bottom: 12px; border-collapse: collapse">
+                <thead style="border-color: #5ec2f9; border-bottom-style: solid">
+                    <tr>
+                        @Html.Th(Ths.Select)
+                        @Html.Ths(Model.List, Model.GetItemType())
+                        @Html.Th(Ths.Operation, new { width = "134px" })
+                    </tr>
+                </thead>
+                <tbody>
+                    @using (var scope = new IteratorScope())
+                    {
+
+                        foreach (var item in Model.List)
+                        {
+                        
+                        <tr>
+                            @Html.Td(Ths.Select, item.AccountId)
+                            @Html.Tds(item, Model.GetItemType())
+                        </tr>
+                            scope.Next();
+                        }
+                    }
+                </tbody>
+            </table>
+            @Html.Pager()
+        </div>
+    </div>
+}

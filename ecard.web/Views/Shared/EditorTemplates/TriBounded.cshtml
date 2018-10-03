@@ -1,0 +1,13 @@
+﻿@model Bounded
+@{
+    var items = from x in Model.Items
+                select new SelectListItem() { Selected = Model.Key == x.Key, Text = x.Name, Value = Model.GetKey(x.Key) };
+    IDictionary<string, object> htmlAttributes = new ViewDataDictionary();
+    htmlAttributes.Add("class", "field select large");
+    if (!string.IsNullOrEmpty(Model.Callback))
+    {
+        htmlAttributes.Add("data-change-callback", Model.Callback);
+    }
+}
+@Html.DropDownList("Key", items, htmlAttributes)
+<div style="margin-top: 3px;" data-callback-accepter="@ViewData.TemplateInfo.GetFullHtmlFieldName("Key")"></div>

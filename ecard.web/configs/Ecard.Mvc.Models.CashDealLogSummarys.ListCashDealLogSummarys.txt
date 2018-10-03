@@ -1,0 +1,13 @@
+﻿description=现金统计
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+State.name=状态
+State.order=3
+SubmitTimeMax.name=结束日期
+SubmitTimeMax.order=2
+SubmitTimeMin.name=开始日期
+SubmitTimeMin.order=1
+title=现金统计
+titleA=titleA

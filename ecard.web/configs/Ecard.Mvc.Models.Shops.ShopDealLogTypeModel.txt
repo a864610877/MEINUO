@@ -1,0 +1,6 @@
+﻿DealLogDay.name=DealLogDay
+DealLogDay.order=1
+ShopDealLogType.name=ShopDealLogType
+ShopDealLogType.order=1
+StartAmount.name=StartAmount
+StartAmount.order=1

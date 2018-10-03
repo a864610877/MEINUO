@@ -1,0 +1,16 @@
+﻿columns=行号,员工登录名,员工姓名,售卡,售卡手续费,充值,储值卡押金,清算支付,换卡,退卡,退储值卡押金
+description=员工交易统计, 统计出所有员工在一定时间段内所有金额支出和收入，正数表示收入，负数表示支出
+End.name=结束日期
+End.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.systemdeallogbyuser
+Start.name=开始日期
+Start.order=1
+summary.count=1
+summary1.Sql=report.systemdeallogbyuser.summary1
+summary1.title=汇总
+title=员工交易统计
+titleA=员工交易统计

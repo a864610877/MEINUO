@@ -1,0 +1,32 @@
+﻿@using Moonlit
+@model  AccountMessagePanel
+@using (Html.BeginForm("AccountMessagePanel", "Site"))
+{ 
+    @Html.EditorForModel("condition")
+    @Html.Submit(Model.Localize("query"))
+    <div class="hastable">
+        @Html.ToolbarOfList(Model.GetToolbarActions())
+        <table class="sort-table">
+            <thead>
+                <tr>
+                    @Html.Th(Ths.Select)
+                    @Html.Ths(Model.List, Model.GetItemType())
+                </tr>
+            </thead>
+            <tbody>
+                @using (var scope = new IteratorScope())
+                {
+                    foreach (var item in Model.List)
+                    {
+                    <tr>
+                        @Html.Td(Ths.Select, item.AccountId)
+                        @Html.Tds(item, Model.GetItemType())
+                    </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    @Html.Pager() 
+}

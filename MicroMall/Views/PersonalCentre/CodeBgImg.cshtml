@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "CodeBgImg";
+}
+@{
+    ViewBag.Title = "个人中心";
+    ViewBag.TopName = "生成我的二维码";
+    ViewBag.BackUrl = "/User/MyCode";
+    Layout = "~/Views/Shared/_top.cshtml";
+}
+<link href="/css/CodeBgImg.css" rel="stylesheet" />
+<script src="/js/html2canvas/html2canvas.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+<script src="/js/qrcode/qrcode.js"></script>
+<script src="/js/qrcode/jquery.qrcode.js"></script>
+<div class="top_save" onclick="scImg()">保存</div>
+<input type="hidden" id="h_url" value="@Model.url">
+<div class="content">
+    <div class="img_code" id="img_code">
+        <div><img src="/images/null_Img.jpg" id="imgs"  crossorigin="*"></div>
+        <div class="logo" id="logo"><img   src="/images/logo.jpg" crossorigin="*" /></div>
+        <div class="code" id="code" >
+            <img src="@Model.url"  crossorigin="*" />
+        </div>
+    </div>
+</div>
+<div class="code_bottom">
+    <div class="jztp" onclick="clickFile()">选择一张背景图片<br />( 二维码/Logo可移动 ) </div>
+    <input type="file" id="imgInput" style="display:none;">
+</div>
+<script>
+    var t, l, r, b;
+    $(function () {
+        $("#imgInput").change(function () {
+            $("#imgs").attr("src", URL.createObjectURL($(this)[0].files[0]));
+            $("#logo").show();
+            $("#code").show();
+            yd_div("code");  //绑定二维码移动事件
+            yd_div("logo");  //绑定logo移动事件
+        });
+
+        //$('#code').qrcode({
+        //    render: "table",
+        //    text: $("#h_url").val()
+        //});
+
+        //$('#code canvas').css("width", "auto");
+        //$('#code canvas').css("height", "auto");
+        //$('#code canvas').css("border-spacing", "0px");
+        //$('#code canvas').css("border", "0px");
+
+        //var w_h = 5.3125 / ($('#code table').length);
+
+        //$("tr").each(function () {
+        //    $(this).css("height", w_h + "rem");
+        //    $(this).css("border", "0px");
+        //});
+        //$("td").each(function () {
+        //    $(this).css("width", w_h + "rem");
+        //    $(this).css("border", "0px");
+        //});
+
+
+        //$('#code').qrcode({
+        //    render: "table",
+        //    text: $("#h_url").val()
+        //});
+
+        //$('#code table').css("width", "150px");
+        //$('#code table').css("height", "150px");
+        //$('#code table').css("border-spacing", "0px");
+        //$('#code table').css("border", "0px");
+
+        //var w_h = 5.3125 / ($('#code table tr').length);
+        //$("tr").each(function () {
+        //    $(this).css("height", w_h + "rem");
+        //    $(this).css("border", "0px");
+        //});
+        //$("td").each(function () {
+        //    $(this).css("width", w_h + "rem");
+        //    $(this).css("border", "0px");
+        //});
+    })
+
+
+    var flag = false;
+    var cur = {
+        x: 0,
+        y: 0
+    }
+    var nx, ny, dx, dy, x, y;
+
+    function yd_div(id) {
+        var obj = document.getElementById(id);
+        obj.addEventListener("mousedown", function () {
+            down(obj);
+        }, false);
+        obj.addEventListener("touchstart", function () {
+            down(obj);
+        }, false)
+        obj.addEventListener("mousemove", function () {
+            move(obj);
+        }, false);
+        obj.addEventListener("touchmove", function () {
+            move(obj);
+        }, false)
+        document.body.addEventListener("mouseup", function () {
+            end();
+        }, false);
+        obj.addEventListener("touchend", function () {
+            end();
+        }, false);
+    }
+
+    function down(obj) {
+        flag = true;
+        var touch;
+        if (event.touches) {
+            touch = event.touches[0];
+        } else {
+            touch = event;
+        }
+        cur.x = touch.clientX;
+        cur.y = touch.clientY;
+        dx = obj.offsetLeft;
+        dy = obj.offsetTop;
+    }
+
+    function move(obj) {
+        if (flag) {
+            var touch;
+            if (event.touches) {
+                touch = event.touches[0];
+            } else {
+                touch = event;
+            }
+            nx = touch.clientX - cur.x;
+            ny = touch.clientY - cur.y;
+            x = dx + nx;
+            y = dy + ny;
+            obj.style.left = x + "px";
+            obj.style.top = y + "px";
+        }
+    }
+    //鼠标释放时候的函数
+    function end() {
+        flag = false;
+    }
+
+    //选择图片
+    function clickFile() {
+        $("#imgInput").click();
+    }
+
+    function scImg() {
+        popup({
+            type: 'load', msg: "上传中请稍后....", delay: 300000000, callBack: function () {
+                //window.location.href = "/Home/Index";
+            }
+        });
+        $(".mask").css("background", "#FFF");
+        $(".mask").css("opacity", "1");
+        $("#img_code").css("width", $("#img_code")[0].offsetWidth * 2);
+        $("#img_code").css("height", $("#img_code")[0].offsetHeight * 1);
+        var targetDom = $("#img_code");
+        var copyDom = targetDom.clone();
+        copyDom.width(targetDom.width() + "px");
+        copyDom.height(targetDom.height() + "px");
+        copyDom.css({
+            "background-color": "white",
+            "position": "absolute",
+            "top": "0px",
+            "z-index": "-1"
+        });
+        $('body').append(copyDom);
+        copyDom.find(".logo").css("width", targetDom.find(".logo")[0].offsetWidth * 2 + "px");
+        copyDom.find(".logo").css("height", targetDom.find(".logo")[0].offsetHeight * 2 + "px");
+        copyDom.find(".logo").css("left", targetDom.find(".logo")[0].offsetLeft * 2 - targetDom[0].offsetLeft * 2 + "px");
+        copyDom.find(".logo").css("top", targetDom.find(".logo")[0].offsetTop * 2 - targetDom[0].offsetTop * 2 + "px");
+        //copyDom.find(".code").css("width", "");
+        //copyDom.find(".code").css("left", targetDom.find(".code")[0].offsetLeft * 2 - targetDom[0].offsetLeft * 2 + "px");
+        //copyDom.find(".code").css("top", targetDom.find(".code")[0].offsetTop * 2 - targetDom[0].offsetTop * 2 + "px");
+        //var w_h = (5.3125 * 2 * ((document.documentElement.clientWidth / 414) * 16)) / (copyDom.find(".code").find("table").find("tr").length);
+        //copyDom.find(".code").find("table").find("tr").each(function () {
+        //    $(this).css("height", w_h + "px");
+        //    $(this).css("border", "0px");
+        //});
+        //copyDom.find(".code").find("table").find("tr").find("td").each(function () {
+        //    $(this).css("width", w_h + "px");
+        //    $(this).css("border", "0px");
+        //});
+
+        copyDom.find(".code").css("width", targetDom.find(".code")[0].offsetWidth * 2 + "px");
+        copyDom.find(".code").css("height", targetDom.find(".logo")[0].offsetHeight * 2 + "px");
+        copyDom.find(".code").css("left", targetDom.find(".code")[0].offsetLeft * 2 - targetDom[0].offsetLeft * 2 + "px");
+        copyDom.find(".code").css("top", targetDom.find(".code")[0].offsetTop * 2 - targetDom[0].offsetTop * 2 + "px");
+
+        html2canvas(copyDom, {
+            useCORS: true,
+            scale:2,
+            onrendered: function (canvas) {
+                var myImage = canvas.toDataURL("image/png");
+                $.ajax({
+                    type: "POST",
+                    url: '/PersonalCentre/UploadImg',
+                    data: { data: myImage },
+                    success: function (result) {
+                        result = $.parseJSON(result);
+                        if (result.state == "success") {
+                            window.location.href = "/PersonalCentre/MyQR";
+                        } else {
+                            alert(result.message);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+</script>
+

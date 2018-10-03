@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>商品详情</title>
+    <link rel="stylesheet" href="../css/momocha.css" />
+    <script type='text/javascript' src='../js/jquery-2.1.0.js'></script>
+    <script src="/js/momocha-min.js"></script>
+    <script type="text/javascript" src="../js/momocha.js?v1"></script>
+    <link rel="stylesheet" href="../css/feiaishi.css?v1" />
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/idangerous.swiper.css">
+    <link rel="stylesheet" href="../css/idangerous.swiper.scrollbar.css">
+    <link href="../css/weui.min.css" rel="stylesheet" />
+    <script src="../js/fz.js?v1.3"></script>
+
+
+    <style>
+        .lessNum {
+            cursor: pointer;
+        }
+
+        .plusNum {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li>
+                <a href="index.html">商城首页</a>
+            </li>
+            <li class="ahover">
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <!--<a href="javascript:history.back(-1)" class="bar-ico">返回</a>-->
+            <a href="javascript:history.back(-1)" class="bar-ico  bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">商品详情</a>
+            <!--<a href="javascript:void(0)" class="bar-ico bar-nav" rel="off">导航</a>-->
+            <a href="javascript:void(0)" class="bar-ico bar-nav bar-nav-on" rel="off"></a>
+        </header>
+
+        <div id="banner" class="swiper-container ">
+            <div class="swiper-wrapper momocha-banner-sp" id="ImageList">
+                <div class="swiper-slide"><img src="/img/banner1.jpg" class="swiper-no-swiping"></div>
+                <div class="swiper-slide"><img src="/img/banner2.jpg" class="swiper-no-swiping"></div>
+                <div class="swiper-slide"><img src="/img/banner1.jpg" class="swiper-no-swiping"></div>
+                <div class="swiper-slide"><img src="/img/banner2.jpg" class="swiper-no-swiping"></div>
+            </div>
+            <div class="pagination" id="imagesPage"></div>
+        </div>
+
+        <script src="../js/idangerous.swiper-2.0.min.js"></script>
+        <script src="../js/swiperJs.js"></script>
+        <script>
+            var id = getQueryString("id");
+            if (id == null || id == "") {
+                $.openDialog("参数错误");
+            }
+            var sepChk = '';
+            $(function () {
+                window.onload = function () {
+
+                    if (id == null || id == "") {
+                        $.openDialog("参数错误");
+                    } else {
+                        loadGoodsDetail(id);
+
+                    }
+                }
+                function loadGoodsDetail(id) {
+                    $.openLoading("加载中");
+                    $.ajax({
+                        url: "/Commodity/CommodityDetailJosn",
+                        data: { id: id },
+                        type: "post",
+                        success: function (data) {
+                            $.closeLoading();
+                            if (data != null) {
+                                //图片轮播
+                                if (data.ListimageUrl != null && data.ListimageUrl.length > 0) {
+                                    var images = "";
+                                    for (var i = 0; i < data.ListimageUrl.length; i++) {
+                                        var im = '<div class="swiper-slide">';
+                                        im += '<img src="' + data.ListimageUrl[i] + '" class="swiper-no-swiping">';
+                                        im += '</div>';
+                                        images += im;
+                                    }
+                                    $("#ImageList").html(images);
+                                }
+                                $("#goodsName").html(data.commodityName);
+                                $("#goodsDesc").html(data.commodityRemark);
+                                $("#salesNum").html(data.sellQuantity);
+                                $("#freight").html('运费' + data.commodityFreight);
+                                $("#price").html(data.commodityPrice);
+                                $("#goodsDetail").html(data.commodityDetails);
+                                if (data.specifications != null && data.specifications.length > 0) {
+                                    var liAttr = "";
+
+                                    for (var i = 0; i < data.specifications.length; i++) {
+                                        var itemAttr = data.specifications[i];
+                                        var li = '<li><span class="attrName">' + itemAttr.model.Name + '</span><span id="attr' + itemAttr.model.specificationId + '">';
+                                        if (itemAttr.list != null) {
+                                            var aa = "";
+                                            for (var z = 0; z < itemAttr.list.length; z++) {
+                                                var item = itemAttr.list[z];
+                                                var a = '<a onclick="UpdSpecificationStr(\'' + item.value + '\',' + itemAttr.model.specificationId + ',' + itemAttr.model.specificationId + z + ')"  class="attrXz" id="attrXz' + itemAttr.model.specificationId + z + '">' + item.value + '</a>';
+                                                aa += a;
+                                            }
+                                            li += aa;
+                                        }
+                                        li += '</span></li>';
+                                        liAttr += li;
+                                    }
+                                    $("#goodsAttr").html(liAttr);
+                                }
+                            }
+                            $.openLoading("");
+                            setTimeout(function () {
+                                $.closeLoading();
+                                start();
+                                $.getScript('../js/momocha-min.js', function () {
+                                    fit();
+                                    mosidebar();
+                                    spnr();
+                                   // act0();
+                                });
+                            }, 800);
+                            //$.openLoading("");
+                            //setTimeout(function () {
+                            //$.closeLoading();
+                            //    start();
+                            //}, 1000)
+                        },
+                        error: function () {
+                            $.closeLoading();
+                            $.openDialog("网络错误");
+                        }
+                    })
+                }
+
+
+
+            })
+
+
+            function UpdSpecificationStr(value, strid, z) {
+                if (!Array.prototype.indexOf) {
+                    Array.prototype.indexOf = function (elt /*, from*/) {
+                        var len = this.length >>> 0;
+                        var from = Number(arguments[1]) || 0;
+                        from = (from < 0)
+                             ? Math.ceil(from)
+                             : Math.floor(from);
+                        if (from < 0)
+                            from += len;
+                        for (; from < len; from++) {
+                            if (from in this &&
+                                this[from] === elt)
+                                return from;
+                        }
+                        return -1;
+                    };
+                }
+
+                var SpecificationStrValue = $("#SpecificationStr").val();
+                if ((SpecificationStrValue.indexOf(strid + ':' + value) >= 0)) {
+
+                } else {
+                    if (SpecificationStrValue.indexOf(strid + ':') >= 0) {
+                        var sepStr = '';
+                        var sepStr2 = '';
+                        var str = SpecificationStrValue.split(";");
+                        for (var i = 0; i < str.length; i++) {
+                            if (str[i] != null && str[i] != "" && str[i] != ' ') {
+                                if (str[i].indexOf(strid + ':') >= 0) {
+                                    sepStr2 = strid + ':' + value;
+                                } else {
+                                    sepStr2 = str[i];
+                                }
+                                sepStr += sepStr2 + ';';
+                            }
+
+                        }
+                        $("#SpecificationStr").val(sepStr);
+
+                    } else {
+                        $("#SpecificationStr").val(SpecificationStrValue + strid + ':' + value + ';');
+                    }
+
+                }
+                $("#attr" + strid + " a").removeClass("ahover");
+                $("#attrXz" + z).addClass("ahover");
+
+
+
+            }
+
+
+            function SpeStringBuilder(SpecificationString) {
+                var str = '';
+                if (SpecificationString != "" && SpecificationString != "undefined" && SpecificationString != null) {
+
+                    var strs = SpecificationString.split(";");
+
+                    for (var i = 0; i < strs.length; i++) {
+                        if (strs[i] != null && strs[i] != "" && strs[i] != ' ') {
+                            str += strs[i].substring(strs[i].indexOf(":") + 1);
+                            str += ';';
+                        }
+
+                    }
+                }
+                return str;
+
+            }
+            function AddShoppingCartBtn() {
+                var count = $("#ShoppingCnt").val();//获取数量
+                var parseCnt = parseInt(count);
+                var inputId = parseInt(id);//获取商品Id
+                //if (Inventory < parseCnt) {
+                //    mui.toast("商品库存不足");
+                //    $("#ShoppingCartCnt").val("0");
+                //    return;
+                //}
+
+                var Specification = SpeStringBuilder($("#SpecificationStr").val());
+                var attrCount = $("#goodsAttr li").length;
+                if (attrCount > 0) {
+                    if (Specification == null || Specification == "") {
+                        $.openDialog("请选择商品属性");
+                        return;
+                    }
+                }
+                var xzAttrCount = Specification.split(';').length - 1;
+                if (attrCount != xzAttrCount) {
+                    $.openDialog("请选择商品属性");
+                    return;
+                }
+                if (parseCnt == 0) {
+                    $.openDialog("请选择商品数量");
+                    return;
+                }
+
+                $.openLoading("正在加入购物车,请稍后...");
+                if (parseCnt > 0) {
+                    $.ajax({
+                        type: "post",
+                        data: {
+                            commodityId: inputId,
+                            quantity: parseCnt,
+                            Specification: Specification
+
+                        },
+                        dataType: "json",
+                        url: "/JuMeiMall/AddSoppingCart",
+                        success: function (json) {
+                            $.closeLoading();
+                            if (json.Code != null && json.Code != "undefined" && json.Code == 110) {
+                                window.location.href = json.Msg;//获取Session
+                            } else {
+                                $.openDialog(json.Msg);
+                            }
+
+
+                        },
+                        error: function () {
+                            $.closeLoading();
+                            $.openDialog("加入购物车失败，请稍后再试");
+                        }
+                    });
+                }
+                else {
+                    $.openDialog("请选择商品数量");
+                }
+            }
+
+
+            function AddBuyNowBtnBtn() {
+                var count = $("#ShoppingCnt").val();//获取数量
+                var parseCnt = parseInt(count);
+                var inputId = parseInt(id);//获取商品Id
+                //if (Inventory < parseCnt) {
+                //    mui.toast("商品库存不足");
+                //    $("#ShoppingCartCnt").val("0");
+                //    return;
+                //}
+                var Specification = SpeStringBuilder($("#SpecificationStr").val());
+                var attrCount = $("#goodsAttr li").length;
+                if (attrCount > 0) {
+                    if (Specification == null || Specification == "")
+                    {
+                        $.openDialog("请选择商品属性");
+                        return;
+                    }
+                }
+                var xzAttrCount = Specification.split(';').length-1;
+                if (attrCount != xzAttrCount) {
+                    $.openDialog("请选择商品属性");
+                    return;
+                }
+
+                if (parseCnt == 0) {
+                    $.openDialog("请选择商品数量");
+                    return;
+                }
+
+
+                if (parseCnt > 0) {
+                    $.ajax({
+                        type: "post",
+                        data: {
+                            commodityId: inputId,
+                            quantity: parseCnt,
+                            Specification: Specification
+                        },
+                        dataType: "json",
+                        url: "/JuMeiMall/GenerateGDtlOrder",
+                        success: function (json) {
+                            $.closeLoading();
+                            if (json.Code == 0) {
+                                window.location.href = ("qrdd.html?orderNo=" + json.Msg);
+                            } else if (json.Code == 110) {
+                                window.location.href = json.Msg;//获取Session
+                            } else {
+
+                                $.openDialog(json.Msg);
+                            }
+
+
+
+                        },
+                        error: function () {
+                            $.closeLoading();
+                            $.openDialog("生成订单失败，请稍后再试");
+                        }
+                    })
+
+                }
+                else {
+                    $.openDialog("请选择商品数量");
+                }
+            }
+            $(function () {
+
+                $(document).on("click", ".act0", function () {
+                    var rel = $(this).attr('data-rel');
+                    var act_f = $(this).parent('.act0-father')
+                    var act_c = act_f.children('.act0-children');
+                    if (rel == 'off') {
+                        act_c.css('display', 'block');
+                        $(this).attr('data-rel', 'on')
+                    };
+                    if (rel == 'on') {
+                        act_c.css('display', 'none');
+                        $(this).attr('data-rel', 'off')
+                    };
+
+                });
+
+
+            });
+            
+        </script>
+
+        <div class="momocha-index-nr">
+
+            <ul class="detail">
+                <li id="goodsName">商品名称</li>
+                <li id="goodsDesc">商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述</li>
+                <li>
+                    <p>¥</p>
+                    <p id="price">4000.00</p>
+                </li>
+                <li>
+                    <p>销售：<i id="salesNum">10000</i></p>
+                    <p id="freight">100</p>
+                </li>
+            </ul>
+
+            <div class="act0-father">
+                <div class="momocha-hentiao top10 size-play act0" data-rel="off">商品属性</div>
+                <!--<div class="momocha-hentiao top10 size-play act0 " rel="off"><i>商品属性</i><i>暂无</i><div class=" ico-right"></div></div>-->
+                <div class="momocha-size act0-children">
+                    <ul id="goodsAttr">
+                        <!--<li>
+                            <span class="attrName">颜色/COLOR</span>
+                            <span>
+                                <a href="javascript:void(0)" class="ahover">白色</a>
+                                <a href="javascript:void(0)">红色</a>
+                            </span>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="momocha-hentiao shuliang">选择购买数量<span><i class="lessNum">-</i><input id="ShoppingCnt" class="valueNum" type="number" value="0"><i class="plusNum">+</i></span></div>
+            <div class="momocha-hentiao top10">商品详情</div>
+            <div class="momocha-wenben" id="goodsDetail"></div>
+
+        </div>
+
+        <div id="push-button">
+            <a id="ShoppingCartBtn" onclick="AddShoppingCartBtn()">加入购物车</a>
+            <a id="BuyNowBtn" onclick="AddBuyNowBtnBtn()">立即购买</a>
+        </div>
+
+    </div>
+    <div class="momocha-screen"></div>
+    <input type="hidden" id="SpecificationStr" value="" />
+    <div class="momocha-black"></div>
+
+</body>
+
+</html>

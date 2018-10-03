@@ -1,0 +1,10 @@
+﻿description=工作日程安排
+Entries.name=Entries
+Entries.order=1
+messages.existingMonth=当前月份工作安排已存在，当前操作将覆盖以前的数据。
+Roles.name=Roles
+Roles.order=1
+success=保存成功
+title=工作日程安排
+Users.name=Users
+Users.order=1

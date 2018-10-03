@@ -1,0 +1,14 @@
+﻿columns=行号,月份,帐户名,消费金额,撤销金额
+description=查看商户每月交易情况
+Month.name=查询月份 (2011-09)
+Month.order=2
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+AccountName.name=商户编码
+AccountName.order=1
+sql=select month, AccountName, dealAmount, cancelAmount from reportAccountmonth where (@Month is null or @Month = month) and (@AccountName is null or AccountName = @AccountName)
+summarySql1=select '' as Month, '' as AccountName, isnull(sum(dealAmount), 0) as dealAmount, isnull(sum(cancelAmount), 0) as cancelAmount from reportAccountmonth where (@Month is null or @Month = month) and (@AccountName is null or AccountName = @AccountName) 
+summarySql1.title=汇总
+title=商户交易月报

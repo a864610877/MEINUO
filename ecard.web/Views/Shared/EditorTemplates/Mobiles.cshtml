@@ -1,0 +1,106 @@
+﻿@model Mobiles
+<span> @Html.EditorFor(x => x.Value1)
+    @if (Model.UserId != 0)
+    {
+        <a data-smsbind='@Html.ViewData.TemplateInfo.GetFullHtmlFieldId("Value1")' style='display: @(!Model.IsMobileAvailable ? "inline" : "none")' href='@Url.Action("MobileBind", "Utility", new { id = Model.UserId })'>
+            绑定 </a>
+        <a data-smsunbind='@Html.ViewData.TemplateInfo.GetFullHtmlFieldId("Value1")'  style='display: @(Model.IsMobileAvailable ? "inline" : "none")' href='@Url.Action("MobileUnbind", "Utility")'>
+            取消 </a>
+    }
+    @Html.ValidationMessageFor(x => x.Value1) </span>
+@if (Model.UserId != 0)
+{
+    <div id="dialog-inputcode" class="hastable" style="display: none">
+        <p>
+            <h3>
+                请输入收到的短信验证码</h3>
+            <input type="text" id="smsCode" />
+        </p>
+    </div>
+    <script>
+    $("[data-smsbind]").live("click", function (evt) {
+        evt.preventDefault();
+        var $this = $(this);
+        $("#smsCode").val("");
+        var url = $this.attr("href") + "?tm=" + new Date();
+        $this.text("发送中..."); 
+        var validateData = {
+            number: $('#@Html.ViewData.TemplateInfo.GetFullHtmlFieldId("Value1")').val(), 
+            id: @(Model.UserId) 
+        };
+        $.post(url, validateData, function (data) {
+            $this.text("绑定");
+            if (data.Success) {
+                $("#dialog-inputcode").dialog({
+                    title: "请输入您所收到的验证码",
+                    resizable: false,
+                    autoOpen: true,
+                    width: 300,
+                    modal: true,
+                    buttons: {
+                        "没收到": function () {
+                            $(this).dialog("close");
+                        },
+                        "确定": function () {
+                            var urlVerify = '@Url.Action("MobileBindVerify", "Utility", new { id = Model.UserId })?tm=' + new Date();
+                            $.post(urlVerify, { code: $('#smsCode').val() }, function (verifyData) {
+                                if (verifyData.Success) {
+                                    $("[data-smsbind]").css("display", "none");
+                                    $("[data-smsunbind]").css("display", "inline");
+                                    alert("绑定手机号成功!");
+                                } else {
+                                    alert(verifyData.Message);
+                                }
+                            });
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            } else {
+                alert(data.Message);
+            }
+        });
+    });
+    $("[data-smsunbind]").live("click", function (evt) {
+        evt.preventDefault();
+        var $this = $(this);
+        $("#smsCode").val("");
+        var url = $this.attr("href") + "?tm=" + new Date();
+        $this.text("发送中...");
+        $.post(url, { 
+            id:@Model.UserId
+        }, function (data) {
+            $this.text("取消");
+            if (data.Success) {
+                $("#dialog-inputcode").dialog({
+                    title: "请输入您所收到的验证码",
+                    resizable: false,
+                    autoOpen: true,
+                    width: 300,
+                    modal: true,
+                    buttons: {
+                        "没收到": function () {
+                            $(this).dialog("close");
+                        },
+                        "确定": function () {
+                            var urlVerify = '@Url.Action("MobileUnbindVerify", "Utility", new { id = Model.UserId })?tm=' + new Date();
+                            $.post(urlVerify, { code: $('#smsCode').val() }, function (verifyData) {
+                                if (verifyData.Success) {
+                                    $("[data-smsunbind]").css("display", "none");
+                                    $("[data-smsbind]").css("display", "inline");
+                                    alert("取消绑定成功!");
+                                } else {
+                                    alert(verifyData.Message);
+                                }
+                            });
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            } else {
+                alert(data.Message);
+            }
+        });
+    });
+    </script>
+}

@@ -1,0 +1,16 @@
+﻿Amount.name=订购数量
+Amount.order=1
+DisplayName.name=商品名称
+DisplayName.order=1
+GoodId.name=GoodId
+GoodId.order=1
+GoodName.name=商品编码
+GoodName.order=1
+OrderId.name=OrderId
+OrderId.order=1
+price.name=price
+price.order=1
+Serialnumber.name=Serialnumber
+Serialnumber.order=1
+Total.name=Total
+Total.order=1

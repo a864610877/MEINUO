@@ -1,0 +1,10 @@
+﻿description=结算
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+Shop.name=商户
+Shop.order=1
+success=刷新商户 {0} 清算记录成功 !
+title=待清算列表
+titleA=待清算列表

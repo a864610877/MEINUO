@@ -1,0 +1,10 @@
+﻿columns=行号,类别,余额,押金
+description=帐户汇总
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.accounts
+summary.count=0
+title=帐户汇总
+titleA=帐户汇总

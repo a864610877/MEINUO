@@ -1,0 +1,8 @@
+﻿commodityNo.name=商品编码
+commodityNo.order=1
+delete.success=删除成功
+OrderBy.order=1
+pageHtml.order=1
+PageIndex.order=1
+PageSize.order=1
+title=秒杀商品

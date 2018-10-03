@@ -1,0 +1,1 @@
+﻿select t.* from accounts t where @OwnerId  = t.OwnerId and t.State in (1, 2)

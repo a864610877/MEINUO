@@ -1,0 +1,5 @@
+﻿Audit.description=详情
+description=Ecard.Mvc.Controllers.WithdrawController
+List.description=提现列表
+List.name=提现列表
+name=Ecard.Mvc.Controllers.WithdrawController

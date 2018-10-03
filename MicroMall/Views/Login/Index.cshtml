@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>微信商城</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="/css/weui.min.css" rel="stylesheet" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/amazeui.min.js"></script>
+    <script src="/js/fz.js?v1.1"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#login").click(function () {
+                var mobile = $("#mobile").val();
+                var password = $("#password").val();
+                if (mobile == null || mobile == "") {
+                    $.openDialog("请输入手机号");
+                    return;
+                }
+                if (password == null || password == "") {
+                    $.openDialog("请输入密码");
+                    return;
+                }
+                $.openLoading("登录中");
+                $.ajax({
+                    url: "/Login/Login2",
+                    data: { mobile: mobile, password: password},
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $.closeLoading();
+                        if (data.Code == 0) {
+                            window.location.href = data.Msg;
+                        } else {
+                            $.openDialog(data.Msg);
+                        }
+                    },
+                    error: function () {
+                        $.closeLoading();
+                        $.openDialog("系统异常，请检查网络");
+                    }
+                })
+
+            });
+
+        });
+
+    </script>
+
+</head>
+<body>
+    <header data-am-widget="header" class="am-header am-header-default bgFFF mb5">
+        <div class="am-header-left am-header-nav">
+            <a href="/JuMeiMall/JuMeiMallIndex" class="">
+                <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            登录
+        </h1>
+    </header>
+    <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+        <ul class="am-slides">
+            <li>
+                <img src="/images/regBanner.jpg">
+            </li>
+        </ul>
+    </div>
+    <div class="add_addrs upPassword login reg fs15">
+        <ul>
+            <li><span><img src="/images/login_user.png" width="22" alt=""></span><input type="text" id="mobile" name="" value="" placeholder="请输入手机号"></li>
+            <li><span><img src="/images/login_pass.png" width="22" alt=""></span><input type="password" id="password" name="" value="" placeholder="请输入密码"></li>
+        </ul>
+        <div class="am-container am-padding-vertical-xl ksreg">
+            <input type="button" value="登录" id="login" class="upBtn" />
+            <a href="/Regists/Regist">快速注册</a>
+            <a href="#" class="am-fr">忘记密码？</a>
+        </div>
+    </div>
+</body>
+</html>

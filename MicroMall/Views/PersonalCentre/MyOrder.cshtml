@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "MyOrder";
+}
+@model MicroMall.Models.Orders.ListOrders
+<div class="h_tit bgFFF am-container am-text-center am-margin-top-0">
+    <h2>订单列表</h2>
+</div>
+<div class="orderMenuBox am-text-center bgFFF mb5">
+    <ul class="am-avg-sm-5">
+        <li class="orderMenu1"><a href="/PersonalCentre/MyOrder?orderState=0" class="@(Model.orderState==0?"on":"")"><h2></h2><p>全部订单</p></a></li>
+        <li class="orderMenu2"><a href="/PersonalCentre/MyOrder?orderState=2" class="@(Model.orderState==2?"on":"")"><h2></h2><p>待发货</p></a></li>
+        <li class="orderMenu3"><a href="/PersonalCentre/MyOrder?orderState=1" class="@(Model.orderState==1?"on":"")"><h2></h2><p>待付款</p></a></li>
+        <li class="orderMenu4"><a href="/PersonalCentre/MyOrder?orderState=3" class="@(Model.orderState==3?"on":"")"><h2></h2><p>待收货</p></a></li>
+        <li class="orderMenu5"><a href="/PersonalCentre/MyOrder?orderState=4" class="@(Model.orderState==4?"on":"")"><h2></h2><p>待评价</p></a></li>
+    </ul>
+</div>
+
+@if (Model.List != null && Model.List.List!=null)
+{
+    foreach (var item in Model.List.List)
+    { 
+        <div class="border_list bgFFF mb5 am-container">
+           <h2>订单状态：<span class="c_ab5555">@(Ecard.Models.OrderStates.GetName(item.orderState))</span></h2>
+           <p>订单号：@item.orderNo</p>
+           <div class="order_list_pro am-cf">
+               <div class="order_list_proImg"><a href="#"><img src="@item.ImageUrl" alt=""></a></div>
+               <div class="order_list_proInfo">
+                   <h3><a href="#">@item.commodityName</a></h3>
+                   <p class="am-text-right"><span></span><span>金额：@item.Amount</span></p>
+                   <div class="order_list_button am-text-right">
+                       @if (item.orderState == Ecard.Models.OrderStates.awaitPay)
+                       {
+                           <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">立即支付</a>
+                           <a href="" onclick="CancelOrder('@item.orderId')" class="bg_e6e6e6">取消订单</a>
+                       }
+                       else if (item.orderState == Ecard.Models.OrderStates.paid)
+                       {
+                       }
+                       else if (item.orderState == Ecard.Models.OrderStates.shipped)
+                       {
+
+                        <a href="#" onclick="ConfirmReceipt('@item.orderId')" class="bg_e8bb67">确认收货</a>
+                       }
+                       else if (item.orderState == Ecard.Models.OrderStates.complete)
+                       {
+                        <a href="/Commodity/AddReview?commodityId=@item.commodityId&orderNo=@item.orderNo" class="bg_e8bb67">评价</a>
+                       }
+                       <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+    }
+}
+
+<script type="text/javascript">
+    function ConfirmReceipt(orderId) {
+        if (confirm("确认收货吗？")) {
+            $.openLoading("确认中");
+            $.ajax({
+                url: "/PersonalCentre/ConfirmReceipt",
+                data: { orderId: orderId },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        $.openDialog("确认成功");
+                        window.location.reload();
+                    }
+                    else if (data.Code == -2) {
+                        $.openDialogUrl("请重新登录", data.Msg);
+                    }
+                    else {
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("系统异常，请检查网络");
+                }
+            });
+        }
+       
+    }
+    function CancelOrder(orderId) {
+        if (confirm("确定取消订单？")) {
+            $.openLoading("取消中");
+            $.ajax({
+                url: "/PersonalCentre/CancelOrder",
+                data: { orderId: orderId },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        $.openDialog("取消成功");
+                        window.location.reload();
+                    }
+                    else if (data.Code == -2) {
+                        $.openDialogUrl("请重新登录", data.Msg);
+                    }
+                    else {
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("系统异常，请检查网络");
+                }
+            });
+        }
+        
+    }
+
+</script>
+@*<div class="border_list bgFFF mb5 am-container">
+    <h2>订单状态：<span class="c_ab5555">未付款</span></h2>
+    <p>订单号：201808248868498</p>
+    <div class="order_list_pro am-cf">
+        <div class="order_list_proImg"><a href="#"><img src="images/h_img1.jpg" alt=""></a></div>
+        <div class="order_list_proInfo">
+            <h3><a href="#">CB爱谬苏眼膏洁面乳照亮你的美丽</a></h3>
+            <p class="am-text-right"><span>数量：1</span><span>金额：288</span></p>
+            <div class="order_list_button am-text-right">
+                <a href="#" class="btYello">删除订单</a>
+                <a href="#" class="bg_e8bb67">评价</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="border_list bgFFF mb5 am-container">
+    <h2>订单状态：<span class="c_ab5555">已发货</span></h2>
+    <p>订单号：201808248868498</p>
+    <div class="order_list_pro am-cf">
+        <div class="order_list_proImg"><a href="#"><img src="images/h_img1.jpg" alt=""></a></div>
+        <div class="order_list_proInfo">
+            <h3><a href="#">CB爱谬苏眼膏洁面乳照亮你的美丽</a></h3>
+            <p class="am-text-right"><span>数量：1</span><span>金额：288</span></p>
+            <div class="order_list_button am-text-right">
+                <a href="#" class="btYello">查看物流</a>
+                <a href="#" class="bg_e8bb67">确认收货</a>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+

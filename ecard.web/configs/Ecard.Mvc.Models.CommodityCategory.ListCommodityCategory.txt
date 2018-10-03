@@ -1,0 +1,8 @@
+﻿boor.order=1
+boor.shortName=操作
+commodityCategoryId.order=1
+commodityCategoryId.shortName=commodityCategoryId
+commodityCategoryId.shortNameFormat={0}
+Name.order=1
+Name.shortName=名称
+Name.shortNameFormat={0}

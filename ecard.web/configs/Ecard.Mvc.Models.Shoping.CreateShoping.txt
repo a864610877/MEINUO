@@ -1,0 +1,3 @@
+﻿specification.explain=specification
+specification.name=specification
+specification.order=1

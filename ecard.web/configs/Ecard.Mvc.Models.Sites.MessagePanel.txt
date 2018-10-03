@@ -1,0 +1,14 @@
+﻿AccountName.name=卡号
+AccountName.order=3
+AccountType.name=卡类别
+AccountType.order=5
+description=短信平台
+Message.name=短信内容 (#account-amount# = 余额, #account-point# = 积分, #account-name# = 卡号, #account-expireddate# = 有效期, #username# = 会员姓名, #sitename# = 站点名称)
+Message.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+State.name=状态
+State.order=6
+title=短信平台

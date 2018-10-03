@@ -1,0 +1,15 @@
+﻿Content.order=3
+Content.shortName=日志内容
+Content.shortNameFormat={0}
+SerialNo.order=5
+SerialNo.shortName=流水号
+SerialNo.shortNameFormat={0}
+SubmitTime.order=1
+SubmitTime.shortName=时间
+SubmitTime.shortNameFormat={0:yyyy-MM-dd HH:mm:ss}
+Title.order=2
+Title.shortName=标题
+Title.shortNameFormat={0}
+UserName.order=4
+UserName.shortName=用户
+UserName.shortNameFormat={0}

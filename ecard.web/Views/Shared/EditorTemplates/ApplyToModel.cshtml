@@ -1,0 +1,12 @@
+﻿@model ApplyToModel 
+           
+<div style=" padding-top:8px;">
+<i for='@Html.ViewData.TemplateInfo.GetFullHtmlFieldName("EnabledRecharging")' class="checkbox">充值</i>
+@Html.CheckBoxFor(x=>x.EnabledRecharging) 
+<i for='@Html.ViewData.TemplateInfo.GetFullHtmlFieldName("EnabledOpenAccount")' class="checkbox">售卡</i>
+@Html.CheckBoxFor(x=>x.EnabledOpenAccount) 
+<i for='@Html.ViewData.TemplateInfo.GetFullHtmlFieldName("EnabledShopDealAccount")' class="checkbox">清算</i>
+@Html.CheckBoxFor(x=>x.EnabledShopDealAccount) 
+<i for='@Html.ViewData.TemplateInfo.GetFullHtmlFieldName("EnabledShop")' class="checkbox">商户</i>
+@Html.CheckBoxFor(x=>x.EnabledShop) 
+</div>

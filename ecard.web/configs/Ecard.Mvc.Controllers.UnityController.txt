@@ -1,0 +1,2 @@
+﻿Print.description=打印
+Print.toolbarIcon=print

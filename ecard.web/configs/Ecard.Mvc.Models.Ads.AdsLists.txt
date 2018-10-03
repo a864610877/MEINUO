@@ -1,0 +1,12 @@
+﻿endTime.name=结束时间
+endTime.order=1
+OrderBy.order=1
+pageHtml.order=1
+PageIndex.order=1
+PageSize.order=1
+startTime.name=开始时间
+startTime.order=1
+state.name=状态
+state.order=1
+title.name=标题
+title.order=1

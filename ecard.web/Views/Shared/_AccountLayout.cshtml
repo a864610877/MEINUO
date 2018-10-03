@@ -1,0 +1,71 @@
+﻿@model PageModel
+@{
+    Layout = null; 
+}
+<!DOCTYPE >
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="/Content/themes/t/default/t.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="/Scripts/moonlit.js" type="text/javascript"></script>
+    <script src="/Content/themes/t/scripts/default.js" type="text/javascript"></script>
+    <script src="/Scripts/passtypes/@(Model.Site.PasswordType).js" type="text/javascript"></script>
+    <script src="/Scripts/moonlit.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.json.js" type="text/javascript"></script>
+    <link href="/Content/jquery.ui/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    @RenderSection("scripts", false)
+</head>
+<body>
+    <div class="wrap">
+        <header>
+	<div class="header">
+        <h1><a href="/" target="_blank" title="XX系统"><img src="/content/images/logo.png" height="50" alt="XX系统"></a></h1>
+        <div class="guidenav">
+            <span class="guide_user">欢迎光临！<span style="color: red;">@Model.User.DisplayName</span> </span>
+            <a href="/signout">退出</a> </div></div>
+	</header>
+        <nav>
+	<div class="nav">
+		<b class="arr nav_arr"></b>
+		<ul class="mainnav" id="mainnav">
+            @Html.Partial("Menu1")
+          </ul>
+	</div>
+	</nav>
+        <div class="mainpan">
+            <div class="primary sbox">
+                <b class="cir_lt"></b><b class="cir_lb"></b><b class="cir_rt"></b><b class="cir_rb">
+                </b>
+                @if (Html.GetCurrentMenu(3) != null && Html.GetCurrentMenu(3).Parent.Children.Count() > 0)
+                {
+                    <div class="sec_box clearfix">
+                        @Html.Partial("Menu2")
+                        <div id="secbox">@RenderBody()</div>
+                    </div>
+                }
+                else
+                {
+                    
+                    <div class="sec_box clearfix nobg">
+                        <div id="secbox ">@RenderBody()</div>
+                    </div>
+                }
+            </div>
+            <div class="sidepan">
+                @Html.Action("UserInfo", "User")
+            </div>
+        </div>
+    </div>
+    <footer>
+<div class="footer">
+	<div class="ft_in">
+		<p>copyright © 2003-2011</p>
+		<p>著作权保护声明</p>
+	</div>
+</div>
+</footer>
+</body>
+</html>

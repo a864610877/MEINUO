@@ -1,0 +1,19 @@
+﻿DealLogDay.name=清算时间 (天)
+DealLogDay.order=10
+description=查看商户
+DisplayName.name=商户名称
+DisplayName.order=2
+NextDealLogDate.name=下次清算日
+NextDealLogDate.order=19
+OwnerDisplayName.name=店主名称
+OwnerDisplayName.order=3
+
+Name.name=店主登录名
+Name.order=1
+OwnerName.name=店主登录名
+OwnerName.order=3
+ShopDealLogChargeRate.name=清算手续费
+ShopDealLogChargeRate.order=11
+State.name=状态
+State.order=20
+title=查看商户

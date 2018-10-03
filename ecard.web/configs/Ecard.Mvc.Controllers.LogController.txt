@@ -1,0 +1,10 @@
+﻿description=Ecard.Mvc.Controllers.LogController
+List=List
+List.confirm=
+List.description=查看系统操作日志
+List.name=系统日志
+List.order=1
+List.shortName=系统日志
+List.shortNameFormat={0}
+List.toolbarIcon=
+name=Ecard.Mvc.Controllers.LogController

@@ -1,0 +1,1 @@
+BACKUP DATABASE [ecard26] TO  DISK = N'D:\workspace\ecard26a\v 2.60\src\database\ecard26a.bak' WITH NOFORMAT, INIT,  NAME = N'ecard26a bk', SKIP, NOREWIND, NOUNLOAD,  STATS = 10

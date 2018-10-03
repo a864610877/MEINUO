@@ -1,0 +1,63 @@
+﻿@using System.Collections
+@using Moonlit
+@model Object
+@{
+    
+    var helper = EcardContext.Container.Resolve<SecurityHelper>();
+    var currentUser = helper.GetCurrentUser().CurrentUser;
+    
+}
+
+    @foreach (var prop in ViewModelDescriptor.GetTypeDescriptor(ViewData.Model).Properties.Where(x => x.Show && x.Permission.Check(currentUser)).OrderBy(x => x.Order))
+    {
+        if (prop.Hidden)
+        {
+         @Html.Editor(prop.PropertyName, prop.TemplateHint)
+        }
+        else
+        {
+        <tr>
+            <td class="create_label">
+                @Html.LabelLocalize(prop)
+            </td>
+            
+                @if (prop.IsReadOnly)
+                {     
+                    <td class="create_field">  
+                    @Html.Display(prop.PropertyName, prop.TemplateHint)
+                    </td>
+                     <td class="ExplainSpan">
+                @Html.ExplainLocalize(prop)
+            </td>
+                }
+                else
+                {
+                    if (typeof(IItemList).IsAssignableFrom(prop.PropertyType))
+                    {
+                        ViewDataDictionary dict = new ViewDataDictionary(ViewData);
+                        dict["propertyName"] = prop.PropertyName;
+                        var items = prop.GetValue(Model);
+                <td colspan="2">
+                    @Html.Partial(prop.TemplateHint, items, dict)</td>
+                    }
+                    else
+                    {
+                        <td class="create_field">  
+                    @Html.Editor(prop.PropertyName, prop.TemplateHint)
+                    </td>
+                     <td class="ExplainSpan">
+                @Html.ExplainLocalize(prop)
+            </td>
+                    }
+                }
+            
+           
+        </tr>
+        <tr>
+            <td colspan="3">@Html.ValidationMessage(prop.ValidatePropertyName)
+            </td>
+        </tr>  
+        
+        }
+    }
+

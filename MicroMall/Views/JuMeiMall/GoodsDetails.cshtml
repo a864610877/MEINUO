@@ -1,0 +1,348 @@
+﻿@{
+    Layout = null;
+}
+@model Ecard.Services.GoodsDetailsExpress
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>微信商城</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/amazeui.min.js"></script>
+    <script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="/js/fz.js?v1.0"></script>
+    <script src="/js/joinCart.js"></script>
+    <style type="text/css">
+        .checkbox {
+            background: #0026ff !important;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    @*
+            <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+                <ul class="am-slides">
+                    @if (Model.listImg != null && Model.listImg.Count > 0)
+                    {
+                        foreach (var item in Model.listImg)
+                        {
+                            <li>
+                                <img src="@item">
+                            </li>
+                        }
+                    }
+                    @*<li>
+                            <img src="images/xqMax.jpg">
+                        </li>
+                        <li>
+                            <img src="images/xqMax.jpg">
+                        </li>
+        </ul>
+        </div>
+        <div class="xqBxo bgFFF am-padding-sm mb5">
+            <h1>@Model.commodityName</h1>
+            <p>@Model.commodityRemark</p>
+            <div class="xqPirice am-cf">
+                <em class="price">¥<b> @Model.commodityPrice</b></em>
+
+                <span class="am-fr"> 销售数量 @Model.sellQuantity</span>
+                <span class="am-fr">快递：@Model.commodityFreight</span>
+                <span class="am-fr"> 积分 @Model.commodityJifen</span>
+            </div>
+        </div>
+
+
+        <ul class="am-avg-sm-2 bgFFF am-padding-sm am-text-center fs18 xqTab">
+            <li><a href="#" class="on"><i class="am-icon-map-marker"></i> 商品详情</a></li>
+            <li><a href="#">用户评价</a></li>
+        </ul>
+        <div class="xqImg">
+            @Html.Raw(Model.commodityDetails)
+            @*<img src="images/xq_img.jpg" alt="">
+                </div>
+                <div class="h55">
+                    <!-- 占位符 -->
+                </div>
+                <div class="down_order xq_btn bgFFF">
+                    <a href="#" class="jiesuan bg_dab97d am-fr">立即购买</a>
+                    <a href="#" class="jiesuan bg_e8bb67 am-fr">加入购物车</a>
+                    <ul class="am-cf xq_btns am-avg-sm-2 am-text-center">
+                        <li>
+
+                            <a href="/JuMeiMall/JuMeiMallIndex" class="">
+                                <img src="/images/f_menu1.png" width="20" alt="首页" />
+                                <p>首页</p>
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="###" class="">
+                                <img src="/images/f_menu2.png" width="20" alt="首购物车页" />
+                                <p>购物车</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>*@
+
+    <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+        <ul class="am-slides">
+            @if (Model.listImg != null && Model.listImg.Count > 0)
+            {
+                foreach (var item in Model.listImg)
+                {
+                    <li>
+                        <img src="@item">
+                    </li>
+                }
+            }
+            @*<li>
+                    <img src="/images/xqMax.jpg">
+                </li>
+                <li>
+                    <img src="/images/xqMax.jpg">
+                </li>*@
+        </ul>
+    </div>
+    <div class="xqBxo bgFFF am-padding-sm mb5">
+        <h1>@Model.commodityName</h1>
+        <p>@Model.commodityRemark</p>
+        <div class="xqPirice am-cf">
+            <em class="price">¥<b> @Model.commodityPrice</b></em>
+            <span class="am-fr">销量 @Model.sellQuantity</span>
+            <span class="am-fr">快递：@Model.commodityFreight</span>
+            <span class="am-fr"> 积分 @Model.commodityJifen</span>
+        </div>
+    </div>
+    <div class="xqTAbs">
+        <div class="hd">
+            <ul class="am-avg-sm-2 bgFFF am-padding-sm am-text-center fs18 xqTab">
+                <li class="on"><a href="javascript:;"><i class="am-icon-map-marker"></i> 商品详情</a></li>
+                <li><a href="javascript:;"><i class="am-icon-map-marker"></i> 用户评价</a></li>
+            </ul>
+        </div>
+        <div class="bd">
+            <ul class="xqImg">
+                @*<img src="/images/xq_img.jpg" alt="">*@
+                @Html.Raw(Model.commodityDetails)
+            </ul>
+            <ul>
+                @if (Model.listReviewNew != null && Model.listReviewNew.Count > 0)
+                {
+                    <div class="userPj bgFFF am-padding-sm">
+                        <h3 class="color_b59f76 fs14">宝贝评价（@Model.reviewCount）</h3>
+                    </div>
+                    foreach (var item in Model.listReviewNew)
+                    {
+
+                        <div class="userPj bgFFF am-padding-sm">
+                            <h2><img src="@item.Photo" alt="">@item.UserName</h2>
+                            <p>@item.SubmitTime.ToString("yyyy-MM-dd")  </p> 
+                            <div>
+                                @item.Content
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="userPj bgFFF am-padding-sm">
+                        <h3 class="color_b59f76 fs14">宝贝评价（@Model.reviewCount）</h3>
+                        <div style="height:150px;line-height:150px;">
+                            没有评价！
+                        </div>
+                    </div>
+                }
+
+                @*<div class="userPj bgFFF am-padding-sm">
+
+                        <h2><img src="/images/userpx.png" alt="">美诺001</h2>
+                        <p>2018-09-12  颜色分类：【有礼盒】奢华赋活黄金5件套</p>
+                        <div>
+                            这套护肤品用着真的非常舒服，已经多次回购，购买了多套
+                        </div>
+                    </div>*@
+            </ul>
+        </div>
+    </div>
+    <div class="h55"></div>
+    <div class="down_order xq_btn bgFFF">
+        <a href="javascript:;" id="add_buy" class="jiesuan bg_dab97d am-fr">立即购买</a>
+        <a href="javascript:;" id="add_buy2" class="jiesuan bg_e8bb67 am-fr">加入购物车</a>
+        <ul class="am-cf xq_btns am-avg-sm-2 am-text-center">
+            <li>
+                <a href="/JuMeiMall/JuMeiMallIndex" class="">
+                    <img src="/images/f_menu1.png" width="20" alt="首页" />
+                    <p>首页</p>
+                </a>
+            </li>
+            <li>
+                <a href="/JuMeiMall/GetShoppingCart" class="">
+                    <img src="/images/f_menu2.png" width="20" alt="首购物车页" />
+                    <p>购物车</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="zhezhao"></div>
+    <!-- 加入购物车 -->
+    <div id="add_bgu" class="add_bgu am-padding-lg">
+        <div class="close"><a href="#"><img src="/images/close.png" width="25" alt=""></a></div>
+        <div class="add_pro">
+            <a href="#"><img src="@Model.listImg[0]" width="100" alt=""></a>
+            <dl>
+                <dt>¥ @Model.commodityPrice 元</dt>
+                <dd>库存(@Model.commodityInventory)件<br />已选：@Model.commodityName</dd>
+            </dl>
+        </div>
+        @if (Model.listAattribute != null && Model.listAattribute.Count > 0)
+        {
+            foreach (var item in Model.listAattribute)
+            {
+                <h2>@item.model.Name</h2>
+                <div class="shuxing fs15">
+                    @if (item.list != null && item.list.Count > 0)
+                    {
+                        foreach (var item1 in item.list)
+                        {
+                            <span onclick="checkspen($(this))" class="aaaa">@item1.value</span>
+                        }
+                    }
+
+                </div>
+            }
+        }
+        @*<h2>颜色分类</h2>
+            <div class="shuxing fs15">
+
+                <span>神仙水乳套装</span>
+                <span>菠萝蜜套装</span>
+            </div>*@
+        <h2>
+            购买数量：<span id="num">1</span>
+                 <div class="jiajian am-fr w50 am-text-right">
+                     <input class="min" name="" type="button" value="-" onclick="reduceNum('goodnum')" />
+                     <input class="text_box am-text-center" name="goodnum" id="goodnum" type="text" value="1" />
+                     <input class="add" name="" type="button" value="+" onclick="plusNum('goodnum')" />
+                     <input type="hidden" id="commonid" value="@Model.commodityId" />
+                     
+                 </div>
+        </h2>
+        <a class="add_btn_buy" onclick="joinCart()">确定</a>
+    </div>
+    <!-- 立即购买 -->
+    <div id="add_bgu2" class="add_bgu am-padding-lg">
+        <div class="close"><a href="#"><img src="/images/close.png" width="25" alt=""></a></div>
+        <div class="add_pro">
+            <a href="#"><img src="@Model.listImg[0]" width="100" alt=""></a>
+            <dl>
+                <dt>¥ @Model.commodityPrice 元</dt>
+                <dd>库存(@Model.commodityInventory)件<br />已选：@Model.commodityName</dd>
+            </dl>
+        </div>
+        @if (Model.listAattribute != null && Model.listAattribute.Count > 0)
+        {
+            foreach (var item in Model.listAattribute)
+            {
+                <h2>@item.model.Name</h2>
+                <div class="shuxing fs15 buyshuxin">
+                    @if (item.list != null && item.list.Count > 0)
+{
+    foreach (var item1 in item.list)
+    {
+        <span onclick="checkspen($(this))" class="aaaa_buy">@item1.value</span>
+    }
+}
+
+                </div>
+            }
+        }
+        @*<h2>颜色分类</h2>
+            <div class="shuxing fs15">
+
+                <span>神仙水乳套装</span>
+                <span>菠萝蜜套装</span>
+            </div>*@
+        <h2>
+            购买数量<span id="num"></span>
+            <div class="jiajian am-fr w50 am-text-right">
+                <input class="min" name="" type="button" value="-" onclick="reduceNum('goodnum_buy')" />
+                <input class="text_box am-text-center" name="goodnum_buy" id="goodnum_buy" type="text" value="1" />
+                <input class="add" name="" type="button" value="+" onclick="plusNum('goodnum_buy')" />
+                <input type="hidden" id="commonid_buy" value="@Model.commodityId" />
+
+            </div>
+        </h2>
+        <a class="add_btn_buy" onclick="GenerateGDtlOrder()">购 买</a>
+    </div>
+    <script>
+        jQuery(".xqTAbs").slide({});
+
+        $(".close").click(function () {
+            $(".add_bgu").hide();
+            $(".zhezhao").hide();
+        });
+
+        $("#add_buy").click(function () {
+            $("#add_bgu2").show();
+            $(".zhezhao").show();
+        });
+        $("#add_buy2").click(function () {
+            $("#add_bgu").show();
+            $(".zhezhao").show();
+        });
+
+        function GenerateGDtlOrder() {
+            var quantity = $("#goodnum_buy").val();
+            var commodityId = $("#commonid_buy").val();
+            var Specification = "";
+            if ($(".buyshuxin").find("span").length > 0)
+            {
+                $(".aaaa_buy").each(function () {
+                    if ($(this).hasClass("checkbox")) {
+                        Specification = $(this).html();
+                        return;
+                    }
+                });
+                if (Specification == "") {
+                    alert("请选择属性");
+                    return;
+                }
+            }
+            $.openLoading("生成订单中");
+            $.ajax({
+                url: "/JuMeiMall/GenerateGDtlOrder",
+                data: { quantity: quantity, commodityId: commodityId, Specification: Specification },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 110) {
+                        alert("请先登录");
+                        window.location.href = data.Msg;
+                    } else if (data.Code == 0) {
+                        window.location.href = "/JuMeiMall/BuyDetails?orderNo=" + data.Msg;
+                    } else {
+                        alert(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    alert("系统异常，请检查网络");
+                }
+            });
+
+            
+        }
+    </script>
+</body>
+</html>

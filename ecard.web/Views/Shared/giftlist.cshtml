@@ -1,0 +1,37 @@
+﻿@model GiftAccount
+@using (Ajax.BeginForm("gift", "Account", new AjaxOptions() { UpdateTargetId = "gift-panel" }))
+{
+    @Html.HiddenFor(x => x.AccountName)
+    <div class="page-and-sort">
+        @Html.Pager()
+        <div id="sort">
+            @Html.SorterSelect(new { Point = "积分", DisplayName = "显示名称" })
+        </div>
+        @Html.HiddenPagerAndSortter()
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="blk_01">
+        @foreach (var item in Model.List)
+            {
+                var css = Model.CurrentPoint < item.Point ? "stop-it" : "";
+                var disabled = Model.CurrentPoint < item.Point ? "disabled='disabled'" : "";
+                var href = @Url.Action("GetGift", "PointGift", new { id = item.PointGiftId });
+                <div class="dl_03_item">
+                    <div>
+                        <a class="show-gift" href='@href' data-key='@item.PointGiftId' title="@item.DisplayName" target="_blank" @Html.Raw(@disabled)>
+                            <img height="100" width="100" alt="@item.DisplayName" src='@Url.Content("~/content/pointgiftphotos/" + item.Photo)'></a></div>
+                    <div class="@css">@item.Category</div>
+                    <div class="@css">@item.DisplayName</div>
+                    <div class="@css">@item.Point 分</div>
+                </div> 
+            }
+        @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+        {
+            <div class="response-msg error ui-corner-all ui-click-hidden">
+                <span>错误</span>
+                @Model.ErrorMessage
+            </div>
+        }
+    </div>
+}

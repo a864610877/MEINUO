@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE740218-C859-4F0D-9E83-19DF8A9861B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ecard</RootNamespace>
+    <AssemblyName>Ecard.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\Ecard.Infrastructure.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Moonlit.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Moonlit.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\share\Assembly.cs">
+      <Link>Assembly.cs</Link>
+    </Compile>
+    <Compile Include="AccountServiceResponse.cs" />
+    <Compile Include="ConflictException.cs" />
+    <Compile Include="CacheKeys.cs" />
+    <Compile Include="CachePools.cs" />
+    <Compile Include="CancelPayRequest.cs" />
+    <Compile Include="DatabaseExtensions.cs" />
+    <Compile Include="DatabaseInstance.cs" />
+    <Compile Include="DataTables.cs" />
+    <Compile Include="DealResult.cs" />
+    <Compile Include="EcardFault.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DecimalExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\INamedEntityExtensions.cs" />
+    <Compile Include="Extensions\IPAddressExtensions.cs" />
+    <Compile Include="Extensions\PageOfListExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UserBaseExtensions.cs" />
+    <Compile Include="Extensions\ValueExtensions.cs" />
+    <Compile Include="GetGardsResult.cs" />
+    <Compile Include="GetUserResult.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="IBackgroundService.cs" />
+    <Compile Include="IFormsAuthentication.cs" />
+    <Compile Include="Logs\Class1.cs" />
+    <Compile Include="MakeDogResult.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\Ad.cs" />
+    <Compile Include="Models\AdminDashboardPageContainer.cs" />
+    <Compile Include="Models\AmountRate.cs" />
+    <Compile Include="Models\Articles.cs" />
+    <Compile Include="Models\BasicData.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Commodity.cs" />
+    <Compile Include="Models\CommoditySales.cs" />
+    <Compile Include="Models\DashboardItem.cs" />
+    <Compile Include="Models\EntityBase.cs" />
+    <Compile Include="Models\ExpressCompany.cs" />
+    <Compile Include="Models\fz_Articles.cs" />
+    <Compile Include="Models\fz_CommodityCategorys.cs" />
+    <Compile Include="Models\fz_Grades.cs" />
+    <Compile Include="Models\Fz_Messages.cs" />
+    <Compile Include="Models\fz_OperationAmountLogs.cs" />
+    <Compile Include="Models\fz_Rebate.cs" />
+    <Compile Include="Models\Grades.cs" />
+    <Compile Include="Models\ICommand.cs" />
+    <Compile Include="Models\IDescriptionEntity.cs" />
+    <Compile Include="Models\INamedEntity.cs" />
+    <Compile Include="Models\IPageOfList.cs" />
+    <Compile Include="Models\IRecordVersion.cs" />
+    <Compile Include="Models\OperationPointLogModel.cs" />
+    <Compile Include="Models\RecommendLogModel.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\SecondKillCommoditys.cs" />
+    <Compile Include="Models\SecondKillSet.cs" />
+    <Compile Include="Models\Withdraw.cs" />
+    <Compile Include="Models\WithdrawModel.cs" />
+    <Compile Include="Requests\AdRequest.cs" />
+    <Compile Include="Requests\CommodityCategorysRequest.cs" />
+    <Compile Include="Requests\CommoditySalesStatisticsRequest.cs" />
+    <Compile Include="Requests\GradesRequest.cs" />
+    <Compile Include="Requests\JuMeiMallIndexRequest.cs" />
+    <Compile Include="Requests\ArticlesRequest.cs" />
+    <Compile Include="Requests\JuMeiMallSearchRequest.cs" />
+    <Compile Include="Requests\ReviewRequest.cs" />
+    <Compile Include="Requests\SecondKillCommoditysRequest.cs" />
+    <Compile Include="Services\IAdService.cs" />
+    <Compile Include="Services\IArticlesService.cs" />
+    <Compile Include="Services\ICommodityCategorysService.cs" />
+    <Compile Include="Services\ICommoditySalesService.cs" />
+    <Compile Include="Services\IGradesService.cs" />
+    <Compile Include="Services\IImageAdsService.cs" />
+    <Compile Include="Services\IJuMeiMallService.cs" />
+    <Compile Include="Services\IMessagesService.cs" />
+    <Compile Include="Services\IOperationAmountLogsService.cs" />
+    <Compile Include="Services\IRebateLogService.cs" />
+    <Compile Include="Services\IRebateService.cs" />
+    <Compile Include="Services\IRecommendLogService.cs" />
+    <Compile Include="Models\ITokenKey.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\LogTypes.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\MonthPay.cs" />
+    <Compile Include="Models\NamedEntity.cs" />
+    <Compile Include="Models\NotFoundPageContainer.cs" />
+    <Compile Include="Models\OperationPointLog.cs" />
+    <Compile Include="Models\OrangeKeyAndopenID.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderView.cs" />
+    <Compile Include="Models\PageContainers\SignInPageContainer.cs" />
+    <Compile Include="Models\PageOfList.cs" />
+    <Compile Include="Models\ParentAndChild.cs" />
+    <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\Province.cs" />
+    <Compile Include="Models\RecommendLog.cs" />
+    <Compile Include="Models\ReportSetting.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\SearchCriteria.cs" />
+    <Compile Include="Models\SearchPageContainer.cs" />
+    <Compile Include="Models\SenderUser.cs" />
+    <Compile Include="Models\Setttings.cs" />
+    <Compile Include="Models\SetWeChat.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\SimpleAjaxResult.cs" />
+    <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\Sms.cs" />
+    <Compile Include="Models\Specification.cs" />
+    <Compile Include="Models\SpecificationAndSpecificationDetail.cs" />
+    <Compile Include="Models\SpecificationDetail.cs" />
+    <Compile Include="Models\States.cs" />
+    <Compile Include="Models\Summary.cs" />
+    <Compile Include="Models\UserAddress.cs" />
+    <Compile Include="Requests\DistributorDealLogRequest.cs" />
+    <Compile Include="Requests\OrderDetailRequest.cs" />
+    <Compile Include="Requests\OrderRequest.cs" />
+    <Compile Include="Requests\PageRequest.cs" />
+    <Compile Include="Requests\ShoppingCartRequest.cs" />
+    <Compile Include="Requests\SpecificationRequest.cs" />
+    <Compile Include="Requests\UserAddressRequest.cs" />
+    <Compile Include="Services\IAccountService.cs" />
+    <Compile Include="Services\ICityService.cs" />
+    <Compile Include="Services\ICommodityService.cs" />
+    <Compile Include="Services\IEcardOnlineService.cs" />
+    <Compile Include="Services\ILog4netService.cs" />
+    <Compile Include="Services\IOperationPointLogService.cs" />
+    <Compile Include="Services\IOrangeKeyAndopenIDService.cs" />
+    <Compile Include="Services\IOrderDetailService.cs" />
+    <Compile Include="Services\IOrderService.cs" />
+    <Compile Include="Services\IProvinceService.cs" />
+    <Compile Include="Services\IReviewService.cs" />
+    <Compile Include="Services\ISecondKillCommoditysService.cs" />
+    <Compile Include="Services\ISecondKillSetService.cs" />
+    <Compile Include="Services\ISetWeChatService.cs" />
+    <Compile Include="Services\IShoppingCartService.cs" />
+    <Compile Include="Services\ISpecificationDetailService.cs" />
+    <Compile Include="Services\ISpecificationService.cs" />
+    <Compile Include="Services\IUserAddressService.cs" />
+    <Compile Include="Services\IWithdrawService.cs" />
+    <Compile Include="TokenKeyExtensions.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserState.cs" />
+    <Compile Include="Models\Webpart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryObject.cs" />
+    <Compile Include="Requests\AccountRequest.cs" />
+    <Compile Include="Requests\AccountWithNameRequest.cs" />
+    <Compile Include="Requests\CommodityRequest.cs" />
+    <Compile Include="Requests\LogRequest.cs" />
+    <Compile Include="Requests\PrePayRequest.cs" />
+    <Compile Include="Requests\PrintTicketRequest.cs" />
+    <Compile Include="Requests\ShopDealLogRequest.cs" />
+    <Compile Include="Requests\ShopRequest.cs" />
+    <Compile Include="Requests\SystemDealLogRequest.cs" />
+    <Compile Include="RunWatcher.cs" />
+    <Compile Include="Services\IAuthenticateService.cs" />
+    <Compile Include="Services\ICacheService.cs" />
+    <Compile Include="Services\IDashboardItemRepository.cs" />
+    <Compile Include="Services\ILogService.cs" />
+    <Compile Include="Services\IMembershipService.cs" />
+    <Compile Include="Services\IMenuService.cs" />
+    <Compile Include="Services\IPasswordService.cs" />
+    <Compile Include="Services\IPrinterService.cs" />
+    <Compile Include="Services\ISiteService.cs" />
+    <Compile Include="Services\ITemporaryTokenKeyService.cs" />
+    <Compile Include="ValidationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="_AppSettingsHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ValidationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

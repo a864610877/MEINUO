@@ -1,0 +1,10 @@
+﻿Closed.name=退卡
+Closed.order=14
+Created.name=创建完毕
+Created.order=12
+Initialized.name=初始化完成
+Initialized.order=11
+Ready.name=待发放卡
+Ready.order=13
+Saled.name=已发放
+Saled.order=15

@@ -1,0 +1,10 @@
+﻿dashboard.title=您可进行的操作
+description=选择您所需要进行的操作
+myAccount.editProfile=修改资料
+myAccount.loggedAs=登录为 
+myAccount.signOut=退出
+myAccount.title=我的帐户
+title=Dashboard
+titleA=快捷方式
+welcome=欢迎使用
+welcome.content=

@@ -1,0 +1,12 @@
+﻿@model Ecard.Mvc.Models.ThModel 
+@{
+    var directoryClass = Model.Directory.HasValue ? (Model.Directory == false ? "headerSortDown" : "headerSortUp") : "";
+    var href = Model.Sortable ? Model.Sort : "#";
+}
+@*<th class='header @directoryClass' @ViewData.ToHtmlAttributes() >
+   <a class="sorter" href='@href'> @Model.Text</a>
+</th>*@
+<th>
+ @Model.Text
+</th>
+

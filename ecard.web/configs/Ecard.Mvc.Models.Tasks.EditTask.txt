@@ -1,0 +1,14 @@
+﻿AccountDependency.name=时间
+AccountDependency.order=1
+CommandModel.name=任务
+CommandModel.order=2
+CommandParameter.order=1
+description=编辑任务
+messages.nonFoundEditorType=messages.nonFoundEditorType
+messages.success=编辑任务成功
+Priority.name=优先级（优先级高的任务会被先执行)
+Priority.order=1
+State.name=状态
+State.order=10
+TaskId.order=1
+title=编辑任务

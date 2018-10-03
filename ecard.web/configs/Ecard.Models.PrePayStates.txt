@@ -1,0 +1,7 @@
+﻿
+All.name=全部
+All.order=1
+Complted.name=预授权完成
+Complted.order=3
+Processing.name=预授权进行中
+Processing.order=2

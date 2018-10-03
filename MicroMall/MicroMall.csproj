@@ -1,0 +1,1012 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1AC6B214-BFE7-4AE6-9948-2D0BF2422F33}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MicroMall</RootNamespace>
+    <AssemblyName>MicroMall</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AopSdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\AopSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\libs\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit">
+      <HintPath>..\..\libs\Moonlit.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit.Data">
+      <HintPath>..\..\libs\Moonlit.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit.Export">
+      <HintPath>..\..\libs\Moonlit.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin">
+      <HintPath>..\packages\Senparc.Weixin.3.3.9\lib\net40\Senparc.Weixin.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP">
+      <HintPath>..\packages\Senparc.Weixin.MP.12.4.6\lib\net40\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Log" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionFilters\ActionFilterRecord.cs" />
+    <Compile Include="ActionFilters\ActionFilterRegistry.cs" />
+    <Compile Include="ActionFilters\ActionFilterRegistryContext.cs" />
+    <Compile Include="ActionFilters\AntiForgeryActionFilter.cs" />
+    <Compile Include="ActionFilters\AntiForgeryAuthorizationFilter.cs" />
+    <Compile Include="ActionFilters\AuthorizationFilter.cs" />
+    <Compile Include="ActionFilters\BuildUpActionFilter.cs" />
+    <Compile Include="ActionFilters\ContainerActionFilter.cs" />
+    <Compile Include="ActionFilters\ControllerActionCriteria.cs" />
+    <Compile Include="ActionFilters\IActionFilterCriteria.cs" />
+    <Compile Include="ActionFilters\IActionFilterRegistry.cs" />
+    <Compile Include="ActionFilters\UserActionFilter.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommodityController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageAdsController.cs" />
+    <Compile Include="Controllers\JuMeiMallController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PersonalCentreController.cs" />
+    <Compile Include="Controllers\RecommendLogController.cs" />
+    <Compile Include="Controllers\RegistController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UnityController.cs" />
+    <Compile Include="Controllers\UserAddressController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WeChatPayController.cs" />
+    <Compile Include="Controllers\WeChatPaymentController.cs" />
+    <Compile Include="Controllers\WeixinController.cs" />
+    <Compile Include="Controllers\WithdrawController.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions\ButtonTypes.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
+    <Compile Include="Extensions\HttpRequestBaseExtensions.cs" />
+    <Compile Include="Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="Extensions\ImageExtensions.cs" />
+    <Compile Include="Extensions\LogHelper.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Extensions\NameValueCollectionExtensions.cs" />
+    <Compile Include="Extensions\SelectListItemExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Extensions\ViewDataDictionaryExtensions.cs" />
+    <Compile Include="Extensions\WebPartItemExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\HtmlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\EcardControllerActionInvoker.cs" />
+    <Compile Include="Infrastructure\EcardControllerFactory.cs" />
+    <Compile Include="Infrastructure\FormsAuthenticationWrapper.cs" />
+    <Compile Include="Infrastructure\ITokenHelper.cs" />
+    <Compile Include="Infrastructure\TokenHelper.cs" />
+    <Compile Include="Infrastructure\_AntiForgeryToken.cs" />
+    <Compile Include="Models\AlipayConfig.cs" />
+    <Compile Include="Models\Alipay\AlipayConfig.cs" />
+    <Compile Include="Models\Alipay\AlipayCore.cs" />
+    <Compile Include="Models\Alipay\AlipayNotify.cs" />
+    <Compile Include="Models\Alipay\RSA.cs" />
+    <Compile Include="Models\Commoditys\CommodityDetail.cs" />
+    <Compile Include="Models\Commoditys\dataJson.cs" />
+    <Compile Include="Models\Commoditys\OperationCommodity.cs" />
+    <Compile Include="Models\Commoditys\ReviewView.cs" />
+    <Compile Include="Models\ContainerFactory.cs" />
+    <Compile Include="Models\EcardControllerFactory.cs" />
+    <Compile Include="Models\Commoditys\CommodityModel.cs" />
+    <Compile Include="Models\Homes\AdModel.cs" />
+    <Compile Include="Models\Homes\LoadIndex.cs" />
+    <Compile Include="Models\ImageAds\ImageAdsListModel.cs" />
+    <Compile Include="Models\ImageAds\ImageAdsModel.cs" />
+    <Compile Include="Models\ImageAds\OperationImageAds.cs" />
+    <Compile Include="Models\InvestGames\ConcernPush.cs" />
+    <Compile Include="Models\InvestGames\ConcernPushModel.cs" />
+    <Compile Include="Models\InvestGames\CreateMenu.cs" />
+    <Compile Include="Models\InvestGames\ReqEventTypes.cs" />
+    <Compile Include="Models\InvestGames\MessageModel.cs" />
+    <Compile Include="Models\InvestGames\ReqMsgTypes.cs" />
+    <Compile Include="Models\InvestGames\SetWebConfing.cs" />
+    <Compile Include="Models\InvestGames\VerifyServerUrl.cs" />
+    <Compile Include="Models\JuMeiMallIndex\AddressListModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\CartDetailsModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\ListCommodityByCategorys.cs" />
+    <Compile Include="Models\JuMeiMallIndex\GoodsDetailsModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\JuMeiMallListModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\JuMeiMallModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\OperationJuMeiMall.cs" />
+    <Compile Include="Models\JuMeiMallIndex\OrderDetailsModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\SecondKillModel.cs" />
+    <Compile Include="Models\JuMeiMallIndex\sepStoreModel.cs" />
+    <Compile Include="Models\layouts\LayoutModel.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Orders\DeleteOrderDetail.cs" />
+    <Compile Include="Models\Orders\ListOrder.cs" />
+    <Compile Include="Models\Orders\ListOrders.cs" />
+    <Compile Include="Models\Orders\OrderAttribute.cs" />
+    <Compile Include="Models\Orders\OrderResponse.cs" />
+    <Compile Include="Models\Orders\OrderSubmitm.cs" />
+    <Compile Include="Models\Orders\PayOrder.cs" />
+    <Compile Include="Models\Orders\PayView.cs" />
+    <Compile Include="Models\PersonalCentre\CodeImg.cs" />
+    <Compile Include="Models\PersonalCentre\ListAmountOperationLogs.cs" />
+    <Compile Include="Models\PersonalCentre\ListTeams.cs" />
+    <Compile Include="Models\PersonalCentre\MyCode.cs" />
+    <Compile Include="Models\PersonalCentre\PersonalIndex.cs" />
+    <Compile Include="Models\PerWebRequestLifetimeManager.cs" />
+    <Compile Include="Models\RebateOperation.cs" />
+    <Compile Include="Models\RecommendLogs\ListRecommendLogs.cs" />
+    <Compile Include="Models\Regists\RegistModel.cs" />
+    <Compile Include="Models\Regists\RegistRequest.cs" />
+    <Compile Include="Models\ResponseResult.cs" />
+    <Compile Include="Models\ResultMessage.cs" />
+    <Compile Include="Models\SelectModel.cs" />
+    <Compile Include="Models\SessionKeys.cs" />
+    <Compile Include="Models\ShoppingCarts\AddShoppingCarts.cs" />
+    <Compile Include="Models\ShoppingCarts\ListShoppingCart.cs" />
+    <Compile Include="Models\ShoppingCarts\ListShoppingCarts.cs" />
+    <Compile Include="Models\ShoppingCarts\MyCart.cs" />
+    <Compile Include="Models\UnityDependencyResolver.cs" />
+    <Compile Include="Models\UserAddresss\AddUserAddress.cs" />
+    <Compile Include="Models\UserAddresss\ListAddresss.cs" />
+    <Compile Include="Models\Users\EditUser.cs" />
+    <Compile Include="Models\Users\ListPromotionLog.cs" />
+    <Compile Include="Models\Users\ListPromotionLogs.cs" />
+    <Compile Include="Models\Users\PromotionModel.cs" />
+    <Compile Include="Models\Withdraws\ListWithdraw.cs" />
+    <Compile Include="Models\Withdraws\ListWithdraws.cs" />
+    <Compile Include="Models\Withdraws\OperationWithdraw.cs" />
+    <Compile Include="Models\Withdraws\WithdrawDtl.cs" />
+    <Compile Include="NotifyUrl\Alipay.aspx.cs">
+      <DependentUpon>Alipay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotifyUrl\Alipay.aspx.designer.cs">
+      <DependentUpon>Alipay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NotifyUrl\AlipayNotifyUrl.aspx.cs">
+      <DependentUpon>AlipayNotifyUrl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotifyUrl\AlipayNotifyUrl.aspx.designer.cs">
+      <DependentUpon>AlipayNotifyUrl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\AjaxResponse.cs" />
+    <Compile Include="Results\ErrorResult.cs" />
+    <Compile Include="Results\ExcelResult.cs" />
+    <Compile Include="Results\FeedResult.cs" />
+    <Compile Include="Results\NotFoundResult.cs" />
+    <Compile Include="ViewModels\EcardModel.cs" />
+    <Compile Include="ViewModels\IItemList.cs" />
+    <Compile Include="ViewModels\SiteViewModel.cs" />
+    <Compile Include="ViewModels\TrackbackViewModel.cs" />
+    <Compile Include="WeChat\Pay.aspx.cs">
+      <DependentUpon>Pay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WeChat\Pay.aspx.designer.cs">
+      <DependentUpon>Pay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WeChat\ResultNotifyPage.aspx.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WeChat\ResultNotifyPage.aspx.designer.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="cert\证书使用说明.txt" />
+    <Content Include="Content\css\bottom.css" />
+    <Content Include="Content\css\CodeBgImg.css" />
+    <Content Include="Content\css\common.css" />
+    <Content Include="Content\css\Details.css" />
+    <Content Include="Content\css\dialog.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\jquery.dialogbox.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\myCode.css" />
+    <Content Include="Content\css\orderList.css" />
+    <Content Include="Content\css\ProductDetail.css" />
+    <Content Include="Content\css\ProductList.css" />
+    <Content Include="Content\css\Register.css" />
+    <Content Include="Content\css\Second.css" />
+    <Content Include="Content\css\ShoppingCart.css" />
+    <Content Include="Content\css\swiper-4.3.5.min.css" />
+    <Content Include="Content\css\top.css" />
+    <Content Include="Content\css\UserAddress_Add.css" />
+    <Content Include="Content\css\UserAddress_Index.css" />
+    <Content Include="Content\css\userIndex.css" />
+    <Content Include="Content\css\weui-master\dist\example\example.css" />
+    <Content Include="Content\css\weui-master\dist\example\example.js" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_footer.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_footer_link.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_intro.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_actionSheet.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_article.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_button.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_cell.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_dialog.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_feedback.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_flow.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_form.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_icons.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_layout.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_msg.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_nav.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_panel.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_progress.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_search.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_search_bar.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_special.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_tab.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_toast.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_z-index.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_nav_zindex.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\icon_tabbar.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\layers\content.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\layers\navigation.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\layers\popout.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\layers\transparent.gif" />
+    <Content Include="Content\css\weui-master\dist\example\images\logo.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\pic_160.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\pic_article.png" />
+    <Content Include="Content\css\weui-master\dist\example\images\vcode.jpg" />
+    <Content Include="Content\css\weui-master\dist\example\index.html" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\actionSheet.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\button.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\cell.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\dialog1.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\dialog2.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\grid.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\icons.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\progress.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\qrcode.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\result.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\text.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\toast1.png" />
+    <Content Include="Content\css\weui-master\dist\example\snapshot\toast2.png" />
+    <Content Include="Content\css\weui-master\dist\example\zepto.min.js" />
+    <Content Include="Content\css\weui-master\dist\style\weui.css" />
+    <Content Include="Content\css\weui-master\dist\style\weui.min.css" />
+    <Content Include="Content\css\weui-master\gulpfile.js" />
+    <Content Include="Content\css\weui-master\LICENSE.txt" />
+    <Content Include="Content\css\weui-master\src\example\example.js" />
+    <Content Include="Content\css\weui-master\src\example\fragment\actionsheet.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\article.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\badge.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\button.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\dialog.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\flex.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\footer.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\gallery.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\grid.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\home.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\icons.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\input.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\layers.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\list.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\loadmore.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\msg.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\msg_success.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\msg_warn.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\navbar.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\panel.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\picker.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\preview.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\progress.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\searchbar.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\slider.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\tabbar.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\toast.html" />
+    <Content Include="Content\css\weui-master\src\example\fragment\uploader.html" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_footer.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_footer_link.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_intro.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_feedback.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_form.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_layout.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_nav.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_search.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_special.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_nav_z-index.png" />
+    <Content Include="Content\css\weui-master\src\example\images\icon_tabbar.png" />
+    <Content Include="Content\css\weui-master\src\example\images\layers\content.png" />
+    <Content Include="Content\css\weui-master\src\example\images\layers\navigation.png" />
+    <Content Include="Content\css\weui-master\src\example\images\layers\popout.png" />
+    <Content Include="Content\css\weui-master\src\example\images\layers\transparent.gif" />
+    <Content Include="Content\css\weui-master\src\example\images\logo.png" />
+    <Content Include="Content\css\weui-master\src\example\images\pic_160.png" />
+    <Content Include="Content\css\weui-master\src\example\images\pic_article.png" />
+    <Content Include="Content\css\weui-master\src\example\images\vcode.jpg" />
+    <Content Include="Content\css\weui-master\src\example\index.html" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\button.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\cell.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\dialog1.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\dialog2.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\grid.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\icons.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\progress.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\qrcode.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\result.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\text.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\toast1.png" />
+    <Content Include="Content\css\weui-master\src\example\snapshot\toast2.png" />
+    <Content Include="Content\css\weui-master\src\example\zepto.min.js" />
+    <Content Include="Content\img\1.png" />
+    <Content Include="Content\img\allchecked.png" />
+    <Content Include="Content\img\cart.png" />
+    <Content Include="Content\img\cart2.png" />
+    <Content Include="Content\img\cartchecked1.png" />
+    <Content Include="Content\img\cartchecked2.png" />
+    <Content Include="Content\img\home.png" />
+    <Content Include="Content\img\home2.png" />
+    <Content Include="Content\img\icon\type_icon1.png" />
+    <Content Include="Content\img\icon\type_icon2.png" />
+    <Content Include="Content\img\icon\type_icon3.png" />
+    <Content Include="Content\img\icon\type_icon4.png" />
+    <Content Include="Content\img\icon\type_icon5.png" />
+    <Content Include="Content\img\icon\type_icon6.png" />
+    <Content Include="Content\img\icon\type_icon7.png" />
+    <Content Include="Content\img\icon\type_icon8.png" />
+    <Content Include="Content\img\imgcode1.jpg" />
+    <Content Include="Content\img\imgcode2.jpg" />
+    <Content Include="Content\img\index_top_img.png" />
+    <Content Include="Content\img\index_top_img2.png" />
+    <Content Include="Content\img\left_back_btn.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\ms_bg.png" />
+    <Content Include="Content\img\ms_btn1.png" />
+    <Content Include="Content\img\ms_btn2.png" />
+    <Content Include="Content\img\ms_btn3.png" />
+    <Content Include="Content\img\ms_head_img.png" />
+    <Content Include="Content\img\ms_pj_bgimg.png" />
+    <Content Include="Content\img\ms_qgl.png" />
+    <Content Include="Content\img\nullCart.png" />
+    <Content Include="Content\img\null_Img.jpg" />
+    <Content Include="Content\img\order.png" />
+    <Content Include="Content\img\order2.png" />
+    <Content Include="Content\img\order_1_1.png" />
+    <Content Include="Content\img\order_1_2.png" />
+    <Content Include="Content\img\order_2_1.png" />
+    <Content Include="Content\img\order_2_2.png" />
+    <Content Include="Content\img\order_3_1.png" />
+    <Content Include="Content\img\order_3_2.png" />
+    <Content Include="Content\img\order_4_1.png" />
+    <Content Include="Content\img\order_4_2.png" />
+    <Content Include="Content\img\order_5_1.png" />
+    <Content Include="Content\img\order_5_2.png" />
+    <Content Include="Content\img\product1.jpg" />
+    <Content Include="Content\img\product2.png" />
+    <Content Include="Content\img\product_ewm.png" />
+    <Content Include="Content\img\product_fx.png" />
+    <Content Include="Content\img\product_query_icon.png" />
+    <Content Include="Content\img\product_sx_icon.png" />
+    <Content Include="Content\img\type_icon1.png" />
+    <Content Include="Content\img\type_icon2.png" />
+    <Content Include="Content\img\type_icon3.png" />
+    <Content Include="Content\img\type_icon4.png" />
+    <Content Include="Content\img\user.png" />
+    <Content Include="Content\img\user2.png" />
+    <Content Include="Content\img\UserAddress_add_btn.png" />
+    <Content Include="Content\img\user_icon1.png" />
+    <Content Include="Content\img\user_icon2.png" />
+    <Content Include="Content\img\user_top_img.png" />
+    <Content Include="Content\img\user_top_img1.png" />
+    <Content Include="Content\img\user_top_img2.png" />
+    <Content Include="Content\img\user_top_img3.png" />
+    <Content Include="Content\js\common.js" />
+    <Content Include="Content\js\dialogBox\jquery.dialogBox.js" />
+    <Content Include="Content\js\dialog\dialog.min.js" />
+    <Content Include="Content\js\dialog\zepto.min.js" />
+    <Content Include="Content\js\dist\distpicker.data.js" />
+    <Content Include="Content\js\dist\distpicker.data.min.js" />
+    <Content Include="Content\js\dist\distpicker.js" />
+    <Content Include="Content\js\dist\distpicker.min.js" />
+    <Content Include="Content\js\dist\main.js" />
+    <Content Include="Content\js\dom-to-image\dom-to-image.js" />
+    <Content Include="Content\js\dom-to-image\FileSaver.min.js" />
+    <Content Include="Content\js\html2canvas\html2canvas.min.js" />
+    <Content Include="Content\js\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Content\js\md5\jquery.md5.js" />
+    <Content Include="Content\js\qrcode\jquery.qrcode.js" />
+    <Content Include="Content\js\qrcode\qrcode.js" />
+    <Content Include="Content\js\qrcode\qrious.js" />
+    <Content Include="Content\js\qrcode\qrious.min.js" />
+    <Content Include="Content\js\swiper\swiper-4.3.5.min.js" />
+    <Content Include="Content\js\unslider\unslider.min.js" />
+    <Content Include="Content\js\views\Home.js" />
+    <Content Include="Content\js\views\Oders_Details.js" />
+    <Content Include="Content\js\views\Oders_Index.js" />
+    <Content Include="Content\js\views\Product_Details.js" />
+    <Content Include="Content\js\views\Product_List.js" />
+    <Content Include="Content\js\views\Second.js" />
+    <Content Include="Content\js\views\Second_Details.js" />
+    <Content Include="Content\js\views\ShoppingCart.js" />
+    <Content Include="Content\js\views\UserAddress_Add.js" />
+    <Content Include="Content\js\views\UserAddress_List.js" />
+    <Content Include="Content\js\views\UserAddress_Update.js" />
+    <Content Include="Content\js\views\User_Login.js" />
+    <Content Include="Content\js\views\User_Register.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="css\amazeui.min.css" />
+    <Content Include="css\app.css" />
+    <Content Include="css\app2.css" />
+    <Content Include="css\area.css" />
+    <Content Include="css\CodeBgImg.css" />
+    <Content Include="css\myCode.css" />
+    <Content Include="css\swiper-4.3.5.min.css" />
+    <Content Include="css\weui-master\dist\example\example.css" />
+    <Content Include="css\weui-master\dist\example\example.js" />
+    <Content Include="css\weui-master\dist\example\images\icon_footer.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_footer_link.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_intro.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_actionSheet.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_article.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_button.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_cell.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_dialog.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_feedback.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_flow.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_form.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_icons.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_layout.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_msg.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_nav.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_panel.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_progress.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_search.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_search_bar.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_special.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_tab.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_toast.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_z-index.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_nav_zindex.png" />
+    <Content Include="css\weui-master\dist\example\images\icon_tabbar.png" />
+    <Content Include="css\weui-master\dist\example\images\layers\content.png" />
+    <Content Include="css\weui-master\dist\example\images\layers\navigation.png" />
+    <Content Include="css\weui-master\dist\example\images\layers\popout.png" />
+    <Content Include="css\weui-master\dist\example\images\layers\transparent.gif" />
+    <Content Include="css\weui-master\dist\example\images\logo.png" />
+    <Content Include="css\weui-master\dist\example\images\pic_160.png" />
+    <Content Include="css\weui-master\dist\example\images\pic_article.png" />
+    <Content Include="css\weui-master\dist\example\images\vcode.jpg" />
+    <Content Include="css\weui-master\dist\example\index.html" />
+    <Content Include="css\weui-master\dist\example\snapshot\actionSheet.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\button.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\cell.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\dialog1.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\dialog2.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\grid.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\icons.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\progress.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\qrcode.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\result.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\text.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\toast1.png" />
+    <Content Include="css\weui-master\dist\example\snapshot\toast2.png" />
+    <Content Include="css\weui-master\dist\example\zepto.min.js" />
+    <Content Include="css\weui-master\dist\style\weui.css" />
+    <Content Include="css\weui-master\dist\style\weui.min.css" />
+    <Content Include="css\weui.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="images\addIcon.png" />
+    <Content Include="images\banner.jpg" />
+    <Content Include="images\buyCart.png" />
+    <Content Include="images\cart.jpg" />
+    <Content Include="images\close.png" />
+    <Content Include="images\djs_time.png" />
+    <Content Include="images\d_ms.png" />
+    <Content Include="images\end_ms.png" />
+    <Content Include="images\fx.jpg" />
+    <Content Include="images\f_menu1.png" />
+    <Content Include="images\f_menu1_h.png" />
+    <Content Include="images\f_menu2.png" />
+    <Content Include="images\f_menu3.png" />
+    <Content Include="images\f_menu4.png" />
+    <Content Include="images\j_ms.png" />
+    <Content Include="images\miaosha.jpg" />
+    <Content Include="images\miao_s.jpg" />
+    <Content Include="images\ms_bg.jpg.png" />
+    <Content Include="images\ms_pro.jpg" />
+    <Content Include="images\PosterBack.jpg" />
+    <Content Include="images\huangguang.png" />
+    <Content Include="images\h_img1.jpg" />
+    <Content Include="images\h_img2.jpg" />
+    <Content Include="images\jifen.png" />
+    <Content Include="images\login_pass.png" />
+    <Content Include="images\login_user.png" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\menu1.png" />
+    <Content Include="images\menu2.png" />
+    <Content Include="images\menu3.png" />
+    <Content Include="images\menu4.png" />
+    <Content Include="images\menu5.png" />
+    <Content Include="images\menu6.png" />
+    <Content Include="images\menu7.png" />
+    <Content Include="images\menu8.png" />
+    <Content Include="images\null_Img.jpg" />
+    <Content Include="images\order1.png" />
+    <Content Include="images\order1_h.png" />
+    <Content Include="images\order2.png" />
+    <Content Include="images\order2_h.png" />
+    <Content Include="images\order3.png" />
+    <Content Include="images\order3_h.png" />
+    <Content Include="images\order4.png" />
+    <Content Include="images\order4_h.png" />
+    <Content Include="images\order5.png" />
+    <Content Include="images\order5_h.png" />
+    <Content Include="images\regBanner.jpg" />
+    <Content Include="images\tixian.png" />
+    <Content Include="images\typeBanner.jpg" />
+    <Content Include="images\userpx.png" />
+    <Content Include="images\userTx.png" />
+    <Content Include="images\xqMax.jpg" />
+    <Content Include="images\xq_img.jpg" />
+    <Content Include="images\xq_tu.jpg" />
+    <Content Include="images\xuzhi.jpg" />
+    <Content Include="images\x_ms.png" />
+    <Content Include="img\banner1.jpg" />
+    <Content Include="img\banner2.jpg" />
+    <Content Include="img\img1.jpg" />
+    <Content Include="img\img2.jpg" />
+    <Content Include="img\img3.jpg" />
+    <Content Include="img\ui\barbg.gif" />
+    <Content Include="img\ui\dfh.svg" />
+    <Content Include="img\ui\dfk.svg" />
+    <Content Include="img\ui\dsh.svg" />
+    <Content Include="img\ui\dsh01.svg" />
+    <Content Include="img\ui\dtk-1.svg" />
+    <Content Include="img\ui\dtk.svg" />
+    <Content Include="img\ui\icogwc.svg" />
+    <Content Include="img\ui\icoshdz.svg" />
+    <Content Include="img\ui\icosydd.svg" />
+    <Content Include="img\ui\return-ico.png" />
+    <Content Include="img\ui\Search_ico.png" />
+    <Content Include="img\ui\Sidebar.png" />
+    <Content Include="img\ui\Side_bar.png" />
+    <Content Include="img\ui\tianjia.svg" />
+    <Content Include="img\ui\title_ui.png" />
+    <Content Include="js\amazeui.min.js" />
+    <Content Include="js\angular-ui-router.js" />
+    <Content Include="js\angular.min.js" />
+    <Content Include="js\city.data-3.js" />
+    <Content Include="js\controller.js" />
+    <Content Include="js\ddzx.js" />
+    <Content Include="js\fz.js" />
+    <Content Include="js\html2canvas\html2canvas.min.js" />
+    <Content Include="js\idangerous.swiper-2.0.min.js" />
+    <Content Include="js\idangerous.swiper.scrollbar-2.0.js" />
+    <Content Include="js\joinCart.js" />
+    <Content Include="js\jquery-2.1.0.js" />
+    <Content Include="js\jquery.area.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.SuperSlide.2.1.1.js" />
+    <Content Include="js\JS-SDK.js" />
+    <Content Include="js\jweixin-1.0.0.js" />
+    <Content Include="js\leftTime.min.js" />
+    <Content Include="js\momocha-min.js" />
+    <Content Include="js\momocha.js" />
+    <Content Include="js\mui.indexedlist.js" />
+    <Content Include="js\mui.js" />
+    <Content Include="js\mui.min.js" />
+    <Content Include="js\mui.picker.min.js" />
+    <Content Include="js\mui.previewimage.js" />
+    <Content Include="js\mui.zoom.js" />
+    <Content Include="js\mvcParamMatch.js" />
+    <Content Include="js\qrcode\jquery.qrcode.js" />
+    <Content Include="js\qrcode\qrcode.js" />
+    <Content Include="js\qrcode\qrious.js" />
+    <Content Include="js\qrcode\qrious.min.js" />
+    <Content Include="js\route.js" />
+    <Content Include="js\shopCart.js" />
+    <Content Include="js\swiper3.07.min.js" />
+    <Content Include="js\swiperJs.js" />
+    <Content Include="js\swiper\swiper-4.3.5.min.js" />
+    <Content Include="js\verifi.js" />
+    <Content Include="js\vue.js" />
+    <Content Include="js\WeChat.js" />
+    <Content Include="NotifyUrl\Alipay.aspx" />
+    <Content Include="NotifyUrl\AlipayNotifyUrl.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="WeChatViews\add-tianjia.html" />
+    <Content Include="WeChatViews\add-xiugai.html" />
+    <Content Include="WeChatViews\add.html" />
+    <Content Include="WeChatViews\appLogin.html" />
+    <Content Include="WeChatViews\ddxq.html" />
+    <Content Include="WeChatViews\ddzx.html" />
+    <Content Include="WeChatViews\goodsSearchList.html" />
+    <Content Include="WeChatViews\gwc.html" />
+    <Content Include="WeChatViews\i-banding.html" />
+    <Content Include="WeChatViews\i-shemi.html" />
+    <Content Include="WeChatViews\i.html" />
+    <Content Include="WeChatViews\index.html" />
+    <Content Include="WeChatViews\goodsCategoryList.html" />
+    <Content Include="WeChatViews\goodsDetail.html" />
+    <Content Include="WeChatViews\login.html" />
+    <Content Include="WeChatViews\qrdd.html" />
+    <Content Include="WeChatViews\qrdd2.html" />
+    <Content Include="WeChat\Pay.aspx" />
+    <Content Include="WeChat\qrdd.html" />
+    <Content Include="WeChat\ResultNotifyPage.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="MsgImages\" />
+    <Folder Include="QrCodeImages\Poster\" />
+    <Folder Include="QrCodeImages\Qr\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cert\apiclient_cert.p12" />
+    <Content Include="cert\apiclient_cert.pem" />
+    <Content Include="cert\apiclient_key.pem" />
+    <Content Include="cert\rootca.pem" />
+    <Content Include="img\ui\delete.svg" />
+    <Content Include="img\ui\left.svg" />
+    <Content Include="img\ui\litleico.svg" />
+    <Content Include="img\ui\nav01.svg" />
+    <Content Include="img\ui\nav02.svg" />
+    <Content Include="img\ui\return.svg" />
+    <Content Include="img\ui\right01.svg" />
+    <Content Include="img\ui\search.svg" />
+    <Content Include="img\ui\barbg.psd" />
+    <Content Include="css\1" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="js\qrcode\qrious.js.map" />
+    <Content Include="js\qrcode\qrious.min.js.map" />
+    <Content Include="Content\css\weui-master\.gitignore" />
+    <Content Include="Content\css\weui-master\.travis.yml" />
+    <Content Include="Content\css\weui-master\bower.json" />
+    <Content Include="Content\css\weui-master\CHANGELOG.md" />
+    <Content Include="Content\css\weui-master\CONTRIBUTING.md" />
+    <Content Include="Content\css\weui-master\package.json" />
+    <Content Include="Content\css\weui-master\README.md" />
+    <Content Include="Content\css\weui-master\README_cn.md" />
+    <Content Include="Content\css\weui-master\src\example\example.less" />
+    <Content Include="Content\css\weui-master\src\style\base\fn.less" />
+    <Content Include="Content\css\weui-master\src\style\base\mixin\mobile.less" />
+    <Content Include="Content\css\weui-master\src\style\base\mixin\setArrow.less" />
+    <Content Include="Content\css\weui-master\src\style\base\mixin\setOnepx.less" />
+    <Content Include="Content\css\weui-master\src\style\base\mixin\text.less" />
+    <Content Include="Content\css\weui-master\src\style\base\reset.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\color.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\global.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\weui-button.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\weui-cell.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\weui-dialog.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\weui-grid.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\weui-msg.less" />
+    <Content Include="Content\css\weui-master\src\style\base\variable\weui-progress.less" />
+    <Content Include="Content\css\weui-master\src\style\icon\weui-font.less" />
+    <Content Include="Content\css\weui-master\src\style\icon\weui-icon_font.less" />
+    <Content Include="Content\css\weui-master\src\style\weui.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-agree\weui-agree.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-animate\weui-animate.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_default.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_disabled.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_global.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_loading.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_plain.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_primary.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-btn_warn.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-button\weui-button.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-access.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-cell_global.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-cell_swiped.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-check.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-check\weui-checkbox.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-check\weui-check_common.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-check\weui-radio.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-form.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-form\weui-form-preview.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-form\weui-form_common.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-form\weui-select.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-form\weui-vcode.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-gallery.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-switch.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-cell\weui-uploader.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-flex\weui-flex.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-footer\weui-footer.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-grid\weui-grid.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-loading\weui-loading.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-media-box\weui-media-box.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-page\weui-article.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-page\weui-msg.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-panel\weui-panel.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-picker\weui-picker.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-progress\weui-progress.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-searchbar\weui-searchbar.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-slider\weui-slider.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tab\weui-navbar.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tab\weui-tab.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tab\weui-tabbar.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tips\weui-actionsheet.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tips\weui-badge.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tips\weui-dialog.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tips\weui-loadmore.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tips\weui-mask.less" />
+    <Content Include="Content\css\weui-master\src\style\widget\weui-tips\weui-toast.less" />
+    <Content Include="Content\js\qrcode\qrious.js.map" />
+    <Content Include="Content\js\qrcode\qrious.min.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\MicroMall.pubxml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <None Include="Properties\PublishProfiles\mrnuo.pubxml" />
+    <None Include="Properties\PublishProfiles\XMJC.pubxml" />
+    <Content Include="Views\JuMeiMall\JuMeiMallIndex.cshtml" />
+    <Content Include="Views\Shared\_layout.cshtml" />
+    <Content Include="Views\JuMeiMall\GoodsDetails.cshtml" />
+    <Content Include="Views\JuMeiMall\JuMeiMallSearchIndex.cshtml" />
+    <Content Include="Views\Regists\Regist.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\PersonalCentre\Index.cshtml" />
+    <Content Include="Views\Withdraw\Withdraw.cshtml" />
+    <Content Include="Views\PersonalCentre\MyAddress.cshtml" />
+    <Content Include="Views\PersonalCentre\UpdatePassword.cshtml" />
+    <Content Include="Views\JuMeiMall\GetShoppingCart.cshtml" />
+    <Content Include="Views\PersonalCentre\PersonalInfo.cshtml" />
+    <Content Include="Views\JuMeiMall\BuyDetails.cshtml" />
+    <Content Include="Views\PersonalCentre\AddAddress.cshtml" />
+    <Content Include="Views\PersonalCentre\EditAddres.cshtml" />
+    <Content Include="Views\PersonalCentre\MyOrder.cshtml" />
+    <Content Include="Views\PersonalCentre\MyQR.cshtml" />
+    <Content Include="Views\PersonalCentre\CodeBgImg.cshtml" />
+    <Content Include="Views\Shared\_Top.cshtml" />
+    <Content Include="Views\User\RecommendLog.cshtml" />
+    <Content Include="Views\Commodity\AddReview.cshtml" />
+    <Content Include="Views\JuMeiMall\SecondKill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ecard.infrastructure\Ecard.Infrastructure.csproj">
+      <Project>{de740218-c859-4f0d-9e83-19df8a9861b6}</Project>
+      <Name>Ecard.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ecard\Ecard.csproj">
+      <Project>{d54af39d-cb43-4d32-a89d-d55ee924ab57}</Project>
+      <Name>Ecard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>42971</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:42973/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

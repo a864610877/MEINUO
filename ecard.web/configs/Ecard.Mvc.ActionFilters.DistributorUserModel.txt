@@ -1,0 +1,12 @@
+﻿CurrentUser.name=当前用户
+CurrentUser.order=1
+DisplayName.name=名称
+DisplayName.order=1
+DistributorId.name=经销商
+DistributorId.order=1
+LastSignInTime.name=最后登陆时间
+LastSignInTime.order=1
+Name.name=Name
+Name.order=1
+Roles.name=Roles
+Roles.order=1

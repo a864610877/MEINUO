@@ -1,0 +1,7 @@
+﻿description=查看返利日志
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+title=返利日志
+titleA=返利日志

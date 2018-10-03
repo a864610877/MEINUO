@@ -1,0 +1,24 @@
+﻿@model ClearRolesCommandCreateModel
+<div class="hastable">
+    <table class="sort-table" id="task-clear-role-panel">
+    <thead>
+    
+            <tr>
+                <th style="width:40px;">
+                    选择 
+                </th>
+                <td>
+                    要清除的角色，所有选中的角色所隶属的用户会被自动清除
+                </td>
+            </tr></thead>
+        <tbody>
+                 @foreach (var role in Model.Roles)
+                        {
+                            <tr>
+                            <td><input type='checkbox' value="@role.RoleId"></input></td>
+                            <td>@role.DisplayName</td></tr>
+                        }
+            
+        </tbody>
+    </table>
+</div>

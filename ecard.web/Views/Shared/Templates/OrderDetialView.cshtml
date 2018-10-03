@@ -1,0 +1,48 @@
+﻿@using Moonlit
+@using Ecard.Mvc.Models.GoodandOrder
+@model List<OrderDetialBase>
+<div class="hastable">
+    <table class="sort-table">
+        <thead>
+            <tr>
+                <th>商品编码 </th>
+                <th>商品名称  </th>
+                <th>价格 </th>
+                <th>数量 </th>
+                <th>小计 </th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (var scope = new IteratorScope())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.GoodName
+                        </td>
+                        <td>
+                           @item.DisplayName
+                        </td>
+                        <td>
+                             @item.Price.ToString("C")
+                        </td>
+                        <td>
+                           @item.Amount.ToString()
+                        </td>
+                        <td>
+                            @item.Total.ToString("C")
+                        </td>
+                    </tr>
+                    scope.Next();
+                }
+            }
+            <tr>
+            <td colspan="3" align="center">汇总</td>
+            
+            <td>@Model.Sum(x=>x.Amount).ToString("N")</td>
+            <td>@Model.Sum(x=>x.Total).ToString("C")</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

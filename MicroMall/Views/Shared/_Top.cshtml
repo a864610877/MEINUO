@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html style="height: 100%;">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+    
+    <script src="~/Content/js/jquery/jquery-2.1.1.min.js?v=@DateTime.Now"></script>
+    <script src="~/Content/js/common.js?v=@DateTime.Now"></script>
+    <link href="~/Content/css/common.css?v=@DateTime.Now" rel="stylesheet" />
+    <link href="~/Content/css/top.css?v=@DateTime.Now" rel="stylesheet" />
+    <link href="~/Content/css/dialog.css?v=@DateTime.Now" rel="stylesheet" />
+    <script src="~/Content/js/dialog/zepto.min.js?v=@DateTime.Now"></script>
+    <script src="~/Content/js/dialog/dialog.min.js?v=@DateTime.Now"></script>
+    <link href="~/Content/css/weui-master/dist/style/weui.css" rel="stylesheet" />
+    <link href="~/Content/css/weui-master/dist/example/example.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="height: 3rem; width: 100%;">
+        <div id="top" class="top">
+            <div class="left_back_btn" onclick="window.location.href = '/PersonalCentre/index'"><img src="~/Content/img/left_back_btn.png" /></div>
+            <div class="title">@ViewBag.TopName</div>
+        </div>
+    </div>
+    @RenderBody()
+    @Html.AntiForgeryToken()
+
+</body>
+</html>

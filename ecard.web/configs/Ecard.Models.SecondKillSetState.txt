@@ -1,0 +1,4 @@
+﻿Invalid.name=停止
+Invalid.order=1
+Normal.name=启动
+Normal.order=1

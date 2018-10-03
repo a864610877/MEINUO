@@ -1,0 +1,8 @@
+﻿description=冲正
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+Shop.name=商户
+Shop.order=1
+title=冲正
+titleA=titleA

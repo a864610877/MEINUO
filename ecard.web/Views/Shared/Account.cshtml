@@ -1,0 +1,39 @@
+﻿@model AccountModel
+@{
+    Layout = null;
+}
+@if (Model.Account == null)
+{
+    <div class="accountNoFound">
+        请输入卡号，或读卡... 
+    </div>
+}
+else
+{
+    <div class="accountPanel clearfix">
+            <div class="photo nophoto">
+        @if (Model.Owner != null && !string.IsNullOrWhiteSpace(Model.Owner.Photo))
+        {
+                <img src="@Url.UserPhoto(Model.Owner.Photo)"/>   }
+            </div>
+     
+        <div class="info">
+            <p>
+                <label for="accountName">
+                    卡号: </label><span>@Model.Account.Name</span></p>
+                <p>
+                    <label for="ownerName">
+                        用户姓名:</label><span>@(Model.Owner==null ? "" : Model.Owner.DisplayName)</span></p>
+                
+            <p>
+                <label for="amount">
+                    有效余额:</label><span>@Model.Account.Amount</span></p>
+            <p>
+                <label for="freezeAmount">
+                    冻结余额:</label><span>@Model.Account.FreezeAmount</span></p>
+            <p>
+                <label for="freezeAmount">
+                    有效期:</label><span>@Model.Account.ExpiredDate.ToLongDateString()</span></p>
+        </div>
+    </div> 
+}

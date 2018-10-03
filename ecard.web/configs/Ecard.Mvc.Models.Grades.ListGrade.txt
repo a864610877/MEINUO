@@ -1,0 +1,6 @@
+﻿name.order=1
+name.shortName=名称
+name.shortNameFormat={0}
+sale.order=1
+sale.shortName=销售额
+sale.shortNameFormat={0}

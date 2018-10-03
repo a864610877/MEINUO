@@ -1,0 +1,15 @@
+﻿delete.success=删除帐户级别 {0}({1})成功 
+description=添加、修改、启用、停用、导出帐户级别管理
+DisplayName.name=级别名称
+DisplayName.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.fail=帐户级别 {0} 已经存在，请先停用此帐户级别 
+resume.success=启用帐户级别 {0}({1})成功 
+State.name=状态
+State.order=2
+suspend.success=停用帐户级别 {0}({1})成功 
+title=帐户级别管理
+titleA=帐户级别管理

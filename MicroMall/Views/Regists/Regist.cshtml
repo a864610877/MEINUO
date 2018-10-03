@@ -1,0 +1,135 @@
+﻿@{
+    Layout = null;
+}
+@model MicroMall.Models.Regists.RegistRequest
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>微信商城</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="/css/weui.min.css" rel="stylesheet" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/amazeui.min.js"></script>
+    <script src="/js/fz.js?v1.1"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#regist").click(function () {
+                var orangeKey = $("#orangeKey").val();
+                var Mobile = $("#Mobile").val();
+                var Password = $("#Password").val();
+                var PasswordConfirm = $("#PasswordConfirm").val();
+                if (Mobile == null || Mobile == "") {
+                    $.openDialog("请输入手机号");
+                    return;
+                }
+
+                if (!VerifiMobile(Mobile)) {
+                    $.openDialog("手机号格式错误");
+                    return;
+                }
+
+                if (Password == null || Password == "") {
+                    $.openDialog("请输入密码");
+                    return;
+                }
+                if (Password != PasswordConfirm ) {
+                    $.openDialog("两次输入密码不一致");
+                    return;
+                }
+                $.openLoading("注册中");
+                $.ajax({
+                    url: "/Regists/Regist",
+                    data: { orangeKey: orangeKey, Mobile: Mobile, Password: Password, PasswordConfirm: PasswordConfirm },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $.closeLoading();
+                        if (data.Code == 0) {
+                            $.openDialogUrl("注册成功", "/JuMeiMall/JuMeiMallIndex");
+                        } else {
+                            $.openDialog(data.Msg);
+                        }
+                    },
+                    error: function () {
+                        $.closeLoading();
+                        $.openDialog("系统异常，请检查网络");
+                    }
+                })
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <header data-am-widget="header" class="am-header am-header-default bgFFF mb5">
+        <div class="am-header-left am-header-nav">
+            <a href="/JuMeiMall/JuMeiMallIndex" class="">
+                <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            快速注册
+        </h1>
+    </header>
+    <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+        <ul class="am-slides">
+            <li>
+                <img src="/images/regBanner.jpg">
+            </li>
+        </ul>
+    </div>
+    <div class="add_addrs upPassword reg fs15">
+        <ul>
+            <li><span>推荐码</span><input type="text" id="orangeKey" value="@Model.orangeKey" placeholder="请输入推荐码"></li>
+            <li><span>手机号</span><input type="text" name="" id="Mobile" value="" placeholder="请输入手机号"></li>
+            <li><span>设置密码</span><input type="password" name="" id="Password" value="" placeholder="请设置密码"></li>
+            <li><span>确认密码</span><input type="password" id="PasswordConfirm" value="" placeholder="请输入密码"></li>
+        </ul>
+        <div class="am-container am-padding-vertical-xl">
+            <input type="button" value="注册" id="regist" class="upBtn" />
+        </div>
+    </div>
+
+    <!--<div data-am-widget="navbar" class="am-navbar am-cf bgFFF color_b59f76"
+          id="">
+          <ul class="am-navbar-nav am-cf am-avg-sm-4">
+              <li >
+                <a href="###" class="">
+                    <img src="images/f_menu1.png" alt="首页"/>
+                    <span class="am-navbar-label">首页</span>
+                </a>
+              </li>
+              <li >
+                <a href="###" class="">
+                     <img src="images/f_menu2.png" alt="首购物车页"/>
+                    <span class="am-navbar-label">购物车</span>
+                </a>
+              </li>
+              <li>
+                <a href="###" class="">
+                    <img src="images/f_menu3.png" alt="订单详情"/>
+                    <span class="am-navbar-label">订单详情</span>
+                </a>
+              </li>
+              <li >
+                <a href="###" class="">
+                   <img src="images/f_menu4.png" alt="个人中心"/>
+                    <span class="am-navbar-label">个人中心</span>
+                </a>
+              </li>
+          </ul>
+      </div>-->
+</body>
+</html>

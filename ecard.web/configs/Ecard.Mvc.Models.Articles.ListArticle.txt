@@ -1,0 +1,9 @@
+﻿articleId1.order=1
+articleId1.shortName=ID
+articleId1.shortNameFormat={0}
+submitTime.order=1
+submitTime.shortName=发布时间
+submitTime.shortNameFormat={0}
+title.order=1
+title.shortName=标题
+title.shortNameFormat={0}

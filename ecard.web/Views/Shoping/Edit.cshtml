@@ -1,0 +1,364 @@
+﻿@using Ecard.Mvc.Models.Shoping;
+@model EcardModelItem<EditShoping>
+
+    <link href="/Scripts/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="/js/jquery-1.9.0.min.js"></script>
+    <script src="/Scripts/uploadify/jquery.uploadify-3.1.js"></script>
+    <script src="/Scripts/kindeditor-4.1.10/kindeditor-min.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('textarea[name="commodityDetails"]', {
+                allowFileManager: true,                                            //是否可以浏览上传文件
+                allowUpload: true,                                                     //是否可以上传
+                fileManagerJson: '/KindEditor/ProcessRequest',      //浏览文件方法
+                uploadJson: '/KindEditor/UploadImage'                    //上传文件方法  //注意这两个路径
+            });
+        });
+
+        @*var s = ' @Model.Item.commodityDetails';
+
+        KindEditor.html("#commodityDetails", s);*@
+      
+    </script>
+
+
+
+
+    <!--------中间更换内容------->
+
+    <link href="/css/shop_style.css" rel="stylesheet" />
+    <div class="mainbar_wrapper">
+
+
+        <div class="place">
+            <span>位置：</span>
+            <ul class="placeul">
+                <li><span></span><a href="#">商品管理</a></li>
+                <li><span></span><a href="#">编辑商品</a></li>
+            </ul>
+        </div>
+
+
+        <div class="container-fluid">
+            <h2 class="add_tittle">商品信息</h2>
+
+            <div class="addgoods_name">
+
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top"><span class="goods_icon">*</span>商品名称：</em>
+                    <textarea class="addgoods_name_width" rows="2" maxlength="50" id="commodityName" name="commodityName">@Model.Item.commodityName</textarea>
+                    <span id="tip" style=" color:#588905">(商品名称在<em>50</em>以内)</span>
+                </div>
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top"><span class="goods_icon">*</span>商品备注：</em>
+                    <textarea class="addgoods_name_width1" rows="2" maxlength="100" id="commodityRemark" name="commodityRemark">@Model.Item.commodityRemark</textarea>
+                    <span id="tip1">(商品备注出100字以内)</span>
+                </div>
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top"><span class="goods_icon">*</span>商品分类：</em>
+                    @*<textarea class="addgoods_name_width" rows="2" id="commodityName" name="commodityName"></textarea>*@
+                    @Html.DropDownList("CommodityCategorysList", ViewData["CommodityCategorysList"] as SelectList, "--请选择--", new { @style = "width:150px" })
+                    <span id="tip" style="color:#588905"></span>
+                </div>
+
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top">商品积分：</em>
+                    <input id="commodityJifen" name="commodityJifen" value="@Model.Item.commodityJifen">
+
+                </div>
+
+            </div>
+
+
+            <div class="addgoods_name" style="margin-top:0;">
+                <div class="clear">
+                    <div class="addgoods_name_a addgoods_fl">
+                        <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>商品价格：</em>
+                        <input id="commodityPrice" name="commodityPrice" value="@Model.Item.commodityPrice">
+
+                    </div>
+
+                    <div class="addgoods_name_a addgoods_fl addgoods_name_b">
+                        <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>商品数量：</em>
+                        <input id="commodityInventory" name="commodityInventory" value="@Model.Item.commodityInventory">
+
+                    </div>
+
+                    <div class="addgoods_name_a addgoods_fl addgoods_name_b">
+                        <em class="addgoods_name_top addgoods_price">商品排序：</em>
+                        <input class="input-width2" id="commodityRank" name="commodityRank" value="@Model.Item.commodityRank">
+                    </div>
+                </div>
+                <div class="clear">
+                    <div class="addgoods_name_a addgoods_fl ">
+                        <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>商品编码：</em>
+                        <input id="commodityNo" name="commodityNo" value="@Model.Item.commodityNo">
+
+                    </div>
+                    <div class="addgoods_name_a addgoods_fl addgoods_name_b">
+                        <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>商品运费：</em>
+                        <input id="commodityFreight" name="commodityFreight" value="@Model.Item.commodityFreight">
+                        <input id="imghidde" type="hidden" value="@Model.Item.images">
+                        <input id="CommIdhidde" type="hidden" value="@Model.Item.commodityId">
+                    </div>
+                    <div class="addgoods_name_a addgoods_fl addgoods_name_b">
+                        <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>是否包邮：</em>
+                        @if (Model.Item.IsPinkage == true)
+                        {
+                            <input type="checkbox" id="IsPinkage" checked style="width:50px;height:20px" />
+                        }
+                        else { 
+                         <input type="checkbox" id="IsPinkage" style="width:50px;height:20px" />
+                        }
+                        
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="addgoods_name" style="margin-top:0;display:none">
+                <h2 class="add_tittle add_img">商品属性</h2>
+
+                <div class="addgoods_sort">
+                    <div id="tag_class_edit">+添加商品属性</div>
+                </div>
+                <div id="goods_edit_tag_class" class="addgoods_popup" style="display:none">
+                    <div id="edit_tag_class" class="addgoods_popup_title">
+                        <div class="addgoods_popup_SelectName">属性名称：</div>
+                        <div class="addgoods_popup_SelectBox">
+
+                            <span class="custom-combobox">
+                                @Html.DropDownList("specification", "请选择")
+                                <span class="shuxinfenlei">[添加附属分类]</span>
+                                <a tabindex="-1" class="ui-button ui-widget ui-state-default ui-button-icon-only custom-combobox-toggle ui-corner-right" role="button" title="">
+                                    <span class="ui-button-icon-primary ui-icon ui-icon-triangle-1-s"></span>
+                                    <span class="ui-button-text"></span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="addgoods_popup_button"><div class="input-style1" id="finish_tag_item" style="float: left;">收起 </div></div>
+                    <div class="addgoods_popup_button"><div class="input-style4" id="confirm_tag_item" style="float: left;">确定</div></div>
+                </div>
+                <div class="shuxingzhi_wrap">
+                    @if (Model.Item.SpAndDetail != null)
+                    {
+                        foreach (var item in Model.Item.SpAndDetail)
+                        {
+                            if (@item.model.Type == 1)
+                            {
+                                <dl class='txet_suxing'>
+                                    <dt>@item.model.Name</dt>
+                                    <dd>
+                                        <input type=hidden value="@item.model.specificationId">
+                                        <ul id="size">
+                                            @foreach (var it in item.list)
+                                            {
+                                                <li>@it.value</li>
+                                            }
+                                        </ul>
+
+                                    </dd>
+                                    <dd class="shanchushuxing"><a href="javascript:void(0)" onclick="DeleteSp(this)" title="删除属性"></a></dd>
+                                </dl>
+                            }
+                            else
+                            {
+                                <dl class='txet_suxing'>
+                                    <dt>@item.model.Name</dt>
+                                    <dd>
+                                        <input type=hidden value="@item.model.specificationId">
+                                        <ul id="size">
+                                            @foreach (var it in item.list)
+                                            {
+                                                <li style="  float: left; list-style: none; margin: 5px 0 0 10px; padding: 0; height: 25px; line-height: 25px; position: relative; border: solid 1px #ccc;">
+                                                    <img width="30px" height="30px" src="/MicroMalls/CommodityImages/@it.value" />
+                                                </li>
+
+                                            }
+                                        </ul>
+
+                                    </dd>
+                                    <dd class="shanchushuxing"><a href="javascript:void(0)" onclick="DeleteSp(this)" title="删除属性"></a></dd>
+                                </dl>
+                            }
+
+                        }
+                    }
+
+                </div>
+
+            </div>
+
+
+            <div class="addgoods_name" style="margin-top:0;">
+                <h2 class="add_tittle add_img">商品图片<span>(最多可上传3张)</span></h2>
+
+                <ul class="addgoods_photo">
+                    <li class="addgoods_photo_a">
+                        <div class="addgoods_photo_img">
+                            <img id="shopingImg1" src="/CommodityImages/shopdefault.jpg" />
+                        </div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload" name="file_upload" /></p>
+                        <p style="position:relative;" class="shanchuedit">删除</p>
+                    </li>
+                    <li class="addgoods_photo_a" style="display:none">
+                        <div class="addgoods_photo_img"><img id="shopingImg2" src="/CommodityImages/shopdefault.jpg" /></div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload1" name="file_upload1" /></p>
+                        <p style="position:relative;" class="shanchuedit">删除</p>
+                    </li>
+                    <li class="addgoods_photo_a" style="display:none">
+                        <div class="addgoods_photo_img"><img id="shopingImg3" src="/CommodityImages/shopdefault.jpg" /></div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload2" name="file_upload2" /></p>
+                        <p style="position:relative;" class="shanchuedit">删除</p>
+                    </li>
+                    <li class="addgoods_photo_a">
+                        <span style="font-size:1px; color:red">详情图1</span>
+                        <div class="addgoods_photo_img"><img id="shopingImg4" src="/CommodityImages/shopdefault.jpg" /></div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload4" name="file_upload3" /></p>
+                        <p style="position:relative;" class="shanchu">删除</p>
+                    </li>
+                    <li class="addgoods_photo_a">
+                        <span style="font-size:1px; color:red">详情图2</span>
+                        <div class="addgoods_photo_img"><img id="shopingImg5" src="/CommodityImages/shopdefault.jpg" /></div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload5" name="file_upload4" /></p>
+                        <p style="position:relative;" class="shanchu">删除</p>
+                    </li>
+                    <li class="addgoods_photo_a">
+                        <span style="font-size:1px; color:red">详情图3</span>
+                        <div class="addgoods_photo_img"><img id="shopingImg6" src="/CommodityImages/shopdefault.jpg" /></div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload6" name="file_upload5" /></p>
+                        <p style="position:relative;" class="shanchu">删除</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="addgoods_name" style="margin-top:0;">
+                <h2 class="add_tittle add_img">商品详情<span></span></h2>
+                <div>
+                    <textarea class="addgoods_name_widtha" id="commodityDetails" name="commodityDetails">
+                       @Model.Item.commodityDetails
+                    </textarea>
+                </div>
+
+
+            </div>
+            <div class="baoxun">
+                <button class="baoxunxiugai tianjiafabu" id="Editshoping">保存</button>
+                <button class="baoxunxiugai tianjiaquxiao" id="shopingReturn">返回</button>
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="tishixinxi alertBox " style="display:none">
+            <div class="tishi"><span>添加规格属性</span><a class="btn2"></a></div>
+            <div class="addgoods_name" style="margin-top:0;">
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>规格名称：</em>
+                    <input type="text" value="" name="Name">
+                </div>
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>规格类型：</em>
+                    <label class="wenzi_l"><input name="Type" type="radio" value="1" class="weizi" onclick="docheck(this)" /><span>文字类型</span> </label>
+                    <label class="tupian_l"><input name="Type" type="radio" value="2" class="tupian" onclick="docheck(this)" /><span>图片类型 </span> </label>
+                </div>
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top"><span class="goods_icon">*</span>选择方式：</em>
+                    <label class="wenzi_l"><input name="selectType" type="radio" value="1" class="weizi" /><span>单选</span> </label>
+                    <label class="tupian_l"><input name="selectType" type="radio" value="2" class="weizi" /><span>多选 </span> </label>
+                </div>
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top addgoods_price"><span class="goods_icon">*</span>显示类型：</em>
+                    <label class="wenzi_l"><input name="showType" type="radio" value="1" class="weizi" /><span>平铺方式</span> </label>
+                </div>
+
+                <div class="addgoods_sort goods_guigezhi">
+                    <div id="tag_class_edit1">+添加属性</div>
+                </div>
+            </div>
+
+            <div class="gostxinxi shuxingliebiao">
+                <table>
+
+                    <tbody>
+                        <tr id="ggsxTxt">
+                            <td width="12%">属性值</td>
+                            <td>
+                                <ul class="shuxingzhi_txt"></ul>
+                            </td>
+                            <td class="bianji" width="60px;"><a href="#" onclick="deleteValue(this)">[删除]</a></td>
+                        </tr>
+
+                        <tr id="ggsxImg">
+                            <td width="12%">属性值</td>
+                            <td>
+                                <ul class="shuxingzhi_img"></ul>
+                            </td>
+                            <td class="bianji" width="60px;"><a href="#" onclick="deleteValue(this)">[删除]</a></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+
+
+
+                <div class="list_bottom">
+
+                    <div class="piliang" style="height:1px;">
+
+                    </div>
+
+                </div>
+
+            </div>
+            <button class="baoxunxiugai" id="guigeAdd" style=" margin-left:250px; font-weight:bold">添加</button>
+
+            <!-------弹出属性值------->
+            <div class="tianjia_shuxingzhi_p" id="wenzitype" style="display:none;">
+                <p class="tianjia_tittle">添加属性值<a class="shuxin_close"></a></p>
+
+                <div class="tanjia">
+                    <input type="text" value="0" class="shuxingzhi_jiashang">
+                </div>
+                <button class="tianjia_tijiao" id="tiaojiaoTxt">提交</button>
+            </div>
+
+
+            <div class="tianjia_shuxingzhi_p tianjia_shuxingzhi_pp" id="tupiantype" style="display:none;">
+                <p class="tianjia_tittle">添加属性值 <a class="shuxin_close"></a></p>
+
+                <div class="tanjia_img" style="position:relative;">
+                    <p class="dizhi_suxing">
+                        图片地址：<input class="dizhi_suxing_i" readonly="readonly" />
+                    </p>
+                    <div style="position: absolute; right: 60px; top: 3px;"><input type="file" id="file_upload4" name="file_upload" class="liulan" /></div>
+                </div>
+                <button class="tianjia_tijiao" id="tiaojiaoImg" style="  margin-left:70px; margin-top:15px;font-weight:bold">提交</button>
+            </div>
+
+
+            <!-------弹出属性值------->
+
+
+
+
+        </div>                                                            <!--------属性弹出表单------->
+        <!--------中间更换内容------->
+    </div>
+
+
+    <div id="TopMessageDiv">
+        <script src="/js/shuxing_click.js?v"></script>
+        <script src="/js/ShopingAdd.js?v"></script>
+        <script src="/js/ShopingEdit.js?v2"></script>
+    </div>

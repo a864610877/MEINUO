@@ -1,0 +1,16 @@
+﻿ApplyTo.order=4
+ApplyTo.shortName=应用
+Days.order=2
+Days.shortName=清算天数
+Days.shortNameFormat={0}
+DisplayName.order=1
+DisplayName.shortName=名称
+DisplayName.shortNameFormat={0}
+IsCash.order=6
+IsCash.shortName=是否计入现金管理
+Manual.order=3
+Manual.shortName=是否手动
+Manual.shortNameFormat={0}
+State.order=10
+State.shortName=状态
+State.shortNameFormat={0}

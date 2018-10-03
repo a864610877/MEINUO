@@ -1,0 +1,2 @@
+﻿Processing.name=未结算
+Done.name=已结算

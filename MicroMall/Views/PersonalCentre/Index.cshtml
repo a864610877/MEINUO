@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model MicroMall.Models.PersonalCentre.PersonalIndex
+<header data-am-widget="header" class="am-header am-header-default bgFFF mb5">
+    <div class="am-header-left am-header-nav">
+        <a href="#" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        个人中心
+    </h1>
+</header>
+<div class="userImgBox bgFFF mb5 am-container">
+    <span class="userTx">
+        <img src="@Model.photo" alt="">
+    </span>
+    <div class="userTxInfo align-center-vertical">
+        <h2><b>@Model.name</b> <span><img src="/images/huangguang.png" width="22"></span><p>等级：@Model.grade</p></h2>
+    </div>
+    <ul class="am-avg-sm-2 am-text-center fs14 am-padding-vertical-sm border_t">
+        <li>
+            <a href="#">
+                <img src="/images/jifen.png" alt="" width="30">
+                <p>我的积分</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Withdraw/Withdraw">
+                <img src="/images/tixian.png" alt="" width="30">
+                <p>积分提现</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="userInfo fs15">
+    <ul>
+        <li><a href="/PersonalCentre/PersonalInfo"> 会员信息<span class="am-icon-angle-right am-fr fs18"></span></a></li>
+        <li><a href="/User/RecommendLog"> 分销记录<span class="am-icon-angle-right am-fr fs18"></span></a></li>
+        <li><a href="/PersonalCentre/MyAddress"> 收货地址<span class="am-icon-angle-right am-fr fs18"></span></a></li>
+        <li><a href="/PersonalCentre/MyQR?v1.0"> 分享本商场<span class="am-icon-angle-right am-fr fs18"></span></a></li>
+        <li><a href="/PersonalCentre/UpdatePassword"> 修改密码<span class="am-icon-angle-right am-fr fs18"></span></a></li>
+        <li> <a href="/login/LoginOut">退出<span class="am-icon-angle-right am-fr fs18"></span></a></li>
+    </ul>
+</div>

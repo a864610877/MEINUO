@@ -1,0 +1,1 @@
+﻿select * from TemporaryTokenkeys where TokenKeyType = @TokenKeyType and Token = @Token

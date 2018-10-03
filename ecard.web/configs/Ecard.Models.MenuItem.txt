@@ -1,0 +1,14 @@
+﻿Action.name=Action
+Action.order=1
+Children.name=Children
+Children.order=1
+Controller.name=Controller
+Controller.order=1
+DisplayName.name=DisplayName
+DisplayName.order=1
+Name.name=Name
+Name.order=1
+Permission.name=Permission
+Permission.order=1
+Tooltip.name=Tooltip
+Tooltip.order=1

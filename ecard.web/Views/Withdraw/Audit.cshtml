@@ -1,0 +1,452 @@
+﻿@model EcardModelItem<WithdrawModel>
+<style>
+    html * {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    body {
+        padding: 0px;
+        margin: 0px;
+        font-size: 12px;
+        font-family: Verdana, Geneva, sans-serif;
+        background-repeat: repeat-x;
+        color: #3d3d3d;
+    }
+
+    .stepdiv {
+        position: absolute;
+        top: 15%;
+        left: 35%;
+        border: 1px solid #b7d5df;
+        width: 710px;
+        margin: auto;
+        padding: 15px;
+        box-shadow: 0 0 5px 3px #dcdcdc;
+        border-radius: 5px;
+    }
+
+        .stepdiv h2 {
+            font-size: 15px !important;
+            margin-bottom: 5px !important;
+            padding-left: 10px !important;
+            color: #056dae;
+            position: relative;
+            line-height: 30px;
+            border-bottom: 1px #bababa solid;
+        }
+
+
+    div.fielddiv {
+        border: 1px #4a7994 dotted;
+        padding: 1px 3px 1px 3px;
+        margin: 5px 0;
+        clear: both;
+        position: relative;
+        clear: both;
+        border-radius: 5px;
+        box-shadow: 1px 1px 8px #DEDFE2,-1px -1px 8px #DEDFE2;
+    }
+
+
+        div.fielddiv h3 {
+            font-size: 14px !important;
+            margin: 3px 0 1px 0;
+            color: #000 !important;
+            font-style: italic;
+            background: none;
+            line-height: 30px;
+            border-bottom: 1px #bababa solid;
+            margin-bottom: 1px !important;
+            font-weight: normal;
+            box-sizing: border-box;
+        }
+
+    div.panel {
+        padding: 3px;
+        background: #EEE;
+        border-radius: 3px;
+        margin-bottom: 10px;
+    }
+
+    table.itxtable {
+        border: 1px #CACACA solid !important;
+        width: 100%;
+        border-collapse: inherit;
+        border-spacing: 1px;
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+    table.itxtable {
+        border-collapse: inherit;
+        border-spacing: 1px;
+    }
+
+    table.itxtable {
+        border-collapse: inherit;
+        border-spacing: 1px;
+    }
+
+        table.itxtable tr th, table.itxtable thead tr td {
+            background-color: #f0f5f7;
+            border: 1px #bebebd solid;
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            font-size: 14px;
+            min-width: 20px;
+        }
+
+        table.itxtable tr th, table.itxtable tr td {
+            border: 1px #CACACA solid !important;
+            padding: 8px 5px;
+            text-align: left;
+            line-height: 16px;
+            vertical-align: middle;
+            position: relative !important;
+        }
+
+            table.itxtable tr td.lefttd {
+                background-color: #F2F1EF;
+                width: 18% !important;
+                text-align: right;
+                color: #000;
+                font-weight: bold;
+            }
+
+        table.itxtable tr th, table.itxtable tr td {
+            border: 1px #CACACA solid !important;
+            padding: 8px 5px;
+            text-align: left;
+            line-height: 16px;
+            vertical-align: middle;
+            position: relative !important;
+        }
+
+        table.itxtable tr th, table.itxtable tr td {
+            border: 1px #CACACA solid !important;
+            padding: 8px 5px;
+            text-align: left;
+            line-height: 16px;
+            vertical-align: middle;
+            position: relative !important;
+        }
+
+            table.itxtable tr td.lefttd {
+                background-color: #F2F1EF;
+                width: 18% !important;
+                text-align: right;
+                color: #000;
+                font-weight: bold;
+            }
+
+            table.itxtable tr td.lefttd {
+                background-color: #F2F1EF;
+                width: 18% !important;
+                text-align: right;
+                color: #000;
+                font-weight: bold;
+            }
+
+        table.itxtable tr th {
+            background-color: #F2F1EF;
+            border: 1px #bebebd solid;
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+            font-size: 14px;
+            min-width: 20px;
+        }
+
+    .submit {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .sure {
+        width: 96px;
+        height: 35px;
+        line-height: 35px;
+        color: #fff;
+        background: #3793c7;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+        .sure:hover {
+            background: #2782b6;
+        }
+
+    .cancel {
+        width: 96px;
+        height: 35px;
+        line-height: 35px;
+        color: #000;
+        background: #ced5d9;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 3px;
+        /*margin-left: 20px;*/
+    }
+
+    .cancel {
+        cursor: default;
+    }
+
+        .cancel:hover {
+            cursor: default;
+        }
+
+
+    .itxtitle a {
+        display: block;
+        background: url(/Images/close.png) no-repeat;
+        width: 22px;
+        height: 22px;
+        float: right;
+        margin-right: -8px;
+        margin-top: -8px;
+        cursor: pointer;
+    }
+
+
+    .itxtable .carname {
+        border: 1px #999 solid;
+        height: 28px;
+        padding: 4px 5px;
+        width: 70%;
+        font-size: 13px;
+        color: black;
+        margin-bottom: 0;
+        border-radius: 3px;
+        box-shadow: inset 1px 1px 1px #ddd,1px 1px 1px #DEDFE2;
+        transition: border linear 0.2s,box-shadow linear 0.2s;
+    }
+
+    .itxtable .r_carname {
+        padding: 5px 8px;
+        margin-bottom: 0;
+    }
+
+    .kahaoshuru {
+        position: relative;
+        background: url(/css/images/formtips.gif) 3px bottom no-repeat;
+        margin-left: 5px;
+        border: 1px solid transparent;
+        height: 26px;
+        _height: 24px;
+        line-height: 18px;
+        clear: both;
+        margin-bottom: 0px !important;
+        text-indent: 22px;
+        display: inline-block;
+        border-radius: 5px;
+    }
+
+    .righttd .tel {
+        border: 1px #999 solid;
+        height: 28px;
+        padding: 4px 5px;
+        width: 100%;
+        font-size: 13px;
+        color: black;
+        margin-bottom: 0;
+        border-radius: 3px;
+        box-shadow: inset 1px 1px 1px #ddd,1px 1px 1px #DEDFE2;
+        transition: border linear 0.2s,box-shadow linear 0.2s;
+    }
+
+    .Checkgreen {
+        color: green;
+        position: absolute;
+        right: 5px;
+        top: 0px;
+        margin-right: 75px;
+        height: 35px;
+        /*width:120px;*/
+        line-height: 35px;
+    }
+
+    .Checkred {
+        color: red;
+        position: absolute;
+        right: 5px;
+        top: 0px;
+        height: 35px;
+        line-height: 35px;
+    }
+</style>
+    <script>
+        $(function () {
+            //同意审核
+            $("#audit").click(function () {
+                if (confirm("确定同意审核吗？")) {
+                    var withdrawId = $("#withdrawId").val();
+                    var remark = $("#remark").val();
+                    $.ajax({
+                        url: "/Withdraw/AuditWithdraw",
+                        data: { id: withdrawId, remark: remark },
+                        type: "post",
+                        //cache: false,
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.Code == 0) {
+                                $("#audit").attr("class", "cancel");
+                                $("#audit").attr("disabled", true);
+                                $("#Noaudit").attr("class", "cancel");
+                                $("#Noaudit").attr("disabled", true);
+                                $("#withstate").text("成功")
+                                $("#msg").text("成功");
+                                $("#msg").attr("class", "Checkgreen");
+                            }
+                            else {
+                                $("#msg").html(data.CodeText);
+                                $("#msg").attr("class", "Checkred");
+                            }
+
+                        },
+                        error: function () {
+                            window.location.href = "/Home/Error";
+                        }
+                    });
+                }
+            });
+            //不同意审核
+            $("#Noaudit").click(function () {
+                if (confirm("确定不同意审核吗？")) {
+                    var withdrawId = $("#withdrawId").val();
+                    var remark = $("#remark").val();
+                    $.ajax({
+                        url: "/Withdraw/NotAuditWithdraw",
+                        data: { id: withdrawId, remark: remark },
+                        type: "post",
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.Code == 0) {
+                                $("#audit").attr("class", "cancel");
+                                $("#audit").attr("disabled", true);
+                                $("#Noaudit").attr("class", "cancel");
+                                $("#Noaudit").attr("disabled", true);
+                                $("#msg").text("成功");
+                                $("#msg").attr("class", "Checkgreen");
+                                $("#withstate").text("成功")
+                            }
+                            else {
+                                $("#msg").text(data.CodeText);
+                                $("#msg").attr("class", "Checkred");
+                            }
+                        },
+                        error: function () {
+
+                            window.location.href = "/Home/Error";
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+    <body>
+
+        <div id="step-read" class="stepdiv">
+
+            <div id="formdatahtml">
+                <div class="fielddiv">
+                    <h3 class="itxtitle">&diams; 用户提现信息　Member Information</h3>
+                    <div class="panel">
+                        <table class="itxtable">
+                            <tbody>
+                                <tr>
+                                    <td class="lefttd">姓名：</td>
+                                    <td colspan="3">
+                                        <input type="hidden" value="@Model.Item.withdrawId" id="withdrawId" />
+                                        @Model.Item.DisplayName
+                                        &nbsp; &nbsp;@(Model.Item.Gender == 2 ? "女士" : "先生")
+                                    </td>
+                                </tr>
+                                <tr>
+                                    @*<td class="lefttd">电子邮箱：</td>
+                                    <td class="righttd">@Model.Item.Email</td>
+                                    <td class="lefttd">手机号码：</td>
+                                    <td>@Model.Item.Mobile</td>*@
+                                </tr>
+                                <tr>
+                                    @*<td class="lefttd">提现积分：</td>
+                                    <td>@Model.Item.point</td>*@
+                                    <td class="lefttd">目标提现金额：</td>
+                                    <td >@Model.Item.amount</td>
+                                </tr>
+                                <tr>
+                                    <td class="lefttd">审核人：</td>
+                                    <td class="righttd">@Model.Item.Operator</td>
+                                    <td class="lefttd">状态：</td>
+                                    
+                                        @if (Model.Item.state==1)
+                                        {
+                                           <td id="withstate" class="righttd"> 待审核</td>
+                                        }
+                                        else if (Model.Item.state == 2)
+                                        {
+                                            <td id="withstate" class="righttd"> 成功</td>
+                                        }
+                                        else
+                                        {
+                                            <td id="withstate" class="righttd"> 失败</td>
+                                        }
+                                </tr>
+                                <tr>
+                                    <td class="lefttd">备注：</td>
+                                    @if (Model.Item.state == Ecard.Models.WithdrawStates.notaudit)
+                                    {
+                                          <td class="righttd"><input type="text" class="tel" value="@Model.Item.remark" id="remark"></td>
+                                    }
+                                    else
+                                    {
+                                         <td class="righttd">@Model.Item.remark</td>
+                                    }
+                                  
+                                    <td class="lefttd">提现时间：</td>
+                                    <td class="righttd">@Model.Item.submitTime.ToString("yyyy-MM-dd")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="submit" style="position:relative;">
+                    @if (Model.Item.state == Ecard.Models.WithdrawStates.notaudit)
+                    {
+                       
+                            <button type="button" id="audit" class="sure">同意</button>
+     
+                        <button type="button" id="Noaudit" class="sure">不同意</button>
+                    }
+                    else
+                    {
+                        <button type="button" id="audit" class="cancel" disabled>同意</button>
+                        <button type="button" id="Noaudit" class="cancel" disabled>不同意</button>
+                    }
+
+                    <button type="button" onclick="actionLink('/Withdraw/List')" class="sure scbtn">返回</button>
+
+                    <p id="msg">
+
+                    </p>
+                </div>
+            </div>
+
+         </div>
+
+    </body>

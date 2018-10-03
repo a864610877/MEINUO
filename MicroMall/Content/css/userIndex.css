@@ -1,0 +1,280 @@
+body {
+        background: #F5F5F5;
+    }
+    ul {
+        margin:0;
+        padding:0;
+    }
+    li {
+        margin:0;
+        padding:0;
+        list-style:none;
+    }
+    .Number {
+        color: #333;
+    }
+    .Number .top {
+        width: 100%;
+        height: 7rem;
+        border-bottom: 0.0063rem solid #EFEFEF;
+    }
+    .Number .headimg {
+        width: 4.375rem;
+        height: 4.375rem;
+        border-radius: 10rem;
+        background: #B59F76;
+        color: #FFF;
+        text-align: center;
+        line-height: 4rem;
+        float: left;
+        margin-left: 2rem;
+        margin-top: 1.2rem;
+    }
+    .Number .name_level {
+        float: left;
+        line-height: 1.8rem;
+        letter-spacing: 0.1rem;
+        margin-top: 1.8rem;
+        margin-left: 1rem;
+    }
+    .Number .name {
+    }
+    .Number .level {
+        color: #B59F76;
+        font-size: 0.9rem;
+    }
+    .Number .btn_li {
+        width: 8.625rem;
+        float: left;
+        height: 4.875rem;
+        text-align: center;
+        background: #FFF;
+    }
+    .Number .btn_li img {
+        width: 2.1875rem;
+        margin-top: 0.45rem;
+    }
+    .Number .btn {
+        float: left;
+        margin-top: 7rem;
+    }
+    .btn_li div {
+        font-size:0.8rem;
+    }
+    .content {
+        float:left;
+        margin-top:0.8rem;
+    }
+    .content li {
+        width: 25.875rem;
+        height: 2.8125rem;
+        background: #FFF;
+        margin-top: 0.063rem;
+        margin-bottom: 0.063rem;
+    }
+    .content li div {
+        float: left;
+        line-height: 2.7rem;
+        margin-left: 1.2rem;
+    }
+        .content li i {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-top: 0.063rem solid #666;
+        border-right: 0.063rem solid #666;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 1.2rem;
+        margin-top: 1rem;
+    }
+.content li .f_r {
+    float:right;
+    margin-right:1.5rem;
+}
+.My_Intgerl {
+    width:25.875rem;
+    height:4.0625rem;
+    background:#fff;
+}
+.My_Intgerl .f_l {
+    float:left;
+    margin-top:0.6rem;
+    margin-left:3rem;
+}
+.My_Intgerl .f_r {
+    float: right;
+    color: #b59f76;
+    font-size: 0.8rem;
+    margin-top: 2.2rem;
+    margin-right: 2rem;
+    letter-spacing:0.15rem;
+}
+.My_Intgerl .intgerl {
+    color:#b59f76;
+    font-size:2.2rem;
+}
+.My_Intgerl .jfs {
+    color:#999;
+    margin-left:0.5rem;
+}
+.daohan {
+    height:3rem;
+    width:25.875rem;
+    background:#FFF;
+    margin-top:1.2rem;
+}
+.daohan2 {
+    height:1.625rem;
+    width:25.875rem;
+}
+.daohan2 .co {
+    color: #b59f76;
+}
+.daohan2 div {
+    float:left;
+    width:12.7rem;
+    height:100%;
+    margin-top: 0.7rem;
+    text-align:center;
+}
+.content .h_zqjf li .qwc_btn {
+    background: #b59f76;
+    color: #FFF;
+    height: 2rem;
+    margin-top: 0.41rem;
+    line-height: 2rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    border-radius: 2.5rem;
+    margin-right: 1rem;
+}
+
+.content .h_gmjl li {
+    width:25.875rem;
+    height:5.625rem;
+    margin-top: 0.063rem;
+    margin-bottom: 0.063rem;
+}
+.content .h_gmjl li .m_t {
+    margin-top:0.6rem
+}
+.content .h_gmjl li .f_l {
+    float:left;
+}
+.content .h_gmjl li p {
+    line-height:1.5rem;
+    color:#333;
+}
+.content .h_gmjl .xxmc {
+    font-size:0.9rem;
+    color:#666;
+    height: 0.8rem;
+}
+.content .h_gmjl .hdrq {
+    font-size:0.7rem;
+    color:#666;
+}
+
+.content .h_gmjl li .qwc_btn {
+    color: #666;
+    font-size:2.5rem;
+    margin-right: 1rem;
+    margin-top: 1.2rem;
+}
+
+.content .s_wdtj .datetime {
+    font-size:0.9rem;
+    margin-left:0rem;
+}
+
+.content .s_wdtj .wdtj_w {
+    width:15.5rem;
+    overflow:hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+.content .s_gmjl li {
+    width:25.875rem;
+    height:5.625rem;
+    margin-top: 0.063rem;
+    margin-bottom: 0.063rem;
+}
+.content .s_gmjl li .m_t {
+    margin-top:0.6rem
+}
+.content .s_gmjl li .f_l {
+    float:left;
+}
+.content .s_gmjl li p {
+    line-height:1.5rem;
+    color:#333;
+}
+.content .s_gmjl .xxmc {
+    font-size:0.9rem;
+    color:#666;
+    height: 1.5rem;
+}
+.content .s_gmjl .hdrq {
+    font-size:0.7rem;
+    color:#666;
+}
+
+.content .s_gmjl li .qwc_btn {
+    color: #666;
+    font-size:2.5rem;
+    margin-right: 1rem;
+    margin-top: 1.2rem;
+}
+
+.draw {
+    width:25.875rem;
+    height:16rem;
+    background:#FFF;
+    margin-top:1rem;
+    padding-top: 2rem;
+}
+
+.tx_div {
+    width:20.8125rem;
+    height:15.625rem;
+    margin:0 auto;
+}
+.tx_input {
+    width: 100%;
+    height: 2.2rem;
+    background-color: #b59f76;
+    border: 0.3rem solid #b59f76;
+    border-radius: 0.8rem;
+}
+.tx_input .tx_l {
+    width:15.5rem;
+    height:100%;
+    float:left;
+    overflow:hidden;
+}
+.tx_input .tx_l input {
+    background: #FFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.6rem 0rem 0rem 0.6rem;
+    font-size: 1.2rem;
+    color: #666;
+    padding-left: 1.2rem;
+    line-height:1.2rem;
+}
+.tx_input .tx_r{
+    width:5.25rem;
+    height:100%;
+    float:right;
+    line-height: 2rem;
+    color: #FFF;
+    text-align: center;
+    font-size:1.1rem;
+}
+.tx_div p {
+    font-size:0.9rem;
+    color:#999;
+}

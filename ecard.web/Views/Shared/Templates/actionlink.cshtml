@@ -1,0 +1,5 @@
+﻿@model Ecard.Mvc.Models.ActionModel 
+@{
+    var postClass = Model.IsPost ? "post" : "";
+}
+<input type="button" class="scbtn" style=" margin-left:20px;" value="@Model.Text" onclick="actionLink('@Url.Action(Model.Action, Model.Controller, Model.RouteValues)')" />

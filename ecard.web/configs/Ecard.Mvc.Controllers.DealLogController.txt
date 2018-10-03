@@ -1,0 +1,14 @@
+﻿confirms.description=confirms
+description=Ecard.Mvc.Controllers.DealLogController
+List=List
+List.confirm=
+List.description=导出
+List.name=交易记录
+List.shortName=交易记录
+List.toolbarIcon=shuffle
+name=Ecard.Mvc.Controllers.DealLogController
+PrintTicket.name=小票重打
+Rollback.confirm=您确定要冲正/取消选中交易？该操作不可恢复
+Rollback.description=交易取消
+Rollback.name=交易取消
+Rollback.toolbarIcon=pause

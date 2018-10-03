@@ -1,0 +1,14 @@
+﻿AccountName.name=AccountName
+AccountName.order=1
+AccountType.name=AccountType
+AccountType.order=1
+description=description
+Message.name=Message
+Message.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=query
+State.name=State
+State.order=1
+title=title

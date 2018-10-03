@@ -1,0 +1,11 @@
+﻿@model Picture
+
+@if (Model != null)
+{
+    var width = Model.Width.HasValue ? string.Format("width='{0}'", Model.Width.Value) : "";
+    var height = Model.Height.HasValue ? string.Format("height='{0}'", Model.Height.Value) : "";
+    var display = string.IsNullOrEmpty(Model.Name) ? "display:none" : "";
+    var src = string.IsNullOrEmpty(Model.Url) ? "" : Url.Content(string.Format(Model.Url, Model.Name));
+    <img name="@(ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName("File"))" src="@src" @Html.Raw(width) @Html.Raw(height) style="@display" />
+}
+<input type="file" name='@(ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldName("File"))' value=" " />

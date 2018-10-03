@@ -1,0 +1,144 @@
+﻿@using Moonlit
+@model  Ecard.Mvc.Models.SecondKillCommodityss.ListSecondKillCommodityss
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>
+<div class="rightinfo">
+
+    <table id="selectTd">
+        <tr>
+            @Html.EditorForModel("condition")
+            <td>
+                <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+            </td>
+        </tr>
+    </table>
+    @Html.ToolbarOfList(Model.GetToolbarActions())
+    <div style="clear: both;">
+    </div>
+    <div class="listbox">
+        <table class="tablelist">
+            <thead>
+            <th><input id="ckAll" type="checkbox" onclick="selectAll()" /></th>
+            @Html.Ths(Model.List, Model.GetItemType())
+            @Html.Th(Ths.Operation, new { width = "134px" })
+            </thead>
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+
+                        <tr>
+                            <td><input name="selectBox" type="checkbox" value=@item.Id /></td>
+                            @Html.Tds(item, Model.GetItemType())
+                            <div>@Html.ToolbarOfItem(Model.GetItemToobalActions(item))</div>
+                        </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        <div id="pagehtml">
+            @(ViewBag.pageHtml == null ? "" : ViewBag.pageHtml)
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var pageS = 10;
+    var index = 0;
+    var ActionName = "";
+    var ActionUrl = "";
+    var jsonData = "";
+    function selectInput(choose) {
+        pageS = choose.value;
+        submitClicks(choose);
+    }
+
+    function AjaxGetData(PageIndex, PageSize) {
+        var commodityNo = $('#commodityNo').val();
+        $.ajax({
+            url: "/SecondKillCommoditys/AjaxList",
+            data: { PageIndex: PageIndex, PageSize: PageSize, commodityNo: commodityNo},
+            type: "post",
+            //cache: false,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+
+                var listVal = new Array();
+                listVal.push("Id");
+                listVal.push("commodityNo");
+                listVal.push("commodityName");
+                listVal.push("num");
+                listVal.push("price");
+                listVal.push("surplusNum");
+                listVal.push("payNum");
+                listVal.push("boor");
+                $.GetstrTrs(data, listVal, "Id");
+            },
+            error: function () {
+                window.location.href = "/Home/UserError";
+            }
+        })
+    }
+    //操作
+    function OperatorThis(RName, RUrl) {
+        ActionName = RName;
+        ActionUrl = RUrl;
+        switch (RName) {
+            case "Edit":
+                window.location.href = RUrl;
+                break;
+            case "Suspend":
+                $(".tip p").text("你确定要停用当前角色吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Suspends":
+                jsonData = getChecks();
+                $(".tip p").text("你确定要停用所选中角色吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Resume":
+                $(".tip p").text("你确定要启用当前角色吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Resumes":
+                jsonData = getChecks();
+                $(".tip p").text("你确定要启用所选中角色吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Delete":
+                $(".tip p").text("你确定要删除当前商品吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Deletes":
+                jsonData = getChecks();
+                $(".tip p").text("你确定要删除所选中商品吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "CreateDog":
+                window.location.href = RUrl;
+                break;
+            default:
+                window.location.href = RUrl;
+                break;
+        }
+    }
+
+
+</script>
+

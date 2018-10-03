@@ -1,0 +1,28 @@
+﻿@using Moonlit
+@model IItemList 
+ @{
+     var itemType = Model.GetItemType();
+     var prefix = ViewData["propertyName"];
+ }
+
+<div class="hastable">
+    <table class="sort-table">
+        <thead>
+            <tr>
+                @Html.Ths(Model.Items, itemType)
+            </tr>
+        </thead>
+        <tbody> 
+            @using (var scope = new IteratorScope())
+            {
+                foreach (var item in Model.Items)
+                {
+                    <tr> 
+                        @Html.Tds(item, itemType)
+                    </tr>
+                    scope.Next();
+                }
+            }
+        </tbody>
+    </table>
+</div>

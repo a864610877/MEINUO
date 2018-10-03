@@ -1,0 +1,205 @@
+﻿<!--------中间更换内容------->
+@using Moonlit
+@model  Ecard.Mvc.Models.Withdraws.ListWithdraws
+<link href="/css/shop_style.css" rel="stylesheet" />
+<script src="/js/AccountList.js"></script>
+<style>
+    .nap {
+        width: 230px;
+        height: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 3px;
+    }
+</style>
+
+<div class="mainbar_wrapper">
+
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">>&nbsp;用户提现列表</a></li>
+
+        </ul>
+    </div>
+
+    <div class="tool_view" style=" height:auto;">
+        <table id="selectTd">
+            <tr>
+                @Html.EditorForModel("condition")
+                <td>
+                    <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+                </td>
+            </tr>
+        </table>
+
+        <div class="clear"></div>
+
+
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="gost_list">
+    <div class="gosttitle1">
+        <h2>提现信息</h2>
+        <p>
+            <a href="javascript:void(0)" onclick="OperatorThis('AuditWithdraws', '/Withdraw/AuditWithdraws')">[批量同意]</a>
+            <a href="javascript:void(0)" onclick="OperatorThis('NotAuditWithdraws', '/Withdraw/NotAuditWithdraws')">[批量不同意]</a>
+        </p>
+    </div>
+
+    <div class="gostxinxi">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" onclick="bigChange(this)" name=" goodslist_checkbox_all" id="goodslist_checkbox_all"></th>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+
+                        <tr>
+                            <td><input type="checkbox" onclick="smallChange(this)" name="withdrawId" value="@item.withdrawId"></td>
+                            @Html.Tds(item, Model.GetItemType())
+                            @Html.ToolbarOfItem(Model.GetItemToobalActions(item))
+
+                        </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="list_bottom">
+            <div id="pagehtml">
+                @Html.Raw(Model.pageHtml)
+            </div>
+        </div>
+    </div>
+</div>
+<!--------中间更换内容------->
+<script>
+
+    function bigChange(obj) {
+        var smObj = document.getElementsByName("withdrawId");
+        if (obj.checked == false) {
+            for (var i = 0; i < smObj.length; i++)
+                smObj[i].checked = false;
+        } else {
+            for (var i = 0; i < smObj.length; i++)
+                smObj[i].checked = true;
+        }
+    }
+    function smallChange(obj) {
+        var smObj = document.getElementsByName("withdrawId");
+        var bigObj = document.getElementById("goodslist_checkbox_all");
+        if (obj.checked == true)
+            bigObj.checked = true;
+        else {
+            b = true;
+            for (var i = 0; i < smObj.length; i++) {
+                if (smObj[i].checked == true)
+                    b = false;
+            }
+            if (b == true)
+                bigObj.checked = false;
+        }
+    }
+    $("#state").val("");
+    var pageS = 10;
+    var index = 0;
+    var ActionName = "";
+    var ActionUrl = "";
+    var jsonData = "";
+    function selectInput(choose) {
+        pageS = choose.value;
+        submitClicks(choose);
+    }
+    //获取数据
+    function AjaxGetData(PageIndex, PageSize) {
+        var Operator = $('#Operator').val();
+        var state = $('.select1').val();
+        var startTime = $('#startTime').val();
+        var endTime = $('#endTime').val();
+        $.ajax({
+            url: "/Withdraw/AjaxList",
+            data: {
+                PageIndex: PageIndex, PageSize: PageSize, Operator: Operator, state: state, startTime: startTime,
+                endTime: endTime
+            },
+            type: "post",
+            //cache: false,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                var listVal = new Array();
+                listVal.push("withdrawId");
+                listVal.push("orderNo");
+                listVal.push("DisplayName");
+                listVal.push("Gender");
+                listVal.push("Email");
+                listVal.push("Mobile");
+                listVal.push("point");
+                listVal.push("amount");
+                listVal.push("Operator");
+                listVal.push("state");
+                listVal.push("remark");
+                listVal.push("submitTime");
+                listVal.push("boor");
+                $.GetstrTrs(data, listVal, "withdrawId");
+
+            },
+            error: function () {
+                window.location.href = "/Home/Error";
+            }
+        })
+
+
+    }
+    //操作
+    function OperatorThis(RName, RUrl) {
+        ActionName = RName;
+        ActionUrl = RUrl;
+        switch (RName) {
+            case "Audit":
+                window.location.href = RUrl;
+                break;
+            case "AuditWithdraws":
+                var id = "";
+                $("#tbodysNum input:checked").each(function () {
+                    id += $(this).val() + ",";
+                })
+                id = id.substring(0, id.length - 1);
+                jsonData = id;
+                $(".tip p").text("你确定要同意选中的" + $("#tbodysNum input:checked").length + "条申请吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "NotAuditWithdraws":
+                var id = "";
+                $("#tbodysNum input:checked").each(function () {
+                    id += $(this).val() + ",";
+                })
+                id = id.substring(0, id.length - 1);
+                jsonData = id;
+                $(".tip p").text("你确定要不同意选中的" + $("#tbodysNum input:checked").length + "条申请吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+        }
+    }
+
+
+</script>

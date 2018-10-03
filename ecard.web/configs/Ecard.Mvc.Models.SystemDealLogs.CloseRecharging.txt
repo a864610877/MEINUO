@@ -1,0 +1,4 @@
+﻿CloseRecharging.success=CloseRecharging.success
+error.Password=密码错误
+messages.CloseRecharging.success=messages.CloseRecharging.success
+OpenReceipt.failed=原交易不存在

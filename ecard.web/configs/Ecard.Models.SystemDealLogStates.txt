@@ -1,0 +1,6 @@
+﻿All.name=全部
+All.order=1
+Closed.name=取消
+Closed.order=100
+Normal.name=正常
+Normal.order=2

@@ -1,0 +1,13 @@
+﻿Amount.explain=Amount
+Amount.name=领取金额
+Amount.order=1
+DealType.explain=DealType
+DealType.name=现金交易类型
+DealType.order=1
+description=现金领取
+messages.success=领取现金成功
+Owner.explain=Owner
+Owner.name=现金人
+Owner.order=1
+title=领取现金
+titleA=titleA

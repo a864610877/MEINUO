@@ -1,0 +1,2 @@
+﻿columns=columns
+sql=report.makecard

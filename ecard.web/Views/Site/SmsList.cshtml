@@ -1,0 +1,53 @@
+﻿@using Moonlit
+@model  SmsLists
+@using (Html.BeginForm("SmsList", "Site"))
+{ 
+    <div style="width: 98%; margin: 6px 10px 10px 16px; float: left">
+        <div>
+            <div class="searchmainDiv">
+                <div class="searchtext">
+                    <ul>
+                        @Html.EditorForModel("condition")
+                        <li>@Html.Submit(Model.Localize("query"))</li>
+                    </ul>
+                </div>
+                <br />
+                <div class="searchCommand">
+                </div>
+        </div>
+    </div>
+    <div style="clear: both;">
+    </div>
+    <div class="listbox">
+        <div class="listbox_tital">
+            <div style="float: left; display: inline-block;">
+                @Model.Localize("title")</div>
+            <div style="float: right;">
+                <input type="submit" value="查询结果" class="label_button_up button" onclick="return false;" />
+            </div>
+        </div>
+        <table class="sort-table" style="width: 100%; margin-bottom: 12px;border-collapse: collapse">
+            <thead style="border-color: #5ec2f9; border-bottom-style: solid">
+                <tr>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                </tr>
+            </thead>
+            <tbody>
+                @using (var scope = new IteratorScope())
+                {
+                    
+                    foreach (var item in Model.List)
+                    {
+                        
+                    <tr >
+                        @Html.Tds(item, Model.GetItemType())
+                    </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        @Html.Pager()
+    </div>
+</div>
+}

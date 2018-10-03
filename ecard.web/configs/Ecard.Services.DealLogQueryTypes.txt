@@ -1,0 +1,4 @@
+﻿All.name=所有
+All.order=1
+ShopDealType.name=可清算
+ShopDealType.order=1

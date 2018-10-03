@@ -1,0 +1,12 @@
+﻿Amount.Name=金额 
+cancelpay.success=冲正支付成功
+cancelPay.Text=冲正
+currentPassword.Name=密码
+description=冲正支付
+failToReadAccount=读卡失败
+noPosHere=尚未初始化终端，请联系管理员
+Pay.Text=Pay.Text
+Query.Text=查询
+title=冲正交易
+waitingForCommunicate=连接服务器中
+waitingForInsertCard=请插入卡

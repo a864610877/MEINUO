@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="25.925" height="29.629" viewBox="0 0 28 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3c4042;
+        stroke: #7d7d7d;
+        stroke-linejoin: round;
+        stroke-width: 1px;
+        filter: url(#color-overlay-1);
+        fill-rule: evenodd;
+      }
+    </style>
+
+    <filter id="color-overlay-1" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#7d7d7d"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend in2="SourceGraphic" result="solidFill"/>
+    </filter>
+  </defs>
+  <g style="fill: #3c4042; filter: url(#color-overlay-1)">
+    <path d="M24.500,27.499 C24.500,28.051 24.052,28.499 23.500,28.499 L4.500,28.499 C3.947,28.499 3.500,28.051 3.500,27.499 L3.500,12.499 C3.500,12.400 3.530,12.310 3.556,12.219 C3.523,12.152 3.500,12.079 3.500,12.000 L7.500,3.999 C7.500,3.723 7.724,3.499 8.000,3.499 L12.500,3.499 L15.562,3.497 L15.562,3.499 L20.000,3.499 C20.276,3.499 20.500,3.723 20.500,3.999 L24.500,12.000 C24.500,12.079 24.477,12.152 24.443,12.219 C24.470,12.310 24.500,12.400 24.500,12.499 L24.500,27.499 ZM8.250,4.499 L4.750,11.499 L11.500,11.499 L11.500,11.498 L11.611,11.498 L12.389,4.499 L8.250,4.499 ZM14.500,4.499 L13.500,4.499 L12.500,11.498 L15.500,11.498 L14.500,4.499 ZM15.500,12.497 L12.500,12.497 L12.500,19.497 L15.500,19.497 L15.500,12.497 ZM19.750,4.499 L15.667,4.499 L16.395,11.498 L16.500,11.498 L16.500,11.499 L23.250,11.499 L19.750,4.499 ZM23.500,12.499 L16.500,12.499 L16.500,20.498 L11.500,20.498 L11.500,12.499 L4.500,12.499 L4.500,27.499 L23.500,27.499 L23.500,12.499 Z" id="path-1" style="stroke: inherit; filter: none; fill: inherit" class="cls-1"/>
+  </g>
+  <use xlink:href="#path-1" style="stroke: #7d7d7d; filter: none; fill: none"/>
+</svg>

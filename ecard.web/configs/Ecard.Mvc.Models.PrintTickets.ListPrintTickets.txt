@@ -1,0 +1,15 @@
+﻿AccountName.name=卡号
+AccountName.order=1
+delete.success=删除小票重打成功
+description=小票重打
+LogType.name=日志类型
+LogType.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+print.success=打印成功
+query=查询
+SerialNo.name=流水号
+SerialNo.order=1
+title=小票重打
+titleA=小票重打

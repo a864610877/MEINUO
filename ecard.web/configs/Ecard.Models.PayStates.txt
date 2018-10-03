@@ -1,0 +1,6 @@
+﻿all.name=--请选择--
+all.order=1
+non_payment.name=未支付
+non_payment.order=1
+paid.name=已付款
+paid.order=1

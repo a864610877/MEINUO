@@ -1,0 +1,16 @@
+﻿Amount.name=应退余额
+close.Text=退卡
+DepositAmount.name=应退余额
+description=退卡
+fail=退卡失败
+failToReadAccount=读卡失败
+Name.name=卡号
+query.Text=查询
+success=退卡成功
+title=退卡
+titleA=退卡
+waitingForCommunicate=正在通讯中
+waitingForInsertCard=请插入卡
+waitingForQuery=waitingForQuery
+卡号不存在=卡号不存在
+请输入卡号=请输入卡号

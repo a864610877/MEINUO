@@ -1,0 +1,3545 @@
+body,dl,dd,ul,h1,h2,h3,h4,input,p{
+	padding:0;
+	margin:0
+}
+
+img{
+	border:0
+}
+
+table{
+	border-collapse:collapse;
+	border-spacing:0
+}
+
+input{
+	outline:0;
+	vertical-align:middle
+}
+
+ul{
+	list-style:none
+}
+
+h1,h2,h3,h4{
+	font-size:100%
+}
+
+a{
+	text-decoration:none;
+	outline:0;
+	blr:expression(this.onFocus=this.blur());
+	color:#15c
+}
+
+a:hover{
+	text-decoration:none;
+	color:#E20
+}
+
+.tdul{
+	text-decoration:underline
+}
+
+.w20{
+	width:20px
+}
+
+.w33{
+	width:33px
+}
+
+.w43{
+	width:43px
+}
+
+.w76{
+	width:76px
+}
+
+.w92{
+	width:92px
+}
+
+.w115{
+	width:115px
+}
+
+.w121{
+	width:121px;
+	color: #B9B9B9;
+}
+
+.w131{
+	width:131px
+}
+
+.w165{
+	width:165px
+}
+
+.w185{
+	width:185px
+}
+
+.w222{
+	width:222px
+}
+
+.w236{
+	width:236px
+}
+
+.w302{
+	width:302px
+}
+
+.w710{
+	width:710px
+}
+
+.w1000{
+	width:1000px
+}
+
+.pl5{
+	padding-left:5px
+}
+
+.pl10{
+	padding-left:10px
+}
+
+.pl8{
+	padding-left:8px
+}
+
+.pr5{
+	padding-right:5px
+}
+
+.pr8{
+	padding-right:8px
+}
+
+.plr5{
+	padding:0 5px
+}
+
+.plr8{
+	padding:0 8px
+}
+
+.mt10{
+	margin-top:10px
+}
+
+.mr120{
+	margin-right:120px
+}
+
+.clear{
+	height:0;
+	overflow:hidden;
+	clear:both
+}
+
+.clearfix{
+	zoom:1
+}
+
+.clearfix:after{
+	content:".";
+	display:block;
+	visibility:hidden;
+	height:0;
+	clear:both
+}
+
+.red{
+	color:#e04e3a
+}
+
+.f-c32{
+	color:#323234
+}
+
+.f-f30{
+	color:#F30
+}
+
+.f-green{
+	color:#0CAE0C
+}
+
+.f-orange{
+	color:#FD7543
+}
+
+.fb{
+	font-weight:700
+}
+
+.fl{
+	float:left
+}
+
+.fr{
+	float:right
+}
+
+.pr{
+	position:relative;
+	zoom:1
+}
+
+.zIndex999{
+	z-index:999
+}
+
+.tc{
+	text-align:center
+}
+
+.db{
+	display:block
+}
+
+body{
+	font-size:12px;
+	color:#585858;
+	font-family:Arial,sans-serif,'宋体'
+}
+
+i{
+	display:block;
+	font-size:0;
+	border:0;
+	_overflow:hidden;
+	background:url(http://pic2.58.com/ui7/job/resume/jl_postIcon.png) no-repeat 0 0 transparent
+}
+
+i.keyIcon{
+	height:15px;
+	width:16px;
+	background-position:-31px -32px;
+	cursor:text;
+	position:absolute
+}
+
+i.necIcon{
+	height:16px;
+	width:16px;
+	background-position:-1px -3px
+}
+
+i.sucIcon{
+	height:16px;
+	width:16px;
+	background-position:-30px -2px
+}
+
+i.sucbIcon{
+	height:22px;
+	width:22px;
+	background-position:-126px -58px
+}
+
+i.errorIcon{
+	height:16px;
+	width:16px;
+	background-position:-53px -2px
+}
+
+i.selIcon{
+	height:28px;
+	width:23px;
+	cursor:pointer;
+	background-position:-1px -24px
+}
+
+i.radioIcon,i.radioIconSel{
+	height:14px;
+	width:14px;
+	cursor:pointer;
+	background-position:-102px -3px
+}
+
+i.radioIconSel{
+	background-position:-123px -3px
+}
+
+i.closeType{
+	height:7px;
+	width:8px;
+	cursor:pointer;
+	background-position:-95px -36px
+}
+
+i.closeBIcon{
+	height:10px;
+	width:10px;
+	cursor:pointer;
+	background-position:-116px -35px
+}
+
+i.phoneIcon{
+	height:18px;
+	width:16px;
+	background-position:-53px -32px
+}
+
+i.topArrow{
+	height:10px;
+	width:16px;
+	background-position:-77px -5px
+}
+
+i.botArrow{
+	height:10px;
+	width:16px;
+	background-position:-129px -38px
+}
+
+i.prevIcon,i.nextIcon,i.prevHover,i.nextHover{
+	height:16px;
+	width:10px;
+	background-position:-4px -62px;
+	cursor:pointer
+}
+
+i.nextIcon{
+	background-position:-12px -62px;
+	display:none
+}
+
+i.prevHover{
+	background-position:-25px -62px
+}
+
+i.nextHover{
+	background-position:-35px -62px
+}
+
+i.check{
+	height:10px;
+	width:10px;
+	border:1px solid;
+	border-color:#A0A6AA #C4C8CB #C4C8CB #A0A6AA;
+	background-color:#FFF;
+	cursor:pointer;
+	background-position:11px 11px
+}
+
+i.checked{
+	background-position:-75px -35px
+}
+
+i.rightGIcon{
+	height:24px;
+	width:11px;
+	background-position:-60px -83px
+}
+
+i.addIcon{
+	height:10px;
+	width:10px;
+	background-position:-88px -65px
+}
+
+i.addHoverIcon{
+	height:10px;
+	width:10px;
+	background-position:-75px -65px
+}
+
+i.addSelIcon{
+	height:11px;
+	width:11px;
+	background-position:-101px -64px
+}
+
+.postBtn{
+	background:url(http://pic2.58.com/ui7/job/resume/jl_postBtn.png) repeat-x 0 0 transparent
+}
+
+.perIcon{
+	height:99px;
+	width:99px;
+	border:0;
+	text-align:center;
+	background:url(http://pic2.58.com/ui7/job/resume/jl_perIcon.png) no-repeat -16px -12px transparent
+}
+
+.perIcon55{
+	background-position:-16px -12px
+}
+
+.perIcon60{
+	background-position:-130px -12px
+}
+
+.perIcon65{
+	background-position:-243px -13px
+}
+
+.perIcon70{
+	background-position:-363px -13px
+}
+
+.perIcon75{
+	background-position:-483px -13px
+}
+
+.perIcon80{
+	background-position:-16px -127px
+}
+
+.perIcon85{
+	background-position:-130px -128px
+}
+
+.perIcon90{
+	background-position:-245px -129px
+}
+
+.perIcon95{
+	background-position:-365px -131px
+}
+
+.perIcon100{
+	background-position:-483px -131px
+}
+
+.postSuccess{
+	margin:0 auto
+}
+
+.logHeader{
+	width:1000px;
+	height:70px;
+	border:none;
+	margin:0 auto 5px;
+	position:relative;
+	overflow:hidden;
+	z-index:1;
+	border-bottom:1px solid #F97D03
+}
+
+.logHeader .logoImg{
+	left:0;
+	top:10px;
+	position:absolute
+}
+
+.logHeader .logoImg img{
+	display:block
+}
+
+.logHeader .loginName{
+	height:39px;
+	top:23px;
+	left:170px;
+	padding-left:15px;
+	position:absolute
+}
+
+.logHeader .loginName span{
+	font:22px/1.8 "幼圆","微软雅黑","黑体",sans-serif;
+	color:#333
+}
+
+.logHeader .userInfo{
+	float:right;
+	position:relative;
+	top:40px;
+	left:0
+}
+
+.postSuccess .successCon{
+	padding:60px 0 30px 134px;
+	overflow:hidden;
+	zoom:1
+}
+
+.postSuccess .successCon .perIcon{
+	float:left;
+	position:static
+}
+
+.successCreate{
+	border:1px solid #E6E6E6;
+	overflow:hidden;
+	zoom:1;
+	margin:0 auto 50px;
+	width:1000px;
+	background-color:#FAFAFA
+}
+
+.successCreate .weixin{
+	position:relative;
+	margin:0 9px;
+	border-top:1px dashed #CCC;
+	padding:31px 0 41px 429px
+}
+
+.successCreate .weixin .weixinIcon{
+	position:absolute;
+	top:31px;
+	left:259px;
+	_left:-171px;
+	width:137px;
+	height:137px;
+	background:url(http://pic2.58.com/ui7/job/resume/weixinIcons.png) 0 0 no-repeat
+}
+
+.successCreate .weixin .weixinArrow{
+	position:absolute;
+	top:55px;
+	left:398px;
+	_left:-32px;
+	width:28px;
+	height:17px;
+	background:url(http://pic2.58.com/ui7/job/resume/weixinIcons.png) -83px -137px no-repeat
+}
+
+.successCreate .weixin .weixinShadow{
+	position:absolute;
+	top:123px;
+	left:396px;
+	_left:-34px;
+	width:16px;
+	height:45px;
+	background:url(http://pic2.58.com/ui7/job/resume/weixinIcons.png) -137px 0 no-repeat
+}
+
+.successCreate .weixin .weixinRight{
+	padding:32px 0 45px
+}
+
+.successCreate .weixin .weixinRight .weixinSao{
+	padding:2px 4px 5px 6px;
+	font-size:12px;
+	color:#fff;
+	background:url(http://pic2.58.com/ui7/job/resume/weixinIcons.png) 0 -137px no-repeat;
+	width:73px;
+	height:14px
+}
+
+.successCreate .weixin .weixinRight .weixinMiddle{
+	padding-top:14px;
+	color:#FE823F;
+	font-size:20px;
+	font-weight:700
+}
+
+.postSuccess .successCon .resDetail{
+	float:left;
+	padding-left:35px;
+	color:#585858
+}
+
+.postSuccess .successCon .resDetail p{
+	padding-bottom:15px;
+	font-size:14px
+}
+
+.postSuccess .successCon .resDetail .jztips{
+	padding-left:10px;
+	color:#666
+}
+
+.postSuccess .resDetail .bo_purp p{
+	color:#000;
+	padding-bottom:8px;
+	padding-top:10px;
+	border-top:1px dashed #CCC
+}
+
+.postSuccess .resDetail .bo_purp{
+	overflow:hidden;
+	padding-bottom:15px
+}
+
+.postSuccess .resDetail .rejl dt,.postSuccess .resDetail .rejl dd,.postSuccess .resDetail .rejl2 dt,.postSuccess .resDetail .rejl2 dd{
+	float:left;
+	line-height:26px;
+	font-size:14px
+}
+
+.postSuccess .resDetail .rejl dd,.postSuccess .resDetail .rejl2 dd{
+	color:#666;
+	padding:0 10px 0 15px
+}
+
+.postSuccess .resDetail .rejl dd{
+	padding-left:2px
+}
+
+.postSuccess .resDetail .rejl2 dl{
+	clear:both
+}
+
+.postSuccess .resDetail .rejl2 dt{
+	padding-right:10px
+}
+
+.postSuccess .resDetail .rejl2 dd a{
+	padding-right:3px
+}
+
+.postSuccess .resDetail .resTitle{
+	font-weight:700;
+	color:#4B4B4B;
+	line-height:22px;
+	padding-bottom:25px
+}
+
+.postSuccess .resDetail .resTitle i{
+	float:left;
+	border:0
+}
+
+.postSuccess .successCon .btnDiv{
+	height:30px;
+	overflow:hidden;
+	clear:both;
+	margin-top:10px
+}
+
+.postSuccess .btnDiv a{
+	display:block;
+	float:left;
+	height:28px;
+	line-height:28px;
+	padding:0 20px;
+	font-weight:700;
+	font-size:12px;
+	color:#4B4B4B;
+	border:1px solid;
+	border-color:#D9D9D9 #D9D9D9 #D4D4D4 #D9D9D9;
+	margin-right:10px;
+	background-position:0 -45px
+}
+
+.perIcon{
+	position:fixed;
+	top:110px;
+	left:225px;
+	_position:absolute;
+	_left:40px;
+	_top:35px;
+	z-index:999
+}
+
+.perTips{
+	position:fixed;
+	z-index:999;
+	top:230px;
+	left:180px;
+	_position:absolute;
+	_left:-5px;
+	_top:155px;
+	padding:7px 12px 7px 14px;
+	background-color:#FFFEE0;
+	border:1px solid #F5E493;
+	color:#FF750E;
+	font-size:12px;
+	width:130px;
+	line-height:24px
+}
+
+.perTips .perBasicTips{
+	font-weight:700
+}
+
+.perTips i.topArrow{
+	position:absolute;
+	top:-9px;
+	left:85px
+}
+
+.hasSetBox{
+	cursor:text
+}
+
+.infoContent,.postSecPage .postContent{
+
+	position:relative;
+	zoom:1;
+
+	margin:0 auto
+}
+
+.infoContent li.hover{
+	background-color:#EEE
+}
+
+.infoContent .timeSel li.hover{
+	background-color:#E8EFFF
+}
+
+.infoContent .address li.hover,.infoContent  li.hover{
+	background-color:transparent
+}
+
+.infoContent .address li.hover a,.infoContent  li.hover a{
+	background-color:#E8EFFF;
+	display:block;
+	line-height:26px;
+	padding:0
+}
+
+.infoContent div.pr,.proSel,.citySel,.addCitySel,.addAreaSel,.addBuneSel{
+	margin-right:5px;
+	height:34px;
+	float:left;
+	position:relative;
+	zoom:1
+}
+
+.infoContent .resAdd .addAreaSel .blacklink{
+	display:none
+}
+
+.infoContent dl .f-c7{
+	color:#C7C7C7
+}
+
+.infoContent dl:after{
+	clear:both;
+	content:".";
+	visibility:hidden;
+	height:0;
+
+}
+
+.infoContent dt,.infoContent dd{
+	float:left
+}
+
+.infoContent dt{
+	
+	text-align:right;
+	line-height:28px
+}
+
+
+
+.infoContent dt b,.postContent h3 b{
+	color:#FF1212;
+	position:relative;
+	top:5px;
+	left:0;
+	padding:0 10px 0 5px;
+	font-size:18px;
+	font-weight:700
+}
+
+.infoContent dd{
+	line-height:34px;
+	width:715px;
+	position:relative;
+	zoom:1
+}
+
+.infoContent dd.intrDD{
+	z-index:101
+}
+
+.infoContent  input{
+	height:30px;
+	line-height:30px;
+	border:1px solid #C7C7C7;
+	padding-left:5px;
+	
+	font-size:14px;
+	float:left;
+	 width:126px;
+	
+}
+
+
+input.wrongborder{
+	border:1px solid #EB7772!important
+}
+
+.infoContent dl input.tc{
+	text-align:center;
+	padding:0
+}
+
+.infoContent .timeSel input{
+	text-align:center;
+	padding-left:0
+}
+
+.infoContent .inputConTips{
+	float:left;
+	padding-left:10px
+}
+
+.inputConTips .tipsIcon{
+	float:left;
+	position:relative;
+	top:9px
+}
+
+.infoContent .necTips{
+	color:#4E87E9;
+	position:relative;
+	zoom:1
+}
+
+.infoContent .necTips .f-red{
+	color:#FF2828
+}
+
+.infoContent a.confirmPhone{
+	float:left;
+	height:32px;
+	line-height:32px;
+	border:1px solid #B8B8B8;
+	padding:0 18px;
+	background-position:0 -44px;
+	color:#282828;
+	font-size:14px;
+	margin-left:10px
+}
+
+.infoContent .changePNo{
+	background:0 0;
+	float:left;
+	padding-left:10px;
+	text-decoration:underline;
+	font-size:12px
+}
+
+.infoContent .errorTips{
+	color:#ED6E5A
+}
+
+.promptpop,.promptpos{
+	position:relative;
+	zoom:1;
+	float:left;
+	margin-left:10px
+}
+
+.promptpop{
+	margin-left:0;
+	color:#4E87E9
+}
+
+.drLic .promptpop{
+	position:absolute;
+	left:230px;
+	top:0
+}
+
+.wrong2{
+	color:#E20
+}
+
+.promptpos i,.codeSuccess i{
+	height:16px;
+	width:16px;
+	background-position:-1px -3px;
+	position:absolute;
+	left:0;
+	top:9px
+}
+
+.codeSuccess i.sucIcon{
+	background-position:-25px -3px
+}
+
+#txtMobileCodeInfo .codeSuccess{
+	color:#585858
+}
+
+.promptpos{
+	padding-left:20px
+}
+
+.promptpos i.sucIcon{
+	background-position:-25px -3px
+}
+
+.wrong2 i{
+	background-position:-47px -3px
+}
+
+.codeSuccess{
+	margin-left:10px;
+	color:#4E87E9;
+	position:relative;
+	zoom:1;
+	padding-left:20px
+}
+
+.codeInfo{
+	clear:both;
+	color:#999;
+	font-size:12px;
+	line-height:26px;
+	padding-top:8px
+}
+
+.codeInfo .getMessBtn a{
+	display:inline-block;
+	height:30px;
+	line-height:30px;
+	border:1px solid #C8C8C8;
+	background-color:#F5F5F5;
+	padding:0 15px;
+	color:#B8B8B8;
+	margin-left:8px
+}
+
+#hltWarn{
+	line-height:28px;
+	display:block;
+	left:-20px
+}
+
+#hltWarn i{
+	top:7px
+}
+
+#txtPerformanceInfo{
+	display:block
+}
+
+#txtSchoAccoInfo,#txtSchoDescInfo{
+	position:absolute;
+	top:137px;
+	left:200px;
+	width:400px
+}
+
+.scholarList_1Info{
+	position:absolute;
+	left:430px;
+	top:0
+}
+
+.othersInfo{
+	display:block;
+	position:absolute;
+	right:0;
+	top:45px;
+	padding:17px;
+	border:1px solid #F5E493;
+	background-color:#FFFEE0;
+	color:#444;
+	line-height:22px;
+	width:145px;
+	*width:153px;
+	font-size:12px;
+	display:none
+}
+
+.hover .othersInfo{
+	display:block
+}
+
+.othersInfo .topArrow,.exampl .othersInfo .topArrow{
+	position:absolute;
+	top:-9px;
+	left:120px
+}
+
+.exampl .othersInfo{
+	right:-232px
+}
+
+.exampl .othersInfo .topArrow{
+	left:20px
+}
+
+.selTypeDiv .matchRes{
+	width:auto;
+	padding:3px 0
+}
+
+.selTypeDiv .matchRes .hotJobList{
+	width:241px
+}
+
+.selTypeDiv .matchRes .hotJobList a{
+	padding-left:5px;
+	font-size:14px
+}
+
+.selTypeDiv .matchRes li{
+	width:236px;
+	clear:both;
+	font-size:14px;
+	height:32px;
+	white-space:nowrap;
+	line-height:32px
+}
+
+.selTypeDiv .matchRes li.hover{
+	background-color:#E8EFFF
+}
+
+.selTypeDiv .matchRes li .check{
+	float:left;
+	position:relative;
+	top:10px
+}
+
+.selTypeDiv .matchRes li span{
+	padding-left:2px
+}
+
+.selTypeDiv .matchRes li .f-red{
+	color:#FF2828
+}
+
+.yearSel,.monthSel{
+	float:left;
+	height:34px;
+	position:relative;
+	zoom:1
+}
+
+.infoContent .setBox{
+	position:absolute;
+	left:0;
+	top:30px;
+	z-index:911;
+	background-color:#FFF;
+	border:1px solid #C8C8C8
+}
+
+#divLanPETS a{
+	width:222px;
+	line-height:32px;
+	color:#404040;
+	display:block;
+	clear:both;
+	padding-left:5px;
+	cursor:pointer;
+	font-size:12px
+}
+
+#divLanPETS a.hover{
+	background-color:#EEE
+}
+
+.infoContent .selTypeDiv .setBox{
+	width:auto
+}
+
+.infoContent .setBox a:hover{
+	color:#15C
+}
+
+.infoContent .yearSel .setBox{
+	width:235px;
+	padding:10px 25px
+}
+
+.infoContent .monthSel .setBox{
+	width:140px
+}
+
+.infoContent .timeSel ul{
+	overflow:hidden;
+	zoom:1
+}
+
+.infoContent .timeSel li{
+	float:left;
+	line-height:26px;
+	padding:0 10px;
+	text-align:center;
+	white-space:nowrap
+}
+
+.infoContent .monthSel .setBox{
+	padding:10px
+}
+
+.infoContent .monthSel li{
+	width:20px
+}
+
+.infoContent .timeSel .clearBtn{
+	height:25px;
+	margin-bottom:2px;
+	text-align:center;
+	font-size:12px
+}
+
+.infoContent .timeSel i{
+	position:absolute;
+	top:50px
+}
+
+.infoContent .timeSel .promptpos i{
+	top:9px
+}
+
+.infoContent .timeSel .prevIcon,.infoContent .timeSel .prevHover{
+	left:10px
+}
+
+.infoContent .timeSel .nextIcon,.infoContent .timeSel .nextHover{
+	right:10px
+}
+
+.infoContent .timeInfo{
+	float:left;
+	padding-right:10px
+}
+
+.infoContent .linkage{
+	float:left;
+	margin-right:5px
+}
+
+.infoContent .jobType .keyIcon{
+	left:213px;
+	top:9px
+}
+
+.infoContent .jobType .selTypeDiv{
+	clear:both;
+	position:relative;
+	zoom:1
+}
+
+.infoContent .jobType .selType{
+	overflow:hidden;
+	zoom:1
+}
+
+.infoContent .jobType .selType li{
+	float:left;
+	margin-right:5px;
+	height:20px;
+	border:1px solid #FF8E55;
+	background-color:#FFF9F6;
+	line-height:20px;
+	padding:0 23px 0 3px;
+	position:relative;
+	zoom:1;
+	font-size:12px;
+	color:#404040;
+	white-space:nowrap
+}
+
+.infoContent .selType li .closeType{
+	position:absolute;
+	right:5px;
+	top:7px
+}
+
+.infoContent .selIcon{
+	position:absolute;
+	top:0;
+	left:114px
+}
+
+.infoContent .salarySel li{
+	padding-left:5px;
+	line-height:32px;
+	cursor:pointer;
+	color:#404040;
+	width:131px
+}
+
+.infoContent .nameSex .radioIcon,.infoContent .nameSex .radioIconSel{
+	float:left;
+	position:relative;
+	top:10px;
+	left:0
+}
+
+.infoContent .nameSex .selSex{
+	float:left;
+	padding-left:15px;
+	line-height:34px
+}
+
+.infoContent  .selIcon{
+	left:102px
+}
+
+.infoContent  .setBox{
+	width:351px;
+	padding:10px
+}
+
+.infoContent  .setBox li{
+	float:left;
+	font-size:12px;
+	width:60px;
+	padding-right:5px;
+	line-height:26px;
+	white-space:nowrap
+}
+
+.infoContent .mCity{
+	border-bottom:1px dashed #C6C6C6;
+	padding-bottom:2px;
+	margin-bottom:3px
+}
+
+.infoContent .proCity{
+	clear:both
+}
+
+.infoContent .address .setBox{
+	width:375px;
+	padding:10px 10px 5px
+}
+
+.infoContent .address li{
+	float:left;
+	font-size:12px;
+	color:#15C;
+	cursor:pointer;
+	line-height:26px;
+	white-space:nowrap
+}
+
+.infoContent .addCitySel .tabNav{
+	border-bottom:1px solid #DDD;
+	overflow:hidden;
+	zoom:1
+}
+
+.infoContent .addCitySel .tabNav li{
+	width:auto;
+	line-height:20px;
+	padding:0 10px
+}
+
+.infoContent .addCitySel .tabNav li.tnon{
+	background-color:#EDEDED;
+	color:#404040;
+	border:1px solid #DDD;
+	border-bottom:0;
+	height:19px;
+	line-height:18px
+}
+
+.infoContent .addCitySel .hotCity{
+	padding-top:5px;
+	overflow:hidden
+}
+
+.infoContent .addCitySel .hotCity li{
+	width:70px;
+	padding-left:5px
+}
+
+.infoContent dl.wordindex{
+	margin-bottom:0;
+	padding:0 0 0 12px;
+	overflow:margin-top:5px
+}
+
+.infoContent .wordindex dt,.infoContent .wordindex dd{
+	float:left
+}
+
+.infoContent .wordindex dt{
+	width:20px;
+	text-align:left;
+	color:#F60;
+	line-height:26px
+}
+
+.infoContent .wordindex dd{
+	width:342px
+}
+
+.infoContent .wordindex li{
+	line-height:26px;
+	width:52px;
+	padding-left:3px
+}
+
+.infoContent .address ul,.infoContent .mCity{
+	overflow:hidden;
+	zoom:1
+}
+
+.infoContent .addAreaSel li,.infoContent .addBuneSel li{
+	width:70px;
+	padding-left:5px
+}
+
+.infoContent .address .close{
+	display:none
+}
+
+.infoContent .setBox li{
+	padding-left:5px;
+	cursor:pointer;
+	list-style:none;
+	display:block
+}
+
+.infoContent .experience li,.infoContent .education li{
+	width:131px
+}
+
+.infoContent .salList li{
+	width:115px
+}
+
+.infoContent .langName li,.infoContent .skillList li,.infoContent .shipName li,.infoContent .actType li{
+	width:92px
+}
+
+.infoContent .scholarship{
+	margin-bottom:4px
+}
+
+.infoContent .shipCon{
+	clear:both;
+	margin-bottom:10px;
+	position:relative
+}
+
+.infoContent .examList li{
+	width:222px
+}
+
+.infoContent .drLic .drLicList,.infoContent .cerLic .cerLicList{
+	padding:10px;
+	font-size:14px;
+	overflow:hidden;
+	zoom:1
+}
+
+.infoContent .drLic .drLicList li,.infoContent .cerLic .cerLicList li{
+	width:130px;
+	padding-left:5px;
+	float:left
+}
+
+.infoContent .drLic .drLicList li.hover,.infoContent .cerLic .cerLicList li.hover{
+	background-color:#E8EFFF
+}
+
+.infoContent .address i{
+	position:absolute
+}
+
+.infoContent .address .keyIcon{
+	top:9px;
+	left:100px
+}
+
+.infoContent .address .selIcon{
+	top:0;
+	left:102px
+}
+
+.infoContent .infoContent .confirmPhone{
+	display:block;
+	height:32px;
+	line-height:32px;
+	padding:0 17px;
+	color:#282828;
+	background-color:#fff;
+	float:left;
+	border:1px solid #B8B8B8;
+	margin-left:8px
+}
+
+.infoContent .detailNO{
+	line-height:34px;
+	font-size:12px
+}
+
+.infoContent .detailNO .phoneNO{
+	color:#000;
+	float:left;
+	font-size:16px
+}
+
+.infoContent .detailNO .phoneIcon{
+	float:left;
+	margin:0 8px;
+	position:relative;
+	top:8px;
+	left:0
+}
+
+.infoContent .detailNO a.tdul{
+	padding-left:20px
+}
+
+.vericomplete{
+	clear:both;
+	overflow:hidden;
+	zoom:1;
+	position:relative;
+	float:left
+}
+
+.infoContent .vericomplete input{
+	border:0;
+	position:relative;
+	top:1px
+}
+
+.vericomplete span{
+	float:left;
+	padding-left:3px
+}
+
+.vericomplete span.NOSpan{
+	font-weight:700
+}
+
+.vericomplete span.f-green{
+	padding-left:15px;
+	padding-right:30px
+}
+
+.vericomplete i{
+	position:absolute;
+	left:155px;
+	top:8px;
+	*left:162px
+}
+
+.infoContent .textDiv{
+	height:112px;
+	width:487px;
+	border:1px solid #C8C8C8;
+	padding:5px;
+	float:left;
+	position:relative;
+	zoom:1;
+	background-color:#FFF
+}
+
+.infoContent .textDiv .promptpop{
+	position:absolute;
+	left:500px;
+	top:0;
+	width:215px
+}
+
+#txtJobCateInfo{
+	position:absolute;
+	top:0;
+	left:243px
+}
+
+#txtPerformanceInfo{
+	top:136px;
+	left:200px;
+	width:400px
+}
+
+#txtOtherBrightInfo{
+	top:40px
+}
+
+.infoContent .textCon{
+	height:88px;
+	width:477px;
+	border:0;
+	outline:0;
+	overflow:hidden;
+	resize:none;
+	font-size:14px
+}
+
+.infoContent .inputTips{
+	position:absolute;
+	right:0;
+	bottom:-3px;
+	font-size:12px;
+	color:silver;
+	padding-right:5px;
+	display:block
+}
+
+.infoContent .inputTips .totalNum{
+	padding:0 2px
+}
+
+.infoContent .textTips{
+	width:215px;
+	float:left;
+	line-height:22px;
+	position:relative;
+	zoom:1
+}
+
+.infoContent .textTips .necTips,.infoContent .textTips .errorTips{
+	padding-left:25px
+}
+
+.infoContent .textTips i{
+	position:absolute;
+	left:5px;
+	top:3px
+}
+
+.infoContent .textTips .exampl{
+	clear:both;
+	position:relative;
+	zoom:1;
+	padding-top:5px
+}
+
+.infoContent .textTips .exampl a{
+	padding:0 8px
+}
+
+.infoContent .textTips .exampl .othersInfo{
+	width:255px;
+	padding-top:8px;
+	color:#545454
+}
+
+.infoContent .exampl .othersInfo .exTitle{
+	font-weight:700;
+	display:block
+}
+
+.infoContent .exampl .othersInfo .fn{
+	font-weight:400
+}
+
+.infoContent .exampl .othersInfo .ti2e{
+	text-indent:2em
+}
+
+.infoContent .pHeiht .pl8{
+	float:left
+}
+
+.infoContent .drLic .drLicCon,.infoContent .cerLic .cerLicCon{
+	position:relative;
+	zoom:1
+}
+
+.infoContent .drLic .drLicCon input,.infoContent .cerLic .cerLicCon input{
+	float:none
+}
+
+.infoContent .drLic i.keyIcon,.infoContent .cerLic i.keyIcon{
+	left:165px;
+	top:9px
+}
+
+.infoContent .fimLang .fLCon,.infoContent .fimLang .fLSel,.infoContent .fimLang .fLSel div{
+	float:left
+}
+
+.infoContent .fimLang .fLCon .check{
+	float:left;
+	position:relative;
+	top:11px;
+	left:0
+}
+
+.infoContent .fimLang span{
+	line-height:35px;
+	float:left
+}
+
+.infoContent .fimLang .fLSel{
+	padding-left:12px
+}
+
+.infoContent .fimLang .fLSel div{
+	position:relative;
+	zoom:1;
+	margin-right:5px
+}
+
+.infoContent .fimLang .fLSel div.setBox{
+	position:absolute;
+	zoom:1;
+	margin-right:0
+}
+
+.infoContent .fimLang .fLSel div .selIcon{
+	left:104px;
+	top:0
+}
+
+.infoContent .jobBrig .advantSel{
+	padding:3px 0
+}
+
+.infoContent .jobBrig .advantDIY{
+	padding:3px 0
+}
+
+.infoContent .jobBrig .advantDIY input{
+	height:26px;
+	line-height:26px;
+	font-size:12px
+}
+
+.infoContent .jobBrig .advantDIY .addAdvantBtn{
+	height:26px;
+	line-height:26px
+}
+
+.infoContent .captcha img{
+	width:120px;
+	height:40px;
+	position:relative;
+	top:-3px;
+	left:5px;
+	cursor:pointer;
+	float:left
+}
+
+.infoContent .captcha a{
+	line-height:34px;
+	float:left;
+	padding-left:15px
+}
+
+.postFirPage .subBtnCon{
+	padding-top:15px;
+	padding-bottom:150px;
+	overflow:hidden
+}
+
+.postFirPage .saveResume{
+	border:0;
+	height:44px;
+	line-height:44px;
+	color:#FFF;
+	background-position:0 0;
+	font-size:22px;
+	border-bottom:1px solid #BE520E;
+	*border-bottom:0;
+	margin-left:285px;
+	float:left;
+	text-align:center;
+	padding:0 40px;
+	*padding:0 18px;
+	cursor:pointer;
+	font-family:Microsoft Yahei
+}
+
+.postFirPage .baiduSearch{
+	float:left;
+	line-height:44px;
+	padding-left:32px;
+	color:#848484;
+	position:relative;
+	zoom:1
+}
+
+.postFirPage .baiduSearch .check{
+	display:block;
+	position:absolute;
+	left:12px;
+	top:16px
+}
+
+.selTypeDiv a.current{
+	color:#F77D40!important
+}
+
+.selTypeDiv .setBox{
+	width:836px;
+	position:absolute;
+	top:33px;
+	left:0;
+	background:#fff;
+	border:1px solid #CCC;
+	font-size:12px
+}
+
+#divJobCate{
+	z-index:900
+}
+
+#divJobCate h3 a.close{
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:12px;
+	right:10px;
+	background:url(http://pic2.58.com/ui6/top_box_close.gif) no-repeat 0 0
+}
+
+#divJobCate h3 a.close:hover{
+	background-position:-20px 0
+}
+
+.selTypeDiv .setBox a{
+	color:#585858
+}
+
+.selTypeDiv .setBox h3{
+	height:43px;
+	line-height:43px;
+	padding-left:7px;
+	background:#f6f6f6;
+	border-bottom:1px solid #c8c8c8;
+	color:#585858;
+	font-size:12px;
+	position:relative;
+	font-weight:400;
+	margin-left:0;
+	*width:706px
+}
+
+#divJobCate h3 span{
+	float:left;
+	display:inline-block;
+	height:43px;
+	line-height:43px;
+	padding-left:10px;
+	color:#666
+}
+
+#divJobCate h3 span.red{
+	padding:0 1px;
+	float:none;
+	color:#E20
+}
+
+#divJobCate h3 span.recJob a{
+	color:#15C;
+	padding-left:5px;
+	white-space:nowrap
+}
+
+#divJobCate h3 span i{
+	float:left;
+	position:relative;
+	top:16px
+}
+
+.selTypeDiv .setBox h3 .all-job-type{
+	border:1px solid #FBC392;
+	display:block;
+	height:22px;
+	text-align:center;
+	line-height:22px;
+	color:#FF7D3C;
+	padding:0 15px;
+	position:absolute;
+	top:10px;
+	left:100px;
+	background:url(http://pic2.58.com/ui7/job/hire/search-all-bg.png) repeat-x 0 -27px
+}
+
+.selTypeDiv .jobcatebox th{
+	white-space:nowrap;
+	padding:6px 10px 6px 10px;
+	text-align:right;
+	font-weight:400;
+	background:#fafafa;
+	border-right:1px solid #e9e9e9
+}
+
+.selTypeDiv .jobcgatebox tr,.selTypeDiv .jobcatebox td,.selTypeDiv .jobcatebox th{
+	border-bottom:1px solid #e9e9e9
+}
+
+.selTypeDiv .jobcatebox th,.selTypeDiv .jobcatebox td{
+	height:auto;
+	line-height:24px;
+	vertical-align:top
+}
+
+.selTypeDiv .jobcatebox th{
+	color:#585858;
+	font-weight:700
+}
+
+.selTypeDiv .jobcatebox td{
+	width:678x;
+	padding:5px 0
+}
+
+.selTypeDiv .jobcatebox .jobcatelist span{
+	height:24px;
+	line-height:24px
+}
+
+.selTypeDiv .jobcatebox a:hover{
+	color:#F77D40
+}
+
+.selTypeDiv .jobcatelist li{
+	float:left;
+	display:inline;
+	height:24px;
+	margin-left:5px;
+	line-height:16px;
+	white-space:nowrap
+}
+
+.selTypeDiv .jobcatelist li.hover{
+	background-color:#FFF
+}
+
+.selTypeDiv .jobcatelist li p{
+	width:122px;
+	padding:2px;
+	overflow:hidden;
+	zoom:1
+}
+
+.selTypeDiv .jobcatelist li span{
+	float:left;
+	padding:0 15px 0 10px;
+	text-align:left;
+	background:url(http://pic2.58.com/ui7/job/hire/hl_icon.png) right -37px no-repeat;
+	color:#25D;
+	cursor:pointer
+}
+
+.selTypeDiv .jobcatelist .selected{
+	position:relative;
+	z-index:99;
+	margin-left:-16px;
+	background-color:#FFFCF8
+}
+
+.selTypeDiv .jobcatelist .selected p{
+	position:relative;
+	z-index:2;
+	border:2px solid #FABD86;
+	border-bottom:none;
+	width:143px;
+	padding:3px 0 1px 3px;
+	background:#FFFCF8;
+	overflow:hidden;
+	zoom:1;
+	margin-top:-3px
+}
+
+.selTypeDiv .jobcatelist .leftShow p{
+	_margin-top:0;
+	_top:-3px
+}
+
+.selTypeDiv .jobcatelist .selected p a{
+	color:#f77d40
+}
+
+.selTypeDiv .jobcatelist .selected span{
+	background-position:right -55px;
+	padding-left:28px;
+	color:#f77d40
+}
+
+.selTypeDiv .jobcatelist .sel-color span,.selTypeDiv .jobcatelist .sel-color p a{
+	color:#F77D40
+}
+
+.selTypeDiv .jobcatelist .selected .subcate{
+	display:block;
+	top:25px;
+	left:5px
+}
+
+.selTypeDiv .jobcatelist .selected .subcate span{
+	background:0 0;
+	padding:0;
+	position:relative;
+	zoom:1
+}
+
+.selTypeDiv .jobcatelist .leftShow .subcate{
+	left:-319px;
+	padding-left:0
+}
+
+.selTypeDiv .jobcatelist .leftShow .subcate .aSpan{
+	padding-left:45px
+}
+
+.selTypeDiv .jobcatelist .leftShow .subcate .aSpan a{
+	width:90px
+}
+
+.selTypeDiv .jobcatelist .leftShow .subcate .aSpan .check{
+	left:44px
+}
+
+.selTypeDiv .jobcatelist .selected .scr{
+	left:auto;
+	right:0
+}
+
+.selTypeDiv .subcate{
+	display:none;
+	position:absolute;
+	z-index:1;
+	left:0;
+	width:470px;
+	background-color:#FFFCF8;
+	border:2px solid #FABD86;
+	padding:7px 0 7px 30px
+}
+
+.selTypeDiv .subcate a{
+	width:130px;
+	height:28px;
+	float:left;
+	line-height:28px;
+	white-space:nowrap;
+	color:#15C;
+	float:left;
+	padding-left:15px
+}
+
+.selTypeDiv .subcate i.check{
+	float:left;
+	position:absolute;
+	top:8px;
+	left:0
+}
+
+.selTypeDiv .masklayer{
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:899;
+	background:#000;
+	filter:alpha(opacity=15);
+	opacity:.15;
+	_position:absolute;
+	_bottom:auto;
+	_width:expression(eval(document.documentElement.clientWidth));
+	_height:expression(eval(document.documentElement.clientHeight))
+}
+
+#divIndCate{
+	width:845px;
+	top:28px;
+	left:-1px;
+	z-index:99;
+	border-color:#cdcfd1
+}
+
+#divIndCate em{
+	width:119px;
+	height:1px;
+	background:#fff;
+	position:absolute;
+	top:-1px;
+	left:0
+}
+
+#divIndCate .indcatelist{
+	width:820px;
+	padding:8px 0 8px 25px;
+	top:0;
+	overflow:hidden;
+	zoom:1;
+	display:block
+}
+
+#divIndCate .indcatelist li{
+	width:200px;
+	height:28px;
+	float:left;
+	line-height:28px;
+	white-space:nowrap;
+	cursor:pointer
+}
+
+#divIndCate .indcatelist li.current a{
+	color:#F77D40
+}
+
+#divIndCate .indcatelist a{
+	color:#15c;
+	display:inline
+}
+
+#divIndCate .indcatelist a:hover{
+	color:#F77D40
+}
+
+.postContent h3{
+	margin-left:185px;
+	background-color:#FAFAFA;
+	height:36px;
+	line-height:36px;
+	border-top:1px solid #E4E4E4;
+	padding-left:10px;
+	color:#404040;
+	font-size:14px;
+	font-weight:700;
+	position:relative;
+	zoom:1
+}
+
+.postContent h3 a.changeBtn,.postContent h3 a.hideBtn,.postContent h3 a.addBtn{
+	display:inline-block;
+	height:24px;
+	line-height:24px;
+	border:1px solid #EFC2A2;
+	background-color:#FFEAD9;
+	font-weight:400;
+	font-size:12px;
+	color:#666;
+	padding:0 15px;
+	position:absolute;
+	right:17px;
+	top:5px
+}
+
+.postContent h3 a.changeBtn,.postContent h3.hover a.changeBtn,.postContent h3.hover a.hideBtn,.postContent h3.hover a.addBtn{
+	display:block
+}
+
+.postContent h3 a.hideBtn{
+	right:80px;
+	background-color:#F1F1F1;
+	border-color:#D8D8D8
+}
+
+.postContent h3 .hideTips{
+	position:absolute;
+	right:28px;
+	top:-30px;
+	border:1px solid #F5E493;
+	background-color:#FFFEE0;
+	font-size:12px;
+	color:#B8B8B8;
+	padding:0 5px;
+	height:20px;
+	line-height:20px;
+	font-weight:400;
+	display:none
+}
+
+.postContent h3.hover .hideTips{
+	display:block
+}
+
+.postContent h3 .hideTips i{
+	position:absolute;
+	top:20px;
+	left:7px
+}
+
+.postContent h3 b{
+	padding-right:5px
+}
+
+.postContent h3 .tips{
+	font-size:12px;
+	color:#6B9EF4;
+	font-weight:400
+}
+
+.postContent .showDiv{
+	margin-left:185px
+}
+
+.postContent .showDiv div.hover{
+	background-color:#F7FCFF;
+	cursor:text
+}
+
+.postContent .basicConShow dl{
+	padding:15px 0 20px 25px;
+	color:#000;
+	font-size:14px;
+	overflow:hidden
+}
+
+.postContent .basicConShow dl span{
+	line-height:32px;
+	white-space:nowrap;
+	display:inline-block
+}
+
+.postContent .basicConShow dl span.w710{
+	white-space:normal;
+	line-height:20px;
+	padding-top:6px
+}
+
+.postContent .basicConShow dl .db{
+	display:block;
+	float:left
+}
+
+.postContent .basicConShow dl .title{
+	color:#9C9C9C;
+	padding-right:5px
+}
+
+.postContent .basicConShow dl .divide{
+	padding:0 8px;
+	color:#D4D4D4;
+	line-height:28px
+}
+
+.postContent .basicConShow dd,.postContent .basicConShow dt{
+	clear:both
+}
+
+.postContent .basicConShow dt span{
+	font-weight:700;
+	font-size:18px
+}
+
+.postContent .basicConShow dt .sexAge{
+	font-size:14px;
+	font-weight:400;
+	padding-left:15px
+}
+
+.postContent .basicConShow .phoneIcon{
+	display:inline-block;
+	position:relative;
+	top:5px;
+	left:8px
+}
+
+.postContent .infoContent{
+	padding-top:20px
+}
+
+.postContent .subBtnCon{
+	padding-top:15px;
+	padding-bottom:20px;
+	overflow:hidden;
+	zoom:1
+}
+
+.postContent .saveResume,.postContent .saveBasicInfo,.postContent .saveBtn,.postContent .cancelBtn{
+	display:inline-block;
+	height:33px;
+	line-height:33px;
+	color:#FFF;
+	padding:0 25px;
+	font-size:16px;
+	border-bottom:1px solid #BE520E;
+	margin-left:285px;
+	float:left;
+	font-weight:700
+}
+
+.postContent .saveBasicInfo,.postContent .saveBtn{
+	background-position:0 -76px;
+	border:0;
+	border-bottom:2px solid #2E4C7F;
+	*border-bottom:0;
+	cursor:pointer
+}
+
+.postContent a.cancelBtn{
+	color:#636465;
+	background:0 0;
+	border:0;
+	padding:0
+}
+
+.postContent .btnDiv{
+	padding-bottom:20px;
+	overflow:hidden;
+	zoom:1;
+	padding-top:15px
+}
+
+.postContent .btnDiv a:hover,.postContent .subBtnCon a:hover{
+	color:#FFF
+}
+
+.postContent .btnDiv a.cancelBtn:hover{
+	color:#e20
+}
+
+.postContent .saveAddBtn,.postContent .cancelBtn{
+	margin-left:20px
+}
+
+.postContent .showList,.postContent .schoolDetail{
+	padding:15px 0 8px 20px;
+	border-bottom:1px dashed #EEE;
+	position:relative;
+	zoom:1
+}
+
+.postContent .schoolDetail{
+	border-bottom:0
+}
+
+.postContent .schDetail .title{
+	width:72px!important
+}
+
+.postContent .showList .operBtn{
+	position:absolute;
+	right:10px;
+	top:17px;
+	display:none
+}
+
+.postContent .hover .operBtn{
+	display:block
+}
+
+.postContent .showList a{
+	padding-right:8px
+}
+
+.postContent .showList p{
+	padding-bottom:10px;
+	clear:both;
+	overflow:hidden;
+	zoom:1
+}
+
+.postContent .showList p.detailList{
+	width:710px
+}
+
+.postContent .showList span{
+	display:block;
+	float:left;
+	line-height:20px;
+	font-size:14px;
+	color:#404040;
+	padding:0 5px
+}
+
+.postContent .showList .detailCon span{
+	float:left;
+	width:660px;
+	line-height:20px;
+	color:#999
+}
+
+.postContent .showList span.divide{
+	position:relative;
+	top:-1px;
+	left:0;
+	color:#EAEAEA
+}
+
+.postContent .showList .detailCon span.title{
+	width:112px;
+	padding:0;
+	text-align:right;
+	color:#404040
+}
+
+.postContent .showList .detailCon span.tlTitle{
+	text-align:left;
+	width:auto;
+	color:#404040
+}
+
+.postContent .showList .detailCon span.simText{
+	color:#404040
+}
+
+.postContent .showList .detailCon span.conDet{
+	width:650px
+}
+
+.postContent .showList .detailCon span.dConDiv{
+	width:670px;
+	float:left;
+	line-height:26px
+}
+
+.postContent .showList .detailCon span.detailText{
+	width:660px;
+	padding:0;
+	color:#999
+}
+
+.postContent .schoolShow .detailCon span.detailText{
+	padding:8px 0 0 112px
+}
+
+.postContent .hasSel{
+	margin-right:5px;
+	float:left;
+	position:relative;
+	zoom:1
+}
+
+.postContent .salInfo,.postContent .timeInfo,.postContent .linkage{
+	position:relative;
+	zoom:1;
+	float:left
+}
+
+.postContent .salInfo .selIcon,.postContent .langName .selIcon,.postContent .worksChange .keyIcon,.postContent .skillsChange .keyIcon{
+	position:absolute;
+	top:0;
+	left:98px
+}
+
+.postContent .langName .selIcon,.postContent .shipName .selIcon,.postContent .actType .selIcon,.postContent .skillsName .selIcon{
+	left:75px
+}
+
+.postContent .langName .examination .selIcon{
+	left:205px
+}
+
+.postContent .worksChange .selIcon{
+	left:80px
+}
+
+.postContent .worksChange .keyIcon,.postContent .skillsChange .keyIcon{
+	left:165px;
+	top:10px
+}
+
+.postContent .unknow{
+	font-size:14px;
+	color:#BBB;
+	padding-left:8px;
+	line-height:14px
+}
+
+.postContent .advantCon{
+	padding:20px 10px 20px 25px
+}
+
+.postContent .advantList{
+	padding-bottom:10px;
+	overflow:hidden;
+	zoom:1
+}
+
+.postContent .advantList li{
+	float:left;
+	border-left:2px solid #67BB67;
+	background-color:#DCF6DC;
+	color:#007300;
+	height:24px;
+	line-height:24px;
+	padding:0 10px;
+	margin-right:25px;
+	position:relative;
+	zoom:1;
+	white-space:nowrap;
+	margin-bottom:10px
+}
+
+.postContent .advantList li.bgr{
+	border-left-color:#DBB17B;
+	background-color:#FDEEDF;
+	color:#8C5200
+}
+
+.postContent .advantList li.bgb{
+	border-left-color:#679CBB;
+	background-color:#DCECF5;
+	color:#38588C
+}
+
+.postContent .advantList li.bgr i{
+	background-position:-11px -83px
+}
+
+.postContent .advantList li.bgb i{
+	background-position:-35px -83px
+}
+
+.postContent .advantList li i.rightGIcon{
+	position:absolute;
+	right:-11px;
+	top:0
+}
+
+.postContent .advantAdd{
+	border:0;
+	color:#404040;
+	font-size:14px
+}
+
+.postContent .advantExp,.postContent .myPhoto,.postContent .typeCon .typeSel{
+	overflow:hidden
+}
+
+.postContent .advantAdd .adTitle{
+	width:70px;
+	float:left;
+	line-height:28px
+}
+
+.postContent .advantAdd .adCon{
+	float:left;
+	width:670px;
+	position:relative;
+	zoom:1
+}
+
+.postContent .advantExp{
+	margin-bottom:10px;
+	width:650px
+}
+
+.postContent .advantExp li{
+	float:left;
+	line-height:29px;
+	margin-right:40px
+}
+
+.postContent .advantExp dd{
+	padding-right:40px
+}
+
+.postContent .advantAdd .advantInput{
+	height:29px;
+	border:0;
+	float:left;
+	width:55px;
+	padding-right:3px
+}
+
+.postContent .advantAdd input{
+	height:27px;
+	line-height:27px;
+	border:1px solid #C7C7C7;
+	padding-left:5px;
+	color:#333;
+	font-size:14px;
+	width:41px;
+	margin:0 5px;
+	position:relative;
+	top:-1px
+}
+
+.postContent .advantAdd input.f-c7{
+	color:#C7C7C7
+}
+
+.postContent .advantExp span{
+	float:left
+}
+
+.advantSel{
+	padding-bottom:10px;
+	float:left;
+	overflow:hidden
+}
+
+.advantSel li,.diyLiList li{
+	float:left;
+	margin-right:10px;
+	border:1px solid #C8C8C8;
+	height:26px;
+	line-height:26px;
+	padding:0 16px 0 10px;
+	cursor:pointer;
+	zoom:1;
+	white-space:nowrap;
+	background-position:0 -109px;
+	position:relative
+}
+
+.advantSel li i{
+	position:absolute;
+	right:4px;
+	top:8px
+}
+
+.advantSel li.sel{
+	border:2px solid #F18546;
+	height:24px;
+	line-height:24px
+}
+
+.advantSel li.sel i{
+	right:0;
+	top:13px
+}
+
+.diyLiList{
+	float:left;
+	overflow:hidden;
+	zoom:1;
+	padding-bottom:10px
+}
+
+.diyLiList li{
+	border:2px solid #F28747;
+	color:#282828;
+	height:24px;
+	line-height:24px;
+	background-color:#FFF5EF;
+	padding:0 25px 0 5px
+}
+
+.diyLiList li i.closeBIcon{
+	position:absolute;
+	right:7px;
+	top:7px
+}
+
+.advantDIY{
+	float:left;
+	padding-bottom:10px
+}
+
+.postContent .advantDIY input{
+	width:166px;
+	border-right:0;
+	border-color:#C5C6C7 #C5C6C7 #E8E9EB #C5C6C7;
+	font-size:12px;
+	margin-right:0;
+	top:0;
+	*top:-1px;
+	_top:-2px;
+	*left:5px
+}
+
+.advantDIY a.addAdvantBtn{
+	display:block;
+	height:27px;
+	line-height:27px;
+	border:1px solid #DCDEE1;
+	color:#585858;
+	font-size:12px;
+	padding:0 13px;
+	float:left;
+	background-position:0 -137px;
+	white-space:nowrap
+}
+
+.postContent .advantAdd .btnDiv{
+	clear:both;
+	padding:25px 0 0 70px;
+	overflow:hidden
+}
+
+.postContent .advantAdd .btnDiv a{
+	display:inline-block;
+	float:left;
+	line-height:33px;
+	padding:0 17px;
+	line-height:33px;
+	font-size:14px;
+	color:#636465;
+	font-weight:700
+}
+
+.postContent .advantAdd .btnDiv .saveBtn{
+	margin-left:0;
+	color:#FFF;
+	height:33px;
+	padding:0 25px
+}
+
+.postContent .typeCon{
+	margin-left:185px;
+	padding:20px 0 20px 20px
+}
+
+.postContent .typeCon li,.infoContent a.addCon{
+	float:left;
+	margin-right:15px;
+	height:32px;
+	line-height:32px;
+	border:1px solid #DCDEE1;
+	padding:0 15px 0 25px;
+	cursor:pointer;
+	color:#585858;
+	font-size:14px;
+	position:relative;
+	zoom:1;
+	white-space:nowrap;
+	background-position:0 -135px;
+	margin-bottom:10px;
+	white-space:nowrap
+}
+
+.infoContent a.addCon{
+	margin:0
+}
+
+.infoContent a.addCon i{
+	position:absolute;
+	left:8px;
+	top:11px
+}
+
+.postContent .actConDiv{
+	padding-top:0
+}
+
+.postContent .typeCon li.hover{
+	background-position:0 -165px
+}
+
+.postContent .typeCon li i.addHoverIcon{
+	position:absolute;
+	left:10px;
+	top:11px
+}
+
+.postContent .saveDiv{
+	padding:20px 0 40px 0;
+	overflow:hidden;
+	zoom:1
+}
+
+.postContent a.saveResume{
+	height:44px;
+	line-height:44px;
+	padding:0 35px;
+	font-size:20px;
+	margin-left:445px;
+	background-position:0 0;
+	_margin-top:40px
+}
+
+.postContent .saveResume:hover{
+	color:#FFF
+}
+
+.postContent .myPhoto li{
+	float:left;
+	margin-right:10px;
+	white-space:nowrap
+}
+
+.postContent .schConDiv .btnDiv{
+	padding-bottom:0
+}
+
+.postContent .apDiv{
+	border:1px solid #E9E9E9;
+	background-color:#FCFCFC;
+	padding:20px;
+	width:670px;
+	overflow:hidden
+}
+
+.postContent .apChange dt{
+	width:70px;
+	padding-right:10px;
+	height:34px
+}
+
+.postContent .apChange dd{
+	width:590px
+}
+
+.postContent .apChange .btnDiv{
+	padding-bottom:0
+}
+
+.postContent .apConShow p{
+	line-height:24px
+}
+
+.postContent .apConShow p.apName{
+	line-height:14px;
+	padding-bottom:15px
+}
+
+.postContent .apConShow p.apName a{
+	padding-left:10px;
+	float:right;
+	position:relative;
+	_top:-30px
+}
+
+.postContent .apConShow p.apDesc{
+	border-bottom:1px dashed #D8D8D8;
+	padding-bottom:12px;
+	margin-bottom:15px
+}
+
+.postContent .apDiv .btnDiv{
+	padding-bottom:0
+}
+
+.postContent .apDiv .btnDiv a{
+	margin-left:0;
+	margin-right:8px
+}
+
+.postContent .apDiv .btnDiv a.saveBtn{
+	margin-left:80px
+}
+
+.postContent .apDiv .btnDiv a.addBtn{
+	margin-left:0
+}
+
+.jPostTips{
+	margin-left:185px;
+	line-height:18px;
+	font-size:14px;
+	color:#000;
+	position:relative;
+	zoom:1;
+	border-top:1px dashed #E4E4E4;
+	padding:20px 0 10px 50px
+}
+
+.jPostTips i{
+	position:absolute;
+	top:23px;
+	left:30px
+}
+
+.postFirPage .jPostTips{
+	border-top:0;
+	padding-bottom:20px
+}
+
+.noborder{
+	border:none!important
+}
+
+.skillsName .setBox{
+	width:655px;
+	overflow:hidden
+}
+
+.skillsName .skilllevel{
+	width:auto
+}
+
+.skillsName .setBox dd{
+	width:auto
+}
+
+.skillsName dl{
+	margin-bottom:0
+}
+
+.skillsName .tabNav{
+	background-color:#FAFAFA;
+	padding:5px 0 0 28px;
+	border-bottom:1px solid #ddd;
+	zoom:1;
+	height:30px
+}
+
+.skillsName .tabNav li{
+	float:left;
+	height:30px;
+	line-height:30px;
+	border:1px solid #ddd;
+	background-color:#FFF;
+	padding:0 8px;
+	cursor:pointer;
+	white-space:nowrap;
+	border-bottom:0;
+	color:#25d;
+	margin-right:5px;
+	font-size:12px
+}
+
+.skillsName .tabNav li.tnon{
+	font-weight:700;
+	color:#404040;
+	height:30px;
+	line-height:30px
+}
+
+.skillsName .tabcon{
+	position:relative;
+	top:-1px;
+	z-index:1;
+	background:#fff;
+	border-top:1px solid #DDD;
+	clear:both
+}
+
+.skillsName .tcwrap{
+	padding:0 20px;
+	display:none;
+	overflow:hidden
+}
+
+.skillsName .tcwrap ul{
+	clear:both;
+	overflow:hidden;
+	zoom:1
+}
+
+.skillsName .tcwrap dl{
+	background:0 0;
+	overflow:hidden;
+	zoom:1;
+	border-bottom:1px dashed #C8C8C8;
+	position:relative;
+	margin:0 15px;
+	padding:8px 0;
+	font-size:12px
+}
+
+.skillsName .tcwrap dt,.skillsName .tcwrap dd{
+	float:left
+}
+
+.skillsName .tcwrap dt{
+	width:100px;
+	text-align:left
+}
+
+.skillsName .tcwrap dd{
+	width:480px
+}
+
+.skillsName .tcwrap li{
+	float:left;
+	width:115px
+}
+
+.skillsName .tcwrap li.hover{
+	background-color:#E8EFFF
+}
+
+.skillsName .tcwrap .compSkills{
+	padding:10px;
+	border-bottom:1px dashed #C8C8C8;
+	margin:0 10px;
+	overflow:hidden
+}
+
+.skillsName .tcwrap .abilist{
+	clear:both;
+	padding:0 0 10px;
+	position:relative;
+	font-size:12px;
+	overflow:hidden;
+	border-top:1px dashed #C8C8C8
+}
+
+.skillsName .tcwrap .abilist li{
+	position:relative;
+	z-index:2;
+	width:115px;
+	height:30px;
+	padding:1px 1px 0;
+	margin:0 0 0 3px;
+	cursor:pointer
+}
+
+.skillsName .tcwrap .abilist li a{
+	float:left;
+	display:inline;
+	padding:0 10px;
+	text-align:left;
+	background:url(http://pic2.58.com/ui7/job/resume/resume_detail.gif) right -200px no-repeat;
+	*background-position:right -202px
+}
+
+.skillsName dd .abilist li a:hover{
+	background-color:transparent!important
+}
+
+.skillsName dd .abilist li.selected{
+	height:31px;
+	border:1px solid #C8C8C8;
+	padding:0;
+	border-bottom:none;
+	background:#FAFAFA;
+	font-weight:700
+}
+
+.skillsName dd .abilist li.selected a{
+	background-position:right -242px;
+	*background-position:right -244px
+}
+
+.skillsName dd .abilist li.divJobCate3{
+	position:relative;
+	top:-1px;
+	z-index:1;
+	width:auto;
+	height:auto;
+	overflow:hidden;
+	zoom:1;
+	border:solid #C8C8C8;
+	border-width:1px 0;
+	background:#FAFAFA;
+	padding:5px 0;
+	margin:0;
+	cursor:default;
+	float:none;
+	display:block;
+	clear:both
+}
+
+.skillsName .abilist .divJobCate3 a{
+	background:0 0;
+	width:100px
+}
+
+.skillsName dd .abilist li.divJobCate3 a.hover{
+	background-color:#E8EFFF!important
+}
+
+.tabdivcertname{
+	height:35px
+}
+
+.certname{
+	overflow:hidden;
+	zoom:1;
+	position:relative;
+	z-index:10
+}
+
+.certname dt{
+	margin:0;
+	padding:0 10px;
+	color:#999;
+	width:695px;
+	text-align:left;
+	line-height:28px;
+	font-size:12px;
+	background-color:#FAFAFA;
+	border-bottom:1px dashed #BBB
+}
+
+.certname .tabnav{
+	background-color:#FAFAFA;
+	height:29px;
+	border-bottom:1px solid #DDD;
+	padding:5px 0 0 30px;
+	width:1271px;
+	position:absolute;
+	left:0;
+	top:0
+}
+
+.certname .tabnav li{
+	float:left;
+	margin-right:5px;
+	border:1px solid #DDD;
+	border-bottom:0;
+	height:28px;
+	line-height:28px;
+	padding:0 11px;
+	background-color:#fff;
+	font-size:12px;
+	color:#15c
+}
+
+.certname .tabnav li.tnon{
+	font-weight:700;
+	color:#404040;
+	height:29px
+}
+
+.certname .tabcon{
+	padding:10px
+}
+
+.certname .tabcon li{
+	float:left;
+	width:130px
+}
+
+.certname .tabcon li.hover{
+	background-color:#E8EFFF
+}
+
+.certname .tabcon .tcwrap{
+	display:none;
+	overflow:hidden;
+	zoom:1
+}
+
+.boxpre,.boxnext{
+	position:absolute;
+	height:34px;
+	width:24px;
+	top:0;
+	left:0;
+	z-index:101;
+	background-color:#FAFAFA
+}
+
+.boxnext{
+	left:691px
+}
+
+.boxpre i,.boxnext i{
+	width:10px;
+	height:16px;
+	position:absolute;
+	top:11px;
+	left:6px
+}
+
+.boxnext i{
+	display:block
+}
+
+.certname .tcwrap dl{
+	border-bottom:1px dashed #DDD;
+	padding:5px 0;
+	margin-bottom:0
+}
+
+.certname .tcwrap dt,.certname .tcwrap dd{
+	width:auto;
+	border:0;
+	float:left;
+	background:0 0;
+	line-height:34px
+}
+
+.certname .tcwrap dt{
+	width:100px;
+	color:#404040;
+	font-size:14px
+}
+
+.mt10{
+	margin-top:10px
+}
+
+.ml110{
+	margin-left:110px
+}
+
+#page_content{
+	font-size:14px;
+	position:relative;
+	z-index:11
+}
+
+.loginTitle{
+	line-height:30px!important;
+	background-color:#F9F9F9;
+	border-top:1px dashed #BBB;
+	font-size:12px;
+	padding-left:20px;
+	color:#797979;
+	margin-bottom:16px;
+	zoom:1
+}
+
+.login_reg{
+	border-bottom:1px solid #ccc;
+	height:31px
+}
+
+.login_reg span{
+	position:relative;
+	top:0;
+	_top:1px;
+	display:inline-block;
+	padding:0;
+	margin-right:3px;
+	border:1px solid #ccc;
+	background:#fafafa;
+	line-height:30px;
+	cursor:pointer
+}
+
+.login_reg span a{
+	display:block;
+	padding:0 10px
+}
+
+.login_reg span.active{
+	background:#fff;
+	color:#000;
+	border-bottom:1px solid #fff
+}
+
+#page_content li{
+	margin-top:10px
+}
+
+#page_content li span{
+	display:inline-block;
+	width:92px;
+	margin-right:18px;
+	text-align:right;
+	line-height:1.5
+}
+
+#page_content input{
+	vertical-align:middle;
+	font-size:14px
+}
+
+#rememberLi{
+	display:none
+}
+
+#pptusername,#pptpassword,#pptmobile,#pptmobilepassword,#pptregusername,#pptregemail,#pptregpassword,#pptregcppassword,#pptregmobile,#pptregmobilecode,#pptvalidatecode,#pptmobileregmobile,#pptmobileregmobilecode{
+	width:150px;
+	border:1px solid #ccc;
+	padding:0 8px;
+	height:30px;
+	line-height:30px;
+	background:#fff url(http://pic2.58.com/ui7/post/img/post_txt_bg.png) no-repeat 0 0;
+	vertical-align:middle;
+	color:#999;
+	font-size:inherit
+}
+
+#pptvalidatecode{
+	width:70px;
+	margin-right:5px
+}
+
+li#loginTipLi{
+	padding-left:110px
+}
+
+#loginTipLi #loginTip{
+	display:inline;
+	width:auto;
+	color:red
+}
+
+#loginButtonLi{
+	display:none
+}
+
+li#mobileLoginTipLi{
+	padding-left:110px
+}
+
+#mobileLoginTipLi #mobileLoginTip{
+	display:inline;
+	width:auto;
+	color:red
+}
+
+#mobileLoginButtonLi{
+	display:none
+}
+
+#regUserNameLi #pptregusername_tip,#regEmailLi #pptregemail_tip,#regPasswordLi #pptregpassword_tip,#regCpPasswordLi #pptregcppassword_tip,#regMobileLi #pptregmobile_tip,#regMobileCodeLi #pptregmobilecode_tip,#regMobileLi #pptmobileregmobile_tip,#mobileRegSendMobileCodeLi #pptmobileresendbtn_tip,#mobileRegMobileCodeLi #pptmobileregmobilecode_tip{
+	display:inline;
+	width:auto;
+	margin-left:3px;
+	font-size:12px
+}
+
+#regButtonLi,#mobileRegButtonLi{
+	display:none
+}
+
+.delconfirm{
+	position:absolute;
+	z-index:1000;
+	width:180px;
+	background:#F1F3F2;
+	display:none;
+	left:730px;
+	top:20px
+}
+
+.delconfirm .dcbg{
+	padding:15px 10px;
+	background:#fff;
+	border:1px solid #ccc
+}
+
+.delconfirm p{
+	height:28px;
+	line-height:28px;
+	text-align:center
+}
+
+.delconfirm .dcba{
+	padding-top:10px;
+	padding-right:5px;
+	overflow:hidden;
+	zoom:1
+}
+
+.delconfirm .dcba label{
+	margin-left:5px;
+	margin-right:5px
+}
+
+.btn-v7,.btn-v8{
+	float:right;
+	display:inline;
+	background:url(http://pic2.58.com/ui7/job/resume/resume_detail.gif) no-repeat;
+	height:28px;
+	margin-left:15px;
+	margin-top:5px;
+	padding-right:3px
+}
+
+.btn-v7{
+	background-position:right -160px
+}
+
+.btn-v8{
+	background-position:right 0
+}
+
+.savbtn,.hidbtn{
+	width:60px;
+	float:left;
+	display:inline;
+	background:url(http://pic2.58.com/ui7/job/resume/resume_detail.gif) no-repeat;
+	border:none;
+	color:#666;
+	font-size:12px;
+	height:28px;
+	line-height:26px;
+	cursor:pointer;
+	padding:0 0 5px 2px;
+	padding-top:1px\0;
+	_line-height:24px
+}
+
+.savbtn{
+	background-position:0 0;
+	color:#fff
+}
+
+.hidbtn{
+	background-position:0 -160px
+}
+
+.upLoadInfo{
+	float:left;
+	font-size:12px;
+	color:#A7A7A7;
+	display:block;
+	line-height:16px;
+	white-space:nowrap
+}
+
+.upnum{
+	color:#FF1919
+}
+
+.upLoadInfo span{
+	float:left;
+	white-space:nowrap
+}
+
+.upLoadInfo .tipsAd{
+	clear:both;
+	padding-left:7px
+}
+
+.uploadTips{
+	height:20px;
+	line-height:20px;
+	border:1px solid #F5E493;
+	color:#B8B8B8;
+	font-size:12px;
+	background-color:#FFFEE0;
+	padding:0 5px;
+	position:absolute;
+	top:38px;
+	left:0
+}
+
+.uploadTips i{
+	position:absolute;
+	top:-9px;
+	left:5px
+}
+
+.imgbox{
+	float:left;
+	margin-right:12px;
+	margin-bottom:10px;
+	width:94px;
+	height:94px;
+	_overflow:hidden
+}
+
+.imgbox a.item_close{
+	position:absolute;
+	right:-6px;
+	top:-6px;
+	font-size:0;
+	background:url(http://pic2.58.com/ui7/post/img/image_upload.png?2012717) no-repeat -100px -182px transparent;
+	height:14px;
+	width:14px;
+	display:block;
+	overflow:hidden
+}
+
+.imgbox a.hover{
+	background-position:-100px -200px
+}
+
+.myphoto li{
+	display:inline;
+	float:left;
+	margin:0 15px 15px 0
+}
+
+#photoDivView{
+	overflow:hidden;
+	zom:1
+}
+
+.infoContent .danhang2 a{
+	display:block;
+	padding-left:5px;
+	overflow:hidden;
+	width:100%
+}
+
+.infoContent .danhang2 a.hover{
+	background-color:#EEE
+}
+
+#divCompName{
+	width:307px
+}
+
+#divSchoolName,#divProfession{
+	width:241px
+}
+
+#divCertNamein,#divCertAuthority{
+	width:241px
+}
+
+#divAbiNamein{
+	width:190px
+}
+
+#containerexperience{
+	clear:both
+}
+
+.basicInfo{
+	_margin-bottom:15px;
+	position:relative;
+	z-index:900
+}
+
+.basicInfo dl,.postFirPage dl,#tabModyCert dl,#tabModyExpe dl,#tabModyProj dl,.actChange dl{
+	position:relative
+}
+
+#tabModyCert dl{
+	z-index:800
+}
+
+.jobType{
+	z-index:890
+}
+
+.expSalary{
+	z-index:880
+}
+
+.birTime{
+	z-index:870
+}
+
+dl.resAdd{
+	z-index:860
+}
+
+.address{
+	z-index:850
+}
+
+.recommendAdd{
+	z-index:845
+}
+
+.two{
+	z-index:843
+}
+
+.selfIntro{
+	z-index:841
+}
+
+
+
+
+
+.experience{
+	z-index:820
+}
+
+.drLic{
+	z-index:810
+}
+
+.cerLic{
+	z-index:809
+}
+
+.fimLang{
+	z-index:805
+}
+
+.experInfo{
+	position:relative;
+	z-index:800
+}
+
+.eduInfo{
+	position:relative;
+	z-index:700
+}
+
+.langInfo{
+	position:relative;
+	z-index:600
+}
+
+.cerInfo{
+	position:relative;
+	z-index:500
+}
+
+.skillsInfo{
+	position:relative;
+	z-index:450
+}
+
+.proInfo{
+	position:relative;
+	z-index:400
+}
+
+.schoolInfo{
+	position:relative;
+	z-index:300
+}
+
+.photoInfo{
+	position:relative;
+	z-index:350
+}
+
+.advantInfo{
+	position:relative;
+	z-index:100
+}
+
+.typeInfo{
+	zoom:1
+}
+
+#containerscholarship .hideBtn{
+	right:17px
+}
+
+#containerscholarship .hideTips{
+	right:-35px
+}
+
+#sec_ship{
+	z-index:890
+}
+
+#sec_post{
+	z-index:880
+}
+
+#sec_act{
+	z-index:870
+}
+
+#scholarList_1{
+	z-index:850
+}
+
+#scholarList_2{
+	z-index:840
+}
+
+#scholarList_3{
+	z-index:830
+}
+
+.resmSucc-mask{
+	display:none;
+	width:100%;
+	height:100%;
+	_height:expression(document.documentElement.clientHeight);
+	background:#000;
+	filter:alpha(opacity=40);
+	opacity:.4;
+	position:fixed;
+	top:0;
+	right:0;
+	_position:absolute;
+	_top:expression(eval(document.documentElement.scrollTop));
+	z-index:999
+}
+
+.resmSucc-weixin{
+	display:none;
+	width:642px;
+	height:350px;
+	background:url(http://pic2.58.com/ui7/job/resume/resmSucc-weixin.png) 0 0 no-repeat;
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin:-175px 0 0 -321px;
+	_position:absolute;
+	_top:expression(eval(document.documentElement.scrollTop + document.documentElement.clientHeight/2));
+	z-index:1000
+}
+
+.resmSucc-weixin a{
+	position:absolute;
+	width:12px;
+	height:12px;
+	top:19px;
+	right:21px
+}
+
+.infoContent .jobType .selType li.recommendType{
+	border:1px solid #7EA5E8;
+	background-color:#E0EDFF
+}
+
+.postContent .basicConShow dl span.jobType{
+	white-space:normal
+}
+
+.postSuccess .resDetail .rejl dt{
+	white-space:nowrap
+}
+
+.infoContent .jobType .selType li{
+	margin-bottom:5px
+}
+
+.jobTitle{
+	z-index:900
+}
+
+.recommendTip{
+	line-height:20px;
+	font-size:12px;
+	color:gray
+}
+
+input::-ms-clear{
+	display:none
+}

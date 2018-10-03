@@ -1,0 +1,178 @@
+html {
+        background: #F5F5F5;
+    }
+
+    body {
+        margin: 0;
+    }
+    ul {
+        margin: 0;
+        line-height: 0;
+        padding: 0;
+        overflow: auto;
+        margin-bottom: 2rem;
+    }
+    .list {
+        margin-top:2rem;
+    }
+
+    .list ul li {
+        list-style: none;
+        width: 100%;
+        height: auto;
+        background: #FFF;
+        margin-top:0.3rem;
+    }
+    .list .btn {
+        width: 1.875rem;
+        height: 1.875rem;
+        border: 0.0625rem solid #B59F76;
+        float: left;
+        font-size: 2rem;
+        color: #666;
+        text-align: center;
+        line-height: 1.4rem;
+    }
+    .list .title {
+        width: 11.125rem;
+        height: 3.25rem;
+        float: left;
+        overflow: hidden;
+    }
+    .list .title div {
+        margin-left: 0.8rem;
+        margin-top: 0.8rem;
+    }
+    .list .title span {
+        line-height: 1.3rem;
+        color: #555;
+        letter-spacing: 0.1rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .list .number {
+        width: 2.5rem;
+        height: 1.875rem;
+        border: 0.0625rem solid #B59F76;
+        float: left;
+        border-left: 0rem;
+        border-right: 0rem;
+        line-height: 1.7rem;
+        text-align: center;
+        color: #555;
+    }
+    .list .price {
+        font-size: 1.2rem;
+        color: #eb5211;
+        float: right;
+        margin-right: 0.8rem;
+        margin-top: 1.45rem;
+    }
+    .close {
+        float: right;
+        width: 0.08rem;
+        height: 1.8rem;
+        background: #555;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        margin-right: 2.2rem;
+        margin-top: -2.8rem;
+    }
+    .close:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0.08rem;
+        height: 1.8rem;
+        background: #555;
+        -webkit-transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+    .check_btn_img {
+        width: 3rem;
+        height: 7.25rem;
+        float: left;
+        text-align: center;
+        line-height: 7.25rem;
+    }
+    .product_img {
+        width: 6.25rem;
+        height: 7.25rem;
+        float: left;
+    }
+    .number_btns {
+        margin-left: 0.8rem;
+        margin-top: 0.8rem;
+        float: left;
+        margin-bottom: 0.9rem;
+    }
+    .r_price {
+        width: 5.5rem;
+        height: 7.25rem;
+        float: right;
+        margin-top: -3.2rem;
+    }
+    .options_div {
+        font-size: 0.5rem;
+        color: #999;
+        height: auto;
+        width: 10rem;
+        line-height: 1rem;
+        margin-top: -0.6rem;
+        margin-bottom:0.3rem;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+    .operation {
+        width: 100%;
+        height: 3.4375rem;
+        background: #fff;
+        position: fixed;
+        bottom: 3.53rem;
+        border-top: 0.0625rem solid #D8D8D8;
+        overflow:auto;
+    }
+    .all_checkBtn {
+        width: 2.5rem;
+        height: 100%;
+        text-align: center;
+        line-height: 3.5rem;
+        float: left;
+    }
+    .operation .qx {
+        float: left;
+        color: #555;
+        line-height: 3.3rem;
+        width: 4rem;
+    }
+    .operation .hj {
+        float: left;
+        line-height: 3.3rem;
+        color: #555;
+        width: 3.5rem;
+    }
+    .operation .je {
+        float: left;
+        line-height: 3.3rem;
+        color: #B59F76;
+        width: 3.5rem;
+    }
+    .operation .js {
+        float: right;
+        width: 10rem;
+        height: 100%;
+        background: #B59F76;
+        color: #FFF;
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 3.3rem;
+    }

@@ -1,0 +1,4 @@
+﻿error.Password=密码错误
+NoAccount=会员卡号 {0} 未找到
+NoEnoughPoint=积分不足
+NoGift=礼品未找到

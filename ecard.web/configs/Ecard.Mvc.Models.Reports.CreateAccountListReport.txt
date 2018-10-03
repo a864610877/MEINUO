@@ -1,0 +1,16 @@
+﻿AccountShop.name=发卡行
+AccountShop.order=3
+columns=行号,流水号,卡号,发卡行,卡种,制卡操作员
+description=制卡明细表
+End.name=结束时间
+End.order=2
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.CreateAccountList
+Start.name=开始时间
+Start.order=1
+summary.count=0
+title=制卡明细表
+titleA=制卡明细表

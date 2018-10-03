@@ -1,0 +1,59 @@
+ body {
+        background: #F5F5F5;
+    }
+
+    .input {
+        height: 3.125rem;
+        width: 100%;
+        background: #FFF;
+        line-height: 4.1rem;
+        float: left;
+        margin-top: 0.2rem;
+    }
+
+        .input span {
+            float: left;
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 2.9rem;
+        }
+
+        .input input {
+            width: 70%;
+            float: left;
+            height: 1.75rem;
+            margin-top: 0.6rem;
+            padding-left: 1rem;
+            font-size: 1.2rem;
+            color: #333;
+            border: 0;
+        }
+
+    .btn {
+        width: 90%;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        line-height: 2.3rem;
+        color: #FFF;
+        margin: 0 auto;
+        margin-top: 0.8rem;
+    }
+
+    .btn_null {
+        background: #CCC;
+    }
+
+    .btn_ok {
+        background: #B59F76;
+    }
+    .code_btn {
+        float: right;
+        width: 9.375rem;
+        height: 100%;
+        background: #B59F76;
+        text-align: center;
+        line-height: 3.1rem;
+        color: #fff;
+    }

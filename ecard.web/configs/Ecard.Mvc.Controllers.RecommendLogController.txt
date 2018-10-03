@@ -1,0 +1,6 @@
+﻿Delete.description=删除
+description=Ecard.Mvc.Controllers.RecommendLogController
+Edit.description=编辑
+name=Ecard.Mvc.Controllers.RecommendLogController
+RecommendLogList.description=推荐记录
+RecommendLogList.name=推荐记录

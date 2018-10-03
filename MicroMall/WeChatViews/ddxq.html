@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/momocha.css" />
+    <script type='text/javascript' src='../js/jquery-2.1.0.js'></script>
+    <script type="text/javascript" src="../js/momocha.js"></script>
+    <link rel="stylesheet" href="../css/feiaishi.css" />
+    <script src="../js/jquery.min.js"></script>
+    <link href="../css/weui.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li>
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="sp.html">商品分类</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">订单详情</a>
+            <a href="javascript:void(0)" class="bar-ico gwc-delete" rel="off"></a>
+        </header>
+        <div class="qrdd-index">
+            <div class="ddxq01" id="ddxqOrderStatus">
+                <!--订单状态：已发货-->
+            </div>
+            <div class=" qedd-sh">
+                <div class="momocha-hentiao2 sh-yes ">
+                    <a href="javascript:void(0)">
+                        <div class="add-xuanzr">收货地址：</div>
+                        <div class="name-number"><i id="RecName"></i><i id="RecMobile"></i></div>
+                        <div class="add" id="RecDtlAdd"></div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="ddxq02">
+                <ul>
+                    <li>物流详情：</li>
+                    <li id="ExpBanka">快递公司：</li>
+                    <li id="ExpNo">快递单号：</li>
+                </ul>
+            </div>
+            <div class="momocha-hentiao top10" id="ddxqOrderNo"></div>
+            <div class="ddxinxi">
+                <ul id="BuyList">
+               
+
+                </ul>
+            </div>
+            <div class="momocha-hentiao top10" id="ddxqRemark"></div>
+           <!-- <div class="momocha-hentiao guest "><i>留言:</i><input type="text" readonly="readonly" id="ddxqRemark"></div>-->
+
+        </div>
+
+        <div class="jiesuan" style="display:none" id="ddxqjiesuan">
+            <div class="quanxuan"></div>
+            <div class="heji">
+                <div class="jiaqian" id="TotalAmount">合计：<i>¥4000.00</i></div>
+                <div class="yunfei" id="Freight">运费：<i>¥40.00</i></div>
+            </div>
+            <div class="jiesuan-on">
+                <a onclick="interSubmit()" class="ddzf">进入结算</a>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/fz.js"></script>
+    <script type="text/javascript">
+        var orderNo = getQueryString("orderNo");
+
+
+       // var totalAmt = 0.00;
+        function interSubmit() { window.location.href = ("/WeChat/qrdd.html?orderNo=" + orderNo); }
+
+        window.onload = load();
+        function load() {
+            if (orderNo == null || orderNo == "" || orderNo == "undefined") {
+                $.openDialog("订单号参数错误");
+                setInterval(function () { window.location.href = "ddzx.html?goodStatus=0"; }, 2000); //跳转到订单详情
+            }
+
+            $('#ddxqOrderNo').html('订单编号：' + orderNo);
+            $.openLoading("载入中...");
+            $.ajax({
+                type: "post",
+                data: {
+                    orderNo: orderNo
+                },
+                dataType: "json",
+                url: "/JuMeiMall/BuyDetails",
+                success: function (json) {
+                    $.closeLoading();
+                    if (json != null) {
+                        if (json.Code != null && json.Code != "undefined" && json.Code == 110) {
+
+                            window.location.href = json.Msg;//获取Session
+
+                        } else if (json.OrderDetailsList != null && json.OrderDetailsList.length > 0) {
+                            comIdList = json.OrderDetailsList;
+                            var html = '';
+                            for (var i = 0; i < json.OrderDetailsList.length; i++) {
+                                var str = SetBuyDetail(json.OrderDetailsList[i].Title, json.OrderDetailsList[i].Image, json.OrderDetailsList[i].Price, json.OrderDetailsList[i].quantity, json.OrderDetailsList[i].Id, json.OrderDetailsList[i].specification);
+                                html += str;
+                            }
+                            $('#ddxqOrderStatus').html('订单状态: ' + json.orderState);
+                            //地址
+                            if (json.recipients == null || json.recipients == " " || json.recipients == "") {
+                                $('#RecName').html('收货人: (未设置)');
+                            } else {
+                                $('#RecName').html('收货人: ' + json.recipients);
+                            }
+                            $('#RecMobile').html(json.moblie);
+                            if (json.detailedAddress == null || json.detailedAddress == " " || json.detailedAddress == "") {
+                                $('#RecDtlAdd').html('详细地址：(未设置)');
+                            } else {
+                                $('#RecDtlAdd').html('详细地址：' + json.detailedAddress);
+                            }
+                            $('#ExpBanka').html('快递公司：' + json.ExpressCompany);
+                            $('#ExpNo').html('快递单号：' + json.ExpressNumber);
+
+                            if (json.payState == 1) {
+                                $("#ddxqjiesuan").css('display', 'block');
+                            }
+                            $("#BuyList").html(html);
+
+
+                            $("#TotalAmount").html('商品合计：<i>¥' + json.TotalAmt + '</i>');
+                            //totalAmt = json.TotalAmt + json.Freight;//总金额，用于支付
+                            $("#ddxqRemark").html('留言: ' + json.Remark);
+                            $("#Freight").html('运费：<i>¥' + json.Freight + '</i>');
+                            setTimeout(function () {
+                                $.getScript('../js/momocha-min.js', function () {
+                                    fit();
+                                    mosidebar();
+                                    spnr();
+                                    act0();
+                                });
+                            }, 200);
+                        } else {
+                            $.openDialog(json.Msg);
+                            setInterval(function () { window.location.href = "ddzx.html?goodStatus=0"; }, 2000); //跳转到订单详情
+                        }
+
+
+                    }
+
+
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("获取订单详情失败，请稍后再试");
+                }
+            });
+
+
+        }
+
+        function SetBuyDetail(Title, Image, Price, quantity, Id, specification) {
+            var html = '';
+            html += '<li>';
+            html += '<div class="qrdd-img">';
+            html += '<a onclick="OpenGoodsDtl(' + Id + ')"><img src="' + Image + '"></a>';
+            html += '</div>';
+            html += '<div class="qrdd-nr">';
+            html += '<div class="biaoti">';
+            html += '<a onclick="OpenGoodsDtl(' + Id + ')">' + Title + '</a>';
+            html += '</div>';
+            html += '<div class="fubiaoti">' + specification + '</div>';
+            html += '<div class="quantity">';
+            html += '<div class="qrdd-jiage">¥' + Price + '</div>';
+            html += '<div class="qrdd-js">x' + quantity + '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</li>';
+
+            return html;
+
+        }
+    </script>
+
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+</body>
+
+</html>

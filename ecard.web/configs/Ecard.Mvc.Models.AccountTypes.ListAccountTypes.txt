@@ -1,0 +1,12 @@
+﻿delete.success=删除帐户类型 {0} 成功
+description=添加、修改、启用、停用、删除帐户类型
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=启用帐户类型 {0} 成功
+State.name=状态
+State.order=1
+suspend.success=停用帐户类型 {0} 成功
+title=帐户类型
+titleA=帐户类型

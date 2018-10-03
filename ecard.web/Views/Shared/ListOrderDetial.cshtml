@@ -1,0 +1,60 @@
+﻿@using Moonlit
+@using Ecard.Mvc.Models.GoodandOrder
+@model MultiCheckList<TempDatial>
+ @{
+     var itemType = Model.GetItemType();
+     var prefix = ViewData["propertyName"];
+ }
+<div class="hastable">
+    <table class="sort-table">
+        <thead>
+            <tr>
+                <th>选择 </th>
+                <th>商品编码 </th>
+                <th>商品名称  </th>
+                <th>价格 </th>
+                <th>数量 </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var category = "";
+            }
+            @using (var scope = new IteratorScope())
+            {
+                foreach (var item in Model.Items)
+                {
+                    var categoryItem = ((CheckedItem)item).Item as Ecard.Models.ICategory;
+                    if(categoryItem != null && category != categoryItem.Category)
+                    {
+                        category = categoryItem.Category;
+                        <tr>
+                        <td colspan="@(Html.PropertyCount(itemType) + 1)">@categoryItem.Category</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            @(Html.CheckBox(prefix + "[" + IteratorScope.Current.Index + "].Checked", ((CheckedItem)item).Checked, new { @class = "checkbox ckitem" }))
+                            @(Html.Hidden(prefix + "[" + IteratorScope.Current.Index + "].Id", ((CheckedItem)item).Id, new { @class = "checkbox" }))
+                        </td>
+                        <td>
+                            @Html.Label(prefix + "[" + IteratorScope.Current.Index + "].Name", ((TempDatial)((CheckedItem)item).Item).Name)
+                        </td>
+                        <td>
+                            @Html.Label(prefix + "[" + IteratorScope.Current.Index + "].DisplayName", ((TempDatial)((CheckedItem)item).Item).DisplayName)
+                        </td>
+                        <td>
+                            @Html.TextBox(prefix + "[" + IteratorScope.Current.Index + "].Price", ((TempDatial)((CheckedItem)item).Item).Price, new Dictionary<string, object> { { "onfocus"," this.style.imeMode='disabled' " }, { "OnKeyPress", "if(((event.keyCode>=48)&&(event.keyCode <=57))||(event.keyCode==46)) {event.returnValue=true;} else{event.returnValue=false;}" } })
+                        
+                        </td>
+                        <td>
+                            @Html.TextBox(prefix + "[" + IteratorScope.Current.Index + "].Amount", ((TempDatial)((CheckedItem)item).Item).Amount, new Dictionary<string, object> { { "onfocus", " this.style.imeMode='disabled' " }, { "class", "field text medium" }, { "OnKeyPress", "if(((event.keyCode>=48)&&(event.keyCode <=57))) {event.returnValue=true;} else{event.returnValue=false;}" } })
+                        </td>
+                       @* @Html.Tds(((CheckedItem)item).Item, itemType)*@
+                    </tr>
+                    scope.Next();
+                }
+            }
+        </tbody>
+    </table>
+</div>

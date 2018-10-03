@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "";
+    }
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+
+<script language="javascript">
+    $(function () {
+        $('.error').css({ 'position': 'absolute', 'left': ($(window).width() - 490) / 2 });
+        $(window).resize(function () {
+            $('.error').css({ 'position': 'absolute', 'left': ($(window).width() - 490) / 2 });
+        })
+    });  
+</script> 
+
+
+</head>
+
+
+<body style="background:#edf6fa;">
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">错误</a></li>
+    </ul>
+    </div>
+    
+    <div class="error">
+    
+    <h2>系统出错了！</h2>
+    @*<p>看到这个提示，就自认倒霉吧!</p>*@
+    <div class="reindex"><a href="/Home/Index" target="_parent">首 页</a></div>
+    
+    </div>
+
+
+</body>
+
+</html>
+
+
+

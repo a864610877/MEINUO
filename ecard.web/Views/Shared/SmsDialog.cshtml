@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MessageTemplate>
+           @{
+               Layout = null;
+           }
+<div id="dialog-sms" class="hastable" style="display: none"> 
+    <p>
+        <textarea class="message-panel" data-field="message" rows="13" cols="40"></textarea></p>
+    
+    <p>
+        模板:<select class="message-selector">
+                <option value="">清空</option>
+            @foreach (var template in Model)
+            {
+                <option value="@template.Template">@template.DisplayName</option>
+            }
+        </select>
+    </p>
+    <p>
+        发送给所有人？<input type="checkbox"  data-field="sendToAll"/>
+    </p>
+    <p> 
+</div>
+<input type="hidden" id="MessageTemplate" name="MessageTemplate"/>
+<input type="hidden" id="SendToAll" name="SendToAll"/>

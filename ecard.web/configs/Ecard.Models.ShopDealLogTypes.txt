@@ -1,0 +1,6 @@
+﻿ByAmount.name=定额结算
+ByAmount.order=1
+ByDeal.name=逐笔结算
+ByDeal.order=1
+ByTime.name=定期结算
+ByTime.order=1

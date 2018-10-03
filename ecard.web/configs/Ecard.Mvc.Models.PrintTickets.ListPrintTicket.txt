@@ -1,0 +1,15 @@
+﻿AccountName.order=1
+AccountName.shortName=卡号
+AccountName.shortNameFormat={0}
+LogType.order=3
+LogType.shortName=小票类型
+LogType.shortNameFormat={0}
+PrintCount.order=7
+PrintCount.shortName=打印次数
+PrintCount.shortNameFormat={0}
+SerialNo.order=1
+SerialNo.shortName=流水号
+SerialNo.shortNameFormat={0}
+SubmitTime.order=5
+SubmitTime.shortName=打印时间
+SubmitTime.shortNameFormat={0:yyyy-MM-dd HH:mm:ss}

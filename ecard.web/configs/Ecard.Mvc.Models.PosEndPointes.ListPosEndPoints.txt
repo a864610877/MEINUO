@@ -1,0 +1,16 @@
+﻿delete.success=为商户 {1} 删除终端 {0} 成功
+description=添加、删除、终端
+Name.name=终端号
+Name.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=为商户 {1} 启用终端 {0} 成功
+Shop.name=商铺
+Shop.order=1
+State.name=状态
+State.order=1
+suspend.success=为商户 {1} 停用终端 {0} 成功
+title=终端管理
+titleA=终端管理

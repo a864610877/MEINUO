@@ -1,0 +1,8 @@
+﻿Alipay.name=Alipay
+Alipay.order=1
+all.name=--请选择--
+all.order=1
+cashOnDelivery.name=货到付款
+cashOnDelivery.order=1
+weChatPayment.name=微信支付
+weChatPayment.order=1

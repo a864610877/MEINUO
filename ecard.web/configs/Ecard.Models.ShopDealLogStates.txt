@@ -1,0 +1,6 @@
+﻿All.name=全部
+All.order=1
+Done.name=清算完成
+Done.order=3
+Inited.name=初始化
+Inited.order=2

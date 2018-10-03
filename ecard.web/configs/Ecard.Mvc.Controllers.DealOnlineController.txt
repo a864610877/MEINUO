@@ -1,0 +1,4 @@
+﻿CancelPay.description=CancelPay
+CancelPay.name=CancelPay
+Pay.description=Pay
+Pay.name=Pay

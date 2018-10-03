@@ -1,0 +1,14 @@
+﻿delete.success=删除渠道 {0} 成功
+description=添加管理支付渠道
+DisplayName.name=名称
+DisplayName.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=启用渠道 {0} 成功
+State.name=状态
+State.order=1
+suspend.success=停用渠道 {0} 成功
+title=支付渠道
+titleA=支付渠道

@@ -1,0 +1,1 @@
+﻿select t.* from deallogs t where addin = @addin

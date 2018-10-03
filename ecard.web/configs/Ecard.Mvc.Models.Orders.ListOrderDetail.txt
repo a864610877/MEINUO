@@ -1,0 +1,14 @@
+﻿commodityId.order=1
+commodityId.shortName=商品货号
+commodityId.shortNameFormat={0}
+commodityName.order=1
+commodityName.shortName=商品名称
+commodityName.shortNameFormat={0}
+orderId.order=1
+orderId.shortName=orderId
+price.order=1
+price.shortName=价格
+price.shortNameFormat={0}
+quantity.order=1
+quantity.shortName=购买数量
+quantity.shortNameFormat={0}

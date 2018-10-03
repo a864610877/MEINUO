@@ -1,0 +1,199 @@
+html {
+        background: #F9F9F9;
+    }
+    body {
+        margin: 0;
+        color: #3d4245;
+    }
+.content {
+overflow: hidden;
+}
+    .icon_img {
+        float: right;
+        margin-top: -2.45rem;
+        width: 2rem;
+        margin-right: 0.87rem;
+    }
+    .f_l {
+        float:left;
+    }
+    .sort {
+        width: 100%;
+        height: 2.5rem;
+        background: #FFF;
+        border-bottom: 0.062rem solid #dbdbdb;
+        font-size: 0.875rem;
+    }
+     .sort_date {
+        width: 12.9375rem;
+        height: 2.5rem;
+        float: left;
+    }
+    .sort_price {
+        width: 12.9375rem;
+        height: 2.5rem;
+        float: right;
+    }
+    .sort_date div {
+        width: 12.9375rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 0.55rem;
+    }
+    .sort_price div {
+        width: 12.9375rem;
+        height: 1.5rem;
+        text-align: center;
+        margin-top: 0.55rem;
+        border-left: 0.03rem solid #dbdbdb;
+    }
+    .product_ul {
+        overflow: visible;
+        margin-bottom: 10rem;
+    }
+    .product_ul .li {
+        width: 102.5%;
+        height: 8.6rem;
+        border-bottom: 0.062rem solid #dbdbdb;
+        overflow: hidden;
+    }
+    .product_ul li img {
+        width: 7rem;
+        height: 7rem;
+        margin: 0.8rem;
+    }
+    .product_title {
+        overflow: hidden;
+        color: #4b566a;
+        font-size: 0.9rem;
+        width: 16.5rem;
+        margin-top: 1.3rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .product_bq {
+        float: left;
+        font-size: 0.8rem;
+        color: #b59f76;
+        border: 0.063rem solid #b59f76;
+        padding: 0.3rem;
+        border-radius: 0.3rem;
+        margin-top: 1.5rem;
+        margin-left: 0.5rem;
+        letter-spacing: 0.3rem;
+        line-height: 1.2rem;
+        padding-left: 0.5rem;
+    }
+    .price {
+        float: right;
+        margin: 1rem;
+        margin-top: 1.6rem;
+        margin-right: 2.5rem;
+    }
+    .price_i {
+        color:#eb5211;
+        font-size:0.9rem;
+    }
+    .price_p {
+        color: #eb5211;
+        font-size: 1.5rem;
+    }
+    .vipPrice {
+            float: left;
+        margin-top: 0.6rem;
+        padding: 0.2rem;
+        background: #FF69B4;
+        border-radius: 0.3rem;
+        color: #FFF;
+        font-size: 0.9rem;
+        padding-left: 0.6rem;
+        padding-right: 0.6rem;
+    }
+    .vipPrice span {
+        font-size:0.1rem;
+    }
+    .vip_price {
+        float: right;
+        margin-top: 0.5rem;
+        margin-right: 1rem;
+    }
+    .vip_price li {
+        font-size: 0.8rem;
+        width: auto;
+        line-height: 1rem;
+        padding: 0.1rem;
+        border: 0.063rem solid #b59f76;
+        border-radius: 0;
+        padding-left: 0.4rem;
+        padding-bottom: 0.12rem;
+        letter-spacing: 0.04rem;
+        color: #c29a4f;
+        text-align: right;
+        padding-right: 0.7rem;
+        padding-left: 0.6rem;
+    }
+    .vip_price li span {
+        color: #eb5211;
+    }
+    .vip_price .li1 {
+        border-radius: 0.34rem 0.4rem 0 0;
+    }
+    .vip_price .li2 {
+        border-bottom: 0;
+        border-top: 0;
+        border-radius: 0;
+    }
+    .vip_price .li3 {
+        border-radius: 0 0 0.4rem 0.4rem;
+    }
+    .type_div {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display:none;
+        z-index:99999999;
+    }
+    .type {
+        width: 12rem;
+        height: 100%;
+        background: #fff;
+        border-left: 0.063rem solid #dbdbdb;
+        float: right;
+    }
+    .type li {
+        color: #4b566a;
+        padding: 0.8rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 0.063rem solid #dbdbdb;
+    }
+    .type li:hover {
+        background:#dbdbdb;
+    }
+        .type li span {
+        float: right;
+        margin-top: 1rem;
+        margin-right: 1.1rem;
+    }
+    .type img {
+        width: 3rem;
+        margin-left: 0.6rem;
+    }
+    .op_div {
+        width: 13.8125rem;
+        height: 100%;
+        float: left;
+        filter: alpha(opacity=50);
+        -moz-opacity: 0.5;
+        opacity: 0.5; 
+        background:#000; 
+    }
+    .sort_color {
+        color: #eb5211;
+    }

@@ -1,0 +1,4 @@
+﻿description=Ecard.Mvc.Controllers.ReportController
+ListCommoditySales.description=销售报表
+ListCommoditySales.name=销售报表
+name=Ecard.Mvc.Controllers.ReportController 

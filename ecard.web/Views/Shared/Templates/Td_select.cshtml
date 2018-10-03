@@ -1,0 +1,6 @@
+﻿@model int
+@using Moonlit 
+<td  > 
+    @(Html.CheckBox("CheckItems[" + IteratorScope.Current.Index + "].Checked", false, new { @class = "checkbox ckitem" }))
+    @(Html.Hidden("CheckItems[" + IteratorScope.Current.Index + "].Id", Model, new { @class = "checkbox" }))
+</td>

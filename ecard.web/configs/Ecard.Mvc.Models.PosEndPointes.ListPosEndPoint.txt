@@ -1,0 +1,17 @@
+﻿DataKey.order=6
+DataKey.shortName=密钥
+DataKey.shortNameFormat={0}
+DisplayName.order=2
+DisplayName.shortName=终端名
+DisplayName.shortNameFormat={0}
+Name.order=1
+Name.shortName=终端编号
+Name.shortNameFormat={0}
+Shop.order=1
+Shop.shortName=Shop
+ShopDisplayName.order=3
+ShopDisplayName.shortName=商户名称
+ShopDisplayName.shortNameFormat={0}
+State.order=14
+State.shortName=状态
+State.shortNameFormat={0}

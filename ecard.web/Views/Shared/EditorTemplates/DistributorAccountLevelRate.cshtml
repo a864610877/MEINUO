@@ -1,0 +1,30 @@
+﻿@model List<Ecard.Mvc.Models.Distributors.DistributorAccountLevelRate>
+<div class="hastable">
+    <table class="sort-table">
+        <thead>
+            <tr>
+                <th class="header ">
+                    <a class="sorter" href="#">账户级别</a>
+                </th> 
+                <th class="header ">
+                    <a class="sorter" href="#">提成比例，不填则为 0 </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+      
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                var item = Model[i];
+                <tr>
+                    <td>@item.AccountLevelPolicyText
+                    </td> 
+                    <td>
+                        <input type="text" value="@item.Rate" name="@Html.ViewData.TemplateInfo.GetFullArrayHtmlFieldName(i, "Rate")"/>
+                        <input type="hidden" name="@Html.ViewData.TemplateInfo.GetFullArrayHtmlFieldName(i, "AccountLevelPolicyId")" value="@item.AccountLevelPolicyId"/>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

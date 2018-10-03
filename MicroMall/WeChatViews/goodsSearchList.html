@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/momocha.css?v1" />
+    <script type='text/javascript' src='/js/jquery-2.1.0.js'></script>
+    <script type="text/javascript" src="/js/momocha.js?v1"></script>
+    <link rel="stylesheet" href="/css/feiaishi.css?v1" />
+    <link href="/css/weui.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li class="ahover">
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">搜索显示</a>
+            <!--<a href="javascript:void(0)" class="bar-ico gwc-delete " rel="off"></a>-->
+            <a href="javascript:void(0)" class="bar-ico bar-nav bar-nav-on" rel="off"></a>
+        </header>
+        <div class="shousuo">
+
+            <div class="shousuo-nr" id="app" >
+                <!--<span>
+                    <img src="img/img1.jpg" />
+                    <p>商品简称</p>
+                    <p>商品说明,商品说明,商品说明,商品说明</p>
+                    <p><i>¥</i><i>4000.00</i></p>
+                    <p><a href="javascript:void(0)">立即购买</a></p>
+                </span>
+
+                <span>
+                    <img src="img/img1.jpg" />
+                    <p>商品简称</p>
+                    <p>商品说明,商品说明,商品说明,商品说明</p>
+                    <p><i>¥</i><i>4000.00</i></p>
+                    <p><a href="javascript:void(0)" class="off">活动已过期</a></p>
+                </span>
+                <span>
+                    <img src="img/img1.jpg" />
+                    <p>商品简称</p>
+                    <p>商品说明,商品说明,商品说明,商品说明</p>
+                    <p><i>¥</i><i>4000.00</i></p>
+                    <p><a href="javascript:void(0)" class="off">活动已过期</a></p>
+                </span>
+                <span>
+                    <img src="img/img1.jpg" />
+                    <p>商品简称</p>
+                    <p>商品说明,商品说明,商品说明,商品说明</p>
+                    <p><i>¥</i><i>4000.00</i></p>
+                    <p><a href="javascript:void(0)" class="off">活动已过期</a></p>
+                </span>-->
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+    <p class="ssd_xsd_xdesrx" style="z-index: 9999; color: gray; display:none"></p>
+
+    <input type="hidden" id="MallSearchPageIndex" value="1" />
+
+    <script src="../js/fz.js"></script>
+    <script type="text/javascript">
+        var searchName = getQueryString("commodityName");
+        searchName = unescape(searchName);
+        $("#app").on('tap', 'li', function (event) {
+            this.click();
+        });
+        window.onload = load();
+        function load() {
+
+            
+
+            $.openLoading("加载中...");
+            $.ajax("/JuMeiMall/JuMeiMallSearchIndex", {
+                data: {
+                    commodityName: searchName,
+                    PageIndex: "1",
+                    PageSize: "8",
+                },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    var html = '';
+
+                    if (data.JuMeiMallList != null && data.totalCount > 0 && data.JuMeiMallList.length >= 8) {
+                        $("#MallSearchPageIndex").val(data.pageIndex + 1);
+                        for (var i = 0; i < data.JuMeiMallList.length; i++) {
+                            var str = appendSection2(data.JuMeiMallList[i].commodityId, data.JuMeiMallList[i].images, data.JuMeiMallList[i].commodityName, data.JuMeiMallList[i].commodityPrice, data.JuMeiMallList[i].sellQuantity, data.JuMeiMallList[i].commodityRemark);
+
+                            html += str;
+
+
+                        }
+                        
+                        
+
+                        $("#app").html(html);
+                        $(".ssd_xsd_xdesrx").html('<div style="text-align:center"><a onclick="pullupRefresh()">点击加载更多...</a></div>');
+                        $(".ssd_xsd_xdesrx").css('display', 'block');
+
+                    } else if (data.JuMeiMallList != null && data.totalCount > 0 && data.JuMeiMallList.length < 8) {
+                        $("#MallSearchPageIndex").val(data.pageIndex + 1);
+                        for (var i = 0; i < data.JuMeiMallList.length; i++) {
+                            var str = appendSection2(data.JuMeiMallList[i].commodityId, data.JuMeiMallList[i].images, data.JuMeiMallList[i].commodityName, data.JuMeiMallList[i].commodityPrice, data.JuMeiMallList[i].sellQuantity, data.JuMeiMallList[i].commodityRemark);
+
+                            html += str;
+
+                        }
+                        $(".ssd_xsd_xdesrx").html('<div style="text-align:center"><a>找不到更多商品了...</a></div>');
+                        $(".ssd_xsd_xdesrx").css('display', 'block');
+                        $("#app").html(html);
+
+                    } else {
+
+                        $.openDialog("没有这类商品");
+                    }
+
+
+                    setTimeout(function () {
+                        $.getScript('/js/momocha-min.js', function () {
+                            fit();
+                            mosidebar();
+                            spnr();
+                            act0();
+                        });
+                    }, 200);
+                },
+                error: function () {
+                    $.closeLoading();
+                    $("#app").html("");
+                    $.openDialog("网络错误");
+                }
+
+            });
+
+
+
+
+        }
+        function pullupRefresh() {
+            $(".ssd_xsd_xdesrx").css('display', 'none');
+            
+            setTimeout(function () {
+                var MallSearchPageIndex = $("#MallSearchPageIndex").val();
+                $.openLoading("加载中...");
+                $.ajax("/JuMeiMall/JuMeiMallSearchIndex", {
+                    data: {
+                        commodityName: searchName,
+                        PageIndex: MallSearchPageIndex,
+                        PageSize: "8",
+                    },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $.closeLoading();
+                        var html = '';
+                        if (data.JuMeiMallList != null && data.totalCount > 0 && data.JuMeiMallList.length >= 8) {
+                            $("#MallSearchPageIndex").val(data.pageIndex + 1);
+                            for (var i = 0; i < data.JuMeiMallList.length; i++) {
+                                var str = appendSection2(data.JuMeiMallList[i].commodityId, data.JuMeiMallList[i].images, data.JuMeiMallList[i].commodityName, data.JuMeiMallList[i].commodityPrice, data.JuMeiMallList[i].sellQuantity, data.JuMeiMallList[i].commodityRemark);
+                                $("#app").append(str);
+
+                            }
+                            $(".ssd_xsd_xdesrx").html('<div style="text-align:center"><a onclick="pullupRefresh()">点击加载更多...</a></div>');
+                            $(".ssd_xsd_xdesrx").css('display', 'block');
+
+
+                        } else if (data.JuMeiMallList != null && data.totalCount > 0 && data.JuMeiMallList.length < 8) {
+                            $("#MallSearchPageIndex").val(data.pageIndex + 1);
+                            for (var i = 0; i < data.JuMeiMallList.length; i++) {
+                                var str = appendSection2(data.JuMeiMallList[i].commodityId, data.JuMeiMallList[i].images, data.JuMeiMallList[i].commodityName, data.JuMeiMallList[i].commodityPrice, data.JuMeiMallList[i].sellQuantity, data.JuMeiMallList[i].commodityRemark);
+                                $("#app").append(str);
+                            }
+                            $(".ssd_xsd_xdesrx").html('<div style="text-align:center"><a>找不到更多商品了...</a></div>');
+                            $(".ssd_xsd_xdesrx").css('display', 'block');
+                        } else {
+
+                            $.openDialog("找不到更多商品了");
+                        }
+
+                        setTimeout(function () {
+                            $.getScript('/js/momocha-min.js', function () {
+                                fit();
+                                mosidebar();
+                                spnr();
+                                act0();
+                            });
+                        }, 200);
+                    },
+                    error: function () {
+                        $.closeLoading();
+                        $("#app").html("");
+                        $.openDialog("网络错误");
+                    }
+
+                });
+
+
+            }, 1500);
+        }
+
+        function appendSection2(commodityId, images, commodityName, commodityPrice, sellQuantity, commodityRemark) {
+            var sectionStr = '';
+
+            var section = '<span>';
+            section += '<img src="' + images + '" "/>';
+            section += '<p>' + commodityName + '</p>';
+            section += '<p>' + commodityRemark + '</p>';
+            section += '<p><i>¥</i><i>' + commodityPrice + '</i></p>';
+            section += '<p><a onclick="OpenGoodsDtl(' + commodityId + ')">立即购买</a></p>';
+            section += '</span>';
+
+
+
+            sectionStr += section;
+            return sectionStr;
+
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

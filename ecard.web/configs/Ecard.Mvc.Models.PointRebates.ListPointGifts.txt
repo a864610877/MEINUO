@@ -1,0 +1,13 @@
+﻿AccountLevel.name=帐户级别
+AccountLevel.order=1
+delete.success=删除成功
+description=添加、修改、启用、停用、删除礼品
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=启用礼品 {0} 成功
+State.name=状态
+State.order=2
+suspend.success=停用礼品 {0} 成功
+title=礼品设置

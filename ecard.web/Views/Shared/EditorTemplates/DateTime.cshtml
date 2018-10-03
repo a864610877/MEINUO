@@ -1,0 +1,4 @@
+﻿@model DateTime?
+              <input type="text" onfocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})"
+                            name="@ViewData.TemplateInfo.HtmlFieldPrefix" id="@ViewData.TemplateInfo.HtmlFieldPrefix" class="Wdate scinput"/>
+@*@Html.TextBox("", ((Model == null) ? "" : Model.Value.ToString("yyyy-MM-dd HH:mm:ss")), new { @class = "field text small datepicker" })*@

@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "BuyDetails";
+}
+@model MicroMall.Models.JuMeiMallIndex.ListOrderDetail
+<div class="h_tit bgFFF am-container am-text-center am-margin-top-0">
+    <h2>确认订单</h2>
+</div>
+<input id="orderNo" type="hidden" value="@Model.orderNo" />
+@if (Model.orderState == Ecard.Models.OrderStates.awaitPay)
+{ 
+  <div class="am-container am-padding-vertical-sm fs14">
+    <input type="hidden" id="userAddressId" value="@Model.UserAddressId" />
+    <input type="button" id="UserAddressText" value="@(Model.UserAddressId > 0 ? Model.recipients + " " + Model.moblie : "请选择收货地址")" class="upBtn" />
+  </div>
+}
+<!-- 收货地址 -->
+<div class="shdzBox">
+    
+        @if (Model.ListUserAddress != null && Model.ListUserAddress.Count > 0)
+        {
+            <div class="gd_box">
+            @foreach (var item in Model.ListUserAddress)
+            {
+                <div class="s_addrs s_addrs2 fs15 am-container am-padding-vertical-sm address" data-value="@item.userAddressId" data-mobile="@item.moblie" data-recipients="@item.recipients">
+                    <label class="am-radio car-block car-block2">
+                        <input type="radio" name="radio1" value="@item.userAddressId" data-am-ucheck>
+                    </label>
+                    <h3>收货人：@item.recipients <span class="am-fr">@item.moblie</span></h3>
+                    <p>收货地址：@item.detailedAddress</p>
+
+                </div>
+            }
+           </div>
+            <a class="add_btn_buy add_btn_buy2">确定</a>
+        }
+        else
+        {
+            <a href="/PersonalCentre/AddAddress" class="add_btn_buy add_btn_buy2">添加收货地址</a>
+        }
+        @*<div class="s_addrs s_addrs2 fs15 am-container am-padding-vertical-sm">
+                <label class="am-radio car-block car-block2">
+                    <input type="radio" name="radio1" value="" data-am-ucheck>
+                </label>
+                <h3>收货人：张天爱 <span class="am-fr">13886786666</span></h3>
+                <p>收货地址：湖北省武汉市洪山区光谷软件园A栋302室</p>
+            </div>*@
+        @*<div class="s_addrs s_addrs2 fs15 am-container am-padding-vertical-sm">
+                <label class="am-radio car-block car-block2">
+                    <input type="radio" name="radio1" value="" data-am-ucheck checked>
+                </label>
+                <h3>收货人：张天爱 <span class="am-fr">13886786666</span></h3>
+                <p>收货地址：湖北省武汉市洪山区光谷软件园A栋302室</p>
+            </div>*@
+
+    </div>
+
+
+   
+<div class="zhezhao"></div>
+<script>
+    $(".upBtn").click(function () {
+        $(".shdzBox").show();
+        $(".zhezhao").show();
+    });
+    $(".address").click(function () {
+        $(".address").each(function () {
+            $(this).removeClass("xz");
+        });
+        $(this).addClass("xz");
+    });
+    $(".add_btn_buy2").click(function () {
+        //if ($(".address").find(".xz").length > 0) {
+        //    var userAddressId = $(".address").find(".am-nohover")[0].attr("data-value");
+        //    var recipients = $(".address").find(".am-nohover")[0].attr("data-recipients");
+        //    var moblie = $(".address").find(".am-nohover")[0].attr("data-moblie");
+        //    $("#userAddressId").val(userAddressId);
+        //    $("#UserAddressText").val(recipients + " " + moblie);
+        //}
+        $(".address").each(function () {
+            if ($(this).hasClass("xz")) {
+                var userAddressId = $(this).attr("data-value");
+                var recipients = $(this).attr("data-recipients");
+                var moblie = $(this).attr("data-mobile");
+                $("#userAddressId").val(userAddressId);
+                $("#UserAddressText").val(recipients + " " + moblie);
+                return;
+            }
+        });
+        $(".shdzBox").hide();
+        $(".zhezhao").hide();
+    });
+
+    $(".address").click(function () {
+        //if ($(this).hasClass("xz")) {
+            var userAddressId = $(this).attr("data-value");
+            var recipients = $(this).attr("data-recipients");
+            var moblie = $(this).attr("data-mobile");
+            $("#userAddressId").val(userAddressId);
+            $("#UserAddressText").val(recipients + " " + moblie);
+            $(".shdzBox").hide();
+            $(".zhezhao").hide();
+            return;
+        //}
+    });
+
+    function pay() {
+        var orderNo = $("#orderNo").val();
+        var userAddressId = $("#userAddressId").val();
+        if (parseInt(userAddressId) == undefined || parseInt(userAddressId) <= 0) {
+            $.openDialog("请选择收货地址");
+            return;
+        }
+        if (orderNo == "") {
+            $.openDialog("页面错误，请重新进入");
+            return;
+        }
+        $.openLoading("支付中");
+        $.ajax({
+            url: "/JuMeiMall/UpdateOrdersPaid",
+            data: { orderNo: orderNo, userAddressId: userAddressId },
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                $.closeLoading();
+                if (data.Code == 0) {
+                    $.webChatPay(data.Msg);
+                } else {
+                    $.openDialog(data.Msg);
+                }
+            },
+            error: function () {
+                $.closeLoading();
+                $.openDialog("系统异常，请检查忘了");
+            }
+        });
+    }
+
+
+    //调用微信支付模块
+    function onBridgeReady(json) {
+        WeixinJSBridge.invoke(
+       'getBrandWCPayRequest', {
+           "appId": json.appId,     //公众号名称，由商户传入
+           "timeStamp": json.timeStamp,         //时间戳，自1970年以来的秒数
+           "nonceStr": json.nonceStr, //随机串
+           "package": json.packageValue,
+           "signType": "MD5",         //微信签名方式:
+           "paySign": json.paySign //微信签名
+       },
+       function (res) {
+           if (res.err_msg == "get_brand_wcpay_request:ok") {
+               //alert("支付成功,请稍后查询余额,如有疑问,请联系管理员.");
+               //fAlreadyPay();
+               window.location.href = "ddzx.html?goodStatus=0";
+           } else {
+
+               $.openDialog('已取消微信商品支付');
+           }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+       });
+    }
+</script>
+<div class="border_list bgFFF am-container mb1 am-cf">
+    <h2>订单状态：<span class="c_ab5555">@(Ecard.Models.OrderStates.GetName(Model.orderState))  </span></h2>
+    <p>订单号：@Model.orderNo</p>
+     @if (Model.OrderDetailsList != null)
+     {
+         foreach (var item in Model.OrderDetailsList)
+         { 
+            <div class="order_list_pro am-cf">
+            <div class="order_list_proImg"><a href="#"><img src="@item.Image" alt=""></a></div>
+            <div class="order_list_proInfo am-padding-vertical-sm">
+            <h3><a href="#">@item.Title</a></h3>
+            @*<h3>@item.specification</h3>*@
+            <h3><a href="#">金额：¥@item.Price &nbsp;&nbsp; 数量：@item.quantity</a></h3>
+           </div>
+           </div>
+         }
+     }
+</div>
+<ul class="orderss fs15">
+    @*<li class="mb1">
+        <span>购买数量</span>
+        <div class="jiajian am-fr w50 am-text-right">
+            <input class="min" name="" type="button" value="-" />
+            <input class="text_box am-text-center" name="goodnum" type="text" value="1" />
+            <input class="add" name="" type="button" value="+" />
+        </div>
+    </li>*@
+    <li><span>配送方式</span> <a href="#" class="am-fr">@(Model.orderState >= Ecard.Models.OrderStates.paid?Model.ExpressCompany:"快递")</a></li>
+    @if (Model.orderState >= Ecard.Models.OrderStates.paid)
+    { 
+       <li><span>快递单号</span> <a href="#" class="am-fr">@Model.ExpressNumber</a></li>
+       <li><span>收货地址</span> <a href="#" class="am-fr">@Model.detailedAddress</a></li>
+       <li><span>收件人</span> <a href="#" class="am-fr">@(Model.recipients+" "+Model.moblie)</a></li>
+    }
+</ul>
+
+<div class="h55"><!-- 占位符 --></div>
+<div class="down_order bgFFF" id="pay1">
+    @if (Model.orderState == Ecard.Models.OrderStates.awaitPay)
+    { 
+       <a href="#" class="jiesuan am-fr" onclick="pay()">去结算</a>
+        <span class="down_hj">
+          合计：<samp class="color_b59f76">￥@Model.TotalAmt</samp>
+        </span>
+       <span class="down_yf am-fr">不含运费</span>
+    }
+    else
+    { 
+       
+    }
+    
+    <!-- <label class="am-checkbox car-block car-block2">
+      <input type="checkbox" value="" data-am-ucheck>  全选
+    </label> -->
+    
+</div>

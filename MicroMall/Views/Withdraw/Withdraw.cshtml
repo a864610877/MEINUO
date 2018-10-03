@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "积分提现";
+}
+@model MicroMall.Models.Withdraws.OperationWithdraw
+
+<script type="text/javascript">
+    $(function () {
+        $("#subBtn").click(function () {
+            var point = $("#point").val();
+            if (point == null || point == "") {
+                $.openDialog("请输入积分");
+                return;
+            }
+            if (parseInt(point <= 0)) {
+                $.openDialog("请输入积分");
+                return;
+            }
+            $.openLoading("提交中");
+            $.ajax({
+                url: "/Withdraw/AddWithdraw",
+                data: { point: point },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        var pointHid = parseFloat($("#pointHid").val());
+                        var syPoint = pointHid - point;
+                        $("#pointHid").val(syPoint);
+                        $("#point").val(0);
+                        $("#pointText").html(syPoint);
+                        $.openDialog("提交成功，等待管理员审核");
+                    } else {
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("系统异常，请检查网络");
+                }
+            })
+
+        });
+
+    });
+
+</script>
+
+<header data-am-widget="header" class="am-header am-header-default bgFFF border_b">
+    <div class="am-header-left am-header-nav">
+        <a href="/PersonalCentre/Index" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        积分提现
+    </h1>
+</header>
+<input type="hidden" id="pointHid" value="@Model.point" />
+<div class="jifenSidea bgFFF am-container mb5">
+    <span><b id="pointText">@Model.point</b>积分</span>
+    <span class="user_dj am-fr">等级：@Model.grade</span>
+    <p>总积分：@Model.presentExp</p>
+</div>
+<div class="am-padding-lg">
+    <div class="input_jifen fs15">
+        <input type="text" class="text" id="point" placeholder="请输入提现积分" />
+        <input type="button" class="btn" id="subBtn" name="" value="提取积分">
+    </div>
+    <p class="am-padding-top-lg fs14">
+        注：<br />
+        1.提现请求提交后，由管理员审核后将打入微信账户<br />
+        2.提现积分必须是整数
+
+
+    </p>
+</div>

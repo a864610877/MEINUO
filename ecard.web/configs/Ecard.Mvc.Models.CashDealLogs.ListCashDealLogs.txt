@@ -1,0 +1,14 @@
+﻿description=现金交易日志
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+State.name=状态
+State.order=1
+SubmitTimeMax.name=结束日期
+SubmitTimeMax.order=2
+SubmitTimeMin.name=开始日期
+SubmitTimeMin.order=1 
+suspend.success=suspend.success
+title=现金交易日志
+titleA=现金交易日志

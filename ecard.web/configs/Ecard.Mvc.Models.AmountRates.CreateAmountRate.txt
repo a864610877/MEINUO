@@ -1,0 +1,13 @@
+﻿AccountLevel.name=会员级别
+AccountLevel.order=5
+Amount.name=金额 (到期后，所支付的利息)
+Amount.order=4
+Days.name=计息天数
+Days.order=2
+description=创建利息规则
+DisplayName.name=规则名称
+DisplayName.order=1
+messages.success=创建利息规则 {0} 成功
+Rate.name=利率 (到期后，所支付的利率百分比)
+Rate.order=3
+title=创建利息规则

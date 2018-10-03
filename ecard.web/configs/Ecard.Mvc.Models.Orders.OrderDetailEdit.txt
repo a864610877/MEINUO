@@ -1,0 +1,16 @@
+﻿distributionstate.name=distributionstate
+distributionstate.order=1
+distributionway.name=distributionway
+distributionway.order=1
+order.name=order
+order.order=1
+OrderBy.order=1
+orderState.name=orderState
+orderState.order=1
+pageHtml.order=1
+PageIndex.order=1
+PageSize.order=1
+payState.name=payState
+payState.order=1
+payType.name=payType
+payType.order=1

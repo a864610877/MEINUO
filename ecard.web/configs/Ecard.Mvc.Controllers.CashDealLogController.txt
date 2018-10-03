@@ -1,0 +1,12 @@
+﻿Create.confirm=确定要添加现金支出吗？
+Create.description=添加现金支出
+Create.name=创建支付渠道
+Create.toolbarIcon=plus
+description=Ecard.Mvc.Controllers.CashDealLogController
+Done.description=还款
+Done.toolbarIcon=check
+List.description=现金管理
+List.name=现金管理
+name=Ecard.Mvc.Controllers.CashDealLogController
+Suspends.description=停用
+Suspends.confirm=确定要停用现金支出吗？

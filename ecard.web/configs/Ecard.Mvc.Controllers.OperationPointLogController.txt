@@ -1,0 +1,5 @@
+﻿Delete.description=删除
+description=Ecard.Mvc.Controllers.OperationPointLogController
+name=Ecard.Mvc.Controllers.OperationPointLogController
+OperationPointLogList.description=积分操作记录
+OperationPointLogList.name=积分操作记录

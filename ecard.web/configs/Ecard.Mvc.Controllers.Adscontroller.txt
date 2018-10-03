@@ -1,0 +1,6 @@
+﻿AdsList.description=首页广告管理
+AdsList.name=首页广告管理
+Delete.description=删除
+description=Ecard.Mvc.Controllers.Adscontroller
+Edit.description=编辑
+name=Ecard.Mvc.Controllers.Adscontroller

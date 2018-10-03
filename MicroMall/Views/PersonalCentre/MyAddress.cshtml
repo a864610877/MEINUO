@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "MyAddress";
+}
+@model MicroMall.Models.UserAddresss.ListAddresss
+<header data-am-widget="header" class="am-header am-header-default bgFFF mb5 border_b">
+    <div class="am-header-left am-header-nav">
+        <a href="/PersonalCentre/Index" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        收货地址
+    </h1>
+</header>
+@if (Model.List != null && Model.List.Count > 0)
+{
+    foreach (var item in Model.List)
+    { 
+       <div class="s_addrs bgFFF fs15 am-container am-padding-vertical-sm mb5">
+        <h3>收货人：@item.recipients <span class="am-fr">@item.moblie</span></h3>
+        <p>收货地址：@(item.provinceName+" "+item.cityName+" "+item.detailedAddress)</p>
+          <h4 class="am-text-right s_addr_btn"><a href="/PersonalCentre/EditAddres?id=@item.userAddressId">编辑</a><a onclick="del('@item.userAddressId')" href="javascript:void(0)">删除</a></h4>
+        </div>
+    }
+}
+<div class="h55"><!-- 占位符 --></div>
+<div class="down_order bgFFF">
+    <a href="/PersonalCentre/AddAddress" class="jiesuan jiesuan2 am-fr"><i><img src="/images/addIcon.png" alt="" width="22"></i> 添加新地址</a>
+</div>
+<script type="text/javascript">
+    function del(id) {
+        if (confirm("确定删除此地址？")) {
+            $.openLoading("删除中");
+            $.ajax({
+                url: "/PersonalCentre/DelAddress",
+                data: { id: id },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        $.openDialog("删除成功");
+                        window.location.reload();
+                    } else if (data.Code == -2) {
+                        $.openDialogUrl("请重新登录", data.Msg);
+                    }
+                    else {
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("系统异常，请检查网络");
+                }
+            });
+        }
+    }
+
+</script>

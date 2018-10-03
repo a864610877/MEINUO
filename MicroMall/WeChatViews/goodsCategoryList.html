@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>商品列表</title>
+    <link href="/css/weui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/momocha.css?va1" />
+    <script type='text/javascript' src='/js/jquery-2.1.0.js?va'></script>
+    <script type="text/javascript" src="/js/momocha.js?va1" ></script>
+    <link rel="stylesheet" href="/css/feiaishi.css?va1" />
+    <script src="/js/fz.js"></script>
+    
+
+</head>
+<body>
+	 <div class="momocha-sidebar">
+	 	<ul>
+            <li class="ahover">
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+		</ul>	 	
+	 </div>
+	 
+	 <div class="momocha-index">
+	 	<header class="momocha-bar bar-color">
+	 		<!--<a href="javascript:history.back(-1)" class="bar-ico" >返回</a>-->
+            <a href="javascript:history.back(-1)" class="bar-ico  bar-return"></a>
+	 		<a href="javascript:void(0)" class="bar-litle" id="titleName">手机专区</a>
+	 		<!--<a href="javascript:void(0)" class="bar-ico bar-nav" rel="off">导航</a>-->
+            <a href="javascript:void(0)" class="bar-ico bar-nav bar-nav-on" rel="off"></a>
+	 	</header>
+	 	
+	 	<div class="momocha-xuanze">
+            <a href="javascript:void(0)" class="ahover">商品</a>
+            <a href="javascript:void(0)" >推荐</a>
+	 	</div>
+	 		
+	 	<div class="momocha-spnr">
+	 		<div class="mleft">
+	 			<a  href="/spm.html">
+	 				<img src="img/img1.jpg">
+					<span ><p>商品名称,商品名称,商品名称,商品名称,商品名称,商品名称,商品名称,商品名称,商品名称</p></span>
+					<span ><p>¥</p><p>3000.00</p></span>
+					<span ><p>月销：0</p><p>免运费</p></span>	
+	 			</a>
+	 			
+	 			<a  href="/spm.html">
+	 				<img src="img/img1.jpg">
+					<span ><p>商品名称,商品名称,商品名称,商品名称,商品名称,商品名称,商品名称,商品名称,商品名称</p></span>
+					<span ><p>¥</p><p>3000.00</p></span>
+					<span ><p>月销：0</p><p>免运费</p></span>		
+	 			</a>
+	 			
+	 			
+	 		</div>
+	 		
+	 		<div class="mright">
+	 			<span>
+					<img src="/img/img1.jpg" />
+					<p >商品简称</p>
+					<p >商品说明,商品说明,商品说明,商品说明</p>
+					<p ><i>¥</i><i>4000.00</i></p>
+					<p ><a href="javascript:void(0)">立即购买</a></p>
+				</span>
+				
+				<span>
+					<img src="img/img1.jpg" />
+					<p >商品简称</p>
+					<p >商品说明,商品说明,商品说明,商品说明</p>
+					<p ><i>¥</i><i>4000.00</i></p>
+					<p ><a href="javascript:void(0)" class="off">活动已过期</a></p>
+				</span>
+	 			
+	 		</div>
+	 	
+	 	</div>	
+	 	 
+	 		 
+	 
+	 </div>
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var categoryId = getQueryString("id");
+            $.openLoading("加载中");
+            $.ajax({
+                url: "/JuMeiMall/GetCommodityByCategory",
+                data: { categoryId: categoryId },
+                type: "post",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data != null) {
+                        $("#titleName").html(data.CategoryName);
+                        if (data.List != null && data.List.length) {
+                            $(".mright").html(list2(data.List, data.ImageUrl));
+                            $(".mleft").html(list(data.List, data.ImageUrl));
+                        }
+                        setTimeout(function () {
+                            $.getScript('/js/momocha-min.js', function () {
+                                fit();
+                                mosidebar();
+                                //spnr();
+                                //act0();
+                                //act1();
+                            });
+                        }, 200);
+                        //setTimeout(function () {
+                        //    $('.momocha-xuanze a').eq(0).slideToggle();
+                        //}, 200);
+                       
+
+                    } else {
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("网络错误");
+                }
+
+            });
+        }
+
+        function list(data,url)
+        {	
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var imgs = item.ImgUrl.split(',');
+                var a = '<a  href="goodsDetail.html?id=' + item.commodityId + '">';
+                a += '<img src="' + url +"/"+ imgs[1] + '">';
+                a += '<span ><p>'+item.commodityName+'</p></span>';
+                a+='<span ><p>¥</p><p>'+item.commodityPrice+'</p></span>';
+                a += '<span ><p>销量：' + item.sellQuantity + '</p><p></p></span>';
+                a += "</a>";
+                html += a;
+            }
+            return html;
+        }
+
+        function list2(data, url)
+        {	
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var imgs = item.ImgUrl.split(',');
+                var a = ' <span>';
+                a += '<img src="' + url+"/" + imgs[2] + '">';
+                a += '<p>' + item.commodityName + '</p>';
+                a += '<p >'+item.commodityRemark+'</p>';
+                a += '<p ><i>¥</i><i>'+item.commodityPrice+'</i></p>';
+                a += '<p ><a href="goodsDetail.html?id=' + item.commodityId + '">立即购买</a></p>';
+                a += "</span>";
+                html += a;
+            }
+            return html;
+        }
+
+    </script>
+</body>
+</html>

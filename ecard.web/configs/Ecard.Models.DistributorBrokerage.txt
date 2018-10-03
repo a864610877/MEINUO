@@ -1,0 +1,2 @@
+﻿description=Ecard.Models.DistributorBrokerage
+name=Ecard.Models.DistributorBrokerage

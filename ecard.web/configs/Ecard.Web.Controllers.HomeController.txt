@@ -1,0 +1,4 @@
+﻿description=Ecard.Web.Controllers.HomeController
+Index.description=请选择自己的功能
+Index.name=首页
+name=Ecard.Web.Controllers.HomeController

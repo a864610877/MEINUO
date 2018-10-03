@@ -1,0 +1,7 @@
+﻿description=创建短信消息模板
+DisplayName.name=消息模板名称
+DisplayName.order=1
+messages.success=创建短信消息模板 {0} 成功
+Template.name=消息模板
+Template.order=2
+title=创建短信消息模板

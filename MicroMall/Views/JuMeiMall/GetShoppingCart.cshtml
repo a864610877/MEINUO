@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "GetShoppingCart";
+}
+@model MicroMall.Models.JuMeiMallIndex.ListCartDetail
+<!-- 购物车为空 -->
+<!-- <div class="buycart_k am-text-center am-padding-lg">
+  <h2><img src="images/buyCart.png" alt=""></h2>
+  <h3>您的购物车空空如也<p>快去买买买吧！</p></h3>
+</div> -->
+
+<script src="/js/shopCart.js?v1.3"></script>
+<div id="list">
+    @if (Model.CartDetailsList != null && Model.CartDetailsList.Count > 0)
+    {
+        foreach (var item in Model.CartDetailsList)
+        {
+            <div class="buycartList bgFFF" id="buycartList_@item.Id">
+                <input type="hidden" class="price" value="@item.Price" />
+                <input type="hidden" class="freight" value="@item.Freight" />
+                <label class="am-checkbox car-block">
+                    <input type="checkbox" value="" name="xz" data-commodityid="@item.commodityId" data-shoppingCarId="@item.Id" data-am-ucheck onclick="checkboxIsCheck()">
+                </label>
+
+                <div class="car_proInfo">
+                    <div class="car_proImg"><a href="/JuMeiMall/GoodsDetails?id=@item.commodityId"><img src="@item.Image" alt=""></a></div>
+                    <div class="car_proText">
+                        <h2><a href="/JuMeiMall/GoodsDetails?id=@item.commodityId">@item.Title</a></h2>
+                        <span class="car_price">￥ @item.Price</span>
+                        <span class="d_carpro"><a href="javascript:deleteShopCart('@item.Id',$(this))">&times;</a></span>
+                        <div class="jiajian">
+                            <input class="min" name="" type="button" value="-" onclick="jianNumFun('num_@item.Id')" />
+                            <input class="text_box am-text-center" name="goodnum" onchange="getTotal()" type="text" id="num_@item.Id" value="@item.quantity" />
+                            <input class="add" name="" type="button" value="+" onclick="addNumFun('num_@item.Id')" />
+                            <span>仅剩 @item.CommodityStock 件</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    }
+    else
+    {
+        //购物车为空
+        <div class="buycart_k am-text-center am-padding-lg">
+            <h2><img src="/images/buyCart.png" alt=""></h2>
+            <h3>您的购物车空空如也<p>快去买买买吧！</p></h3>
+        </div>
+        /*
+        <div class="buycartList bgFFF">
+      <label class="am-checkbox car-block">
+          <input type="checkbox" value="" name="xz" data-am-ucheck>
+      </label>
+      <div class="car_proInfo">
+
+        <div class="car_proImg"><a href="index.html"><img src="/images/cart.jpg" alt=""></a></div>
+        <div class="car_proText">
+          <h2><a href="index.html">CB爱谬苏眼膏洁面乳照亮你的美丽</a></h2>
+          <span class="car_price">￥ 200.00</span>
+          <span class="d_carpro"><a href="#">&times;</a></span>
+          <div class="jiajian">
+              <input class="min" name="" type="button" onclick="reduceNum('num_1')" value="-" />
+            <input class="text_box am-text-center" name="goodnum" id="num_1" type="text" value="1"/>
+              <input class="add" name="" type="button" onclick="plusNum('num_1')" value="+" />
+            <span>仅剩33件</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buycartList bgFFF">
+      <label class="am-checkbox car-block">
+          <input type="checkbox" value="" name="xz" data-am-ucheck>
+      </label>
+      <div class="car_proInfo">
+        <div class="car_proImg"><a href="index.html"><img src="/images/cart.jpg" alt=""></a></div>
+        <div class="car_proText">
+          <h2><a href="/JuMeiMall/GoodsDetails">CB爱谬苏眼膏洁面乳照亮你的美丽</a></h2>
+          <span class="car_price">￥ 200.00</span>
+          <span class="d_carpro"><a href="#">&times;</a></span>
+          <div class="jiajian">
+              <input class="min" name="" type="button" onclick="reduceNum('num_2')" value="-" />
+              <input class="text_box am-text-center" name="goodnum" id="num_2" type="text" value="1" />
+              <input class="add" name="" type="button" onclick="plusNum('num_2')" value="+" />
+            <span>仅剩33件</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buycartList bgFFF">
+      <label class="am-checkbox car-block">
+        <input type="checkbox" value="" data-am-ucheck>
+      </label>
+      <div class="car_proInfo">
+        <div class="car_proImg"><a href="index.html"><img src="/images/cart.jpg" alt=""></a></div>
+        <div class="car_proText">
+          <h2><a href="index.html">CB爱谬苏眼膏洁面乳照亮你的美丽</a></h2>
+          <span class="car_price">￥ 200.00</span>
+          <span class="d_carpro"><a href="#">&times;</a></span>
+          <div class="jiajian">
+              <input class="min" name="" type="button" onclick="reduceNum('num_3')" value="-" />
+              <input class="text_box am-text-center" name="goodnum" id="num_3" type="text" value="1" />
+              <input class="add" name="" type="button" onclick="plusNum('num_3')" value="+" />
+            <span>仅剩33件</span>
+          </div>
+        </div>
+      </div>
+    </div>*/
+    }
+</div>
+
+
+<div class="h55"><!-- 占位符 --></div>
+<div class="down_order bgFFF">
+    <a href="javascript:void(0)" onclick="pay()" class="jiesuan am-fr">去结算</a>
+    <label class="am-checkbox car-block car-block2">
+        <input type="checkbox" value="" onclick="allCheck($(this))" data-am-ucheck />  全选
+    </label>
+    <span class="down_hj">
+        合计：<samp class="color_b59f76" id="total">￥00.00</samp>
+    </span>
+    <span class="down_yf am-fr" id="totalF">运费：0.00</span>
+</div>
+<script type="text/javascript">
+   
+    function pay() {
+        var commodityIdList = '';
+        var allCheckBox = $("input[type='checkbox'][name='xz']:checked");
+        allCheckBox.each(function () {
+            var num = parseInt($(this).parent().next().find("input[name='goodnum']").val());
+            var commodityid = $(this).attr("data-commodityid");
+            var shoppingCarId = $(this).attr("data-shoppingCarId");
+            commodityIdList += commodityid + ";" + num + ";" + shoppingCarId + ",";
+        });
+        if (commodityIdList == "") {
+            $.openDialog("请选择商品");
+            return;
+        }
+        $.openLoading("生成订单中");
+        $.ajax({
+            url: "/JuMeiMall/GenerateOrder",
+            data: { commodityIdList: commodityIdList },
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                $.closeLoading();
+                if (data.Code == 110) {
+                    alert("请先登录");
+                    window.location.href = data.Msg;
+                } else if (data.Code == 0) {
+                    window.location.href = "/JuMeiMall/BuyDetails?orderNo=" + data.Msg;
+                } else {
+                    alert(data.Msg);
+                }
+            },
+            error: function () {
+                $.closeLoading();
+                alert("系统异常，请检查网络");
+            }
+        })
+    }
+</script>

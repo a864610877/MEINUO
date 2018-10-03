@@ -1,0 +1,92 @@
+﻿@using Moonlit
+@model Ecard.Mvc.Models.CommodityCategory.EditCommodityCategory
+<link href="/css/shop_style.css" rel="stylesheet" />
+<style>
+    .order_details select {
+        background: #FFF none repeat scroll 0% 0%;
+        border: 1px solid #CCC;
+        height: 22px;
+        width: 140px;
+    }
+</style>
+<div class="mainbar_wrapper">
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">商品管理 > </a></li>
+            <li><a href="#">分类编辑</a></li>
+        </ul>
+    </div>
+
+
+
+    <div class="container-fluid">
+        <h2 class="add_tittle">分类编辑</h2>
+
+        <div class="addgoods_name">
+            <input type="hidden" id="commodityCategoryId" value="@Model.commodityCategoryId" />
+            <div class="addgoods_name_a">
+                <em class="addgoods_name_top"><span class="goods_icon">*</span>名称：</em>
+                <input type="text" id="name" value="@Model.Name" name="name" />
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div style="margin-top:20px">
+            <button class="baoxunxiugai tianjiafabu" id="EditCategory">保存</button>
+        </div>
+    </div>
+
+    <!--------中间更换内容------->
+</div>
+
+<link href="/Scripts/uploadify/uploadify.css" rel="stylesheet" />
+<script src="/js/jquery-1.9.0.min.js"></script>
+<script src="/Scripts/uploadify/jquery.uploadify-3.1.js"></script>
+<script src="/js/shuxing_click.js"></script>
+<script src="/Scripts/kindeditor-4.1.10/kindeditor-min.js"></script>
+
+@*<script src="/js/AdsCreate.js"></script>*@
+<script>
+    $(function () {
+        $('input[name="state"]').each(function () {
+            if ($(this).val() == state) {
+                $(this).attr("checked", "checked");
+            }
+        })
+        $("#adsReturn").click(function () {
+            window.location.href = "/CommodityCategory/List";
+        })
+        // $("#shopingImg1").attr("src", "/MicroMalls/CommodityImages/" + img)
+        $("#EditCategory").click(function () {
+            if (confirm("确定保存此次修改吗？")) {
+                var name = $("#name").val();
+                var commodityCategoryId = $("#commodityCategoryId").val();
+                $.ajax({
+                    url: "/CommodityCategory/Edit",
+                    data: {
+                        Name: name, commodityCategoryId: commodityCategoryId
+                    },
+                    type: "post",
+                    //cache: false,
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.Code == 0) {
+                            alert("保存成功")
+                        }
+                        else {
+                            alert(data.CodeText)
+                        }
+                    },
+                    error: function () {
+                        window.location.href = "/Home/UserError";
+                    }
+                })
+            }
+
+        })
+    })
+
+</script>
+

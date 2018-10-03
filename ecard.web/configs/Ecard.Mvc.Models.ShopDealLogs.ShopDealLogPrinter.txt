@@ -1,0 +1,2 @@
+﻿invalidPassword=密码错误
+nonShopDealLog=指定商户交易未找到

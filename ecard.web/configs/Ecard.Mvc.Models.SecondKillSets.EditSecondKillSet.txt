@@ -1,0 +1,11 @@
+﻿endTime.explain=秒杀结束时间
+endTime.name=秒杀结束时间
+endTime.order=1
+messages.success=编辑成功
+startTime.explain=秒杀开始时间
+startTime.name=秒杀开始时间
+startTime.order=1
+State.explain=是否开启秒杀
+State.name=是否开启秒杀
+State.order=1
+title=秒杀设置

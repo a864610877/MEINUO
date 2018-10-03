@@ -1,0 +1,7 @@
+﻿createDog.Text=创建U盾
+description=创建U盾
+fail=建卡失败
+pleaseInputUserName=请输入用户名
+success=创建U盾成功
+title=创建U盾
+waitingForCommunicate=正在创建U盾 

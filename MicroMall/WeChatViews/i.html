@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>首页</title>
+		<link rel="stylesheet" href="/css/momocha.css" />
+		<script type='text/javascript' src='/js/jquery-2.1.0.js'></script>
+		<script type="text/javascript" src="/js/momocha.js"></script>
+		<link rel="stylesheet" href="/css/feiaishi.css" />
+
+		<link rel="stylesheet" href="/css/idangerous.swiper.css">
+		<link rel="stylesheet" href="/css/idangerous.swiper.scrollbar.css">
+
+	</head>
+
+	<body>
+		<div class="momocha-sidebar">
+			<ul>
+                <li>
+                    <a href="index.html">商城首页</a>
+                </li>
+                <li>
+                    <a href="ddzx.html?goodStatus=0">我的订单</a>
+                </li>
+                <li>
+                    <a href="gwc.html">购物车</a>
+                </li>
+                <li class="ahover">
+                    <a href="i.html">个人中心</a>
+                </li>
+			</ul>
+		</div>
+
+		<div class="momocha-index">
+			<header class="momocha-bar bar-color">
+				<a href="javascript:history.back(-1)" class="bar-ico  bar-return"></a>
+				<a href="javascript:void(0)" class="bar-litle">个人中心</a>
+				<a href="javascript:void(0)" class="bar-ico bar-nav bar-nav-on" rel="off"></a>
+			</header>
+
+			<div class="i-center">
+				<div class="i-xinxi momocha-Appinterval">
+					<span class="i-img"><img src="/img/banner1.jpg" id="photo"></span>
+					<span class="i-name"><p id="name">你是个逗比吗？<i>ID：12345</i></p><p id="grade">等级：青铜五</p></span>
+				</div>
+
+				<div class="i-status momocha-Appinterval">
+                    <a href="ddzx.html?goodStatus=1">
+                        <i class="ico-dfk"></i><br>待付款
+
+                    </a>
+                    <a href="ddzx.html?goodStatus=2">
+                        <i class="ico-dfh"></i><br>待发货
+
+                    </a>
+                    <a href="ddzx.html?goodStatus=3">
+                        <i class="ico-dsh"></i><br>待收货
+
+                    </a>
+                    <a href="ddzx.html?goodStatus=4">
+                        <i class="ico-dtk"></i><br>已完成
+
+                    </a>
+
+				</div>
+
+				<div class="i-father momocha-Appinterval">
+					<a href="gwc.html" class="i-child gwc-admin"><i class="ico ico-gwc"></i>购物车<i class="text">查看购物车商品</i></a>
+                    <a href="ddzx.html?goodStatus=0" class="i-child sdd-admin"><i class="ico ico-sydd"></i>所有订单<i class="text">查看所有订单</i></a>
+					<a href="add.html" class="i-child add-admin add-color"><i class="ico ico-shdz"></i>收货地址管理</a>
+				</div>
+
+			</div>
+		</div>
+        <script src="../js/fz.js"></script>
+        <script type="text/javascript">
+
+            //login();
+
+            window.onload = load();
+
+            function load() {
+                $.openLoading("加载中")
+                $.ajax({
+                    url: "/PersonalCentre/Index",
+                    data: {},
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        $.closeLoading();
+                        if (data.Code == 0) {
+                            var nameHtml = data.name + '<i>ID：' + data.ID + '</i>';
+                            $("#name").html(nameHtml);
+                            $("#photo").attr("src", data.photo);
+                            $("#grade").html("等级：" + data.grade);
+                        } else if (data.Code = -2) {
+                            window.location.href = data.Msg;
+                        } else {
+                            $.openDialog(data.Msg);
+                        }
+                        $.openLoading("");
+                        setTimeout(function () {
+                            $.closeLoading();
+                            start();
+                            $.getScript('../js/momocha-min.js', function () {
+                                fit();
+                                mosidebar();
+                                spnr();
+                                // act0();
+                            });
+                        }, 800);
+                    },
+                    error: function () {
+                        $.closeLoading();
+                        $.openDialog("网络错误，请稍后在试");
+                    }
+                });
+            }
+        </script>
+
+		<div class="momocha-screen"></div>
+		<div class="momocha-black"></div>
+
+	</body>
+
+</html>

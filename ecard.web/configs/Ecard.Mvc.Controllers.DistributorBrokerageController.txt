@@ -1,0 +1,10 @@
+﻿confirm.confirm=您确定要确认结算请求？该操作不可恢复
+confirm.description=确认结算请求
+confirms.confirm=您确定要确认结算请求？该操作不可恢复
+confirms.description=批量确认结算请求
+description=Ecard.Mvc.Controllers.DistributorBrokerageController
+Export.description=导出
+Export.toolbarIcon=shuffle
+ListDistributorBroekerage.description=经销商提成报表
+ListDistributorBroekerage.name=经销商提成报表
+name=Ecard.Mvc.Controllers.DistributorBrokerageController

@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "AddReview";
+}
+@model Ecard.Models.Commodity
+<header data-am-widget="header" class="am-header am-header-default bgFFF mb5">
+    <div class="am-header-left am-header-nav">
+        <a href="#left-link" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        商品评价
+    </h1>
+</header>
+<div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+    <ul class="am-slides">
+        <li>
+            <img src="/images/regBanner.jpg">
+        </li>
+    </ul>
+</div>
+<input type="hidden" id="commodityId" value="@Model.commodityId" />
+<div class="add_addrs upPassword reg fs15">
+    <ul>
+        <li><span>订单号</span><input type="text" id="orderNo" disabled value="@ViewData["orderNo"]" placeholder=""></li>
+        <li><span>商品名称</span><input type="text" name="" disabled value="@Model.commodityName" placeholder=""></li>
+        <li><span>评价</span><textarea id="context" maxlength="500" placeholder="请输入留言内容"></textarea></li>
+    </ul>
+    <div class="am-container am-padding-vertical-xl">
+        <input type="button" onclick="pj()" value="评价" class="upBtn" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    function pj() {
+        var context = $("#context").val();
+        if (context == "") {
+            $.openDialog("请输入评价内容");
+            return;
+        }
+        var commodityId = $("#commodityId").val();
+        var orderNo = $("#orderNo").val();
+        $.openLoading("评论中");
+        $.ajax({
+            url: "/Commodity/AddReview",
+            data: { content: context, commodityId: commodityId, orderNo: orderNo },
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                $.closeLoading();
+                if (data.Code == 0) {
+                    $.openDialog("评价成功");
+                    $("#context").val('')
+                } else {
+                    $.openDialog(data.Msg);
+                }
+            },
+            error: function () {
+                $.closeLoading();
+                $.openDialog("系统异常，请联系管理员");
+            }
+        });
+    }
+
+</script>
+
+

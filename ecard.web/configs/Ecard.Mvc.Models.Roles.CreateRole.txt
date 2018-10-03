@@ -1,0 +1,17 @@
+﻿description=创建一个角色
+DisplayName.explain=DisplayName
+DisplayName.name=角色显示名称
+DisplayName.order=2
+messages.duplicationUser=角色 {0} 已存在
+messages.success=创建角色{0}成功
+messages.success.content=创建角色 {0} 成功
+Name.explain=Name
+Name.name=角色名称
+Name.order=1
+Permissions.name=角色权限
+Permissions.order=3
+title=创建角色
+titleA=创建角色
+UserType.explain=UserType
+UserType.name=用户类型
+UserType.order=1

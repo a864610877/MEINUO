@@ -1,0 +1,12 @@
+﻿Add.description=添加冲正
+Add.name=添加冲正
+Delete.confirm=您确定删除当前清算交易？如果删除，则需要商户重新发起清算申请。
+Delete.description=删除
+Delete.name=删除
+description=Ecard.Mvc.Controllers.LiquidateController
+Done.confirm=您确定结算当前清算交易？该操作无法撤销。
+Done.description=结算
+Done.name=结算
+List.description=清算列表
+List.name=清算列表 
+name=Ecard.Mvc.Controllers.LiquidateController

@@ -1,0 +1,75 @@
+﻿@using System.Collections
+
+@model Object
+    @{ int i = 0; int m = 0; int j = ViewModelDescriptor.GetTypeDescriptor(ViewData.Model).Properties.Where(x => x.Show).OrderBy(x => x.Order).Count();}   
+   
+@foreach (var prop in ViewModelDescriptor.GetTypeDescriptor(ViewData.Model).Properties.Where(x => x.Show).OrderBy(x => x.Order))
+{
+    i++;
+    if (prop.Hidden)
+    {
+        @Html.Editor(prop.PropertyName, prop.TemplateHint) 
+    
+    }
+    else
+    {
+        m++;
+    @*<li class="Requestlist" >
+        @Html.LabelLocalize(prop)
+        @Html.ValidationMessage(prop.PropertyName)
+            @if (prop.IsReadOnly)
+            {       
+                @Html.Display(prop.PropertyName, prop.TemplateHint)
+            }
+            else
+            {
+                if (typeof(IList).IsAssignableFrom(prop.PropertyType))
+                {
+                    @Html.Editor(prop.PropertyName, prop.TemplateHint)
+                }
+                else
+                { 
+                    @Html.Editor(prop.PropertyName, prop.TemplateHint)
+                }
+            }
+    </li>*@
+            
+        if (m >= 5)
+        {
+            if (m == 5)
+            {
+                  @Html.Raw("</tr>")  
+            }
+          
+         <td>
+           @Html.LabelLocalize(prop)
+           </td>
+             <td>
+              @* @Html.ValidationMessage(prop.PropertyName)*@
+                @Html.Editor(prop.PropertyName, prop.TemplateHint)
+                 @*<input name="UserName" id="UserName" type="text" class="scinput" value="" />*@
+                </td>
+  
+           if (i == j + 1)
+           { 
+                 @Html.Raw("<tr>") 
+           }
+        }
+        else
+        {
+            <td>
+                     @Html.LabelLocalize(prop)
+                    </td>
+                    <td>
+                   @* @Html.ValidationMessage(prop.PropertyName)*@
+                    @Html.Editor(prop.PropertyName, prop.TemplateHint)
+                    @*<input name="UserName" id="UserName" type="text" class="scinput" value="" />*@
+                   </td> 
+        }
+
+    }
+
+}
+
+
+

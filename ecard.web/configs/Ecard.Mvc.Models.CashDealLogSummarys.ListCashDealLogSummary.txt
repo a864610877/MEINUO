@@ -1,0 +1,12 @@
+﻿Amount.order=3
+Amount.shortName=应付金额
+Amount.shortNameFormat={0}
+OwnerName.order=2
+OwnerName.shortName=交易人
+OwnerName.shortNameFormat={0}
+State.order=20
+State.shortName=状态
+State.shortNameFormat={0}
+SubmitDate.order=1
+SubmitDate.shortName=提交日期
+SubmitDate.shortNameFormat={0:yyyy-MM-dd}

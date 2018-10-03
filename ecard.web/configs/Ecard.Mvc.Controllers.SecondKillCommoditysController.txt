@@ -1,0 +1,8 @@
+﻿Create.description=添加
+Delete.description=删除
+Deletes.description=批量删除
+description=Ecard.Mvc.Controllers.SecondKillCommoditysController
+Edit.description=编辑
+List.description=秒杀商品
+List.name=秒杀商品
+name=Ecard.Mvc.Controllers.SecondKillCommoditysController

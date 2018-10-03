@@ -1,0 +1,13 @@
+﻿Delete.description=删除
+Delete.toolbarIcon=circle-close 
+Deletes.description=删除
+Deletes.toolbarIcon=circle-close 
+description=Ecard.Mvc.Controllers.PrintTicketController
+List.description=重打所有已经打印过的小票
+List.name=小票重打
+List.order=1
+List.shortName=List
+List.shortNameFormat={0}
+name=Ecard.Mvc.Controllers.PrintTicketController
+Print.description=打印
+Print.toolbarIcon=print

@@ -1,0 +1,63 @@
+div.menu
+{
+    border: none;
+    margin: 0;
+    font-size: 12px;
+}
+.menu ul
+{
+    line-height: 0;
+}
+.menu li
+{
+    border-bottom: 1px solid #CFE1EF;
+    margin: 0 5px;
+    padding: 1px 0 1px 2px;
+    width: 152px;
+}
+.menu li
+{
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+.menu li.hastree ul
+{
+    display: none;
+}
+.menu li.hastree > a
+{
+    background: transparent url(images/imgSprite_03.gif) no-repeat scroll 137px -373px;
+}
+.menu li a:hover
+{
+    color: #0669AD;
+    border: 1px solid #80C0EC;
+    background: #cbe6f9;
+}
+.menu li.hastree > a:hover
+{
+    background: #cbe6f9 url(images/imgSprite_03.gif) no-repeat scroll 137px -373px;
+}
+.menu li a 
+{
+    border: 1px solid #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 23px;
+    line-height: 23px;
+    overflow: hidden;
+    padding: 0 10px 0 5px;
+    width: 135px;
+    background: none;
+    text-decoration: none;
+}
+.menu li.on
+{
+    border-bottom: none;
+}
+.menu li.on ul
+{
+    display: block;
+}

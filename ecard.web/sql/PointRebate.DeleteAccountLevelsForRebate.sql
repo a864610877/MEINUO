@@ -1,0 +1,1 @@
+﻿delete from accountlevelpointRebates where PointRebateid = @PointRebateid

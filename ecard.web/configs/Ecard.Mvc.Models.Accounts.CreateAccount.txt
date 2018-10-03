@@ -1,0 +1,10 @@
+﻿Create.Text=创建
+description=创建物理卡，请将卡插入写卡器，点击创建
+failedToWriteAccount=写卡失败
+footerOfAccounts=
+title=创建卡
+titleA=创建卡
+titleOfAccounts=创建号码列表 
+titleOfCurrent=当前卡号
+waitingForCommunicate=正在创建卡，请稍候....
+waitingForInsertCard=请插入印有下列卡号的卡片

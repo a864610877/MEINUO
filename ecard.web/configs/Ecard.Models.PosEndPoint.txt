@@ -1,0 +1,3 @@
+﻿State.name=State
+State.order=1
+State.shortName=State

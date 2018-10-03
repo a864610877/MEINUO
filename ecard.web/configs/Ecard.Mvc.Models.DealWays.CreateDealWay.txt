@@ -1,0 +1,15 @@
+﻿ApplyTo.explain=ApplyTo
+ApplyTo.name=应用
+ApplyTo.order=1
+description=创建支付方式
+DisplayName.explain=DisplayName
+DisplayName.name=名称
+DisplayName.order=1
+IsCash.explain=IsCash
+IsCash.name=是否计入现金管理
+IsCash.order=8
+messages.success=创建支付渠道 {0} 成功
+TimeOutDay.name=结算天数，在指定结算天数内
+TimeOutDay.order=1
+title=创建支付方式
+titleA=创建支付方式

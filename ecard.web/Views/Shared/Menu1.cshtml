@@ -1,0 +1,24 @@
+﻿@model PageModel
+@{
+    Layout = null; 
+}
+@if (Model.Menus != null)
+{
+    var menu = (Html.GetCurrentMenu(3) != null ? Html.GetCurrentMenu(3).Parent.Parent : Html.GetCurrentMenu(2).Parent);
+    foreach (var menuItem1 in Model.Menus)
+    {
+        var className = (menu.Name == menuItem1.Name ? "nav_tlink_on" : "");
+    <li class="nav_t @className"><a class="nav_tlink" href="i.html"><strong>@menuItem1.DisplayName</strong></a>
+        <div class="subnav_panel">
+            <ul class="subnav">
+                @foreach (var menuItem2 in menuItem1.Children)
+                {
+                    var m = menuItem2.FirstActionMenu();
+                    <li><a href="@Url.Action(m.Action, m.Controller, new RouteValueDictionary(menuItem2.ParameterObject))">
+                        <span>@m.DisplayName</span></a></li>
+                }
+            </ul>
+        </div>
+    </li> 
+    }
+}

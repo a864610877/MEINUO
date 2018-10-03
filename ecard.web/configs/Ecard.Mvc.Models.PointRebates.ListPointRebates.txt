@@ -1,0 +1,14 @@
+﻿AccountLevel.name=帐户级别
+AccountLevel.order=1
+delete.success=delete.success
+description=添加、修改、启用、停用、删除返利规则
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=启用返利规则 {0} 成功
+State.name=状态
+State.order=2
+suspend.success=停用返利规则 {0} 成功
+title=返利规则
+titleA=返利规则

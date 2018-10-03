@@ -1,0 +1,12 @@
+﻿Amount.order=1
+Amount.shortName=余额
+Amount.shortNameFormat={0}
+ExpiredDate.order=1
+ExpiredDate.shortName=有效期
+ExpiredDate.shortNameFormat={0:yyyy-MM-dd}
+Name.order=1
+Name.shortName=卡号
+Name.shortNameFormat={0}
+State.order=1
+State.shortName=状态
+State.shortNameFormat={0}

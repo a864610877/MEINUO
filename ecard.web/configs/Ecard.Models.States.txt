@@ -1,0 +1,6 @@
+﻿All.name=全部
+All.order=1
+Invalid.name=停用
+Invalid.order=1000
+Normal.name=正常
+Normal.order=2

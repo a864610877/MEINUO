@@ -1,0 +1,16 @@
+﻿columns=行号,卡种,制卡张数
+description=售卡汇总报表
+End.name=结束时间
+End.order=2
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.Createaccount
+Start.name=开始时间
+Start.order=1
+summary.count=1
+summary1.sql=report.Createaccount.summary1
+summary1.title=汇总
+title=售卡汇总报表
+titleA=售卡汇总报表

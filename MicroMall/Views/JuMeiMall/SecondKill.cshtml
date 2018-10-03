@@ -1,0 +1,214 @@
+﻿@{
+    Layout = null;
+}
+@model MicroMall.Models.JuMeiMallIndex.SecondKillModel
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>秒杀</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css?v1.8">
+    <link href="/css/weui.min.css" rel="stylesheet" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/amazeui.min.js"></script>
+    <script src="/js/fz.js?v1.2"></script>
+    <script type="text/javascript">
+        var state='@Model.state';
+        var startTime='@Model.startTime';
+        var endTime='@Model.endTime';
+        endtime = new Date(endTime);
+       var startTime1 = new Date(startTime);
+        var now = new Date();
+        setInterval(function () {
+            var curTime = new Date();
+            //把字符串格式转化为日期类
+            if (curTime >= endtime)
+            {
+                currState = 2
+                $(".tt").html("已结束");
+                $(".ms_info").removeClass("now_ms");
+                $(".ms_info").removeClass("await_ms");
+                $(".ms_info").addClass("end_ms");
+            }
+        },1000);
+        var currState = -1;//  1开枪中 2结束
+        function xd(id) {
+            if (currState != 1)
+            {
+                $.openDialog("还未开始");
+                return;
+            }
+            $.openLoading("下单中");
+            $.ajax({
+                url: "/JuMeiMall/SecondKillGDtlOrder",
+                data: { id: id },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        window.location.href = "/JuMeiMall/BuyDetails?orderNo=" + data.Msg;
+                    } else if (data.Code == -2) {
+                        $.openDialogUrl("你还没又登录，请先登录", "/login/index");
+                    } else{
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("系统异常，请检查网络设置");
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    
+    @*<header data-am-widget="header" class="am-header am-header-default bgFFF border_b">
+        <div class="am-header-left am-header-nav">
+            <a href="/JuMeiMall/JuMeiMallIndex" class="">
+                <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            秒杀
+        </h1>
+    </header>*@
+    <script src="/js/leftTime.min.js"></script>
+    <div class="miaosha">
+        <img src="/images/miaosha.jpg" alt="">
+        <div class="data-show-box" id="dateShow1">
+            <span class="date-tiem-span d">00</span>
+            <span class="date-tiem-span h">00</span>
+            <span class="date-tiem-span m">00</span>
+            <span class="date-s-span s">00</span>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                //日期倒计时
+                if (state == 1 && startTime != null && startTime != "") {
+                    $.leftTime(startTime, function (d) {
+                        if (d.status) {
+                            var $dateShow1 = $("#dateShow1");
+                            $dateShow1.find(".d").html(d.d);
+                            $dateShow1.find(".h").html(d.h);
+                            $dateShow1.find(".m").html(d.m);
+                            $dateShow1.find(".s").html(d.s);
+                        } else {
+                            var now1 = new Date();
+                            if (now1 >= startTime1 && now1 < endtime)
+                            {
+                                currState = 1;
+                                $(".tt").html("抢购中");
+                                $(".ms_info").removeClass("end_ms");
+                                $(".ms_info").removeClass("await_ms");
+                                $(".ms_info").addClass("now_ms");
+                            }
+                           // alert("开始");
+                        }
+                    });
+                }
+            });
+        </script>
+    </div>
+    @*<div class="miaosha_pro am-padding-lg">
+        <div class="miaosha_pro_con">
+            <h2><img src="/images/miao_s.jpg" alt=""></h2>
+            <ul class="am-avg-sm-2">
+                @if (Model.ListCommodity != null)
+                {
+                    foreach (var item in Model.ListCommodity)
+                    {
+                        string text = "";
+                        if (Model.startTime.HasValue)
+                        {
+                            text = Model.state == 1 ? Model.startTime.Value.Month + "月" + Model.startTime.Value.Day + "日" + " " + Model.startTime.Value.Hour.ToString().PadLeft(2, '0') + ":" + Model.startTime.Value.Minute.ToString().PadLeft(2, '0') + "开枪" : "已结束";
+                        }
+                        else
+                        {
+                            text = "未开始"; 
+                        }
+                           
+                      <li><a href="jsavascript:viod(0)" data-id="@item.id" onclick="xd('@item.id')"><img src="/images/ms_pro.jpg" alt=""><span class="tt">@text</span></a></li>
+                    }
+                }
+               
+            </ul>
+        </div>
+        <p class="am-margin-vertical-xl"><img src="/images/xuzhi.jpg" alt=""></p>
+    </div>*@
+
+
+    <div class="miaosha_pro am-padding-sm">
+        <div class="miaosha_pro_con">
+            <h2><img src="/images/miao_s.jpg" alt=""></h2>
+            <ul class="am-avg-sm-2">
+                @if (Model.ListCommodity != null)
+                {
+                    foreach (var item in Model.ListCommodity)
+                    {
+                        string text = "";
+                        
+                        string ss="";
+
+                        DateTime now = DateTime.Now;
+
+                        if (Model.state==1&&Model.startTime.HasValue && Model.endTime.HasValue)
+                        {
+                            if (now >= Model.startTime&&now<Model.endTime)
+                            {
+                                ss = "now_ms";
+                                text = "抢购中";
+                            }
+                            else if (now >= Model.endTime)
+                            {
+                                ss = "end_ms";
+                                text = "已结束";
+                            }
+                            else if (now < Model.startTime)
+                            {
+                                ss = "await_ms";
+                                text = Model.startTime.Value.Month + "月" + Model.startTime.Value.Day + "日" + " " + Model.startTime.Value.Hour.ToString().PadLeft(2, '0') + ":" + Model.startTime.Value.Minute.ToString().PadLeft(2, '0') + "开枪";
+                                
+                            }
+                         
+                                
+                            
+                           // text = Model.state == 1 ? Model.startTime.Value.Month + "月" + Model.startTime.Value.Day + "日" + " " + Model.startTime.Value.Hour.ToString().PadLeft(2, '0') + ":" + Model.startTime.Value.Minute.ToString().PadLeft(2, '0') + "开枪" : "已结束";
+                        }
+                        else
+                        {
+                            text = "未开始";
+                        }
+
+                       <li>
+                           <div class="ms_pro_max">
+                               <div class="ms_pic"><a ><img src="@item.img" width="180" height="150" alt=""><span class="tt">@text</span></a></div>
+                               <div class="ms_info @ss" onclick="xd('@item.id')">
+                                   <!--end_ms now_ms -->
+                                   <div class="price">￥<b>@(Convert.ToInt32(item.price))</b></div>
+                                   <h2>秒杀价</h2>
+                                   <h4>商城价:￥ @item.yPrice</h4>
+                                   <h3><a class="am-badge am-round">限 @item.surplusNum 件</a></h3>
+                               </div>
+                           </div>
+                    </li>
+                    }
+                }
+                
+         
+            </ul>
+        </div>
+        <p class="am-margin-vertical-xl"><img src="/images/xuzhi.jpg" alt=""></p>
+    </div>
+</body>
+</html>

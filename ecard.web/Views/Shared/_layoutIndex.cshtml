@@ -1,0 +1,346 @@
+﻿@model EcardModel
+@{
+    
+    var roles = Model.User.Roles.ToList();
+}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />  
+    <link href='@Url.Content("~/Content/site.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/css/style.css")' rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src='@Url.Content("~/js/jquery.js")'></script>
+    <script src='@Url.Content("~/js/Site.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/js/Main.js")' type="text/javascript"></script>
+    <link href='@Url.Content("~/css/select.css")' rel="stylesheet" type="text/css" />
+    <script src='@Url.Content("~/js/jquery.msgbox.js")' type="text/javascript"></script>
+    <script type="text/javascript" src='@Url.Content("~/js/select-ui.min.js")'></script>
+    <script src="@Url.Content("~/Content/My97DatePicker/WdatePicker.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/My97DatePicker/skin/WdatePicker.css")" type="text/javascript"></script>
+    <script src='@Url.Content("~/js/JsHelper.js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/Scripts/passtypes/none.js")' type="text/javascript"></script>
+
+    <script src='@Url.Content("~/Scripts/postypes/" + Model.Site.PosType + ".js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/Scripts/XYTipsWindow-3.0-dev.js")' type="text/javascript"></script>
+    @*<script src='@Url.Content("~/Scripts/passtypes/none.js")' type="text/javascript"></script>*@
+
+    @*<script src='@Url.Content("~/Scripts/postypes/" + Model.Site.PosType + ".js")' type="text/javascript"></script>
+    <script src='@Url.Content("~/Scripts/XYTipsWindow-3.0-dev.js")' type="text/javascript"></script>*@
+    <style>
+    .div{position: relative;z-index: 0}
+    .div img{position: absolute;top: 0;left: 0;}
+    #LogoName{position: absolute;z-index: 10;color: White;  font-size: x-large; z-index:5000; font-weight: bolder; font-family: fantasy;top: 20px;left: 93px;}
+    
+    </style>
+     <!-- [if (gt IE 7)&(lt IE 10)]>
+       <link href='@Url.Content("~/Content/themes/base/ie7.css")' rel="stylesheet" media="all" /> 
+    <![endif]-->
+    <script type="text/javascript">
+      var browser = getBrowserInfo(); 
+    if (browser.indexOf("msie")) {
+        var verinfo = (browser + "").replace(/[^0-9.]/ig, "");
+        if (verinfo >= 7.0 && verinfo <= 9.0) {
+            document.write("<link href='@Url.Content("~/Content/themes/base/ie7.css")' rel='stylesheet' media='all' />");
+        }
+    }
+    function getBrowserInfo() {
+        var agent = navigator.userAgent.toLowerCase();
+
+        var regStr_ie = /msie [\d.]+;/gi;
+        var regStr_ff = /firefox\/[\d.]+/gi
+        var regStr_chrome = /chrome\/[\d.]+/gi;
+        var regStr_saf = /safari\/[\d.]+/gi;
+        //IE
+        if (agent.indexOf("msie") > 0) {
+            return agent.match(regStr_ie);
+        }
+
+        //firefox
+        if (agent.indexOf("firefox") > 0) {
+            return agent.match(regStr_ff);
+        }
+
+        //Chrome
+        if (agent.indexOf("chrome") > 0) {
+            return agent.match(regStr_chrome);
+        }
+
+        //Safari
+        if (agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0) {
+            return agent.match(regStr_saf);
+        }
+
+    }
+    </script>
+</head>
+<body>
+    <div id="top" style="background: url(/images/topbg.gif) repeat-x;">
+        <div class="topleft div">
+            <a href="/Home/Index" target="_parent">
+            
+                <img src="/images/loginlogo3.png" title="系统首页" /></a>
+                <p id="LogoName">@Model.Site.DisplayName</p>
+                  
+        </div>
+        <ul class="nav">
+        @if (roles != null)
+        { 
+             if (roles[0].IsSuper || roles[0].Permissions.Contains("account"))
+             {
+               <li><a href="/Account/AccountList" class="selected">
+                       <img src="/images/icon01.png" title="会员管理" /><h2>
+                       会员管理</h2>
+               </a></li>
+             }
+            if (roles[0].IsSuper || roles[0].Permissions.Contains("Ads"))
+            {
+               <li><a href="/Ads/AdsList">
+                       <img src="/images/icon02.png" title="广告管理" /><h2>
+                 广告管理
+              </h2>
+               </a></li>
+            }
+            if (roles[0].IsSuper || roles[0].Permissions.Contains("commodity"))
+             {
+                 <li><a href="/Shoping/ShopingList">
+                         <img src="/images/icon03.png" title="商品管理" /><h2>
+                  商品管理
+                </h2>
+                </a></li>
+             }
+            if (roles[0].IsSuper || roles[0].Permissions.Contains("OrderList"))
+              {
+                 <li><a href="/Order/OrderList">
+                         <img src="/images/icon04.png" title="订单管理" /><h2>
+                 订单管理
+                 </h2>
+                 </a></li>
+              }
+
+            @*if (roles[0].IsSuper || roles[0].Permissions.Contains("ListArticles"))
+              {
+                <li><a href="/Articles/List">
+                        <img src="/images/icon04.png" title="文章管理" /><h2>
+        文章管理
+    </h2>
+</a></li>
+              }*@
+           }
+        
+        </ul>
+        <div class="topright">
+            <ul>
+                <li><span>
+                    <img src="/images/help.png" title="帮助" class="helpimg" /></span><a href="#">帮助</a></li>
+                <li><a href="/">首页</a></li>
+                <li><a href="/editProfile">我的资料</a></li>
+               <li><a onclick=" logoff();return false;" href="#">退出</a> </li>
+            </ul>
+            <br />
+            <div class="user" style="">
+                <span>@Html.DisplayFor(x => x.UserModel.CurrentUser.Name)</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function logoff() {
+            //if (!confirm("您确定要退出当前系统？")) return false;
+            window.location.replace("/SignOut");
+            return false;
+        }
+        </script>
+    <div id="lef" style="background: #f0f9fd; float: left; width: 15%">
+        <div class="lefttop">
+            <span></span>功能栏</div>
+        <dl class="leftmenu">
+            @if (Model.Menus != null)
+            {
+                int i = 0;
+                foreach (var menuItem1 in Model.Menus)
+                {
+                    string myMenu = "menu_tree" + i.ToString();
+                <dd>
+                    @if (!string.IsNullOrWhiteSpace(menuItem1.Controller))
+                    { @menuItem1.DisplayName }
+                    else
+                    {
+                        <div class="title">
+                            <span>
+                                <img src="/images/leftico01.png" /></span>
+                            @menuItem1.DisplayName
+                        </div>
+                        <ul class="menuson">
+                            @foreach (var menuItem2 in menuItem1.Children)
+                            {
+                                <li title="@menuItem2.Tooltip"><cite></cite><a myMeunId='@myMenu'  href='@Url.Action(menuItem2.Action, menuItem2.Controller)' name='@Url.Action(menuItem2.Action, menuItem2.Controller)'>@menuItem2.DisplayName</a><i></i></li>
+                            }
+                        </ul>
+                    }
+                </dd>
+                }
+            }
+        </dl>
+    </div>
+    <div style="display:none">
+      @if (!(Model.User is AccountUser))
+      {
+          <div style="margin-right: 1px;" class="device-selector">
+              <label>
+                  打印机</label>
+              <select class="script-selector">
+                  @foreach (var printerType in Model.Site.GetPrinters())
+                  {
+                      <option value='@Url.Content("~/scripts/printers/" + printerType.Id + ".js")'   @(Html.Raw(string.Equals(Model.Site.PrinterType, printerType.Id, StringComparison.OrdinalIgnoreCase) ? "selected='selected'" : ""))>@printerType.Name</option>
+                  }
+              </select>
+          </div>
+        
+          <div class="device-selector">
+              <a href="#" id="btnDisplayAll">全屏显示</a>
+              <label>
+                  读卡器</label>
+              <select class="script-selector" id="dkq">
+                  @foreach (var posType in SiteViewModel.GetPosTypes())
+                  {
+                      <option value='@Url.Content("~/scripts/postypes/" + posType + ".js")' @(Html.Raw(string.Equals(Model.Site.PosType, posType, StringComparison.OrdinalIgnoreCase) ? "selected='selected'" : ""))>@posType</option>
+                  }
+              </select>
+          </div>
+      }
+    </div>
+    <div id="main" style="width: 85%; float: left;">
+        @RenderBody()
+    </div> 
+    <div id="mask" class="ShowHide">
+    </div>
+    <div class="tip">
+            <div class="tiptop">
+                <span>提示信息</span><a></a></div>
+            <div class="tipinfo">
+                <span>
+                    <img src="/images/ticon.png" /></span>
+                <div class="tipright">
+                    <p>
+                        </p>
+                    <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+                </div>
+            </div>
+            <div class="tipbtn">
+                <input name="" id="btn_Sure" type="button" class="sure" onclick="Sure();" value="确定" />&nbsp;&nbsp;
+                <input name="" type="button" class="cancel"  value="取消" />
+            </div>
+        </div>
+    <div class='tip2'>
+    	<div class='tiptop2'><span>提示信息</span><a></a></div>
+      <div class='tipinfo2'>
+        <span><img src='../../images/Succeed01.png' /></span>
+        <div class='tipright2'>
+        <p style='color:Green:'></p>
+      <cite></cite>
+        </div>
+        </div>
+        <div class='tipbtn2'>
+         <input name="" type="button" class="sure" onclick="returnBack();" value="确定" />
+        </div>
+    </div>
+
+     <div class="tipaa">
+            <div class="tiptop">
+                <span>提示信息</span><a></a></div>
+            <div class="tipinfo">
+                <span>
+                    <img src="/images/ticon.png" /></span>
+                <div class="tipright">
+                    <p>
+                        </p>
+                    <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
+                </div>
+            </div>
+            <div class="tipbtnaa">
+                <input name="" type="button" class="sure" onclick="Sures();" value="确定" />&nbsp;&nbsp;
+                <input name="" type="button" class="cancel"  value="取消" />
+            </div>
+        </div>
+
+
+
+         <div id="TopMessageDiv">
+
+
+
+       
+                               
+                                    @foreach (var msg in Model.GetMessages(MessageType.Error))
+                                    {
+
+                                        foreach (var line in msg.Messages)
+                                        {
+                                            
+                                            
+                                               <div class='tip2' >
+    	<div class='tiptop2'><span>提示信息</span><a></a></div>
+      <div class='tipinfo2'>
+        <span><img src='../../images/Succeed01.png' /></span>
+        <div class='tipright2'>
+        <p style='color:Green:'>@line</p>
+      <cite></cite>
+        </div>
+        </div>
+        <div class='tipbtn2'>
+         <input name="" type="button" class="sure" onclick="returnBack();" value="确定" />
+        </div>
+    </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                   
+                                                <script>
+                                                    $(".tip2").click(function (e) {
+                                                        $(".tip2").fadeOut(200);
+                                                    });
+                                                    $(".tip2").show();
+                                                </script>
+                                      
+                                        }
+                                    }
+                                    @foreach (var msg in Model.GetMessages(MessageType.Message))
+                                    {
+                                        foreach (var line in msg.Messages)
+                                        {
+                                       
+                                               <div class='tip2' >
+    	<div class='tiptop2'><span>提示信息</span><a></a></div>
+      <div class='tipinfo2'>
+        <span><img src='../../images/Succeed01.png' /></span>
+        <div class='tipright2'>
+        <p style='color:Green:'>@line</p>
+      <cite></cite>
+        </div>
+        </div>
+        <div class='tipbtn2'>
+         <input name="" type="button" class="sure" onclick="returnBack();" value="确定" />
+        </div>
+    </div>
+                                                <script>
+                                                    $(".tip2").click(function (e) {
+                                                        $(".tip2").fadeOut(200) ;
+                                                    });
+                                                    $(".tip2").show();
+                                                                                     
+                                                </script>
+                                        
+                                        }
+                                    }
+
+</body>
+</html> 
+<script type="text/javascript">
+
+    $('.tablelist tbody tr:odd').addClass('odd');
+    //$(".forminfo .InputSerach").css("width", s / 100 * 13).css("height", "32px");
+
+   
+</script>

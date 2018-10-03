@@ -1,0 +1,10 @@
+﻿All.name=全部
+All.order=1
+Cancel.name=已取消
+Cancel.order=4
+Invalid.name=撤消
+Invalid.order=3
+Normal.name=正常
+Normal.order=2
+Normal_.name=已冲正
+Normal_.order=5

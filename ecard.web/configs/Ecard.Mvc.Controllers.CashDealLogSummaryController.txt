@@ -1,0 +1,4 @@
+﻿description=Ecard.Mvc.Controllers.CashDealLogSummaryController
+List.description=现金管理统计
+List.name=现金管理统计
+name=Ecard.Mvc.Controllers.CashDealLogSummaryController

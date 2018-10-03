@@ -1,0 +1,19 @@
+﻿@model EcardModelItem<Ecard.Models.Sites.SmsParam>
+@using (Html.BeginForm())
+{ 
+    <div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>
+   <div class="create_div" style="padding:5 120">
+   <ul class="forminfo" style="padding-top:10px;">
+        @Html.EditorFor(x => x.Item)
+        </ul> 
+    <div style=" clear:both" />
+    <div class="submitDiv"> <input type="submit" class="scbtn" value="提交" />
+            @Html.ActionLink("List")</div>
+    </div>
+}

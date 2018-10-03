@@ -1,0 +1,6 @@
+﻿OrderBy.order=1
+pageHtml.order=1
+PageIndex.order=1
+PageSize.order=1
+title.name=标题
+title.order=1

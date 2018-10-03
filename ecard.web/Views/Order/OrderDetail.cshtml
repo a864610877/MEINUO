@@ -1,0 +1,175 @@
+﻿@using Moonlit
+@model  Ecard.Mvc.Models.Orders.OrderDetailEdit
+<link href="/css/shop_style.css" rel="stylesheet" />
+<script src="/js/OrderEdit.js"></script>
+<style>
+    .order_details select {
+        background: #FFF none repeat scroll 0% 0%;
+        border: 1px solid #CCC;
+        height: 22px;
+        width: 140px;
+    }
+</style>
+<div class="mainbar_wrapper">
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">订单管理 > </a></li>
+            <li><a href="#">编辑订单</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container-fluid dingdan_xiang">
+        <h2 class="add_tittle">订单信息</h2>
+        <div class="order_details">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="10%" class="dingdan_tittle">订单编号：</th>
+                        <th width="40%">@Model.order.orderNo<input value="@Model.order.orderId" type="hidden" id="orderId"></th>
+                        <th width="10%" class="dingdan_tittle">下单时间：</th>
+                        <th width="40%">@(Model.order.submitTime.ToString("yyyy-MM-dd HH:mm"))</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">实付总金额：</td>
+                        <td width="40%">￥@Model.order.payAmount (元)<input value="@Model.order.payAmount" type="hidden" id="payAmount"></td>
+                        <td width="10%" class="dingdan_tittle">订单总金额：</td>
+                        <td width="40%">￥@Model.order.amount (元)</td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">配送方式：</td>
+                        <td width="40%">
+                            @Html.DropDownList("distributionType",null, new { disabled = "disabled" })
+
+                        </td>
+                        <td width="10%" class="dingdan_tittle">支付方式：</td>
+                        <td width="40%">
+                            @Html.DropDownList("payType", null, new { disabled = "disabled" })
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td width="10%" class="dingdan_tittle">支付状态：</td>
+                        <td width="40%">
+                            @Html.DropDownList("payState", null, new { disabled = "disabled" })
+
+
+                        </td>
+                        <td width="10%" class="dingdan_tittle">配送状态：</td>
+                        <td width="40%">
+                            @Html.DropDownList("distributionstate", null, new { disabled = "disabled" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">订单状态：</td>
+                        <td width="40%">
+
+                            @Html.DropDownList("orderState", null, new { disabled = "disabled" })
+                        </td>
+                        <td width="10%" class="dingdan_tittle">快递公司：</td>
+                        <td width="40%">
+                            @*@Html.DropDownList("ExpressCompany", "--请选择快递公司--")*@
+                            <input type="text" value="@Model.order.ExpressCompany" id="ExpressCompany" class="dingdan_text2" />
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">配送费用：</td>
+                        <td width="40%">￥@Model.order.freight (元)</td>
+                        <td width="10%" class="dingdan_tittle">快递单号：</td>
+                        <td width="40%"><input type="text" id="ExpressNumber" value="@Model.order.ExpressNumber" class="dingdan_text" /></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">抵扣积分：</td>
+                        <td width="40%"><input type="text" value="@Model.order.point" id="point" class="dingdan_text2" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 class="add_tittle">收货信息</h2>
+        <div class="order_details">
+            <table>
+                <tbody>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">收货人姓名：</td>
+                        <td width="40%">
+                            <input type="text" class="dingdan_text2" value="@Model.order.recipients" id="recipients" />
+                        </td>
+                        <td width="10%" class="dingdan_tittle">收货地区：</td>
+                        <td height="40%">
+                            @Html.DropDownList("province", "--请选择省份--")
+                            @Html.DropDownList("city", "--请选择城市--")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">收货地址：</td>
+                        <td width="40%"><input type="text" class="dingdan_text3" value="@Model.order.detailedAddress" id="detailedAddress" /></td>
+                        <td width="10%" class="dingdan_tittle">邮政编码：</td>
+                        <td width="40%"><input type="text" class="dingdan_text2" value="@Model.order.zipCode" id="zipCode" /></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">联系电话：</td>
+                        <td width="40%"><input type="text" class="dingdan_text2" value="@Model.order.moblie" id="moblie" /></td>
+                        <td width="10%" class="dingdan_tittle">手机号码：</td>
+                        <td width="40%"><input type="text" class="dingdan_text2" value="@Model.order.phone" id="phone" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 class="add_tittle">商品信息</h2>
+        <div class="order_details">
+            <table>
+                <thead>
+                    <tr>
+                        @Html.Ths(Model.List, Model.GetItemType())
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbodysNum">
+                    @using (var scope = new IteratorScope())
+                    {
+
+                        foreach (var item in Model.List)
+                        {
+
+                            <tr>
+                                @Html.Tds(item, Model.GetItemType())
+                                @Html.ToolbarOfItem(Model.GetItemToobalActions(item))
+                            </tr>
+                            scope.Next();
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="pagehtml">
+            @Html.Raw(Model.pageHtml)
+        </div>
+        <div class="baoxun" style="margin-left:15px; margin-top:30px;">
+            @*<button class="baoxunxiugai tianjiafabu"  id="orderEdit">保存</button>*@
+            @if (Model.order.orderState == Ecard.Models.OrderStates.paid)
+             {
+               <button  class="baoxunxiugai tianjiafabu" id="orderShip">发货</button>
+               @*<button class="baoxunxiugai tianjiafabu" id="orderNotAgree">不同意</button>*@
+             }
+            <button class="baoxunxiugai tianjiafabu" id="orderCancel">取消订单</button>
+            @if(Model.order.orderState==Ecard.Models.OrderStates.applyRefund)
+            {
+               <button class="baoxunxiugai tianjiafabu" id="orderAgree">同意</button>
+               @*<button class="baoxunxiugai tianjiafabu" id="orderNotAgree">不同意</button>*@
+            }
+            else
+            {
+              <button class="baoxunxiugai tianjiaquxiao" id="OrderReturn">返回</button>
+            }
+            
+        </div>
+    </div>
+</div>                                               

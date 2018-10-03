@@ -1,0 +1,29 @@
+﻿@model EcardModelItem<Ecard.Mvc.Models.SmsMsg.GroupSMS>
+@using (Html.BeginForm())
+{  
+    <div class="create_div">
+   <ul class="forminfo" style="padding-top:10px;">
+        @Html.EditorFor(x => x.Item)
+    </ul>
+    <div style=" clear:both" />
+    <div class="submitDiv"> <input type="submit" class="scbtn" value="提交" />
+           </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $(".create_field input").focus(function () {
+                $("[forprop='" + $(this).attr("id") + "']").show("1500");
+            });
+            $(".create_field select").click(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").show("1500");
+            });
+            $(".create_field input").blur(function () {
+                $("[forprop='" + $(this).attr("id") + "']").hide("1500");
+            });
+            $(".create_field select").mouseleave(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").hide("1500");
+            });
+        });
+    
+    </script>
+}

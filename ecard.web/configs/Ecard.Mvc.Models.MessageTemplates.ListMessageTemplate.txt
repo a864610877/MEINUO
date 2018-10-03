@@ -1,0 +1,9 @@
+﻿DisplayName.order=1
+DisplayName.shortName=消息名称
+DisplayName.shortNameFormat={0}
+State.order=10
+State.shortName=状态
+State.shortNameFormat={0}
+Template.order=3
+Template.shortName=模板
+Template.shortNameFormat={0}

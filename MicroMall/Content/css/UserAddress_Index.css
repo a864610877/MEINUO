@@ -1,0 +1,67 @@
+html {
+        background: #F5F5F5;
+    }
+    body {
+        margin: 0;
+    }
+    .content {
+        height: auto;
+        margin-top: 0.4rem;
+        overflow: hidden;
+        padding-bottom: 10rem;
+    }
+    .content ul li {
+        list-style: none;
+        background: #FFF;
+        float: left;
+        width: 101.6%;
+        font-size: 0.95rem;
+        margin-top: 0.3rem;
+    }
+    .content .li_div {
+        margin: 1.2rem;
+        margin-bottom:0.5rem;
+        line-height: 1.8rem;
+        float:left;
+    }
+    .content .li_div a {
+        float: right;
+        margin-top: 0.5rem;
+        margin-left: 2.8rem;
+        margin-right: 0.2rem;
+        text-decoration: none;
+        color:#000;
+    } 
+    .content .li_div div {
+        height: 2.2rem;
+        line-height: 2.1rem;
+    }
+    .content .li_div .address {
+        float: left;
+        height: auto;
+        border-bottom: 0.062px solid #B9B9B9;
+        padding-bottom: 0.6rem;
+    }
+.btn {
+    width: 100%;
+    height: 4rem;
+    background: #B59F76;
+    position: fixed;
+    bottom: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: Center;
+    line-height: 3rem;
+    color: #FFF;
+    font-size:1.2rem;
+}
+.btn img {
+    width: 1.5rem;
+    float: left;
+    margin-top: 0.7rem;
+    margin-right: 0.3rem;
+}
+.btn span {
+    float: left;
+    margin-left: 0.2rem;
+}

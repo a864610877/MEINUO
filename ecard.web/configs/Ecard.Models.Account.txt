@@ -1,0 +1,6 @@
+﻿Create.Text=Create.Text
+footerOfAccounts=footerOfAccounts
+titleOfAccounts=titleOfAccounts
+titleOfCurrent=titleOfCurrent
+waitingForCommunicate=waitingForCommunicate
+waitingForInsertCard=waitingForInsertCard

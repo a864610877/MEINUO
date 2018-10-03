@@ -1,0 +1,16 @@
+﻿AccountShop.name=发卡行
+AccountShop.order=4
+columns=行号,卡种,卡号,发卡行,期限,姓名,电话,期初余额,开卡,充值,消费,退卡,期末余额,本期消费次数,平均消费金额
+description=会员卡明细报表
+End.name=结束日期
+End.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.AccountDealsForAccount
+Start.name=开始日期
+Start.order=1
+summary.count=0
+title=会员卡明细报表
+titleA=titleA

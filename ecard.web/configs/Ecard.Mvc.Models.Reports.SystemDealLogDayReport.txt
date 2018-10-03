@@ -1,0 +1,14 @@
+﻿columns=,交易类型,金额,交易次数
+description=系统汇总报表
+End.name=结束日期
+End.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+sql=report.systemdeallogbyday
+Start.name=开始日期
+Start.order=1
+summary.count=0
+title=系统汇总报表
+titleA=系统汇总报表

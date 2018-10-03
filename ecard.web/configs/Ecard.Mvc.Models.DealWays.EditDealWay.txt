@@ -1,0 +1,16 @@
+﻿ApplyTo.explain=ApplyTo
+ApplyTo.name=应用
+ApplyTo.order=3
+DealWayId.order=1
+description=编辑
+DisplayName.explain=DisplayName
+DisplayName.name=名称
+DisplayName.order=1
+IsCash.explain=IsCash
+IsCash.name=是否计入现金管理
+IsCash.order=8
+messages.success=保存成功
+TimeOutDay.name=处理天数
+TimeOutDay.order=2
+title=编辑支付渠道
+titleA=编辑支付渠道

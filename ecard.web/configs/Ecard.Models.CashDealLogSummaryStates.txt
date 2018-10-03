@@ -1,0 +1,6 @@
+﻿All.name=All
+All.order=1
+Invalid.name=有欠款
+Invalid.order=1
+Normal.name=无欠款
+Normal.order=1

@@ -1,0 +1,119 @@
+﻿@model EcardModel
+@{
+     
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>@Model.Site.DisplayName | @ViewBag.Title</title>
+    <link href='@Url.Content("~/Content/themes/base/style.css")' rel="stylesheet" media="all">
+    <link href='@Url.Content("~/Content/themes/base/ui.css")' rel="stylesheet" media="all">
+    <link href='@Url.Content("~/Content/site.css")' rel="stylesheet" media="all">
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.validate.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/superfish.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery-ui.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/tooltip.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/tablesorter.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/tablesorter-pager.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.urlParser.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/cookie.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/custom.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/moonlit.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/api.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/passtypes/" + Model.Site.PasswordType + ".js")'></script>
+    <!--[if IE 6]>
+    <link href='@Url.Content("~/Content/themes/base/ie6.css")' rel="stylesheet" media="all">
+	
+ 
+	<![endif]-->
+    <!--[if IE 7]>
+    <link href='@Url.Content("~/Content/themes/base/ie7.css")' rel="stylesheet" media="all">
+	<![endif]-->
+</head>
+<body>
+    <div id="header">
+        <div id="top-menu">
+            <a href="#" title="My account">我的帐户</a> 
+            | <span>当前登录为 <a href="#" title="Logged in as admin">@Model.User.Name | @Model.User.DisplayName
+            </a></span>| <a href="/editProfile" title="">编辑个人信息</a> | <a href="/signout" title="Logout">
+                退出</a>
+        </div>
+        <div id="sitename">
+            <a href="/" class="logo float-left" title="Admintasia">@Model.Site.DisplayName - Admintasia (v @Model.Site.Version)</a>
+        </div>
+        <ul id="navigation" class="sf-navbar sf-js-enabled">
+        @if (Model.Menus!=null)
+        {
+            foreach (var menuItem1 in Model.Menus)
+            {
+                <li><a href="#" class="sf-with-ul">@menuItem1.DisplayName</a>
+                    <ul style="display: none; visibility: hidden;">
+                        @foreach (var menuItem2 in menuItem1.Children)
+                        {
+                            <li class="tooltip" title="@menuItem2.Tooltip"><a href='@Url.Action(menuItem2.Action, menuItem2.Controller)'>@menuItem2.DisplayName</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+        </ul>
+    </div>
+    <div id="page-wrapper">
+        <div id="main-wrapper">
+            <div id="main-content">
+                 @RenderBody() 
+                <div class="clearfix">
+                </div>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+        <div id="sidebar">
+            <div class="side-col ui-sortable">
+                @Html.DisplayFor(x=>x.UserModel) 
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div id="footer">
+        <div id="menu">
+            <a href="/" title="Home">Home</a>  
+        </div>
+        Copyright ?2011 - 帝纳达
+    </div>
+    <div style="display: none; position: absolute; overflow-x: hidden; overflow-y: hidden;
+        z-index: 1000; outline-width: 0px; outline-style: initial; outline-color: initial;"
+        class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable" tabindex="-1"
+        role="dialog" aria-labelledby="ui-dialog-title-dialog">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"
+            unselectable="on">
+            <span class="ui-dialog-title" id="ui-dialog-title-dialog" unselectable="on">Dialog Title</span><a
+                href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on"><span
+                    class="ui-icon ui-icon-closethick" unselectable="on">close</span></a></div>
+      
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" class="ui-state-default ui-corner-all">
+                Ok</button>
+            <button type="button" class="ui-state-default ui-corner-all">
+                    Cancel</button></div>
+    </div>
+    <div style="display: none; position: absolute; overflow-x: hidden; overflow-y: hidden;
+        z-index: 1000; outline-width: 0px; outline-style: initial; outline-color: initial;"
+        class="ui-dialog ui-widget ui-widget-content ui-corner-all  ui-draggable" tabindex="-1"
+        role="dialog" aria-labelledby="ui-dialog-title-login">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"
+            unselectable="on">
+            <span class="ui-dialog-title" id="ui-dialog-title-login" unselectable="on">Members Login</span><a
+                href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button" unselectable="on"><span
+                    class="ui-icon ui-icon-closethick" unselectable="on">close</span></a></div>
+        
+    </div> 
+</body>
+</html>

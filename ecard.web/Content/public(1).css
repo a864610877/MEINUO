@@ -1,0 +1,162 @@
+.column .box {
+	BORDER-RIGHT: #a8bccd 1px solid; BORDER-TOP: #a8bccd 1px; BORDER-LEFT: #a8bccd 1px solid; BORDER-BOTTOM: #a8bccd 1px solid
+}
+.focus {
+	MARGIN-BOTTOM: 4px; OVERFLOW: hidden; WIDTH: 550px; HEIGHT: 130px
+}
+.city_logo {
+	OVERFLOW: hidden; WIDTH: 185px; HEIGHT: 129px
+}
+.b_p {
+	OVERFLOW: hidden;  
+}
+.b_g {
+	OVERFLOW: hidden; WIDTH: 287px; HEIGHT: 142px
+}
+.b_p .box {
+	OVERFLOW: hidden;  HEIGHT: 113px
+}
+.b_g .box {
+	OVERFLOW: hidden; HEIGHT: 113px
+}
+.b_p H2 {
+	BACKGROUND: url(images/imgSprite_title.gif) no-repeat 0px -63px; OVERFLOW: hidden; LINE-HEIGHT: 28px; HEIGHT: 28px; BORDER-BOTTOM-STYLE: none
+}
+.b_g H2 {
+	BACKGROUND: url(images/imgSprite_title.gif) no-repeat 0px -63px; OVERFLOW: hidden; LINE-HEIGHT: 28px; HEIGHT: 28px; BORDER-BOTTOM-STYLE: none
+}
+.b_p H2 A {
+	MARGIN-TOP: -28px; FONT-WEIGHT: normal; FLOAT: right; COLOR: #0e8fcb
+}
+.b_g H2 A {
+	MARGIN-TOP: -28px; FONT-WEIGHT: normal; FLOAT: right; COLOR: #0e8fcb
+}
+.b_p H2 A:hover {
+	MARGIN-TOP: -28px; FONT-WEIGHT: normal; FLOAT: right; COLOR: #0e8fcb
+}
+.b_g H2 A:hover {
+	MARGIN-TOP: -28px; FONT-WEIGHT: normal; FLOAT: right; COLOR: #0e8fcb
+}
+.b_g H2 {
+	BACKGROUND-POSITION: 0px -94px
+}
+.b_p UL {
+	MARGIN: 10px 0px 0px 8px
+}
+.b_p UL LI {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 71px; TEXT-ALIGN: center
+}
+.b_p UL LI .pic {
+	BORDER-RIGHT: #adaaad 1px dashed; BORDER-TOP: #adaaad 1px dashed; DISPLAY: block; MARGIN-LEFT: -1px; OVERFLOW: hidden; BORDER-LEFT: #adaaad 1px; WIDTH: 69px; BORDER-BOTTOM: #adaaad 1px dashed; HEIGHT: 63px
+}
+.b_p UL LI .pic_01 {
+	BORDER-LEFT: #adaaad 1px dashed
+}
+.b_p UL LI .Link {
+	MARGIN-TOP: 5px; DISPLAY: block; COLOR: #2c6eab
+}
+.b_p UL LI .Link:hover {
+	MARGIN-TOP: 5px; DISPLAY: block; COLOR: #2c6eab
+}
+.dturn_menu {
+	MARGIN: -23px 0px 0px 130px; OVERFLOW: hidden; HEIGHT: 23px
+}
+.dturn_menu LI {
+	BACKGROUND: url(images/imgSprite_02.gif) no-repeat 0px -18px; FLOAT: left
+}
+.dturn_menu LI SPAN {
+	PADDING-RIGHT: 0.75em; PADDING-LEFT: 0.75em; BACKGROUND: url(images/imgSprite_03.gif) no-repeat right -413px; FLOAT: left; PADDING-BOTTOM: 0px; CURSOR: pointer; LINE-HEIGHT: 23px; PADDING-TOP: 0px; HEIGHT: 23px
+}
+.dturn_menu LI.on {
+	BACKGROUND: url(images/imgSprite_02.gif) no-repeat 0px -42px
+}
+.dturn_menu LI.on SPAN {
+	BACKGROUND: url(images/imgSprite_03.gif) no-repeat right -439px; COLOR: #0057ca
+}
+.b_g .box .pic {
+	FLOAT: left; MARGIN: 13px 10px 10px; OVERFLOW: hidden; WIDTH: 86px; HEIGHT: 86px
+}
+.b_g .box UL {
+	MARGIN-TOP: 6px; FLOAT: left; WIDTH: 165px
+}
+.b_g .box UL LI {
+	BACKGROUND: url(images/bg_2x2_line.gif) repeat-x 0px bottom; OVERFLOW: hidden; LINE-HEIGHT: 24px; HEIGHT: 24px
+}
+.discount {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+.discount DIV {
+	BORDER-RIGHT: #adaaad 1px dashed; PADDING-RIGHT: 10px; BORDER-TOP: #adaaad 1px dashed; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; OVERFLOW: hidden; WIDTH: 337px; PADDING-TOP: 10px; HEIGHT: 87px
+}
+.discount .discount_02 {
+	BORDER-RIGHT-STYLE: none
+}
+.discount .discount_04 {
+	BORDER-RIGHT-STYLE: none
+}
+.discount .discount_06 {
+	BORDER-RIGHT-STYLE: none
+}
+.discount .discount_08 {
+	BORDER-RIGHT-STYLE: none
+}
+.discount .discount_01 {
+	BORDER-TOP-STYLE: none
+}
+.discount .discount_02 {
+	BORDER-TOP-STYLE: none
+}
+.discount .pic {
+	FLOAT: left; OVERFLOW: hidden
+}
+.discount UL {
+	FLOAT: left; OVERFLOW: hidden
+}
+.discount .pic {
+	WIDTH: 86px; HEIGHT: 87px
+}
+.discount UL {
+	WIDTH: 250px
+}
+.discount UL LI {
+	OVERFLOW: hidden; LINE-HEIGHT: 22px
+}
+.discount UL LI SPAN {
+	MARGIN-TOP: -22px; FLOAT: right; COLOR: #959ead
+}
+.service {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 2px; PADDING-BOTTOM: 12px; PADDING-TOP: 12px
+}
+.service DIV {
+	PADDING-RIGHT: 10px; DISPLAY: inline; BACKGROUND: url(images/bg_2x2_line.gif) repeat-y right 0px; FLOAT: left; MARGIN-LEFT: 10px; OVERFLOW: hidden; WIDTH: 225px
+}
+.service DIV.service_end {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.service DIV SPAN {
+	DISPLAY: block; OVERFLOW: hidden; HEIGHT: 67px
+}
+.service DIV STRONG {
+	DISPLAY: block
+}
+.service DIV UL LI {
+	BACKGROUND: url(images/bg_2x2_line.gif) repeat-x 0px bottom; LINE-HEIGHT: 2em; HEIGHT: 2em
+}
+.op_g_list LI {
+	BACKGROUND: url(images/bg_2x2_line.gif) repeat-x 0px bottom; LINE-HEIGHT: 2em; HEIGHT: 2em
+}
+.pic_list {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 420px
+}
+.pic_list LI {
+	FLOAT: left; WIDTH: 70px; TEXT-ALIGN: center
+}
+.pic_list LI A {
+	DISPLAY: block; MARGIN: 8px 0px
+}
+.op_g_list {
+	FLOAT: right; MARGIN: 12px 12px 0px 0px; OVERFLOW: hidden; WIDTH: 244px
+}
+.op_g_list LI {
+	FLOAT: left; WIDTH: 122px
+}

@@ -1,0 +1,49 @@
+﻿@{
+     
+}
+@model MicroMall.Models.JuMeiMallIndex.JuMeiMallListModel
+<header data-am-widget="header" class="am-header am-header-default bgFFF">
+    <div class="am-header-left am-header-nav">
+        <a href="/JuMeiMall/JuMeiMallIndex" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        @Model.categoryName <span class="am-icon-caret-down"></span>
+    </h1>
+
+</header>
+<div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+    <ul class="am-slides">
+        <li>
+            <img src="/images/typeBanner.jpg">
+        </li>
+    </ul>
+</div>
+<div class="h_tit bgFFF am-container am-text-center">
+    <h2>商品推荐</h2>
+</div>
+<div class="h_proList h_proList2">
+    <ul class="am-avg-sm-2 color_b59f76">
+        @if (Model.JuMeiMallExList != null && Model.JuMeiMallExList.Count > 0)
+        {
+            foreach (var item in Model.JuMeiMallExList)
+            { 
+              <li>
+                      <a href="/JuMeiMall/GoodsDetails?id=@item.commodityId">
+                          <img src="@item.images" alt="">
+                          <div>
+                              <h2>@item.commodityName</h2>
+                              <p>¥ @item.commodityPrice</p>
+                              <p>积分: @item.commodityJifen</p>
+                          </div>
+                      </a>
+                </li>
+            }
+        }
+
+        
+       
+    </ul>
+</div>
+

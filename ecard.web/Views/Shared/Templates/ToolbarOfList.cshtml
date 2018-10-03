@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ActionMethodDescriptor>
+ @*<div id="toolbar">*@
+ <div class="tools"> 
+  <ul class="toolbar">
+    @foreach (var method in Model)
+    {
+          
+        @Html.ToolbarButton2(method.Action, method.Controller, method.Routes, method.IsPost) 
+        
+    }
+</ul>
+</div>

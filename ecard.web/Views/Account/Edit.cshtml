@@ -1,0 +1,230 @@
+﻿@using Moonlit
+@model  Ecard.Mvc.Models.Accounts.EditAccount
+<link href="/css/shop_style.css" rel="stylesheet" />
+<style>
+    .order_details select {
+        background: #FFF none repeat scroll 0% 0%;
+        border: 1px solid #CCC;
+        height: 22px;
+        width: 140px;
+    }
+</style>
+<div class="mainbar_wrapper">
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">会员管理 > </a></li>
+            <li><a href="#">会员编辑</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container-fluid dingdan_xiang">
+        <h2 class="add_tittle">会员信息</h2>
+        <div class="order_details">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="10%" class="dingdan_tittle">会员名称：</th>
+                        <th width="40%">
+                            <input type="text" class="dingdan_text2" value="@Model.accountName" id="accountName" />
+                            <input type="hidden" value="@Model.accountId" id="accountId">
+                        </th>
+                        <th width="10%" class="dingdan_tittle">密码：</th>
+                        <th width="40%"><input type="password" class="dingdan_text2" value="@Model.passWord" id="passWord" /></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">电子邮箱：</td>
+                        <td width="40%"><input type="text" class="dingdan_text2" value="@Model.eamil" id="eamil" /></td>
+                        <td width="10%" class="dingdan_tittle">确认密码：</td>
+                        <td width="40%"><input type="password" class="dingdan_text2" value="" id="repassWord" /></td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">手机号码：</td>
+                        <td width="40%"><input type="text" class="dingdan_text2" value="@Model.phone" id="phone" /></td>
+
+                        <td width="10%" class="dingdan_tittle">是否启用：</td>
+                        <td width="40%">
+                            @if(Model.state==1)
+                            {
+                              <input type="radio" name="state" value="1" checked />@("是")
+                              <input type="radio" name="state" value="2" />@("否")
+                            }
+                            else
+                            {
+                                <input type="radio" name="state" value="1"  />@("是")
+                                <input type="radio" name="state" value="2" checked />@("否")
+                            }
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">总积分：</td>
+                        <td width="40%">
+                            @Model.presentExp
+                        </td>
+                        <td width="10%" class="dingdan_tittle">可提现积分：</td>
+                        <td width="40%">
+                            @Model.activatePoint
+                        </td>
+                        
+                    </tr>
+                    @*<tr>
+                        
+                        <td width="10%" class="dingdan_tittle">未激活积分：</td>
+        <td width="40%">
+            @Model.notActivatePoint
+        </td>
+                       <td width="10%" class="dingdan_tittle">消费积分汇总：</td>
+                        <td width="40%">
+                            @Model.payPoint
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">提现积分汇总：</td>
+                        <td width="40%">@Model.withdrawPoint</td>
+                        <td width="10%" class="dingdan_tittle">推荐人：</td>
+                        <td width="40%">@Model.referrer</td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">出生日期：</td>
+                        <td width="40%"><input onfocus="WdatePicker({startDate:'%y-%M-01 00:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" class="dingdan_text2" value="@Model.birthDay" type="text" id="birthDay"></td>
+                        <td width="10%" class="dingdan_tittle">注册日期：</td>
+                        <td width="40%">@(Model.registerDate.ToString("yyyy-MM-dd"))</td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="dingdan_tittle">地址：</td>
+                        <td width="40%"><select class="dingdan_text2" id="Province">
+                          <option value="-10001">全部</option>
+                         @if (Model.ListProvince!=null)
+                         {
+                            foreach(var item in Model.ListProvince)
+                            {
+                                if (Model.provinceId==item.Key)
+                                {
+                                   <option selected value="@item.Key">@item.Name</option>
+                                }
+                                else
+                                {
+                                  <option value="@item.Key">@item.Name</option>
+                                }
+                               
+                            }
+                         }
+                        </select> 
+                            <select id="City" class="dingdan_text2">
+                                <option value="-10001">全部</option>
+                                @if (Model.ListCity != null)
+                                {
+                                    foreach (var item in Model.ListCity)
+                                    {
+                                        if (Model.cityId == item.Key)
+                                        {
+                                            <option selected value="@item.Key">@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Key">@item.Name</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                            <input class="dingdan_text2" value="@Model.address" type="text" id="address">  </td>
+                        <td width="10%" class="dingdan_tittle"></td>
+                        <td width="40%"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="baoxun" style="margin-left:15px; margin-top:30px;">
+            <button class="baoxunxiugai tianjiafabu" id="AccountEdit">保存</button>
+            <button class="baoxunxiugai tianjiaquxiao" id="OrderReturn">返回</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#OrderReturn").click(function () {
+            window.location.href = "/Account/AccountList";
+        })
+        $("#AccountEdit").click(function () {
+            if (confirm("确定保存此次修改吗？")) {
+
+                var accountName = $("#accountName").val();
+                var accountId = $("#accountId").val();
+                var passWord = $("#passWord").val();
+                var repassWord = $("#repassWord").val();
+                var eamil = $("#eamil").val();
+                var phone = $("#phone").val();
+                var state = $('input[name="state"]:checked ').val();
+                var provinceId = $("#Province").val();
+                var cityId = $("#City").val();
+                var address = $("#address").val();
+                var birthDay = $("#birthDay").val();
+                if (passWord.trim() != repassWord) {
+                    $(".tipinfo2 img").attr("src", "../../images/error02.png");
+                    $(".tipright2 P").text("两次密码输入不一致,请重新输入");
+                    $(".ShowHide").fadeIn(100);
+                    $(".tip2").fadeIn(200);
+                    return;
+                }
+                $.ajax({
+                    url: "/Account/Edit",
+                    data: {
+                        accountId: accountId, accountName: accountName, passWord: passWord,address:address,
+                        repassWord: repassWord, eamil: eamil, phone: phone, state: state, birthDay: birthDay, cityId: cityId, provinceId: provinceId
+                    },
+                    type: "post",
+                    //cache: false,
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.Code == 1) {
+                            alert(data.CodeText)
+                        }
+                        else {
+                            alert(data.CodeText)
+                        }
+                    },
+                    error: function () {
+                        window.location.href = "/Home/UserError";
+                    }
+                })
+            }
+
+        })
+
+
+        $("#Province").live("change", function () {
+            var ProvinceId = $(this).val();
+            var option = '<option selected="selected" value="-10001">全部</option>';
+            $('#City').html(option);
+            if(ProvinceId == "-10001") {
+                return;
+            }
+            $.ajax({
+                url: "/Utility/GetCity",
+                data: { ProvinceId: ProvinceId },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        var html = "";
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];
+                            var op = "<option  value=\"" + item.Key + "\">" + item.Name + "</option>";
+                            html += op;
+                        }
+                        $('#City').append(html);
+                    }
+                }
+            });
+        });
+    })
+
+</script>                                             

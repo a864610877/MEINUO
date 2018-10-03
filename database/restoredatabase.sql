@@ -1,0 +1,1 @@
+RESTORE DATABASE [ecard26a] FROM  DISK = N'D:\workspace\ecard26a\v 2.60\src\database\ecard26a.bak' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 10

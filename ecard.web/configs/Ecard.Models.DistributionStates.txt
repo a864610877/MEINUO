@@ -1,0 +1,8 @@
+﻿all.name=--请选择--
+all.order=1
+paid.name=已收货
+paid.order=1
+shipped.name=已发货
+shipped.order=1
+unfilled.name=未发货
+unfilled.order=1

@@ -1,0 +1,7 @@
+﻿delete.success=删除工作日程安排成功
+description=工作日程安排
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+title=工作日程安排

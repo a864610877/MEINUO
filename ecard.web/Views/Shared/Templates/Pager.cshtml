@@ -1,0 +1,88 @@
+﻿@model IPageOfList
+
+@*<div id="pager" style="border-style: groove; padding: 2px; margin-top: 10px;">
+<span style="margin-left:5px; margin-right:5px; color:#0404ef" > 合计：@Model.TotalItemCount 条记录</span>
+<a class="btn_no_text btn ui-state-default ui-corner-all first pageindex" title="First Page"
+        href="1">首页</a><a style="margin-left:5px;" class="btn_no_text btn ui-state-default ui-corner-all prev  pageindex"
+            title="Previous Page" href="@(Model.PageIndex - 1)">上一页</a>
+              <a style="margin-left:5px;"  class="btn_no_text btn ui-state-default ui-corner-all next pageindex" title="Next Page"
+        href="@((Model.PageIndex + 1) % (Model.TotalPageCount + 1))">下一页</a><a style="margin-left:5px;"  class="btn_no_text btn ui-state-default ui-corner-all last  pageindex"
+            title="Last Page" href="@Model.TotalPageCount">尾页</a>
+            <span style="margin-left:5px; margin-right:5px; color:#0404ef" > 当前页：@Model.PageIndex</span>
+           <span style="margin-left:5px; margin-right:5px; color:#0404ef" > 跳转至： <select  class="pageindexchange" >
+            @for (int i = 1; i <= Model.TotalPageCount; i++)
+            {
+                 <option value="@i" @(Model.PageIndex == i ? "selected" : "")>@i</option>
+            }
+            </select>页
+            </span>
+   <span style="margin-left:5px; margin-right:5px; color:#0404ef" > 每页行数：</span>
+    <select class="pagesize">
+        @foreach (var item in new[] { 10, 50, 100, 500, 1000,2000 })
+        {
+            <option value="@item" @(Model.PageSize == item ? "selected" : "")>@item</option>
+        }
+    </select>
+    
+</div>*@
+<div class='pagin'>
+            <div class='message'>共<i class='blue'> @Model.TotalItemCount </i>条记录，当前显示第&nbsp;<i class='blue'> @Model.PageIndex.ToString()&nbsp;</i>页 每页<select class='selectSize' onchange='selectInput(this)' style='opacity:1;'>
+            @{int[] Size = { 10, 50, 100, 200, 300, 400, 500 }; string op = ""; var totalPages = 0; string pageNum = ""; string prevPageStr = ""; string nextPageStr = "";}
+            @foreach (int item in Size)
+            {
+                if (item == Model.PageSize)
+                {
+                    op += "<option selected value="+item+">" + item + "</option>";
+                }
+                else
+                {
+                    op += "<option value=" + item + ">" + item + "</option>";
+                }
+            }
+            @Html.Raw(op);
+            </select>条</div>
+            <ul class='paginList'>
+           @{ totalPages = Math.Max((@Model.TotalItemCount + Model.PageSize - 1) / Model.PageSize, 1);}
+            @if (Model.PageIndex <= 0)
+            {
+                Model.PageIndex = 1;
+            }
+            @if (totalPages >= 1)
+            {
+                int currint = 5;
+                if (Model.PageIndex > 1){
+                    prevPageStr = string.Format(" <li class='paginItem'><a  value={0}></a><span class='pagepre'></span></li>", Model.PageIndex - 1);
+                    @Html.Raw(prevPageStr);
+                }
+                else
+                {
+                    <li class='paginItem'><a href="#"><span class='pagepre'></span></a></li>
+                }
+                for (int i = 0; i <= 10; i++)
+                {
+                    if ((Model.PageIndex + i - currint) >= 1 && (Model.PageIndex + i - currint) <= totalPages)
+                    {
+                        if (currint == i)
+                        {
+                            pageNum += string.Format("<li class='paginItem current'><a value={0} >{0}</a></li>", Model.PageIndex);
+                        }
+                        else
+                        {
+                            int dict = Model.PageIndex + i - currint;
+                           pageNum += string.Format("<li class='paginItem'><a value={0}>{0}</a></li>", dict);
+                        }
+                    }
+                }
+                  @Html.Raw(pageNum);
+                if (Model.PageIndex < totalPages)
+                {
+                    nextPageStr = string.Format("<li class='paginItem'><a value={0}></a><span class='pagenxt'></span></li>", Model.PageIndex + 1);
+                    @Html.Raw(nextPageStr);
+                }
+                else
+                {
+                    <li class='paginItem' ><a><span class='pagenxt2'></span></a></li>
+                }
+               
+            }
+            </ul></div>

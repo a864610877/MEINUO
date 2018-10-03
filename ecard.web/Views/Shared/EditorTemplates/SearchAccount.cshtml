@@ -1,0 +1,170 @@
+﻿@using Moonlit
+@model string 
+<div>
+    <input type="text" id="txtSearch" value="@Model" name="txtSearch" onkeyup="searchSuggest()" size="50" class="input_out input" onfocus="this.className='input_on';this.onmouseout=''" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" /><br />
+    <div id="search_suggest" style="display: none; z-index: 100;">
+    </div>
+    <iframe id="DivShim" src="javascript:false;" scrolling="no" frameborder="0" style="position: absolute;
+        top: 0px; left: 0px; display: none;"></iframe>
+    <input type="hidden" id="hidCompId" />
+    <style type="text/css" media="screen">
+    body
+    {
+        font: 11px arial;
+    }
+    .suggest_link_alt
+    {
+        background-color: #FFFFFF;
+        text-align: right;
+        cursor: hand;
+        padding: 2px 6px 2px 6px;
+        z-index: 101;
+    }
+    .suggest_link
+    {
+        background-color: #FFFFFF;
+        padding: 2px 6px 2px 6px;
+        z-index: 101;
+    }
+    .suggest_link_over
+    {
+        background-color: #E8F2FE;
+        padding: 2px 6px 2px 6px;
+        z-index: 101;
+    }
+    #search_suggest
+    {
+        z-index: 100;
+        position: absolute;
+        background-color: #FFFFFF;
+        text-align: left;
+        border: 1px solid #000000;
+        width:300px;
+    }
+    #search_suggestR
+    {
+        z-index: 100;
+        position: absolute;
+        background-color: #FFFFFF;
+        text-align: left;
+        border: 1px solid #000000;
+    }
+    /*input*/
+    .input_on
+    {
+        margin: 2px 8px 0pt 10px;
+        height: 18px;
+        border: 1px solid #999;
+        background-color: #FFFFCC;
+    }
+    .input_off
+    {
+        margin: 2px 8px 0pt 10px;
+        height: 18px;
+        border: 1px solid #CCC;
+        background-color: #FFF;
+    }
+    .input_move
+    {
+        margin: 2px 8px 0pt 10px;
+        height: 18px;
+        border: 1px solid #999;
+        background-color: #FFFFCC;
+    }
+    .input_out
+    {
+        /*height:16px;默认高度*/
+        margin: 2px 8px 0pt 10px;
+        height: 18px;
+        border: 1px solid #CCC;
+        background-color: #FFF;
+    }
+</style>
+<script language="javascript" type="text/javascript">
+
+    function DivSetVisible(divid, frameid, state) {
+        var DivRef = document.getElementById(divid);
+        var IfrRef = document.getElementById(frameid);
+        if (state) {
+            DivRef.style.display = "block";
+            IfrRef.style.width = DivRef.offsetWidth;
+            IfrRef.style.height = DivRef.offsetHeight;
+            IfrRef.style.top = DivRef.style.top;
+            IfrRef.style.left = DivRef.style.left;
+            IfrRef.style.zIndex = DivRef.style.zIndex - 1;
+            IfrRef.style.display = "block";
+        }
+        else {
+            DivRef.style.display = "none";
+            IfrRef.style.display = "none";
+        }
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    //当输入框的内容变化时，调用该函数
+    function searchSuggest() {
+        if ($("#txtSearch").val() != "" && $("#txtSearch").val() != null && $("#txtSearch").val().length>1) {
+            $.post("SearchAccount", { "text": $("#txtSearch").val() }, function (data, status) {
+                if (status == "success") {
+                    var sourceText = data.split("!~!");
+                    if (sourceText.length > 1) {
+                        DivSetVisible("search_suggest", "DivShim", true);
+                        //$("#search_suggest").show();
+                        $("#search_suggest").html("");
+                        for (var i = 0; i < sourceText.length - 1; i++) {
+                            var s = ' <div onmouseover="javascript:suggestOver(this);"';
+                            s += ' onmouseout= "javascript:suggestOut(this);" ';
+                            s += ' onclick= "javascript:setSearch(this.innerHTML,this.id);" ';
+                            s += ' class= "suggest_link" id="' + sourceText[i] + '">' + sourceText[i] + '</div>';
+                            $("#search_suggest").html($("#search_suggest").html() + s);
+                        }
+                        $("#search_suggest").html($("#search_suggest").html() + "<div class= \"suggest_link_alt\" onclick=\"javascript:DivSetVisible('search_suggest', 'DivShim', false);\">关闭提示</div>");
+                    }
+                    else {
+                        DivSetVisible("search_suggest", "DivShim", false);
+                        //$("#search_suggest").hide();
+                    }
+                }
+                else
+                { alert(status); }
+            }, null);
+        }
+        else {
+            DivSetVisible("search_suggest", "DivShim", false);
+            //$("#search_suggest").hide();
+        }
+    }
+
+    function suggestOver(div_value) {
+        div_value.className = "suggest_link_over";
+    }
+
+    function suggestOut(div_value) {
+        div_value.className = "suggest_link";
+    }
+
+    function setSearch(obj, id) {
+        $("#txtSearch").val(obj);
+        $("#hidCompId").val(id);
+        $.ajax({
+            type: "GET",
+            url: "../../AJAX.aspx",
+            data: "type=getCompanyJob&companyId=" + id,
+            success: function (result) {
+                $("#drpPost").empty();
+                var sourceText = result.split("**");
+                if (sourceText.length > 1) {
+                    for (var i = 0; i < sourceText.length - 1; i++) {
+                        $("<option value='" + sourceText[i].split(",")[0] + "'>" + sourceText[i].split(",")[1]
+                            + "</option>").appendTo("#drpPost")
+                    }
+                }
+            }
+        });
+        $("#search_suggest").html("");
+        DivSetVisible("search_suggest", "DivShim", false);
+        //$("#search_suggest").hide();
+    }
+</script>
+</div>
+

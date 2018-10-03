@@ -1,0 +1,8 @@
+﻿description=编辑消息模板
+DisplayName.name=消息模板名称
+DisplayName.order=1
+messages.success=修改消息模板 {0} 成功
+MessageTemplateId.order=1
+Template.name=模板
+Template.order=3
+title=编辑消息模板

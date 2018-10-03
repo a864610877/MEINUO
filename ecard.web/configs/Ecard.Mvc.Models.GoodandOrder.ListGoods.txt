@@ -1,0 +1,13 @@
+﻿delete.success=删除商品 {0} 成功
+description=大家可以在这里可以添加、删除、编辑商品
+GoodName.name=商品名称
+GoodName.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=启用商品 {0} 成功
+State.name=状态
+State.order=1
+suspend.success=停用商品{0}成功
+title=商品管理

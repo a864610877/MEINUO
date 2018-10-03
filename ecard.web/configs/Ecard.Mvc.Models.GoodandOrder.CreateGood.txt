@@ -1,0 +1,7 @@
+﻿description=添加商品
+GoodName.name=商品名称
+GoodName.order=1
+messages.success=创建商品 {0} 成功
+State.name=状态
+State.order=1
+title=添加商品

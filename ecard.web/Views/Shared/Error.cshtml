@@ -1,0 +1,83 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = null;
+}
+<html>
+<head>
+    <meta http-equiv="Refresh" content="10; url=../home" />
+    <title>出错啦！</title>
+    <style type="text/css">
+        .t
+        {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            color: #CC0000;
+        }
+        .c
+        {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-weight: normal;
+            color: #000000;
+            line-height: 18px;
+            text-align: center;
+            border: 1px solid #CCCCCC;
+            background-color: #FFFFEC;
+        }
+        body
+        {
+            background-color: #FFFFFF;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h2>
+            <span class="t">
+                <img src="../../Content/images/errors.gif" />出错啦！</span></h2>
+        <table border="0" cellpadding="8" cellspacing="0" width="660">
+            <tbody>
+                <tr>
+                    <td class="c">
+                        <h2 style=" color:GrayText">
+                            @(Html.Raw(Html.ViewData.GetMessage()))
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p align="center">
+                            <font color="#0066ff" size="2">正在进入首页，请稍等……</font><font color="#0066ff" size="2" face="Arial">...</font><br />
+                            <input type="text" id="chart" name="chart" size="46" style="font-family: Arial; font-weight: bolder;
+                                color: #0066ff; background-color: #fef4d9; padding: 0px; border-style: none;" />
+                            <input type="text" id="percent" name="percent" size="47" style="color: #0066ff; text-align: center;
+                                border-width: medium; border-style: none;" />
+                          
+                        </p>
+                        <p align="center">
+                            如果您的浏览器不支持跳转,<a style="text-decoration: none" href="/"><font color="#FF0000">请点这里</font></a>.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+  <script type="text/javascript">　
+　　      var bar = 0
+      var line = "||"
+      var amount = "||"
+      count()
+      function count() {
+          bar = bar + 2
+          amount = amount + line
+          document.getElementById("chart").value = amount;
+          document.getElementById("percent").value = bar + "%";
+          //          document.loading.chart.value = amount
+          //          document.loading.percent.value = bar + "%"
+          if (bar < 99)
+          { setTimeout("count()", 300); }
+          else
+          { window.location = "/"; }
+      }</script>
+</html>

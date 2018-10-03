@@ -1,0 +1,209 @@
+﻿
+@using Moonlit
+@model  ListShops 
+  @using (Html.BeginForm("List", "Shop"))
+  { 
+  <div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>
+    <div class="rightinfo">
+     <table id="selectTd">
+     <tr>
+ @Html.EditorForModel("condition") 
+ <td>
+       <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+   </td>
+ </tr>
+ </table>
+ @Html.ToolbarOfList(Model.GetToolbarActions())
+    
+    <div class="listbox">
+       
+        <table class="tablelist">
+            <thead>
+                <tr>
+                    <th><input id="ckAll" type="checkbox"  onclick="selectAll()"/></th>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                    <th>操作</th>
+                  @*  @Html.Th(Ths.Operation, new { width = "134px" })*@
+                </tr>
+            </thead>
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+                        
+                    <tr >
+                      <td><input name="selectBox" type="checkbox" value=@item.ShopId  /></td>
+                        @Html.Tds(item, Model.GetItemType())
+                        @Html.ToolbarOfItem(Model.GetItemToobalActions(item))
+                    </tr>
+                   scope.Next();
+                    }
+                }
+            </tbody>
+        </table> 
+         <div id="pagehtml">
+           @(ViewBag.pageHtml == null ? "" : ViewBag.pageHtml)</div>
+    </div>
+
+    <div class="tipBank" style="display: none;">
+        <div class="tiptop">
+            <span>绑定终端列表</span><a></a></div>
+        <div class="tipinfoBank">
+            <table  id="shoptCheks" style="border-collapse: separate; border-spacing: 8px; margin: 0px auto;width: 80%;">
+                   </table>
+        </div>
+        <div style="margin: 10px; text-align: center;">
+            
+        </div>
+    </div>
+</div>
+}
+<script type="text/javascript">
+    
+    var pageS = 10;
+    var index = 0;
+    var ActionName = "";
+    var ActionUrl = "";
+    var jsonData = "";
+    function selectInput(choose) {
+        pageS = choose.value;
+        submitClicks(choose);
+    }
+    //获取数据 
+    function AjaxGetData(PageIndex, PageSize) {
+        var Name = $('#Name').val();
+        var DisplayName = $('#DisplayName').val();
+        var State = $("[id=State.Key]").val(); 
+        var MobileState = "";
+        var mobilestate = $("[id=MobileState.Key]").val();
+        
+        $.ajax({
+            url: "/Shop/ListPost",
+            data: { PageIndex: PageIndex, PageSize: PageSize, NameWith: Name, DisplayNameWith: DisplayName, State: State, MobileState: MobileState },
+            type: "post",
+            //cache: false, 
+            dataType: "json",
+            async: false,
+            success: function (data) {
+
+                var listVal = new Array();
+                listVal.push("ShopId");
+                listVal.push("Name");
+                listVal.push("DisplayName");
+                listVal.push("OwnerName");
+                listVal.push("Email");
+                listVal.push("Amount");
+                listVal.push("State");
+                listVal.push("boor");
+                $.GetstrTrs(data, listVal, "ShopId");
+            },
+            error: function () {
+                window.location.href = "/Home/Error";
+            }
+        })
+    }
+    //操作
+    function OperatorThis(RName, RUrl) {
+        ActionName = RName;
+        ActionUrl = RUrl;
+        switch (RName) {
+            case "Edit":
+                window.location.href = RUrl;
+                break;
+            case "Create":
+                window.location.href = RUrl;
+                break;
+            case "CreateDog":
+                window.location.href = RUrl;
+                break;
+            case "CreatePosEndPoint":
+                window.location.href = RUrl;
+                break;
+            case "Export":
+                window.location.href = RUrl;
+                break;
+            case "Suspend":
+                $(".tip p").text("你确定要停用当前商户吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Suspends":
+                jsonData = getChecks();
+                $(".tip p").text("你确定要停用所选中商户吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Resume":
+                $(".tip p").text("你确定要启用当前商户吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Resumes":
+                jsonData = getChecks();
+                $(".tip p").text("你确定要启用所选中商户吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Delete":
+                $(".tip p").text("你确定要删除当前商户吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "Deletes":
+                jsonData = getChecks();
+                $(".tip p").text("你确定要删除所选中经销商吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "SerachPos":
+
+                var str = "";
+                $.ajax({
+                    url: RUrl,
+                    data: {},
+                    type: "post",
+                    //cache: false, 
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.Code == "1") {
+                            str += "<tbody><tr><td><b>终端名称</b></td><td><b>终端编号</b></td><td><b>终端密钥</b></td></tr>";
+                            for (var i = 0; i < data.ListPost.length; i++) {
+                                var item = data.ListPost[i];
+                                str += "<tr>";
+                                str += "<td >" + item.DisplayName + "</td>"
+                                str += "<td>" + item.Name + "</td>"
+                                str += "<td >" + item.DataKey + "</td>"
+                                str += "</tbody></tr>";
+                            }
+                        }
+                        else {
+                            str += "<tbody><tr>";
+                            str += "<td></td>"
+                            str += "<td class='tdCenter'>未绑定终端号</td>"
+                            str += "</tbody></tr>";
+                        }
+                        $("#shoptCheks").html("");
+                        $("#shoptCheks").append(str);
+                    },
+                    error: function () {
+                        window.location.href = "/Home/UserError";
+                    }
+                })
+                $(".ShowHide").fadeIn(100);
+                $(".tipBank").fadeIn(200);
+                break;
+        }
+    }
+
+    $('.tipBank a').click(function () { $(".ShowHide").fadeOut(100); $('.tipBank').fadeOut(200); });
+</script>
+

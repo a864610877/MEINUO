@@ -1,0 +1,6 @@
+﻿Description.name=Description
+Description.order=1
+DisplayName.name=DisplayName
+DisplayName.order=1
+Name.name=Name
+Name.order=1

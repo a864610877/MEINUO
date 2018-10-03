@@ -1,0 +1,15 @@
+﻿Amount.Name=金额
+description=会员卡延期
+ExpiredDate.name=有效期
+failToReadAccount=读卡失败
+Name.Name=卡号
+pleaseInputAccountName=请插入卡
+Point.name=积分
+Query.Text=查询
+Renew.Text=延期
+success=延期成功
+title=会员卡延期
+titleA=卡号延期
+waitingForCommunicate=正在延期，请稍候
+waitingForInsertCard=请插入卡
+请输入卡号=请输入卡号

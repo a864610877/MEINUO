@@ -1,0 +1,9 @@
+﻿DeleteShoping.description=删除
+description=Ecard.Mvc.Controllers.ShopingController
+Edit.description=编辑
+EditShoping.description=编辑
+name=Ecard.Mvc.Controllers.ShopingController
+ShopingList.description=商品列表
+ShopingList.name=商品列表
+ShopingManager.description=商品添加
+ShopingManager.name=商品添加

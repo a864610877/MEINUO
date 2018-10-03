@@ -1,0 +1,10 @@
+﻿all.name=--请选择--
+all.order=1
+ems.name=EMS
+ems.order=1
+kuaidi.name=快递
+kuaidi.order=1
+mjcdyf.name=买家承担运费
+mjcdyf.order=1
+pingyou.name=平邮
+pingyou.order=1

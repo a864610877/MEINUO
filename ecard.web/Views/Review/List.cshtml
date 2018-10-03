@@ -1,0 +1,190 @@
+﻿<!--------中间更换内容------->
+@using Moonlit
+@model  Ecard.Mvc.Models.Reviews.ListReviews
+<link href="/css/shop_style.css" rel="stylesheet" />
+@*<script src="/js/OrderList.js"></script>*@
+<script type="text/javascript">
+    function bigChange(obj) {
+        var smObj = document.getElementsByName("ReviewId");
+        if (obj.checked == false) {
+            for (var i = 0; i < smObj.length; i++)
+                smObj[i].checked = false;
+        } else {
+            for (var i = 0; i < smObj.length; i++)
+                smObj[i].checked = true;
+        }
+    }
+    function smallChange(obj) {
+        var smObj = document.getElementsByName("ReviewId");
+        var bigObj = document.getElementById("goodslist_checkbox_all");
+        if (obj.checked == true)
+            bigObj.checked = true;
+        else {
+            b = true;
+            for (var i = 0; i < smObj.length; i++) {
+                if (smObj[i].checked == true)
+                    b = false;
+            }
+            if (b == true)
+                bigObj.checked = false;
+        }
+    }
+    var pageS = 10;
+    var index = 0;
+    var ActionName = "";
+    var ActionUrl = "";
+    var jsonData = "";
+    function selectInput(choose) {
+        pageS = choose.value;
+        submitClicks(choose);
+    }
+    //获取数据
+    function AjaxGetData(PageIndex, PageSize) {
+
+        var UserName = $('#UserName').val();
+        var CommodityNo = $('#CommodityNo').val();
+        //var startTime = $('#startTime').val();
+        //var endTime = $('#endTime').val();
+        var State = $("[id=State.Key]").val();
+        $.ajax({
+            url: "/Review/AjaxList",
+            data: {
+                PageIndex: PageIndex, PageSize: PageSize, UserName: UserName, CommodityNo: CommodityNo, State: State
+            },
+            type: "post",
+            //cache: false,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                var listVal = new Array();
+                listVal.push("ReviewId");
+                listVal.push("commodityNo");
+                listVal.push("commodityName");
+                listVal.push("userName");
+                listVal.push("content");
+                listVal.push("state");
+                listVal.push("submitTime");
+                listVal.push("boor");
+                $.GetstrTrs(data, listVal, "ReviewId");
+            },
+            error: function () {
+                window.location.href = "/Home/Error";
+            }
+        })
+
+
+    }
+    //操作
+    function OperatorThis(RName, RUrl) {
+        ActionName = RName;
+        ActionUrl = RUrl;
+        switch (RName) {
+            case "OrderDetail":
+                window.location.href = RUrl;
+                break;
+            case "ReviewShow":
+                var id = "";
+                $("#tbodysNum input:checked").each(function () {
+                    id += $(this).val() + ",";
+                })
+                id = id.substring(0, id.length - 1);
+                jsonData = id;
+                $(".tip p").text("你确定要显示选中的" + $("#tbodysNum input:checked").length + "条评论吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+            case "ReviewNotShow":
+                var id = "";
+                $("#tbodysNum input:checked").each(function () {
+                    id += $(this).val() + ",";
+                })
+                id = id.substring(0, id.length - 1);
+                jsonData = id;
+                $(".tip p").text("你确定要不显示选中的" + $("#tbodysNum input:checked").length + "条评论吗？");
+                $(".ShowHide").fadeIn(100);
+                $(".tip").fadeIn(200);
+                break;
+        }
+    }
+</script>
+
+<div class="mainbar_wrapper">
+
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">>&nbsp; 评论列表</a></li>
+
+        </ul>
+    </div>
+
+    <div class="tool_view" style=" height:auto;">
+        <table id="selectTd">
+            <tr>
+                @Html.EditorForModel("condition")
+                <td>
+                    <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+                </td>
+            </tr>
+        </table>
+
+        <div class="clear"></div>
+
+
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="gost_list">
+    <div class="gosttitle1">
+        <h2>订单信息</h2>
+        <p>
+            <a href="javascript:void(0)" onclick="OperatorThis('ReviewShow', '/Review/ReviewShow')">[批量显示]</a>
+            <a href="javascript:void(0)" onclick="OperatorThis('ReviewNotShow', '/Review/ReviewNotShow')">[批量不显示]</a>
+        </p>
+    </div>
+
+    <div class="gostxinxi">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" onclick="bigChange(this)" name=" goodslist_checkbox_all" id="goodslist_checkbox_all"></th>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+
+                        <tr>
+                            <td><input type="checkbox" onclick="smallChange(this)" name="ReviewId" value="@item.ReviewId"></td>
+                            @Html.Tds(item, Model.GetItemType())
+                            @*@Html.ToolbarOfItem(Model.GetItemToobalActions(item))*@
+                        </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="list_bottom">
+            <div id="pagehtml">
+                @Html.Raw(Model.pageHtml)
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--------中间更换内容------->
+<script>
+    $('#orderId').val("");
+
+</script>

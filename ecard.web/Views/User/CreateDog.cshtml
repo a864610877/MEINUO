@@ -1,0 +1,93 @@
+﻿@model EcardModelItem<CreateDog>
+   <div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>         
+<script src='@Url.Content("~/scripts/authtypes/" + Model.Site.AuthType + ".js")'></script>
+<div class="rightinfo">
+    <div class="column" style="width: 40%"> 
+        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"> 
+            <div class="portlet-content" style="display: block;">
+                <p style="color: blue;margin-left: 200px;">
+                    请先输入用户名，用户名此能为后台管理用户，不可为会员或者商户制狗.</p>
+                <p style="color: blue;margin-left: 200px;">
+                    建狗时，请插入IKey，点击 [@Model.Localize("createDog.Text")].</p> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="column" style="width: 60%">
+ <div class="portlet-content">
+                <ul id="userInput" class="forminfo" style="padding-top:10px;">
+                    <li>
+                        <label class="desc">
+                            用户姓名:
+                        </label>
+                        <div>
+                            <input type="text"   tabindex="1" value="@Model.Item.UserName" data-field="userName"
+                                class="scinput"> 
+                        </div>
+                    </li> 
+                    <li>
+                        <label class="desc">
+                            是否使用狗狗登录:
+                        </label>
+                        <div>
+                            <input type="checkbox" tabindex="8" checked="checked" class="field checkbox" name="Field4"
+                                data-field="isActived">
+                        </div>
+                    </li>
+                    <li class="buttons">
+                        <button class="scbtn" style="margin-left: 250px" href='@Url.Action("createdog", "user")' data-waiting-message='@Model.Localize("waitingForCommunicate")'>@Model.Localize("createDog.Text")</button>
+                    </li>
+                </ul>
+                <div class="linetop clearfix">
+                </div>
+                <p id="numbermsg" style="color: blue;margin-left: 250px;">
+                </p>
+            </div>
+
+</div>
+<script>
+    (function ($) {
+        var msgbox = $("#numbermsg"); 
+        var btn = $("button");
+        msgbox.text('@Model.Localize("pleaseInputUserName")'); 
+        $(function () {
+            btn.click(function (e) {
+                msgbox.css("color", "red");
+                var user = $("#userInput").bindto({});
+                e.preventDefault();
+                var $this = $(this);
+                  
+                if(user.userName.trim() == "") {
+                    msgbox.text('@Model.Localize("pleaseInputUserName")');
+                    return;
+                }
+                $this.attr("disabled", "disabled");
+                msgbox.css("color", "");
+                
+                $("#saleFee").val("");
+                
+                var url = $this.attr("href");
+                $.post(url, user , function (data) {
+                    if (!data.Success ) {
+                        alert(data.Message);
+                        msgbox.text(data.Message + ",@Model.Localize("fail")");
+                    }
+                    else {
+                        msgbox.text('@Model.Localize("success")');
+                        msgbox.css("color", "green"); 
+                        alert('@Model.Localize("success")');
+                        $("#accountInput").bindfrom({isActived:true, userName:data.UserName});
+                        writeUserToken(data.Data1);
+                    }
+                    $this.attr("disabled", false);
+                });
+            });
+        });
+    })(jQuery);
+</script>

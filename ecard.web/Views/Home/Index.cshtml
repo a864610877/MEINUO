@@ -1,0 +1,114 @@
+﻿@model  DashboardHome
+@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    #dashboard-buttons
+    {
+        padding:20px 0px 20px 20px;
+        width: 70%;
+        text-align: center;
+        overflow:hidden;
+    }
+    #dashboard-buttons li
+    {
+        margin: 5px;
+        float: left;
+        border: #fff solid 4px;
+    }
+    #dashboard-buttons li a
+    {
+        margin: 5px;
+        float: left;
+        width: 60px;
+        height: 60px;
+        -webkit-background-clip: border-box;
+        -webkit-background-origin: padding-box;
+        -webkit-background-size: auto;
+        -webkit-border-image: none;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        background-position: 50% 5px;
+        background-repeat: no-repeat;
+        background-size: auto;
+        cursor:pointer;
+        display: block;
+        height: 20px;
+        line-height: 10px;
+        list-style-image: none;
+        list-style-position:outside;
+        list-style-type: none;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        outline-color: #666;
+        outline-style: none;
+        outline-width: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 80px;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: baseline;
+        width: 100px;
+    }
+</style>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    </ul>
+    </div>
+
+    <div class="welinfo">
+    <span><img src="../images/sun.png" alt="天气" /></span>
+    <b> @Html.DisplayFor(x =>x.UserModel.CurrentUser.Name) 您好，欢迎进入系统</b>
+    <a href="/User/editProfile">帐号设置</a>
+    </div>
+    
+    <div class="welinfo">
+    <span><img src="../images/time.png" alt="时间" /></span>
+    <i>您上次登录的时间：@Html.DisplayFor(x =>x.UserModel.CurrentUser.LastSignInTime)</i> （不是您登录的？重新修改密码<a href="/User/editProfile">请点这里</a>）
+    </div>
+    <div class="xline"></div>
+
+      
+    <div>
+        <ul id="dashboard-buttons">
+            @{ 
+                var items = Model.List.ToList();
+                for (int i = 0; i < items.Count; i++)
+                {
+                    var item = items[i];
+                <li><a href="@Url.Action(item.Item.Action, item.Item.Controller)" class="@(item.Icon)" title='@(item.Text)'>@(item.Text)
+                </a>
+                    @if (i == items.Count - 1)
+                    {
+                        <div class="clearfix">
+                        </div>
+                    }
+                </li>
+                }
+            }
+        </ul> 
+</div>
+<div class="xline"></div>
+
+
+ <div class="box"></div>
+    
+    <div class="welinfo">
+    <span><img src="images/dp.png" alt="提醒" /></span>
+    <b>系统使用指南</b>
+    </div>
+    
+    <ul class="infolist">
+    <li><span>您可以点击顶部相对按钮快速进行管理查看等操作</span></li>
+    <li><span>您可以在快速通道快速进入报表查看页面</span></li>
+    <li><span>您可以在个人信息处进行密码修改、账户设置等操作</span></li>
+    </ul>
+    <div class="xline"></div>

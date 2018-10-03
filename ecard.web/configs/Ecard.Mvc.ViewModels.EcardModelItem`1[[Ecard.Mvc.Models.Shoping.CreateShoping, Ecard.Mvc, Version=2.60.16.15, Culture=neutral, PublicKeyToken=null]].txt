@@ -1,0 +1,3 @@
+﻿Item.explain=Item
+Item.name=Item
+Item.order=1

@@ -1,0 +1,60 @@
+﻿@{
+    
+}
+@model  MicroMall.Models.JuMeiMallIndex.JuMeiMallListModel
+<div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+    <ul class="am-slides">
+        @if (Model.AdsList != null && Model.AdsList.Count > 0)
+        {
+            foreach (var item in Model.AdsList)
+            { 
+               <li>
+                   <a href="@item.link"><img src="@item.ImageUrl"></a>
+              </li>
+            }
+        }
+        @*<li>
+            <img src="/images/banner.jpg">
+        </li>
+        <li>
+            <img src="/images/banner.jpg">
+        </li>*@
+    </ul>
+</div>
+<div class="menuBox bgFFF am-text-center">
+    <ul class="am-avg-sm-4">
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[0].commodityCategoryId"><img src="/images/menu1.png" alt=""><p>@Model.CateMallList[0].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[1].commodityCategoryId"><img src="/images/menu2.png" alt=""><p>@Model.CateMallList[1].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[2].commodityCategoryId"><img src="/images/menu3.png" alt=""><p>@Model.CateMallList[2].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[3].commodityCategoryId"><img src="/images/menu4.png" alt=""><p>@Model.CateMallList[3].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[4].commodityCategoryId"><img src="/images/menu5.png" alt=""><p>@Model.CateMallList[4].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[5].commodityCategoryId"><img src="/images/menu6.png" alt=""><p>@Model.CateMallList[5].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[6].commodityCategoryId"><img src="/images/menu7.png" alt=""><p>@Model.CateMallList[6].Categoryname</p></a></li>
+        <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[7].commodityCategoryId"><img src="/images/menu8.png" alt=""><p>@Model.CateMallList[7].Categoryname</p></a></li>
+    </ul>
+</div>
+<div class="h_tit bgFFF am-container color_b59f76">
+    <h2>热销推荐<a href="#" class="am-fr">更多＞</a></h2>
+</div>
+<div class="h_proList">
+    <ul class="am-avg-sm-2 color_b59f76">
+        @if (Model.JuMeiMallExList != null && Model.JuMeiMallExList.Count > 0)
+        {
+            foreach (var item in Model.JuMeiMallExList)
+            { 
+                  <li>
+                      <a href="/JuMeiMall/GoodsDetails?id=@item.commodityId">
+                          <img  src="@item.images" alt="">
+                          <div>
+                              <h2>@item.commodityName</h2>
+                              <p>¥ @item.commodityPrice</p>
+                              <p>积分: @item.commodityJifen</p>
+                          </div>
+                      </a>
+                </li>
+            }
+        }
+       
+     
+    </ul>
+</div>

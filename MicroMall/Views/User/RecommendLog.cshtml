@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "RecommendLog";
+}
+@model MicroMall.Models.Users.ListPromotionLogs
+<script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+<header data-am-widget="header" class="am-header am-header-default bgFFF border_b">
+    <div class="am-header-left am-header-nav">
+        <a href="/PersonalCentre/index" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        分销纪录
+    </h1>
+</header>
+<div class="jifenSidea bgFFF am-container mb5">
+    <span><b>@Model.presentExp</b>积分</span>
+    <span class="user_dj am-fr">等级：@Model.grade</span>
+</div>
+<div class="jifenMax2">
+    <div class="hd">
+        <ul class="jifen_tab bgFFF fs15 am-text-center am-avg-sm-2">
+            <li><a href="#">我的推荐</a></li>
+            <li class="on"><a href="#">购买记录</a></li>
+        </ul>
+    </div>
+    <div class="bd">
+        <ul>
+            @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
+            {
+                foreach (var item in Model.RecommendLogs.List)
+                { 
+                       <div class="jifen_lists bgFFF am-container">
+                        <span></span>
+                        <h2>@item.Name</h2>
+                        <p>@item.submitTime</p>
+                      </div>
+                 @*<div class="am-text-center am-padding-vertical-lg"><a class="am-btn am-btn-default am-btn-raduis">加载更多</a></div>*@
+                }
+            }
+           
+        </ul>
+        <ul>
+            @if (Model.PointLogs != null && Model.PointLogs.List.Count > 0)
+            {
+                foreach (var item in Model.PointLogs.List)
+                {
+                    <div class="jifen_lists bgFFF am-container">
+                        <span>+@item.value</span>
+                        <h2>@item.Name</h2>
+                        <p>@item.submitTime</p>
+                    </div>
+                    @*<div class="am-text-center am-padding-vertical-lg"><a class="am-btn am-btn-default am-btn-raduis">加载更多</a></div>*@
+                }
+            }
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(".jifenMax2").slide({});
+</script>

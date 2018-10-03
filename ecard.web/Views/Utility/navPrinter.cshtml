@@ -1,0 +1,9 @@
+﻿@{
+    Layout = null; 
+}
+<html> 
+<title>打印</title>
+<body>
+    @((Model??"").ToString().Replace("\r", "换行").Replace("\n", ""))
+</body>
+</html>

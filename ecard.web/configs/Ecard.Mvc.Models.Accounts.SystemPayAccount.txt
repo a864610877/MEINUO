@@ -1,0 +1,5 @@
+﻿DescDiv=DescDiv
+pay.success=pay.success
+Pay.Text=Pay.Text
+title=title
+titleA=titleA

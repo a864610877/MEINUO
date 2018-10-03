@@ -1,0 +1,8 @@
+﻿All.name=全部
+All.order=1
+NotShow.name=不显示
+NotShow.order=1
+Show.name=显示
+Show.order=1
+StayCheck.name=待审核
+StayCheck.order=1

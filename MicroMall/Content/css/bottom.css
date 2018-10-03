@@ -1,0 +1,45 @@
+a {
+    color:#b59f76;
+}
+.bottom{
+	width: 100%;
+	height: 3.437rem;
+	border-top: 0.062rem solid #D8D8D8;
+	position: fixed;
+	bottom: 0px;
+	background: #FFF;
+	text-align: center;
+	color: #b59f76;
+    z-index: 9999999;
+}
+.bottom .home{
+	width: 6.46875rem;
+	height: 3.437rem;
+	float: left;
+	margin-top: 0.25rem;
+}
+.bottom .cart{
+	width: 6.46875rem;
+	height: 3.437rem;
+	float: left;
+	margin-top: 0.25rem;
+}
+.bottom .order{
+	width: 6.46875rem;
+	height: 3.437rem;
+	float: left;
+	margin-top: 0.25rem;
+}
+.bottom .user{
+	width: 6.46875rem;
+	height: 3.437rem;
+	float: left;
+	margin-top: 0.25rem;
+}
+.bottom img{
+	width: 1.7rem;
+}
+.bottom div{
+	font-size: 0.75rem;
+	line-height: 1rem;
+}

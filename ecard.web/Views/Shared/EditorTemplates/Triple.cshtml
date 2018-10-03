@@ -1,0 +1,28 @@
+﻿@model bool? 
+           <div class="uew-select" style=" margin-top:10px;">
+    <div class="uew-select-value ue-state-default" style="width: 118px;">
+
+       @switch (Model)
+      {
+          case null:
+              <em class="uew-select-text" id="selectText">不限</em>
+              break;
+          case true: 
+              <em class="uew-select-text" id="selectText">是</em>
+              break;
+          case false:
+              <em class="uew-select-text" id="selectText">否</em>
+              break;
+          default:
+              <em class="uew-select-text" id="selectText">不限</em>
+              break;
+      }
+     <em class="uew-icon uew-icon-triangle-1-s"></em> 
+    </div>
+
+<select class="select1" name='@Html.ViewData.TemplateInfo.GetFullHtmlFieldName("")' id='@Html.ViewData.TemplateInfo.GetFullHtmlFieldId("")'>
+    <option @(Model == null ? "selected='selected'" :"") value="">不限</option>
+    <option @(Model == true ? "selected='selected'" :"") value="true">是</option>
+    <option @(Model == false ? "selected='selected'" :"") value="false">否</option>
+</select>
+  </div>

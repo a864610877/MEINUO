@@ -1,0 +1,1 @@
+﻿select '合计' accountTypeName, null openAmount, null rechargingAmount, null dealAmount, null closeAmount, (select isnull(sum(amount), 0) from accounts where state in (1,2,14) ) endAccountAmount

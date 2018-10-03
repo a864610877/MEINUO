@@ -1,0 +1,14 @@
+﻿delete.success=删除经销商 {0} 成功
+description=查看管理经销商
+Name.name=经销商名称
+Name.order=1
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+resume.success=启用经销商 {0} 成功
+State.name=经销商状态
+State.order=1
+suspend.success=停用经销商 {0} 成功
+title=经销商管理
+titleA=经销商管理

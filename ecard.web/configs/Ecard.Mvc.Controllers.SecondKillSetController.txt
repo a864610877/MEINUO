@@ -1,0 +1,4 @@
+﻿description=Ecard.Mvc.Controllers.SecondKillSetController
+Edit.description=秒杀设置
+Edit.name=秒杀设置
+name=Ecard.Mvc.Controllers.SecondKillSetController

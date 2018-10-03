@@ -1,0 +1,6 @@
+﻿Delete.description=删除
+description=Ecard.Mvc.Controllers.CommodityCategoryController
+Edit.description=编辑
+List.description=商品分类
+List.name=商品分类
+name=Ecard.Mvc.Controllers.CommodityCategoryController

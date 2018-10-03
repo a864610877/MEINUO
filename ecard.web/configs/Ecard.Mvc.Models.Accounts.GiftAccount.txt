@@ -1,0 +1,6 @@
+﻿description=请先读卡，读完卡后系统会自动加载当前帐户能够兑换的礼品
+failToReadAccount=failToReadAccount
+nofoundAccount=帐户0-0-未找到
+pleaseInputAccountName=pleaseInputAccountName
+title=兑换礼品
+titleA=兑换礼品

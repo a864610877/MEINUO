@@ -1,0 +1,75 @@
+﻿@model AccountDependency
+<div class="hastable">
+    <table class="sort-table">
+        <thead>
+            <tr>
+                <th style="width: 20px">
+                </th>
+                <th style="width: 120px">
+                    类别
+                </th>
+                <th>
+                    配置
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="even">
+                <td>
+                    @Html.CheckBoxFor(x => x.EnableEveryDay)
+                </td>
+                <td>
+                    每日生效
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(x => x.EnableDay)
+                </td>
+                <td>
+                    指定日期
+                </td>
+                <td>
+                    @Html.EditorFor(x => x.Days) (如 1980-1-1, 3-8, 10-1~10-7)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(x => x.EnableWeekly)
+                </td>
+                <td>
+                    星期
+                </td>
+                <td>
+                    <div>
+                        @Html.CheckBoxFor(x => x.Monday)
+                        星期一
+                        @Html.CheckBoxFor(x => x.Tuesday)
+                        星期二
+                        @Html.CheckBoxFor(x => x.Wednesday)
+                        星期三
+                        @Html.CheckBoxFor(x => x.Thursday)
+                        星期四
+                        @Html.CheckBoxFor(x => x.Friday)
+                        星期五
+                        @Html.CheckBoxFor(x => x.Saturday)
+                        星期六
+                        @Html.CheckBoxFor(x => x.Sunday)星期日
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(x => x.EnableBirthDate)
+                </td>
+                <td>
+                    生日
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

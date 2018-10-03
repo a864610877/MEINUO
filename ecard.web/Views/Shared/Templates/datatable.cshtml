@@ -1,0 +1,30 @@
+﻿@using System.Data
+@model EcardModelReportRequest
+@{
+}
+<table class="tablelist">
+    <thead>
+        <tr>
+            @foreach (DataColumn col in Model.Table.Columns)
+            {
+                ThModel th = new ThModel();
+                th.Sort = string.Equals(Model.OrderBy, col.ColumnName, StringComparison.OrdinalIgnoreCase)  ?  col.ColumnName + " desc" : col.ColumnName;
+                th.Directory = string.Equals(Model.OrderBy, col.ColumnName, StringComparison.OrdinalIgnoreCase)  ? true :
+                    (Model.OrderBy.StartsWith(col.ColumnName) ? false : (bool?)null);
+                th.Text = col.Caption;
+                @Html.Th(th)
+            }
+        </tr>
+    </thead>
+    <tbody>  
+            @foreach (DataRow row in Model.Table.Rows)
+            {
+                <tr>
+                    @foreach (DataColumn col in Model.Table.Columns)
+                    { 
+                            <td>@row[col]</td> 
+                    }
+                </tr>   
+            } 
+    </tbody>
+</table>

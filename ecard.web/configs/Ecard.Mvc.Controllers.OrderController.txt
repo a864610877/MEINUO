@@ -1,0 +1,11 @@
+﻿ApplyRefundList.description=申请退款
+ApplyRefundList.name=申请退款
+Delete.description=删除
+description=Ecard.Mvc.Controllers.OrderController
+EditOrder.description=编辑
+name=Ecard.Mvc.Controllers.OrderController
+OrderDetail.description=订单详情
+OrderList.description=订单列表
+OrderList.name=订单列表
+PointList.description=积分兑换
+PointList.name=积分兑换

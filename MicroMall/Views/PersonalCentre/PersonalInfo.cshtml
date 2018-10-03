@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "PersonalInfo";
+}
+@model MicroMall.Models.PersonalCentre.PersonalIndexExpress
+
+<header data-am-widget="header" class="am-header am-header-default bgFFF mb5">
+    <div class="am-header-left am-header-nav">
+        <a href="/PersonalCentre/Index" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        会员信息
+    </h1>
+</header>
+<div class="userImgBox bgFFF mb5 am-container">
+    <span class="userTx">
+        <img src="@Model.photo" alt="">
+    </span>
+    <div class="userTxInfo align-center-vertical">
+        <h2><b>@Model.name</b><span></span><p>等级：@Model.grade</p></h2>
+    </div>
+</div>
+<div class="userInfo fs15">
+    <ul>
+        <li>推荐码<span class="am-fr"><input type="text" readonly="readonly" name="" value="@Model.orangeKey"></span></li>
+        <li>可提现积分<span class="am-fr"><input type="text" name="" value="@Model.activatePoint" readonly="readonly"></span></li>  <!-- 不可编辑加 readonly="readonly" -->
+        <li>总积分<span class="am-fr"><input type="text" name="" readonly="readonly" value="@Model.presentExp"></span></li>
+        <li>累计收益<span class="am-fr"><input type="text" name="user"  readonly="readonly"  onchange="updateUser()" value="@Model.presentExp">元</span></li>
+        <li>性别<span class="am-fr" id="sex"><input type="text" name="sex" data-value="" value="@Model.Genders" readonly="readonly" class="sex"></span></li>
+        <div class="sexBox">
+            <dl>
+                <dt>性别选择</dt>
+                <dd><span data-value="1">男</span><span data-value="2">女</span><span data-value="0">其他</span></dd>
+            </dl>
+        </div>
+        <li>邮箱<span class="am-fr"><input type="text" name="email" onchange="updateUser()" value="@Model.Email"></span></li>
+        <li>手机号<span class="am-fr"><input type="text" readonly="readonly" name="" value="@Model.Mobile"></span></li>
+        <li style="display:none">住址<span class="am-fr"><input type="text" name="addreno" onchange="updateUser()" value="@Model.detailaddress"></span></li>       
+    </ul>
+</div>
+<div class="zhezhao"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#sex").click(function(){
+     $(".sexBox").show();
+     $(".zhezhao").show();
+    });
+    $(".sexBox span").click(function () {
+        var sex = $(this).html();
+        var sexValue = $(this).data("value");
+        $(".sex").val(sex);
+        $(".sex").data("value", sexValue);
+        $(".sexBox").hide();
+        $(".zhezhao").hide();
+        updateUser();
+
+     });
+   });
+    var updateUser = function () {
+        var obj = {
+            user: $("input[name='user']").val(),
+            sex: $(".sex").data("value") == "" ? 0 : parseInt($(".sex").data("value")),
+            email: $("input[name='email']").val(),
+            addreno: $("input[name='addreno']").val(),
+        };
+        //alert(JSON.stringify(obj));
+
+        $.ajax({
+            type: 'POST',
+            url: "/PersonalCentre/UpdatePersonalInfo",
+            data: obj,
+            success: function (data) {
+                if (data.Code == 110) {
+                    //$.openDialogUrl('未登陆', data.Msg);
+                    //$.openDialog("添加成功！");
+                    alert('未登陆');
+                    location.href = data.Msg;
+                }
+                else if (data.Code == 0) {
+                   // $.openDialog("修改成功！");
+                    //item.remove();
+                    //检查购物车是否为空
+                    //checkShopCartIsNull();
+                    //$.openDialog("添加成功！");
+                } else {
+                    alert(data.Msg);
+                }
+                //setTimeout(function () { $.closeDialog(); }, 1000)
+            },
+            error: function () {
+                alert("系统异常，请检查网络！");
+            }
+        });
+        
+    }
+</script>
+
+@*<div data-am-widget="navbar" class="am-navbar am-cf bgFFF color_b59f76"
+     id="">
+    <ul class="am-navbar-nav am-cf am-avg-sm-4">
+        <li>
+            <a href="###" class="">
+                <img src="images/f_menu1.png" alt="首页" />
+                <span class="am-navbar-label">首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="###" class="">
+                <img src="images/f_menu2.png" alt="首购物车页" />
+                <span class="am-navbar-label">购物车</span>
+            </a>
+        </li>
+        <li>
+            <a href="###" class="">
+                <img src="images/f_menu3.png" alt="订单详情" />
+                <span class="am-navbar-label">订单详情</span>
+            </a>
+        </li>
+        <li>
+            <a href="###" class="">
+                <img src="images/f_menu4.png" alt="个人中心" />
+                <span class="am-navbar-label">个人中心</span>
+            </a>
+        </li>
+    </ul>
+</div>*@

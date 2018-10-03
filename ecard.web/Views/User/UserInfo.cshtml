@@ -1,0 +1,42 @@
+﻿@using Ecard.Mvc.ActionFilters
+@model UserModel
+
+@{
+    
+}
+<div class="sbox userbox">
+    <b class="cir_lt"></b><b class="cir_lb"></b><b class="cir_rt"></b><b class="cir_rb">
+    </b>
+    <h2>
+        帐户信息</h2>
+    <div class="user_info clearfix">
+        <dl>
+            <dt> 
+                @*<img src="@Url.UserPhoto(Model.CurrentUser.Photo)" width="50" height="50" alt="">  *@
+            </dt>
+            <dd>
+                <p>
+                    欢迎您，<a target="_blank" href="/" style="color: red;">@Model.CurrentUser.DisplayName</a><a
+                        class="ico ico_set" href="/editProfile"
+                         title="帐号管理">帐号管理</a></p>
+                <p>
+                    登录名：@Model.CurrentUser.Name</p>
+                <a href="/quit">[退出]</a><p>
+                </p>
+            </dd>
+        </dl>
+    </div>
+    @if(Model is AdminUserModel)
+    {
+        
+    <div class="user_op clearfix">
+        <span class="userinfo_title">角色：</span> 
+        <ul class="user_op_link">
+           @foreach (var role in ((AdminUserModel)Model).Roles)
+           {
+               <li>@role</li>
+           }
+        </ul>
+    </div>
+    }
+</div>

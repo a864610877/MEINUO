@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/momocha.css" />
+    <script type='text/javascript' src='/js/jquery-2.1.0.js'></script>
+    <script type="text/javascript" src="/js/momocha.js"></script>
+    <link rel="stylesheet" href="/css/feiaishi.css" />
+    <link href="../css/weui.min.css" rel="stylesheet" />
+    <script src="../js/verifi.js"></script>
+</head>
+
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li class="ahover">
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="ddzx.html?goodStatus=0">我的订单</a>
+            </li>
+            <li>
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">添加新地址</a>
+            <a class="bar-ico add-baochun  " rel="off" onclick="AddAddressSubmitBtn()">保存</a>
+        </header>
+        <div class="qrdd-index add-tianjia-father">
+            <ul class="add-nr-tianxie">
+                <li class="add-input momocha-Appinterval"><i>收货人</i><input type="text" id="recipients" maxlength="50"></li>
+                <li class="add-input momocha-Appinterval"><i>联系电话</i><input type="number" id="moblie" maxlength="50"></li>
+                <li class="momocha-Appinterval add-dztx"><i>收货地址</i><textarea rows="3" cols="20" maxlength="150" placeholder="输入详细收货地址" id="detailAddress"></textarea></li>
+            </ul>
+
+            <!--<div class="add-sd momocha-Appinterval">设为默认地址
+                <a><input type="checkbox" id="SetDefAddress"></a>
+            </div>-->
+            <!--<div class="add-shanchu momocha-Appinterval">删除该地址</div>-->
+
+        </div>
+
+    </div>
+    <script src="../js/fz.js"></script>
+    <script type="text/javascript">
+        function AddAddressSubmitBtn() {
+            var recipients = $("#recipients").val();
+            var moblie = $("#moblie").val();
+            var detailAddress = $("#detailAddress").val();
+            //var setDef = 0;//未选择默认
+            //if ($("#SetDefAddress").is(':checked')) {
+            //    setDef = 1;
+            //}
+            if (recipients == null || recipients == "") {
+                $.openDialog("收件人不能为空");
+                return;
+            }
+            if (moblie == null || moblie == "") {
+                $.openDialog("手机号不能为空");
+                return;
+            }
+            if (checkMobile(moblie) == false) {
+                $.openDialog("手机号格式不正确");
+                return;
+            }
+            if (detailAddress == null || detailAddress == "") {
+                $.openDialog("地址不能为空");
+                return;
+            }
+            $.openLoading("添加中，请稍候...");
+            $.ajax({
+                url: "/PersonalCentre/AddAddress",
+                data: { recipients: recipients, mobile: moblie, detailAddress: detailAddress },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        $.openDialog("添加成功，即将返回地址页");
+                        window.location.href = ("add.html");
+                    } else if (data.Code == -2) {
+                        window.location.href = data.Msg;
+                    } else {
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("网络错误，请稍后再试");
+                }
+            });
+
+
+        }
+
+
+
+    </script>
+    <div class="momocha-screen"></div>
+    <div class="momocha-black"></div>
+</body>
+
+</html>

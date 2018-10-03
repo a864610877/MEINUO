@@ -1,0 +1,12 @@
+﻿@model EcardModelItem<Ecard.Models.Sites.SmsChangePwd>
+@using (Html.BeginForm())
+{ 
+   <div class="create_div">
+   <ul class="forminfo" style="padding-top:10px;">
+        @Html.EditorFor(x => x.Item)
+    </ul>
+    <div style=" clear:both" />
+    <div class="submitDiv"> <input type="submit" class="scbtn" value="提交" />
+            @Html.ActionLink("List")</div>
+    </div>
+}

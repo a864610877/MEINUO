@@ -1,0 +1,1794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63FF16D1-12D3-41BB-80E8-8588E6794303}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ecard.Web</RootNamespace>
+    <AssemblyName>Ecard.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\libs\Moonlit.dll</HintPath>
+    </Reference>
+    <Reference Include="Moonlit.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\libs\Moonlit.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\..\libs\MVC3_DLL\System.Web.Helpers.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\MVC3_DLL\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\..\libs\MVC3_DLL\System.Web.Razor.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\..\libs\MVC3_DLL\System.Web.WebPages.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment">
+      <HintPath>..\..\libs\MVC3_DLL\System.Web.WebPages.Deployment.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>..\..\libs\MVC3_DLL\System.Web.WebPages.Razor.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\share\Assembly.cs">
+      <Link>Assembly.cs</Link>
+    </Compile>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\MicroMall\MicroMallAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Mvc\AdminAjaxOptions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnityDependencyResolver.cs" />
+    <Content Include="cert\证书使用说明.txt" />
+    <Content Include="configs\Ecard.Models.AccountGrade.txt" />
+    <Content Include="configs\Ecard.Models.AdStates.txt" />
+    <Content Include="configs\Ecard.Models.ReviewStates.txt" />
+    <Content Include="configs\Ecard.Models.SecondKillSetState.txt" />
+    <Content Include="configs\Ecard.Models.WithdrawStates.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.AccountController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.Adscontroller.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ArticlesController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.CommodityCategoryController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.GradesController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.OperationPointLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.RecommendLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ReviewController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.SecondKillCommoditysController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.SecondKillSetController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.WeChatController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.WithdrawController.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.ListAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.ListAccounts.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Ads.AdsList.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Ads.AdsLists.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Articles.ListArticle.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Articles.ListArticles.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CommodityCategory.ListCommodityCategory.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CommodityCategory.ListCommodityCategorys.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Grades.ListGrade.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Grades.ListGrades.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.OperationPointLogs.OperationPointLogList.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.OperationPointLogs.OperationPointLogLists.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Orders.ListApplyRefundOrders.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.RecommendLogs.RecommendLogList.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.RecommendLogs.RecommendLogLists.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Report.ListCommoditySale.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reviews.ListReview.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reviews.ListReviews.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SecondKillCommodityss.AddSecondKillCommodity.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SecondKillCommodityss.EditSecondKillCommodity.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SecondKillCommodityss.ListSecondKillCommoditys.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SecondKillCommodityss.ListSecondKillCommodityss.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SecondKillSets.EditSecondKillSet.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Withdraws.ListWithdraw.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Withdraws.ListWithdraws.txt" />
+    <Content Include="css\mylogin.css" />
+    <Content Include="js\AdsCreate.js" />
+    <Content Include="js\AdsList.js" />
+    <Content Include="js\articles.js" />
+    <Content Include="js\CommodityCategory.js" />
+    <Content Include="js\grades.js" />
+    <Content Include="js\ListCommoditySale.js" />
+    <Content Include="js\OperationPointLogList.js" />
+    <Content Include="js\OrderEdit.js" />
+    <Content Include="js\RecommendLogList.js" />
+    <Content Include="components\TicketPrinter.swf" />
+    <Content Include="configs\Ecard.Commands.LimitAmountCommand.txt" />
+    <Content Include="configs\Ecard.Commands.RechargingCommand.txt" />
+    <Content Include="configs\Ecard.Models.AccountType.txt" />
+    <Content Include="configs\Ecard.Models.CommodityStates.txt" />
+    <Content Include="configs\Ecard.Models.DistributionStates.txt" />
+    <Content Include="configs\Ecard.Models.DistributionWay.txt" />
+    <Content Include="configs\Ecard.Models.DistributorBrokerage.txt" />
+    <Content Include="configs\Ecard.Models.DistributorUser.txt" />
+    <Content Include="configs\Ecard.Models.LiquidateStates.txt" />
+    <Content Include="configs\Ecard.Models.Order.txt" />
+    <Content Include="configs\Ecard.Models.OrderState.txt" />
+    <Content Include="configs\Ecard.Models.OrderStates.txt" />
+    <Content Include="configs\Ecard.Models.PayStates.txt" />
+    <Content Include="configs\Ecard.Models.PayTypes.txt" />
+    <Content Include="configs\Ecard.Models.RollbackShopDealLogState.txt" />
+    <Content Include="configs\Ecard.Models.Sites.SmsParam.txt" />
+    <Content Include="configs\Ecard.Mvc.ActionFilters.DistributorUserModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ClientServiceController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.DealOnlineController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.DistributorBrokerageController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.DistributorController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.GoodController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.OrderController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PointRebateLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.RollbackController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ShopingController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ShopLiquidateController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.UnityController.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.SystemPayAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AdminUserWithCash.txt" />
+    <Content Include="configs\Ecard.Infrastructure.ResponseCode.txt" />
+    <Content Include="configs\Ecard.Models.Account.txt" />
+    <Content Include="configs\Ecard.Models.AccountStates.txt" />
+    <Content Include="configs\Ecard.Models.AdminUser.txt" />
+    <Content Include="configs\Ecard.Models.CashDealLogSummaryStates.txt" />
+    <Content Include="configs\Ecard.Models.CashDealLogTypes.txt" />
+    <Content Include="configs\Ecard.Models.DealLogStates.txt" />
+    <Content Include="configs\Ecard.Models.DealTypes.txt" />
+    <Content Include="configs\Ecard.Models.Genders.txt" />
+    <Content Include="configs\Ecard.Models.LogTypes.txt" />
+    <Content Include="configs\Ecard.Models.MenuItem.txt" />
+    <Content Include="configs\Ecard.Models.MobileStates.txt" />
+    <Content Include="configs\Ecard.Models.PageContainers.PageContainer.txt" />
+    <Content Include="configs\Ecard.Models.PosEndPoint.txt" />
+    <Content Include="configs\Ecard.Models.PrePayStates.txt" />
+    <Content Include="configs\Ecard.Models.Role.txt" />
+    <Content Include="configs\Ecard.Models.Shop.txt" />
+    <Content Include="configs\Ecard.Models.ShopDealLogStates.txt" />
+    <Content Include="configs\Ecard.Models.ShopDealLogTypes.txt" />
+    <Content Include="configs\Ecard.Models.ShopUser.txt" />
+    <Content Include="configs\Ecard.Models.Site.txt" />
+    <Content Include="configs\Ecard.Models.States.txt" />
+    <Content Include="configs\Ecard.Models.SystemDealLogStates.txt" />
+    <Content Include="configs\Ecard.Models.SystemDealLogTypes.txt" />
+    <Content Include="configs\Ecard.Models.TaskStates.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.AccountLevelPolicyController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.AccountTypeController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.AdminUserController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.AmountRateController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.CashDealLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.CashDealLogSummaryController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.CommodityController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.DealLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.DealWayController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.HomeController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.LiquidateController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.LogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.MessageTemplateController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PointGiftController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PointPolicyController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PointRebateController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PosEndPointController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PrePayController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.PrintTicketController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ReportController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.RoleController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ShopController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.ShopDealLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.SiteController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.SystemDealLogController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.TaskController.txt" />
+    <Content Include="configs\Ecard.Mvc.Controllers.UserController.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountLevelPolicies.CreateAccountLevelPolicy.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountLevelPolicies.EditAccountLevelPolicy.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountLevelPolicies.ListAccountLevelPolicies.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountLevelPolicies.ListAccountLevelPolicy.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.CancelPayAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.ChangeNameAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.ChangePasswordAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.CloseAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.CreateAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.DoGiftAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.DonePrePayAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.GiftAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.InitAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.OpenAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.OwnerAccount+Mobiles.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.OwnerAccount+PhoneNumbers.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.OwnerAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.PayAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.PhoneNumbers.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.PrePayAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.RebateAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.RechargingAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.RenewAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.ResumeAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.SuspendAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.TransferAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.UnPayAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Accounts.ViewAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountTypes.CreateAccountType.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountTypes.EditAccountType.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountTypes.GetAccountTypeById.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountTypes.ListAccountType.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AccountTypes.ListAccountTypes.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AdminUsers.CreateAdminUser.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AdminUsers.EditAdminUser.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AdminUsers.ListAdminUser.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AdminUsers.ListAdminUsers.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AdminUsers.ListUser.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AmountRates.CreateAmountRate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AmountRates.EditAmountRate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AmountRates.ListAmountRate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.AmountRates.ListAmountRates.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.ApplyToModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CashDealLogs.CreateCashDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CashDealLogs.DoneCashDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CashDealLogs.ListCashDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CashDealLogs.ListCashDealLogs.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CashDealLogSummarys.ListCashDealLogSummary.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.CashDealLogSummarys.ListCashDealLogSummarys.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Commodities.CreateCommodity.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Commodities.EditCommodity.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Commodities.ListCommodities.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Commodities.ListCommodity.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DealLogs.ListDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DealLogs.ListDealLogs.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DealWays.CreateDealWay.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DealWays.EditDealWay.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DealWays.ListDealWay.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DealWays.ListDealWays.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DistributorBrokerages.ListDistributorBrokerage.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.DistributorBrokerages.ListDistributorBrokerages.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Distributors.CreateDistributor.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Distributors.DistributorAccountLevelRate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Distributors.EditDistributor.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Distributors.ListDistributor.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Distributors.ListDistributors.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.CreateClientOrder.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.CreateGood.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.CreateOrder.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.EditGood.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.EditOrder.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.ListGood.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.ListGoods.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.ListOrder.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.listOrders.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.OrderDetialBase.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.OrderDetialModelBase.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.GoodandOrder.ViewOrder.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Homes.DashboardHome.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Orders.ListOrder.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Orders.ListOrderDetail.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Orders.ListOrders.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Orders.OrderDetailEdit.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Rollbacks.AddRollback.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Liquidates.DoneLiquidate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Liquidates.LiquidateModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Liquidates.ListLiquidate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Liquidates.ListLiquidates.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Liquidates.ListShopDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Logs.ListLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Logs.ListLogs.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.MessageTemplates.CreateMessageTemplate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.MessageTemplates.EditMessageTemplate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.MessageTemplates.ListMessageTemplate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.MessageTemplates.ListMessageTemplates.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Mobiles.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Permissions.ListPermission.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointGifts.CreatePointGift.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointGifts.EditPointGift.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointGifts.ListPointGift.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointGifts.ListPointGifts.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointPolicies.CreatePointPolicy.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointPolicies.EditPointPolicy.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointPolicies.ListPointPolicies.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointPolicies.ListPointPolicy.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebateLogs.ListPointRebateLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebateLogs.ListPointRebateLogs.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.CreatePointRebate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.EditPointGift.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.EditPointRebate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.ListPointGift.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.ListPointGifts.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.ListPointRebate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PointRebates.ListPointRebates.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PosEndPointes.CreatePosEndPoint.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PosEndPointes.EditPosEndPoint.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PosEndPointes.ListPosEndPoint.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PosEndPointes.ListPosEndPoints.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PrePays.ListPrePay.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PrePays.ListPrePays.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PrePays.ViewPrePay.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PrintTickets.ListPrintTicket.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.PrintTickets.ListPrintTickets.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.AccountDealsForAccountReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.AccountDealsListReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.AccountDealsReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.AccountMonthReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.Accounts2Report.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.AccountsReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.AllSystemSummaryReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.CreateAccountListReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.CreateAccountReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.ExpiredAccountsReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.MakeCardReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.PrePayListReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.RechargingListReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.RechargingReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.SaleAccountListReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.SaleAccountReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.ShopDealAccountTypeReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.ShopDealsReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.ShopMonthReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.SystemDealLogByUserReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Reports.SystemDealLogDayReport.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Roles.CreateRole.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Roles.EditRole.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Roles.ListRole.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Roles.ListRoles.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Rollbacks.ListRollback.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Rollbacks.ListRollbacks.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Rollbacks.RollbackModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.ShopDealLogs.DoneShopDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.ShopDealLogs.ListShopDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.ShopDealLogs.ListShopDealLogs.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.ShopDealLogs.ShopDealLogPrinter.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shoping.CreateShoping.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shoping.ListShoping.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shoping.ListShopings.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.CreateShop.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.EditShop.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.ListShop.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.ListShops.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.ShopDealLogTypeModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Shops.ViewShop.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Sites.AccountMessagePanel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Sites.EditMessageTemplate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Sites.EditSite.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Sites.EditTicketTemplate.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Sites.ListMessageAccount.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Sites.MessagePanel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SystemDealLogs.CloseRecharging.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SystemDealLogs.ListSystemDealLog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.SystemDealLogs.ListSystemDealLogs.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ApproveTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.AssignRolesCommandEditModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ClearRolesCommandCreateModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ClearRolesCommandEditModel.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.CreateTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.EditTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ListAssignRoleTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ListAssignRoleTasks.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ListTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ListTasks.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.OpenAccountCommandViewTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.RechargingCommandViewTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.StopTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Tasks.ViewTask.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Users.CreateDog.txt" />
+    <Content Include="configs\Ecard.Mvc.Models.Users.EditProfile.txt" />
+    <Content Include="configs\Ecard.Mvc.ViewModels.EcardModelItem`1[[Ecard.Mvc.Models.Shoping.CreateShoping, Ecard.Mvc, Version=2.60.16.15, Culture=neutral, PublicKeyToken=null]].txt" />
+    <Content Include="configs\Ecard.Policies.IntervalAccountCreator.txt" />
+    <Content Include="configs\Ecard.Services.DealLogQueryTypes.txt" />
+    <Content Include="configs\Ecard.Web.Controllers.HomeController.txt" />
+    <Content Include="configs\global.txt" />
+    <Content Include="configs\messages.txt" />
+    <Content Include="Content\admin.css" />
+    <Content Include="Content\ecard.swf" />
+    <Content Include="Content\icons\account-list.png" />
+    <Content Include="Content\icons\AccountLevelPolicy-list.png" />
+    <Content Include="Content\icons\AccountType-List.png" />
+    <Content Include="Content\icons\AdminUser-List.png" />
+    <Content Include="Content\icons\AmountRate-List.png" />
+    <Content Include="Content\icons\CashDealLog-List.png" />
+    <Content Include="Content\icons\CashDealLogSummary-List.png" />
+    <Content Include="Content\icons\Commodity-List.png" />
+    <Content Include="Content\icons\DealLog-List.png" />
+    <Content Include="Content\icons\DealLog-Rollback.png" />
+    <Content Include="Content\icons\Globe.png" />
+    <Content Include="Content\icons\Liquidate-list.png" />
+    <Content Include="Content\icons\log-list.png" />
+    <Content Include="Content\icons\Mail_compose.png" />
+    <Content Include="Content\icons\MessageTemplate-List.png" />
+    <Content Include="Content\icons\pointgift-list.png" />
+    <Content Include="Content\icons\PointPolicy-List.png" />
+    <Content Include="Content\icons\PointRebate-List.png" />
+    <Content Include="Content\icons\posendpoint-list.png" />
+    <Content Include="Content\icons\printticket-list.png" />
+    <Content Include="Content\icons\Role-List.png" />
+    <Content Include="Content\icons\Shop-List.png" />
+    <Content Include="Content\icons\ShopDealLog-List.png" />
+    <Content Include="Content\icons\SystemDealLog-List.png" />
+    <Content Include="Content\icons\Task-List.png" />
+    <Content Include="Content\images\arrow.gif" />
+    <Content Include="Content\images\b2c_copy_right.bmp" />
+    <Content Include="Content\images\back_1.gif" />
+    <Content Include="Content\images\back_2.gif" />
+    <Content Include="Content\images\bg.png" />
+    <Content Include="Content\images\bottom_center.gif" />
+    <Content Include="Content\images\bottom_left.gif" />
+    <Content Include="Content\images\bottom_right.gif" />
+    <Content Include="Content\images\button.jpg" />
+    <Content Include="Content\images\button_over.jpg" />
+    <Content Include="Content\images\center_left.gif" />
+    <Content Include="Content\images\center_right.gif" />
+    <Content Include="Content\images\chinadenovo.png" />
+    <Content Include="Content\images\edit_close.gif" />
+    <Content Include="Content\images\edit_close_over.gif" />
+    <Content Include="Content\images\edit_restructure.gif" />
+    <Content Include="Content\images\edit_restructure_over.gif" />
+    <Content Include="Content\images\edit_zoom.gif" />
+    <Content Include="Content\images\edit_zoom_over.gif" />
+    <Content Include="Content\images\error.png" />
+    <Content Include="Content\images\errors.gif" />
+    <Content Include="Content\images\folder.gif" />
+    <Content Include="Content\images\folderopen.gif" />
+    <Content Include="Content\images\f_bg.jpg" />
+    <Content Include="Content\images\grid_cell_dashed1.gif" />
+    <Content Include="Content\images\grid_cell_dashed2.gif" />
+    <Content Include="Content\images\header-bg.png" />
+    <Content Include="Content\images\h_button_bg.jpg" />
+    <Content Include="Content\images\h_button_img.gif" />
+    <Content Include="Content\images\h_img_mail.jpg" />
+    <Content Include="Content\images\ico01.jpg" />
+    <Content Include="Content\images\ico02.jpg" />
+    <Content Include="Content\images\ico03.jpg" />
+    <Content Include="Content\images\ico04.jpg" />
+    <Content Include="Content\images\ico05.jpg" />
+    <Content Include="Content\images\icons-blue.png" />
+    <Content Include="Content\images\icons-gray.png" />
+    <Content Include="Content\images\icons-lgray.png" />
+    <Content Include="Content\images\input.gif" />
+    <Content Include="Content\images\itabbg.png" />
+    <Content Include="Content\images\item_separator.png" />
+    <Content Include="Content\images\label_button_down.jpg" />
+    <Content Include="Content\images\label_button_up.jpg" />
+    <Content Include="Content\images\leftbg.jpg" />
+    <Content Include="Content\images\leftColumn.gif" />
+    <Content Include="Content\images\log-box-left.jpg" />
+    <Content Include="Content\images\login_02.png" />
+    <Content Include="Content\images\Login_backgroung.jpg" />
+    <Content Include="Content\images\login_bg.gif" />
+    <Content Include="Content\images\login_but.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\mail_bg.jpg" />
+    <Content Include="Content\images\nextStep_12.gif" />
+    <Content Include="Content\images\operZone_02.png" />
+    <Content Include="Content\images\operZone_03.png" />
+    <Content Include="Content\images\orderZone_01.png" />
+    <Content Include="Content\images\orderZone_02.png" />
+    <Content Include="Content\images\orderZone_03.png" />
+    <Content Include="Content\images\page_back.gif" />
+    <Content Include="Content\images\page_next.gif" />
+    <Content Include="Content\images\page_ok.jpg" />
+    <Content Include="Content\images\page_title_bg.jpg" />
+    <Content Include="Content\images\panel01_bg.jpg" />
+    <Content Include="Content\images\panel01_grid_arrow.gif" />
+    <Content Include="Content\images\panel01_grid_cell_dashed1.gif" />
+    <Content Include="Content\images\panel01_grid_cell_dashed2.gif" />
+    <Content Include="Content\images\panel02_bg.jpg" />
+    <Content Include="Content\images\panel03_bg.jpg" />
+    <Content Include="Content\images\panel03_grid_cell_dashed2.gif" />
+    <Content Include="Content\images\panel03_grid_title.gif" />
+    <Content Include="Content\images\panel04_snap_close.gif" />
+    <Content Include="Content\images\panel04_snap_close_over.gif" />
+    <Content Include="Content\images\panel04_snap_max.gif" />
+    <Content Include="Content\images\panel04_snap_max_over.gif" />
+    <Content Include="Content\images\panel04_snap_min.gif" />
+    <Content Include="Content\images\panel04_snap_min_over.gif" />
+    <Content Include="Content\images\phone.png" />
+    <Content Include="Content\images\signin_body.png" />
+    <Content Include="Content\images\signin_box.png" />
+    <Content Include="Content\images\signin_button.png" />
+    <Content Include="Content\images\signin_buttonalt.png" />
+    <Content Include="Content\images\signin_buttonalt_hover.png" />
+    <Content Include="Content\images\signin_button_hover.png" />
+    <Content Include="Content\images\smallbutton.gif" />
+    <Content Include="Content\images\success.png" />
+    <Content Include="Content\images\tipBtm.png" />
+    <Content Include="Content\images\tipMid.png" />
+    <Content Include="Content\images\tips_bottom.png" />
+    <Content Include="Content\images\tips_middle.png" />
+    <Content Include="Content\images\tips_top.png" />
+    <Content Include="Content\images\tipTop.png" />
+    <Content Include="Content\images\top_center.gif" />
+    <Content Include="Content\images\top_left.gif" />
+    <Content Include="Content\images\top_right.gif" />
+    <Content Include="Content\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\images\帝纳达logo.jpg" />
+    <Content Include="Content\jquery.css" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100 - 副本.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-icons_ef8c08_256x240 %282%29.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery.ui\ui-lightness\jquery-ui.css" />
+    <Content Include="Content\menu.css" />
+    <Content Include="Content\My97DatePicker\calendar.js" />
+    <Content Include="Content\My97DatePicker\lang\en.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Content\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Content\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Content\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Content\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\My97DatePicker\WdatePicker.js" />
+    <Content Include="Content\NewLogOn\Default.css" />
+    <Content Include="Content\NewLogOn\user_all_bg.gif" />
+    <Content Include="Content\NewLogOn\user_bottom_c.gif" />
+    <Content Include="Content\NewLogOn\user_bottom_l.gif" />
+    <Content Include="Content\NewLogOn\user_bottom_r.gif" />
+    <Content Include="Content\NewLogOn\user_botton.gif" />
+    <Content Include="Content\NewLogOn\User_Login.css" />
+    <Content Include="Content\NewLogOn\user_login_name.gif" />
+    <Content Include="Content\NewLogOn\user_login_password.gif" />
+    <Content Include="Content\NewLogOn\user_login_validatecode.gif" />
+    <Content Include="Content\NewLogOn\user_main_c.gif" />
+    <Content Include="Content\NewLogOn\user_main_l.gif" />
+    <Content Include="Content\NewLogOn\user_main_r.gif" />
+    <Content Include="Content\NewLogOn\user_top_c.gif" />
+    <Content Include="Content\NewLogOn\user_top_l.gif" />
+    <Content Include="Content\NewLogOn\user_top_r.gif" />
+    <Content Include="Content\NewLogOn\xtree.css" />
+    <Content Include="Content\pointgiftphotos\3760a7b58fe944389a18deb75ef7f8b6.jpg" />
+    <Content Include="Content\pointgiftphotos\66911d5e3172410b998d34d7c34156b0.jpg" />
+    <Content Include="Content\pointgiftphotos\99cfe251501a4ce4ac331efcaefbfb6c.jpg" />
+    <Content Include="Content\public%281%29.css" />
+    <Content Include="Content\public.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\StyleSheet.css" />
+    <Content Include="Content\themes\base\ie7.css" />
+    <Content Include="Content\themes\base\images\body_background.png" />
+    <Content Include="Content\themes\base\images\border_bg.png" />
+    <Content Include="Content\themes\base\images\errors.gif" />
+    <Content Include="Content\themes\base\images\panel03_bg.jpg" />
+    <Content Include="Content\themes\base\images\tab.gif" />
+    <Content Include="Content\themes\images\errors.gif" />
+    <Content Include="Content\themes\t\images\shop.png" />
+    <Content Include="Content\themes\base\application.css" />
+    <Content Include="Content\themes\base\images\error.png" />
+    <Content Include="Content\themes\base\images\signin_body.png" />
+    <Content Include="Content\themes\base\images\signin_box.png" />
+    <Content Include="Content\themes\base\images\signin_button.png" />
+    <Content Include="Content\themes\base\images\signin_buttonalt.png" />
+    <Content Include="Content\themes\base\images\signin_buttonalt_hover.png" />
+    <Content Include="Content\themes\base\images\signin_button_hover.png" />
+    <Content Include="Content\themes\base\images\success.png" />
+    <Content Include="Content\themes\base\jquery.autocomplate.css" />
+    <Content Include="Content\themes\base\ie6.css" />
+    <Content Include="Content\themes\t\default\t.css" />
+    <Content Include="Content\themes\t\images\bg_lg.png" />
+    <Content Include="Content\themes\t\images\bg_rcha.png" />
+    <Content Include="Content\themes\t\images\bg_spr.png" />
+    <Content Include="Content\themes\t\images\bg_x.png" />
+    <Content Include="Content\themes\t\images\bg_y.png" />
+    <Content Include="Content\themes\t\images\ico.png" />
+    <Content Include="Content\themes\t\images\loading.gif" />
+    <Content Include="Content\themes\t\scripts\components.js" />
+    <Content Include="Content\themes\t\scripts\account.js" />
+    <Content Include="Content\themes\t\scripts\shopLiquidate.js" />
+    <Content Include="Content\themes\t\scripts\dealonline.js" />
+    <Content Include="Content\themes\t\scripts\default.js" />
+    <Content Include="Content\themes\t\scripts\swfobject.js" />
+    <Content Include="Content\userphotos\28ccb9113887424b9540c1d278b1f75c.jpg" />
+    <Content Include="Content\userphotos\7bdfef0701be442eb9a15faaca105d72.jpg" />
+    <Content Include="Content\userphotos\b20b0ad10aaa49d798083cc54ab1121d.jpg" />
+    <Content Include="Content\userphotos\c2feb88adb924d3dadac710490ac2e07.jpg" />
+    <Content Include="Content\yui.reset.2.6.0.css" />
+    <Content Include="css\jianli-post.css" />
+    <Content Include="css\RegisterAndChangPsw.css" />
+    <Content Include="css\select.css" />
+    <Content Include="css\shop_style.css" />
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\0001.jpg" />
+    <Content Include="images\0002.png" />
+    <Content Include="images\0003.png" />
+    <Content Include="images\0005.png" />
+    <Content Include="images\001.jpg" />
+    <Content Include="images\404.png" />
+    <Content Include="images\add.png" />
+    <Content Include="images\btnbg.png" />
+    <Content Include="images\btnbg1.png" />
+    <Content Include="images\btnbg2.png" />
+    <Content Include="images\buttonbg.png" />
+    <Content Include="images\c01.png" />
+    <Content Include="images\c02.png" />
+    <Content Include="images\c03.png" />
+    <Content Include="images\cbg.png" />
+    <Content Include="images\clist.png" />
+    <Content Include="images\close.png" />
+    <Content Include="images\close1.png" />
+    <Content Include="images\cloud.png" />
+    <Content Include="images\d01.png" />
+    <Content Include="images\d02.png" />
+    <Content Include="images\d03.png" />
+    <Content Include="images\d04.png" />
+    <Content Include="images\d05.png" />
+    <Content Include="images\d06.png" />
+    <Content Include="images\d07.png" />
+    <Content Include="images\diskbg.png" />
+    <Content Include="images\dp.png" />
+    <Content Include="images\error01.png" />
+    <Content Include="images\error02.png" />
+    <Content Include="images\f01.png" />
+    <Content Include="images\f02.png" />
+    <Content Include="images\f03.png" />
+    <Content Include="images\f04.png" />
+    <Content Include="images\f05.png" />
+    <Content Include="images\f06.png" />
+    <Content Include="images\help.png" />
+    <Content Include="images\i01.png" />
+    <Content Include="images\i02.png" />
+    <Content Include="images\i03.png" />
+    <Content Include="images\i04.png" />
+    <Content Include="images\i05.png" />
+    <Content Include="images\i06.png" />
+    <Content Include="images\i07.png" />
+    <Content Include="images\i08.png" />
+    <Content Include="images\i09.png" />
+    <Content Include="images\iadd.png" />
+    <Content Include="images\ibtnbg.png" />
+    <Content Include="images\ico01.png" />
+    <Content Include="images\ico02.png" />
+    <Content Include="images\ico03.png" />
+    <Content Include="images\ico04.png" />
+    <Content Include="images\ico05.png" />
+    <Content Include="images\ico06.png" />
+    <Content Include="images\icon01.png" />
+    <Content Include="images\icon02.png" />
+    <Content Include="images\icon03.png" />
+    <Content Include="images\icon04.png" />
+    <Content Include="images\icon05.png" />
+    <Content Include="images\icon06.png" />
+    <Content Include="images\img01.png" />
+    <Content Include="images\img02.png" />
+    <Content Include="images\img03.png" />
+    <Content Include="images\img04.png" />
+    <Content Include="images\img05.png" />
+    <Content Include="images\img06.png" />
+    <Content Include="images\img07.png" />
+    <Content Include="images\img08.png" />
+    <Content Include="images\img09.png" />
+    <Content Include="images\img10.png" />
+    <Content Include="images\img11.png" />
+    <Content Include="images\img12.png" />
+    <Content Include="images\img13.png" />
+    <Content Include="images\img14.png" />
+    <Content Include="images\img15.png" />
+    <Content Include="images\inputbg.gif" />
+    <Content Include="images\itabbg.png" />
+    <Content Include="images\itabbg1.png" />
+    <Content Include="images\jl_postIcon.png" />
+    <Content Include="images\leftico.png" />
+    <Content Include="images\leftico01.png" />
+    <Content Include="images\leftico02.png" />
+    <Content Include="images\leftico03.png" />
+    <Content Include="images\leftico04.png" />
+    <Content Include="images\leftline.gif" />
+    <Content Include="images\leftmenubg.gif" />
+    <Content Include="images\lefttop.gif" />
+    <Content Include="images\libg.png" />
+    <Content Include="images\light.png" />
+    <Content Include="images\line.gif" />
+    <Content Include="images\line1.png" />
+    <Content Include="images\list.gif" />
+    <Content Include="images\list1.gif" />
+    <Content Include="images\list2.png" />
+    <Content Include="images\loginbg1.png" />
+    <Content Include="images\loginbg2.png" />
+    <Content Include="images\loginbg3.png" />
+    <Content Include="images\logininfo.png" />
+    <Content Include="images\loginlogo3.png" />
+    <Content Include="images\loginpassword.png" />
+    <Content Include="images\loginsj.png" />
+    <Content Include="images\loginuser.png" />
+    <Content Include="images\mod_sub_nav.png" />
+    <Content Include="images\msg.png" />
+    <Content Include="images\navbg.png" />
+    <Content Include="images\next.gif" />
+    <Content Include="images\pre.gif" />
+    <Content Include="images\px.gif" />
+    <Content Include="images\Register\20141011115359.jpg" />
+    <Content Include="images\Register\add.png" />
+    <Content Include="images\Register\btnbg.png" />
+    <Content Include="images\Register\btnbg1.png" />
+    <Content Include="images\Register\btnbg2.png" />
+    <Content Include="images\Register\buttonbg.png" />
+    <Content Include="images\Register\cbg.png" />
+    <Content Include="images\Register\loginusers.png" />
+    <Content Include="images\Register\problue.png" />
+    <Content Include="images\Register\progray.png" />
+    <Content Include="images\Register\right.png" />
+    <Content Include="images\righttop.gif" />
+    <Content Include="images\rlist.gif" />
+    <Content Include="images\search.png" />
+    <Content Include="images\shanchu.png" />
+    <Content Include="images\shanchu_a.png" />
+    <Content Include="images\shopdefault.jpg" />
+    <Content Include="images\shuxing_close.png" />
+    <Content Include="images\sj.png" />
+    <Content Include="images\sub_nav_1.png" />
+    <Content Include="images\sub_nav_2.png" />
+    <Content Include="images\Succeed01.png" />
+    <Content Include="images\sun.png" />
+    <Content Include="images\t01.png" />
+    <Content Include="images\t02.png" />
+    <Content Include="images\t03.png" />
+    <Content Include="images\t04.png" />
+    <Content Include="images\t05.png" />
+    <Content Include="images\tbg.png" />
+    <Content Include="images\tcbg.gif" />
+    <Content Include="images\th.gif" />
+    <Content Include="images\ticon.png" />
+    <Content Include="images\time.png" />
+    <Content Include="images\toolbg.gif" />
+    <Content Include="images\topbg.gif" />
+    <Content Include="images\topleft.jpg" />
+    <Content Include="images\topright.jpg" />
+    <Content Include="images\ub1.png" />
+    <Content Include="images\uew_icon.png" />
+    <Content Include="images\uew_icon_hover.png" />
+    <Content Include="images\ulist.png" />
+    <Content Include="images\user.png" />
+    <Content Include="images\userbg.png" />
+    <Content Include="js\AccountList.js" />
+    <Content Include="js\cloud.js" />
+    <Content Include="js\data1.txt" />
+    <Content Include="js\extjs4\ext-all.css" />
+    <Content Include="js\extjs4\ext-all.js" />
+    <Content Include="js\extjs4\ext.js" />
+    <Content Include="js\extjs\ext-all.css" />
+    <Content Include="js\extjs\ext-all.js" />
+    <Content Include="js\extjs\ext-base.js" />
+    <Content Include="js\extjs\ext-lang-zh_CN.js" />
+    <Content Include="js\extjs\JScript1.js" />
+    <Content Include="js\extjs\login.js" />
+    <Content Include="js\extjs\tree.css" />
+    <Content Include="js\fenxiang.js" />
+    <Content Include="js\format+zh_CN,default,corechart.I.js" />
+    <Content Include="js\GetGivePointType.js" />
+    <Content Include="js\images\default\box\corners-blue.gif" />
+    <Content Include="js\images\default\box\corners.gif" />
+    <Content Include="js\images\default\box\l-blue.gif" />
+    <Content Include="js\images\default\box\l.gif" />
+    <Content Include="js\images\default\box\r-blue.gif" />
+    <Content Include="js\images\default\box\r.gif" />
+    <Content Include="js\images\default\box\tb-blue.gif" />
+    <Content Include="js\images\default\box\tb.gif" />
+    <Content Include="js\images\default\button\btn-arrow.gif" />
+    <Content Include="js\images\default\button\btn-sprite.gif" />
+    <Content Include="js\images\default\dd\drop-add.gif" />
+    <Content Include="js\images\default\dd\drop-no.gif" />
+    <Content Include="js\images\default\dd\drop-yes.gif" />
+    <Content Include="js\images\default\editor\tb-sprite.gif" />
+    <Content Include="js\images\default\form\checkbox.gif" />
+    <Content Include="js\images\default\form\clear-trigger.gif" />
+    <Content Include="js\images\default\form\date-trigger.gif" />
+    <Content Include="js\images\default\form\error-tip-corners.gif" />
+    <Content Include="js\images\default\form\exclamation.gif" />
+    <Content Include="js\images\default\form\radio.gif" />
+    <Content Include="js\images\default\form\search-trigger.gif" />
+    <Content Include="js\images\default\form\text-bg.gif" />
+    <Content Include="js\images\default\form\trigger-tpl.gif" />
+    <Content Include="js\images\default\form\trigger.gif" />
+    <Content Include="js\images\default\gradient-bg.gif" />
+    <Content Include="js\images\default\grid\arrow-left-white.gif" />
+    <Content Include="js\images\default\grid\arrow-right-white.gif" />
+    <Content Include="js\images\default\grid\col-move-bottom.gif" />
+    <Content Include="js\images\default\grid\col-move-top.gif" />
+    <Content Include="js\images\default\grid\columns.gif" />
+    <Content Include="js\images\default\grid\dirty.gif" />
+    <Content Include="js\images\default\grid\done.gif" />
+    <Content Include="js\images\default\grid\drop-no.gif" />
+    <Content Include="js\images\default\grid\drop-yes.gif" />
+    <Content Include="js\images\default\grid\footer-bg.gif" />
+    <Content Include="js\images\default\grid\grid-blue-hd.gif" />
+    <Content Include="js\images\default\grid\grid-blue-split.gif" />
+    <Content Include="js\images\default\grid\grid-hrow.gif" />
+    <Content Include="js\images\default\grid\grid-loading.gif" />
+    <Content Include="js\images\default\grid\grid-split.gif" />
+    <Content Include="js\images\default\grid\grid-vista-hd.gif" />
+    <Content Include="js\images\default\grid\grid3-hd-btn.gif" />
+    <Content Include="js\images\default\grid\grid3-hrow-over.gif" />
+    <Content Include="js\images\default\grid\grid3-hrow.gif" />
+    <Content Include="js\images\default\grid\grid3-special-col-bg.gif" />
+    <Content Include="js\images\default\grid\grid3-special-col-sel-bg.gif" />
+    <Content Include="js\images\default\grid\group-by.gif" />
+    <Content Include="js\images\default\grid\group-expand-sprite.gif" />
+    <Content Include="js\images\default\grid\hd-pop.gif" />
+    <Content Include="js\images\default\grid\hmenu-asc.gif" />
+    <Content Include="js\images\default\grid\hmenu-desc.gif" />
+    <Content Include="js\images\default\grid\hmenu-lock.gif" />
+    <Content Include="js\images\default\grid\hmenu-lock.png" />
+    <Content Include="js\images\default\grid\hmenu-unlock.gif" />
+    <Content Include="js\images\default\grid\hmenu-unlock.png" />
+    <Content Include="js\images\default\grid\invalid_line.gif" />
+    <Content Include="js\images\default\grid\loading.gif" />
+    <Content Include="js\images\default\grid\mso-hd.gif" />
+    <Content Include="js\images\default\grid\nowait.gif" />
+    <Content Include="js\images\default\grid\page-first-disabled.gif" />
+    <Content Include="js\images\default\grid\page-first.gif" />
+    <Content Include="js\images\default\grid\page-last-disabled.gif" />
+    <Content Include="js\images\default\grid\page-last.gif" />
+    <Content Include="js\images\default\grid\page-next-disabled.gif" />
+    <Content Include="js\images\default\grid\page-next.gif" />
+    <Content Include="js\images\default\grid\page-prev-disabled.gif" />
+    <Content Include="js\images\default\grid\page-prev.gif" />
+    <Content Include="js\images\default\grid\pick-button.gif" />
+    <Content Include="js\images\default\grid\refresh.gif" />
+    <Content Include="js\images\default\grid\row-check-sprite.gif" />
+    <Content Include="js\images\default\grid\row-expand-sprite.gif" />
+    <Content Include="js\images\default\grid\row-over.gif" />
+    <Content Include="js\images\default\grid\row-sel.gif" />
+    <Content Include="js\images\default\grid\sort_asc.gif" />
+    <Content Include="js\images\default\grid\sort_desc.gif" />
+    <Content Include="js\images\default\grid\wait.gif" />
+    <Content Include="js\images\default\layout\collapse.gif" />
+    <Content Include="js\images\default\layout\expand.gif" />
+    <Content Include="js\images\default\layout\gradient-bg.gif" />
+    <Content Include="js\images\default\layout\mini-bottom.gif" />
+    <Content Include="js\images\default\layout\mini-left.gif" />
+    <Content Include="js\images\default\layout\mini-right.gif" />
+    <Content Include="js\images\default\layout\mini-top.gif" />
+    <Content Include="js\images\default\layout\ns-collapse.gif" />
+    <Content Include="js\images\default\layout\ns-expand.gif" />
+    <Content Include="js\images\default\layout\panel-close.gif" />
+    <Content Include="js\images\default\layout\panel-title-bg.gif" />
+    <Content Include="js\images\default\layout\panel-title-light-bg.gif" />
+    <Content Include="js\images\default\layout\stick.gif" />
+    <Content Include="js\images\default\layout\stuck.gif" />
+    <Content Include="js\images\default\layout\tab-close-on.gif" />
+    <Content Include="js\images\default\layout\tab-close.gif" />
+    <Content Include="js\images\default\menu\checked.gif" />
+    <Content Include="js\images\default\menu\group-checked.gif" />
+    <Content Include="js\images\default\menu\item-over.gif" />
+    <Content Include="js\images\default\menu\menu-parent.gif" />
+    <Content Include="js\images\default\menu\menu.gif" />
+    <Content Include="js\images\default\menu\unchecked.gif" />
+    <Content Include="js\images\default\panel\corners-sprite.gif" />
+    <Content Include="js\images\default\panel\left-right.gif" />
+    <Content Include="js\images\default\panel\light-hd.gif" />
+    <Content Include="js\images\default\panel\tool-sprite-tpl.gif" />
+    <Content Include="js\images\default\panel\tool-sprites.gif" />
+    <Content Include="js\images\default\panel\tools-sprites-trans.gif" />
+    <Content Include="js\images\default\panel\top-bottom.gif" />
+    <Content Include="js\images\default\panel\top-bottom.png" />
+    <Content Include="js\images\default\panel\white-corners-sprite.gif" />
+    <Content Include="js\images\default\panel\white-left-right.gif" />
+    <Content Include="js\images\default\panel\white-top-bottom.gif" />
+    <Content Include="js\images\default\progress\progress-bg.gif" />
+    <Content Include="js\images\default\qtip\bg.gif" />
+    <Content Include="js\images\default\qtip\close.gif" />
+    <Content Include="js\images\default\qtip\tip-sprite.gif" />
+    <Content Include="js\images\default\s.gif" />
+    <Content Include="js\images\default\shadow-c.png" />
+    <Content Include="js\images\default\shadow-lr.png" />
+    <Content Include="js\images\default\shadow.png" />
+    <Content Include="js\images\default\shared\blue-loading.gif" />
+    <Content Include="js\images\default\shared\calendar.gif" />
+    <Content Include="js\images\default\shared\glass-bg.gif" />
+    <Content Include="js\images\default\shared\hd-sprite.gif" />
+    <Content Include="js\images\default\shared\large-loading.gif" />
+    <Content Include="js\images\default\shared\left-btn.gif" />
+    <Content Include="js\images\default\shared\loading-balls.gif" />
+    <Content Include="js\images\default\shared\right-btn.gif" />
+    <Content Include="js\images\default\shared\warning.gif" />
+    <Content Include="js\images\default\sizer\e-handle-dark.gif" />
+    <Content Include="js\images\default\sizer\e-handle.gif" />
+    <Content Include="js\images\default\sizer\ne-handle-dark.gif" />
+    <Content Include="js\images\default\sizer\ne-handle.gif" />
+    <Content Include="js\images\default\sizer\nw-handle-dark.gif" />
+    <Content Include="js\images\default\sizer\nw-handle.gif" />
+    <Content Include="js\images\default\sizer\s-handle-dark.gif" />
+    <Content Include="js\images\default\sizer\s-handle.gif" />
+    <Content Include="js\images\default\sizer\se-handle-dark.gif" />
+    <Content Include="js\images\default\sizer\se-handle.gif" />
+    <Content Include="js\images\default\sizer\square.gif" />
+    <Content Include="js\images\default\sizer\sw-handle-dark.gif" />
+    <Content Include="js\images\default\sizer\sw-handle.gif" />
+    <Content Include="js\images\default\slider\slider-bg.png" />
+    <Content Include="js\images\default\slider\slider-thumb.png" />
+    <Content Include="js\images\default\slider\slider-v-bg.png" />
+    <Content Include="js\images\default\slider\slider-v-thumb.png" />
+    <Content Include="js\images\default\tabs\scroll-left.gif" />
+    <Content Include="js\images\default\tabs\scroll-right.gif" />
+    <Content Include="js\images\default\tabs\scroller-bg.gif" />
+    <Content Include="js\images\default\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="js\images\default\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="js\images\default\tabs\tab-btm-left-bg.gif" />
+    <Content Include="js\images\default\tabs\tab-btm-right-bg.gif" />
+    <Content Include="js\images\default\tabs\tab-close.gif" />
+    <Content Include="js\images\default\tabs\tab-strip-bg.gif" />
+    <Content Include="js\images\default\tabs\tab-strip-bg.png" />
+    <Content Include="js\images\default\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="js\images\default\tabs\tabs-sprite.gif" />
+    <Content Include="js\images\default\toolbar\bg.gif" />
+    <Content Include="js\images\default\toolbar\btn-arrow-light.gif" />
+    <Content Include="js\images\default\toolbar\btn-arrow.gif" />
+    <Content Include="js\images\default\toolbar\btn-over-bg.gif" />
+    <Content Include="js\images\default\toolbar\gray-bg.gif" />
+    <Content Include="js\images\default\toolbar\tb-bg.gif" />
+    <Content Include="js\images\default\toolbar\tb-btn-sprite.gif" />
+    <Content Include="js\images\default\tree\arrows.gif" />
+    <Content Include="js\images\default\tree\drop-add.gif" />
+    <Content Include="js\images\default\tree\drop-between.gif" />
+    <Content Include="js\images\default\tree\drop-no.gif" />
+    <Content Include="js\images\default\tree\drop-over.gif" />
+    <Content Include="js\images\default\tree\drop-under.gif" />
+    <Content Include="js\images\default\tree\drop-yes.gif" />
+    <Content Include="js\images\default\tree\elbow-end-minus-nl.gif" />
+    <Content Include="js\images\default\tree\elbow-end-minus.gif" />
+    <Content Include="js\images\default\tree\elbow-end-plus-nl.gif" />
+    <Content Include="js\images\default\tree\elbow-end-plus.gif" />
+    <Content Include="js\images\default\tree\elbow-end.gif" />
+    <Content Include="js\images\default\tree\elbow-line.gif" />
+    <Content Include="js\images\default\tree\elbow-minus-nl.gif" />
+    <Content Include="js\images\default\tree\elbow-minus.gif" />
+    <Content Include="js\images\default\tree\elbow-plus-nl.gif" />
+    <Content Include="js\images\default\tree\elbow-plus.gif" />
+    <Content Include="js\images\default\tree\elbow.gif" />
+    <Content Include="js\images\default\tree\folder-open.gif" />
+    <Content Include="js\images\default\tree\folder.gif" />
+    <Content Include="js\images\default\tree\leaf.gif" />
+    <Content Include="js\images\default\tree\loading.gif" />
+    <Content Include="js\images\default\tree\s.gif" />
+    <Content Include="js\images\default\window\icon-error.gif" />
+    <Content Include="js\images\default\window\icon-info.gif" />
+    <Content Include="js\images\default\window\icon-question.gif" />
+    <Content Include="js\images\default\window\icon-warning.gif" />
+    <Content Include="js\images\default\window\left-corners.png" />
+    <Content Include="js\images\default\window\left-right.png" />
+    <Content Include="js\images\default\window\right-corners.png" />
+    <Content Include="js\images\default\window\top-bottom.png" />
+    <Content Include="js\jquery-1.9.0.min.js" />
+    <Content Include="js\jquery.ba-resize.min.js" />
+    <Content Include="js\jquery.gvChart-1.0.1.min.js" />
+    <Content Include="js\jquery.idTabs.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.msgbox.js" />
+    <Content Include="js\jsapi.js" />
+    <Content Include="js\JsHelper.js" />
+    <Content Include="js\Main.js" />
+    <Content Include="js\OrderList.js" />
+    <Content Include="js\PIE.htc" />
+    <Content Include="js\register.js" />
+    <Content Include="js\registers.js" />
+    <Content Include="js\select-ui.min.js" />
+    <Content Include="js\ShopingAdd.js" />
+    <Content Include="js\ShopingEdit.js" />
+    <Content Include="js\ShopingList.js" />
+    <Content Include="js\shuxing_click.js" />
+    <Content Include="js\Site.js" />
+    <Content Include="logo\logo.png" />
+    <Content Include="MicroMalls\CommodityImages\shopdefault.jpg" />
+    <Content Include="Scripts\AccountList.js" />
+    <Content Include="Scripts\api.js" />
+    <Content Include="Scripts\authtypes\ikeyandpassword.js" />
+    <Content Include="Scripts\authtypes\password.js" />
+    <Content Include="Scripts\core.css" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery.autocomplete.css" />
+    <Content Include="Scripts\jquery.autocomplete.js" />
+    <Content Include="Scripts\jquery.autocomplete.min.js" />
+    <Content Include="Scripts\jquery.autocomplete.pack.js" />
+    <Content Include="Scripts\jquery.betterTooltip.js" />
+    <Content Include="Scripts\jquery.hotkeys.js" />
+    <Content Include="Scripts\jquery.jqprint-0.3.js" />
+    <Content Include="Scripts\jquery.json.js" />
+    <Content Include="Scripts\jscharts.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp.net\bin\LitJSON.dll" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp.net\demo.aspx" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp.net\README.txt" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp\demo.asp" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp\file_manager_json.asp" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp\JSON_2.0.4.asp" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp\UpLoad_Class.asp" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp\upload_json.asp" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\jquery-ui-1.9.2.custom.css" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\css\smoothness\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\js\jquery-ui-1.9.2.custom.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\examples\jquery-ui\js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\lib\commons-fileupload-1.2.1.jar" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\lib\commons-io-1.4.jar" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\lib\json_simple-1.1.jar" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\README.txt" />
+    <Content Include="Scripts\kindeditor-4.1.10\kindeditor-all-min.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\kindeditor-all.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\kindeditor-min.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\kindeditor.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\lang\ar.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\lang\en.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\lang\ko.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\lang\zh_CN.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\lang\zh_TW.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\license.txt" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\anchor\anchor.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\autoheight\autoheight.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\baidumap\baidumap.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\baidumap\index.html" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\baidumap\map.html" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\clearhtml\clearhtml.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\code\code.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\code\prettify.css" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\code\prettify.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\emoticons.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\0.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\1.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\10.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\100.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\101.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\102.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\103.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\104.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\105.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\106.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\107.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\108.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\109.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\11.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\110.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\111.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\112.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\113.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\114.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\115.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\116.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\117.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\118.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\119.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\12.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\120.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\121.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\122.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\123.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\124.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\125.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\126.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\127.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\128.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\129.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\13.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\130.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\131.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\132.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\133.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\134.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\14.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\15.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\16.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\17.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\18.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\19.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\2.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\20.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\21.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\22.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\23.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\24.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\25.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\26.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\27.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\28.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\29.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\3.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\30.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\31.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\32.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\33.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\34.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\35.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\36.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\37.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\38.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\39.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\4.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\40.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\41.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\42.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\43.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\44.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\45.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\46.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\47.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\48.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\49.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\5.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\50.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\51.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\52.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\53.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\54.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\55.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\56.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\57.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\58.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\59.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\6.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\60.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\61.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\62.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\63.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\64.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\65.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\66.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\67.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\68.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\69.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\7.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\70.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\71.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\72.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\73.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\74.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\75.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\76.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\77.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\78.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\79.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\8.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\80.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\81.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\82.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\83.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\84.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\85.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\86.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\87.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\88.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\89.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\9.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\90.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\91.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\92.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\93.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\94.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\95.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\96.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\97.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\98.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\99.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\emoticons\images\static.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\filemanager\filemanager.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\filemanager\images\file-16.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\filemanager\images\file-64.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\filemanager\images\go-up.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\flash\flash.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\image\image.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\image\images\align_left.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\image\images\align_right.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\image\images\align_top.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\image\images\refresh.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\insertfile\insertfile.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\lineheight\lineheight.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\link\link.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\map\map.html" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\map\map.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\media\media.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\multiimage\images\image.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\multiimage\multiimage.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\pagebreak\pagebreak.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\plainpaste\plainpaste.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\preview\preview.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\quickformat\quickformat.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\table\table.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\template\html\1.html" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\template\html\2.html" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\template\html\3.html" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\template\template.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\plugins\wordpaste\wordpaste.js" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\common\anchor.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\common\blank.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\common\flash.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\common\loading.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\common\media.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\common\rm.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\default\background.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\default\default.css" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\default\default.png" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\qq\editor.gif" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\qq\qq.css" />
+    <Content Include="Scripts\kindeditor-4.1.10\themes\simple\simple.css" />
+    <Content Include="Scripts\LodopFuncs.js" />
+    <Content Include="Scripts\moonlit.js" />
+    <Content Include="Scripts\myvalidate.js" />
+    <Content Include="Scripts\passtypes\SLE902R.js" />
+    <Content Include="Scripts\passtypes\none.js" />
+    <Content Include="Scripts\postypes\ISO14443A.js" />
+    <Content Include="Scripts\postypes\W-I.js" />
+    <Content Include="Scripts\postypes\YLE300.js" />
+    <Content Include="Scripts\postypes\none.js" />
+    <Content Include="Scripts\printers\alert.js" />
+    <Content Include="Scripts\printers\nav.js" />
+    <Content Include="Scripts\printers\navandprint.js" />
+    <Content Include="Scripts\printers\default.js" />
+    <Content Include="Scripts\spin.js" />
+    <Content Include="Scripts\swf.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify-3.1.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify-3.1.min.js" />
+    <Content Include="Scripts\uploadify\uploadify-cancel.png" />
+    <Content Include="Scripts\uploadify\uploadify.css" />
+    <Content Include="Scripts\uploadify\uploadify.swf" />
+    <Content Include="Scripts\XYTipsWindow-3.0-dev.js" />
+    <Content Include="sql\account.DisableMessageOfDeal.sql" />
+    <Content Include="sql\accountType.Query.sql" />
+    <Content Include="sql\AmountRate.Query.sql" />
+    <Content Include="sql\Commodity.Query.sql" />
+    <Content Include="sql\account.query.sql" />
+    <Content Include="sql\account.QueryForName.sql" />
+    <Content Include="sql\account.queryAccountWithOwner.sql" />
+    <Content Include="sql\account.queryByNames.sql" />
+    <Content Include="sql\account.QueryAccount.sql" />
+    <Content Include="sql\account.QueryByOwnerId.sql" />
+    <Content Include="sql\CashDealLogSummary.query.sql" />
+    <Content Include="sql\report.accounts2.summary1.sql" />
+    <Content Include="sql\report.AllSystemSummary.sql" />
+    <Content Include="sql\report.accountmonth.sql" />
+    <Content Include="sql\report.systemdeallogbyday.sql" />
+    <Content Include="sql\shop.GetShopByMobileNumber.sql" />
+    <Content Include="sql\user.GetUserByPhoneNumber.sql" />
+    <Content Include="sql\user.GetUserByMobile.sql" />
+    <Content Include="sql\deallog.getbyaddin.sql" />
+    <Content Include="sql\PointRebate.DeleteAccountLevelsForRebate.sql" />
+    <Content Include="sql\report.createaccount.sql" />
+    <Content Include="sql\report.createaccount.summary1.sql" />
+    <Content Include="sql\report.createaccountlist.sql" />
+    <Content Include="sql\printticket.Query.sql" />
+    <Content Include="sql\TemporaryTokenkey.GetToken.sql" />
+    <Content Include="sql\TemporaryTokenkey.queryByUser.sql" />
+    <Content Include="sql\report.PrepayList.summary1.sql" />
+    <Content Include="sql\report.PrepayList.sql" />
+    <Content Include="sql\report.ExpiredAccounts.sql" />
+    <Content Include="sql\report.AccountDealsForAccount.sql" />
+    <Content Include="sql\report.accounts2.sql" />
+    <Content Include="sql\report.saleaccount.summary1.sql" />
+    <Content Include="sql\report.saleaccountlist.sql" />
+    <Content Include="sql\report.saleaccount.sql" />
+    <Content Include="sql\report.AccountDealsList.sql" />
+    <Content Include="sql\report.AccountDealsList.summary1.sql" />
+    <Content Include="sql\report.RechargingList.summary1.sql" />
+    <Content Include="sql\report.RechargingList.sql" />
+    <Content Include="sql\report.Recharging.sql" />
+    <Content Include="sql\report.systemdeallogbyuser.summary1.sql" />
+    <Content Include="sql\report.systemdeallogbyuser.sql" />
+    <Content Include="sql\report.accountdeals.sql" />
+    <Content Include="sql\report.accountdeals.summary1.sql" />
+    <Content Include="sql\report.accounts.sql" />
+    <Content Include="sql\report.shopdeals.summary1.sql" />
+    <Content Include="sql\PointRebate.QueryForUser.sql" />
+    <Content Include="sql\report.shopdeals.sql" />
+    <Content Include="sql\prepay.query.sql" />
+    <Content Include="sql\user.sales.sql" />
+    <Content Include="sql\systemdeallog.query.sql" />
+    <Content Include="sql\ShopDealLog.query.sql" />
+    <Content Include="sql\deallog.query.sql" />
+    <Content Include="sql\log.Query.sql" />
+    <Content Include="sql\PointRebate.Query.sql" />
+    <Content Include="sql\PosEndPoint.query.sql" />
+    <Content Include="sql\userofShop.query.sql" />
+    <Content Include="sql\site.query.sql" />
+    <Content Include="template\mails\recoveryPassword" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\signin-style.css" />
+    <Content Include="Content\themes\base\signin.css" />
+    <Content Include="Content\themes\base\images\header-bg.png" />
+    <Content Include="Content\themes\base\images\icons-blue.png" />
+    <Content Include="Content\themes\base\images\icons-gray.png" />
+    <Content Include="Content\themes\base\images\icons-lgray.png" />
+    <Content Include="Content\themes\base\images\logo.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="Content\themes\base\messages.css" />
+    <Content Include="Content\themes\base\tables.css" />
+    <Content Include="Content\themes\base\forms.css" />
+    <Content Include="Content\themes\base\reset.css" />
+    <Content Include="Content\themes\base\ui.css" />
+    <Content Include="Content\themes\base\general.css" />
+    <Content Include="Content\themes\base\style.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\MicroMall\Views\Web.config" />
+    <Content Include="cert\apiclient_cert.p12" />
+    <Content Include="cert\apiclient_cert.pem" />
+    <Content Include="cert\apiclient_key.pem" />
+    <Content Include="cert\rootca.pem" />
+    <None Include="Content\jquery.ui\ui-lightness\images\ui-icons_ef8c08_256x240.png--" />
+    <None Include="js\images\default\form\clear-trigger.psd" />
+    <None Include="js\images\default\form\date-trigger.psd" />
+    <None Include="js\images\default\form\search-trigger.psd" />
+    <None Include="js\images\default\form\trigger.psd" />
+    <None Include="js\images\default\shadow-c.psd" />
+    <None Include="js\images\default\window\left-corners.psd" />
+    <None Include="js\images\default\window\left-right.psd" />
+    <None Include="js\images\default\window\right-corners.psd" />
+    <None Include="js\images\default\window\top-bottom.psd" />
+    <None Include="log4net.config.template" />
+    <None Include="menu.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\jquery.urlParser.js" />
+    <Content Include="Scripts\signin_loader.js" />
+    <Content Include="Scripts\visualize.jquery.js" />
+    <Content Include="Scripts\facebox.js" />
+    <Content Include="Scripts\webtrends.js" />
+    <Content Include="Scripts\superfish.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\tablesorter.js" />
+    <Content Include="Scripts\tooltip.js" />
+    <Content Include="Views\AdminUser\Create.cshtml" />
+    <Content Include="Views\AdminUser\Edit.cshtml" />
+    <Content Include="Views\AdminUser\List.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Log\List.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\List.cshtml" />
+    <Content Include="Views\Shared\AccountInfoPub.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AccountName.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AccountUserModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AdminUserModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ApplyToModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ClickAlert.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\LinkObject.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ShopUserModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SubTitle.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AccountCharge.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AccountDependency.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AccountName.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ApplyToModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Bounded.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CheckedItem`1.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ClearRolesCommandCreateModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ClearRolesCommandEditModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Condition2.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\hiddenme.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Mobiles.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiCheckList`11.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Object2.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PhoneNumbers.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Picture.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PosName.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RadioItem`1.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RichText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ShopName.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Small.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\StringLarge.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\StringShort.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Tiny.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\giftlist.cshtml" />
+    <Content Include="Views\Shared\MultiCheckList.cshtml" />
+    <Content Include="Views\Shared\PasswordInput.cshtml" />
+    <Content Include="Views\Shared\SmsDialog.cshtml" />
+    <Content Include="Views\Shared\Templates\actionlink.cshtml" />
+    <Content Include="Views\Shared\Templates\datatable.cshtml" />
+    <Content Include="Views\Shared\Templates\Label.cshtml" />
+    <Content Include="Views\Shared\Templates\Pager.cshtml" />
+    <Content Include="Views\Shared\Templates\sorterSelect.cshtml" />
+    <Content Include="Views\Shared\Templates\Td.cshtml" />
+    <Content Include="Views\Shared\Templates\Td_select.cshtml" />
+    <Content Include="Views\Shared\Templates\Th.cshtml" />
+    <Content Include="Views\Shared\Templates\Th_select.cshtml" />
+    <Content Include="Views\Shared\Templates\toolbarbutton.cshtml" />
+    <Content Include="Views\Shared\Templates\ToolbarOfItem.cshtml" />
+    <Content Include="Views\Shared\Templates\ToolbarOfList.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Shared\_layout.cshtml" />
+    <Content Include="Views\Shared\_layout_mgr.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shop\Create.cshtml" />
+    <Content Include="Views\Shop\Edit.cshtml" />
+    <Content Include="Views\Shop\List.cshtml" />
+    <Content Include="Views\Site\AccountMessagePanel.cshtml" />
+    <Content Include="Views\Site\EditMessageTemplate.cshtml" />
+    <Content Include="Views\Site\EditSite.cshtml" />
+    <Content Include="Views\Site\EditTicketTemplate.cshtml" />
+    <Content Include="Views\Site\ShopMessagePanel.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\User\CreateDog.cshtml" />
+    <Content Include="Views\User\EditProfile.cshtml" />
+    <Content Include="Views\User\LogOn.cshtml" />
+    <Content Include="Views\User\Recovery.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Utility\navPrinter.cshtml" />
+    <Content Include="Views\Utility\Printer.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\cookie.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\tablesorter-pager.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Views\Shared\EditorTemplates\TriBounded.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Triple.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\serialServerNo_query.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\AdminUserWithCash.cshtml" />
+    <Content Include="Views\Shared\_AccountLayout.cshtml" />
+    <Content Include="Views\Shared\Account.cshtml" />
+    <Content Include="Views\User\UserInfo.cshtml" />
+    <Content Include="Views\Shared\_fullWidth.cshtml" />
+    <Content Include="Views\Shared\ItemList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Bounded.cshtml" />
+    <Content Include="Views\Shared\Menu1.cshtml" />
+    <Content Include="Views\Shared\Menu2.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataRange.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DistributorAccountLevelRate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DistributorUserModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\OrderDetialAdd.cshtml" />
+    <Content Include="Views\Shared\ListCommodity.cshtml" />
+    <Content Include="Views\Shared\ListOrderDetial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SearchAccount.cshtml" />
+    <Content Include="Views\Shared\Templates\OrderDetialView.cshtml" />
+    <Content Include="Views\Shared\_layout_new.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AccountToken.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DataKey.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Explain.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Mobile.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PosEndName.cshtml" />
+    <Content Include="Views\Shared\NeedReg.cshtml" />
+    <Content Include="Views\Site\CustomizationSite.cshtml" />
+    <Content Include="Views\Site\GroupSmsSend.cshtml" />
+    <Content Include="Views\Site\MessagePanel.cshtml" />
+    <Content Include="Views\Site\SmsChangePwd.cshtml" />
+    <Content Include="Views\Site\SmsList.cshtml" />
+    <Content Include="Views\Site\SmsParam.cshtml" />
+    <Content Include="Views\Shared\_layoutIndex.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Object.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Condition.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Text.cshtml" />
+    <Content Include="Views\Shared\Templates\toolbarButton2.cshtml" />
+    <Content Include="Views\Home\UserError.cshtml" />
+    <Content Include="Views\Shoping\ShopingManager.cshtml" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp.net\file_manager_json.ashx" />
+    <Content Include="Scripts\kindeditor-4.1.10\asp.net\upload_json.ashx" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\demo.jsp" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\file_manager_json.jsp" />
+    <Content Include="Scripts\kindeditor-4.1.10\jsp\upload_json.jsp" />
+    <Content Include="Scripts\kindeditor-4.1.10\php\demo.php" />
+    <Content Include="Scripts\kindeditor-4.1.10\php\file_manager_json.php" />
+    <Content Include="Scripts\kindeditor-4.1.10\php\JSON.php" />
+    <Content Include="Scripts\kindeditor-4.1.10\php\upload_json.php" />
+    <Content Include="Views\Shoping\ShopingList.cshtml" />
+    <Content Include="Views\Shoping\Edit.cshtml" />
+    <Content Include="Views\Order\OrderList.cshtml" />
+    <Content Include="Views\Order\OrderDetail.cshtml" />
+    <Content Include="Views\Order\PointList.cshtml" />
+    <Content Include="Views\Account\AccountList.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Ads\AdsList.cshtml" />
+    <Content Include="Views\Ads\Create.cshtml" />
+    <Content Include="Views\Ads\Edit.cshtml" />
+    <Content Include="Views\RecommendLog\RecommendLogList.cshtml" />
+    <Content Include="Views\OperationPointLog\OperationPointLogList.cshtml" />
+    <Content Include="Views\WeChat\Edit.cshtml" />
+    <Content Include="Views\Withdraw\List.cshtml" />
+    <Content Include="Views\Withdraw\Audit.cshtml" />
+    <Content Include="Views\Review\List.cshtml" />
+    <Content Include="Views\User\LogOn1.cshtml" />
+    <Content Include="Views\Order\ApplyRefundList.cshtml" />
+    <Content Include="Views\Articles\Create.cshtml" />
+    <Content Include="Views\Articles\List.cshtml" />
+    <Content Include="Views\Articles\Edit.cshtml" />
+    <Content Include="Views\Grades\List.cshtml" />
+    <Content Include="Views\Grades\Create.cshtml" />
+    <Content Include="Views\Grades\Edit.cshtml" />
+    <Content Include="Views\Report\ListCommoditySales.cshtml" />
+    <Content Include="Views\CommodityCategory\List.cshtml" />
+    <Content Include="Views\CommodityCategory\Create.cshtml" />
+    <Content Include="Views\CommodityCategory\Edit.cshtml" />
+    <Content Include="Views\SecondKillSet\Edit.cshtml" />
+    <Content Include="Views\SecondKillCommoditys\List.cshtml" />
+    <Content Include="Views\SecondKillCommoditys\Create.cshtml" />
+    <Content Include="Views\SecondKillCommoditys\Edit.cshtml" />
+    <None Include="web.config.deploytemplate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Controllers\" />
+    <Folder Include="Areas\MicroMall\Models\" />
+    <Folder Include="Areas\MicroMall\Views\Shared\" />
+    <Folder Include="drivers\" />
+    <Folder Include="MicroMalls\AdImages\" />
+    <Folder Include="MicroMalls\AttributeImages\" />
+    <Folder Include="Scripts\kindeditor-4.1.10\attached\" />
+    <Folder Include="UploadFile\" />
+    <Folder Include="Views\Shared\ItemTemplates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ecard.infrastructure\Ecard.Infrastructure.csproj">
+      <Project>{DE740218-C859-4F0D-9E83-19DF8A9861B6}</Project>
+      <Name>Ecard.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ecard.mvc\Ecard.Mvc.csproj">
+      <Project>{FA829C5E-E6EF-4029-891D-32D3F72693D0}</Project>
+      <Name>Ecard.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ecard\Ecard.csproj">
+      <Project>{D54AF39D-CB43-4D32-A89D-D55EE924AB57}</Project>
+      <Name>Ecard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>33457</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3350/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

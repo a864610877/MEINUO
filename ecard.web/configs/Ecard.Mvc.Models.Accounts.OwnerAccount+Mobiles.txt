@@ -1,0 +1,4 @@
+﻿Value1.name=Value1
+Value1.order=1
+Value2.name=Value2
+Value2.order=1

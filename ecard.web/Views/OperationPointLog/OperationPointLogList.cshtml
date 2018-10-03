@@ -1,0 +1,92 @@
+﻿<!--------中间更换内容------->
+@using Moonlit
+@model  Ecard.Mvc.Models.OperationPointLogs.OperationPointLogLists
+<link href="/css/shop_style.css" rel="stylesheet" />
+<script src="/js/OperationPointLogList.js"></script>
+<style>
+    .nap {
+        width: 230px;
+        height: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 3px;
+    }
+</style>
+
+<div class="mainbar_wrapper">
+
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">>&nbsp;会员列表</a></li>
+
+        </ul>
+    </div>
+
+    <div class="tool_view" style=" height:auto;">
+        <table id="selectTd">
+            <tr>
+                @Html.EditorForModel("condition")
+                <td>
+                    <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+                </td>
+            </tr>
+        </table>
+
+        <div class="clear"></div>
+
+
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="gost_list">
+    <div class="gosttitle1">
+        <h2>会员信息</h2>
+
+    </div>
+
+    <div class="gostxinxi">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" onclick="bigChange(this)" name=" goodslist_checkbox_all" id="goodslist_checkbox_all"></th>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+
+                        <tr>
+                            <td><input type="checkbox" onclick="smallChange(this)" name="operationPointLogId" value="@item.operationPointLogId"></td>
+                            @Html.Tds(item, Model.GetItemType())
+                            @Html.ToolbarOfItem(Model.GetItemToobalActions(item))
+
+                        </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="list_bottom">
+            <div id="pagehtml">
+                @Html.Raw(Model.pageHtml)
+            </div>
+            <div class="piliang">
+                <p><a href="javascript:void(0)" onclick="OperatorThis('Deletes', '/OperationPointLog/Deletes')">[批量删除]</a>提示：勾选可以进行批量删除。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------中间更换内容------->

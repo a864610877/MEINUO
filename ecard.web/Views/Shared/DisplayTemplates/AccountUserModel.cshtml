@@ -1,0 +1,25 @@
+﻿@using Ecard.Mvc.ActionFilters
+@model AccountUserModel
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    <div class="portlet-header ui-widget-header"> 用户信息</div>
+    <div class="portlet-content">
+        <ul class="side-menu">
+            <li>用户姓名: @Model.UserName <br/> <br/></li> 
+            <li>本次登录: @(Model.LastSignInTime.HasValue ? Model.LastSignInTime.Value.ToString("yyyy-MM-dd HH:mm") : "")<br/> <br/></li> 
+        </ul>
+    </div>
+</div>
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    <div class="portlet-header ui-widget-header"> 帐名称</div>
+    <div class="portlet-content">
+        <ul class="side-menu">
+            @foreach (  var account in Model.Accounts)
+            {
+                <li>卡号:  @account.Name<br/> <br/></li> 
+                <li>余额:  @account.Amount<br/> <br/></li> 
+                <li>积分:  @account.Point<br/> <br/></li> 
+                <li>帐户级别:  @account.AccountLevelName<br/> <br/></li> 
+            }
+        </ul>
+    </div>
+</div>

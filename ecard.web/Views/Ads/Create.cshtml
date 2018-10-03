@@ -1,0 +1,93 @@
+﻿
+<link href="/Scripts/uploadify/uploadify.css" rel="stylesheet" />
+<script src="~/js/jquery-1.9.0.min.js"></script>
+<script src="/Scripts/uploadify/jquery.uploadify-3.1.js"></script>
+
+
+
+
+    <!--------中间更换内容------->
+
+    <link href="/css/shop_style.css" rel="stylesheet" />
+    <div class="mainbar_wrapper">
+
+
+        <div class="place">
+            <span>位置：</span>
+            <ul class="placeul">
+                <li><span></span><a href="#">网站管理</a></li>
+                <li><span></span><a href="#">发布广告</a></li>
+            </ul>
+        </div>
+
+
+        <div class="container-fluid">
+            <h2 class="add_tittle">广告信息</h2>
+
+            <div class="addgoods_name">
+
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top"><span class="goods_icon">*</span>广告标题：</em>
+                    <textarea class="addgoods_name_width" rows="2" id="title" name="title"></textarea>
+                </div>
+
+                <div class="addgoods_name_a">
+                    <em class="addgoods_name_top"><span class="goods_icon">*</span>链接地址：</em>
+                    <textarea class="addgoods_name_width" rows="2" id="link" name="link"></textarea>
+                </div>
+            </div>
+
+            <div class="addgoods_name" style="margin-top:0;">
+                <div class="clear">
+                    <div class="addgoods_name_a addgoods_fl goods_icon_shangjiala">
+                        <em class="addgoods_name_top addgoods_price goods_icon_f"><span class="goods_icon ">*</span>广告状态：</em>
+                        <input type="radio" name="state" value="1"><span class="addgoods_shangjia">上架</span>
+                        <input type="radio" name="state" value="2"><span class="addgoods_shangjia">下架</span>
+
+                    </div>
+                </div>
+                <div class="clear">
+                    <div class="addgoods_name_a addgoods_fl goods_icon_shangjiala">
+                        <em class="addgoods_name_top addgoods_price goods_icon_f"><span class="goods_icon">*</span>广告排序：</em>
+                        <input id="rank" name="rank" style="width:40px;" value="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+
+
+
+            <div class="addgoods_name" style="margin-top:0;">
+                <h2 class="add_tittle add_img">广告图片</h2>
+
+                <ul class="addgoods_photo">
+                    <li class="addgoods_photo_a">
+                        <div class="addgoods_photo_img">
+                            <img id="shopingImg1" src="/MicroMalls/CommodityImages/shopdefault.jpg" />
+                        </div>
+                        <p style="width:50px;float:left"><input type="file" id="file_upload" name="file_upload" /></p>
+                        <p style="position:relative;" class="shanchu">删除</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="baoxun">
+                <button class="baoxunxiugai tianjiafabu" id="AddAds">发布</button>
+                <button class="baoxunxiugai tianjiaquxiao" id="adsReturn">返回</button>
+            </div>
+
+
+
+        </div>
+
+        <!--------中间更换内容------->
+    </div>
+
+
+    <div id="TopMessageDiv">
+        <script src="/js/shuxing_click.js"></script>
+        <script src="/js/AdsCreate.js"></script>
+
+    </div>

@@ -1,0 +1,173 @@
+html {
+        background: #F5F5F5;
+    }
+    body {
+        margin:0;
+    }
+    .haeder ul {
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+        overflow: hidden;
+        height: 14.489375rem;
+    }
+    .haeder li {
+        float:left;
+        list-style: none;
+    }
+    .haeder img {
+        width: 25.875rem;
+        height: 14.489375rem;
+    }
+    .banner .dots li {
+        display: inline-block;
+        width: 0.3125rem;
+        height: 0.3125rem;
+        margin: 0 0.25rem;
+        text-indent: -999em;
+        border: 2px solid #fff;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        opacity: .4;
+        -webkit-transition: background .5s, opacity .5s;
+        -moz-transition: background .5s, opacity .5s;
+        transition: background .5s, opacity .5s;
+    }
+    .banner .dots li.active {
+        background: #fff;
+        opacity: 1;
+    }
+    .banner .dots {
+            position: absolute;
+            top: 13.5rem;
+            left: 50%;
+            width: 5rem;
+            margin-left: -1.3rem;
+    }
+   .banner ol {
+        display: block;
+        list-style-type: decimal;
+        -webkit-margin-before: 0px;
+        -webkit-margin-after: 0px;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 0px;
+    }
+    .Classification {
+        width: 100%;
+        height: 10.5rem;
+        background: #FFF;
+        margin-top: 0.0632rem;
+    }
+    .Classification ul {
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+    }
+    .Classification ul li {
+        float: left;
+        list-style: none;
+        width: 6.46875rem;
+        height: 5.25rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #b59f76;
+    }
+    .Classification ul li img{
+        width:3.3rem;
+        margin:0.5rem;
+    }
+    .list_type {
+        width: 100%;
+        height: 2.5rem;
+        background: #FFF;
+        margin-top: 0.25rem;
+        margin-bottom: 0.1rem;
+    }
+    .list_type .selected {
+        color: #B59F76;
+        font-weight:bold;
+    } 
+    .list_type ul {
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+    }
+    .list_type ul li {
+        float: left;
+        list-style: none;
+        width: 5.53125rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+        color: #888;
+    }
+    .product_list {
+        margin: 0 auto;
+        overflow: auto;
+        padding-bottom: 5rem;
+    }
+     .product_list ul {
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+    }
+    .product_list ul li {
+        float: left;
+        list-style: none;
+        width: 12.85rem;
+        height: 16.9rem;
+        background-color: #FFF;
+        margin-bottom: 0.16rem;
+    }
+    .product_list .img_div {
+        width: 11rem;
+        margin: 0 auto;
+        margin-top: 1.2rem;
+    }
+    .product_list .img_div img{
+        width: 100%;
+    }
+    .product_list .title_div {
+        font-size: 0.9rem;
+        margin-top: 0.8rem;
+        color: #4b566a;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        line-height: 0.8rem;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+        height: 1rem;
+        line-height:1rem;
+    }
+    .product_list .price_div {
+        font-size: 1.1rem;
+        padding-left: 0.8rem;
+        padding-right: 1rem;
+        margin-top: 1.2rem;
+        color:#c29a4f;
+    }
+    .product_list .vip_price {
+        font-size: 0.7rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        color: #FFF;
+        background-color: #c29a4f;
+        border-radius: 1rem;
+        float: right;
+        height: 1.2rem;
+        margin-top: -0.7rem;
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: Center;
+    }    
+    .product_list .price_div .price_span {
+        float:left;
+        margin-right: 0.2rem;
+    }

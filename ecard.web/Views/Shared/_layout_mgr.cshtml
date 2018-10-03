@@ -1,0 +1,56 @@
+﻿@model EcardModel
+@{
+    Layout = "~/Views/Shared/_layout_new.cshtml";
+
+    ViewBag.Title = @Model.Localize("title");
+}
+<div class="title title-spacing" id="mainPanel">
+    <h3>@Model.Localize("title")</h3>
+    @Model.Localize("description")
+    @if (!(Model.User is AccountUser))
+    {
+        <div class="device-selector">
+            <label>
+                打印机</label>
+            <select class="script-selector">
+                @foreach (var printerType in Model.Site.GetPrinters())
+                {
+                    <option value='@Url.Content("~/scripts/printers/" + printerType.Id + ".js")'   @(Html.Raw(string.Equals(Model.Site.PrinterType, printerType.Id, StringComparison.OrdinalIgnoreCase) ? "selected='selected'" : ""))>@printerType.Name</option>
+                }
+            </select>
+        </div>
+        
+        <div class="device-selector">
+            <a href="#" id="btnDisplayAll">全屏显示</a>
+            <label>
+                读卡器</label>
+            <select class="script-selector">
+                @foreach (var posType in SiteViewModel.GetPosTypes())
+                {
+                    <option value='@Url.Content("~/scripts/postypes/" + posType + ".js")' @(Html.Raw(string.Equals(Model.Site.PosType, posType, StringComparison.OrdinalIgnoreCase) ? "selected='selected'" : ""))>@posType</option>
+                }
+            </select>
+        </div>
+    }
+</div>
+@foreach (var msg in Model.GetMessages(MessageType.Error))
+{
+    foreach (var line in msg.Messages)
+    {
+    <div class="response-msg error ui-corner-all  ui-click-hidden">
+        <span>错误消息</span>
+        @line
+    </div>
+    }
+}
+@foreach (var msg in Model.GetMessages(MessageType.Message))
+{
+    foreach (var line in msg.Messages)
+    {
+    <div class="response-msg success ui-corner-all  ui-click-hidden">
+        <span>消息</span>
+        @line
+    </div>
+    }
+}
+@RenderBody()

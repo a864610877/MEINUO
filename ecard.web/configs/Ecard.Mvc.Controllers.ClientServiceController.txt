@@ -1,0 +1,2 @@
+﻿description=Ecard.Mvc.Controllers.ClientServiceController
+name=Ecard.Mvc.Controllers.ClientServiceController

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="27.777" height="29.629" viewBox="0 0 30 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #7d7d7d;
+        stroke: #7d7d7d;
+        stroke-linejoin: round;
+        stroke-width: 1px;
+        filter: url(#color-overlay-1);
+        fill-rule: evenodd;
+      }
+    </style>
+
+    <filter id="color-overlay-1" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#7d7d7d"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+      <feBlend in2="SourceGraphic" result="solidFill"/>
+    </filter>
+  </defs>
+  <g style="fill: #7d7d7d; filter: url(#color-overlay-1)">
+    <path d="M24.966,28.497 L22.928,28.497 L5.071,28.497 L5.033,28.497 C4.491,28.497 4.038,28.190 3.765,27.753 C3.718,27.677 3.655,27.614 3.621,27.532 C3.613,27.513 3.616,27.492 3.609,27.474 C3.546,27.305 3.500,27.126 3.500,26.935 L3.500,26.914 L3.500,11.310 L3.500,11.081 C3.500,10.425 3.887,9.862 4.438,9.622 C4.474,9.550 4.500,9.499 4.500,9.499 L22.928,3.498 C23.796,3.498 24.500,4.197 24.500,5.060 L24.500,9.497 L24.966,9.497 C25.813,9.497 26.500,10.206 26.500,11.081 L26.500,17.498 L26.500,22.498 L26.500,26.914 C26.500,27.788 25.813,28.497 24.966,28.497 ZM23.500,5.283 C23.500,4.849 23.145,4.498 22.708,4.498 L8.371,9.497 L23.500,9.497 L23.500,5.283 ZM25.500,22.498 L19.500,22.498 L19.500,17.498 L25.500,17.498 L25.500,11.297 C25.500,10.856 25.155,10.497 24.730,10.497 L5.269,10.497 C4.844,10.497 4.500,10.856 4.500,11.297 L4.500,26.698 C4.500,27.140 4.844,27.498 5.269,27.498 L24.730,27.498 C25.155,27.498 25.500,27.140 25.500,26.698 L25.500,22.498 ZM25.500,21.496 L25.500,18.495 L20.500,18.495 L20.500,21.496 L25.500,21.496 Z" id="path-1" style="stroke: inherit; filter: none; fill: inherit" class="cls-1"/>
+  </g>
+  <use xlink:href="#path-1" style="stroke: #7d7d7d; filter: none; fill: none"/>
+</svg>

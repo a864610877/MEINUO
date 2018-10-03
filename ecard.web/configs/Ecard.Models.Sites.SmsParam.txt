@@ -1,0 +1,14 @@
+﻿RetryCount.explain=发送失败后，重发次数
+RetryCount.name=重发次数
+RetryCount.order=1
+SmsAccount.explain=短信帐号
+SmsAccount.name=短信帐号
+SmsAccount.order=1
+SmsPwd.explain=短信密码
+SmsPwd.name=短信密码
+SmsPwd.order=1
+title=短信参数
+titleA=短信参数
+Unuse.explain=可用数量
+Unuse.name=可用数量
+Unuse.order=1

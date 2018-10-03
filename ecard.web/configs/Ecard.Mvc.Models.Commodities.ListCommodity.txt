@@ -1,0 +1,15 @@
+﻿DisplayName.order=1
+DisplayName.shortName=商品名称
+DisplayName.shortNameFormat={0}
+Id.order=1
+Id.shortName=Id
+Id.shortNameFormat={0}
+Name.order=1
+Name.shortName=商品编码
+Name.shortNameFormat={0}
+Price.order=1
+Price.shortName=价格
+Price.shortNameFormat={0}
+State.order=1
+State.shortName=状态
+State.shortNameFormat={0}

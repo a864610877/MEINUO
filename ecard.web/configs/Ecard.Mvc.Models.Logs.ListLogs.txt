@@ -1,0 +1,13 @@
+﻿Content.name=查询内容
+Content.order=3
+description=查看系统日志
+LogType.name=日志类别
+LogType.order=2
+OrderBy.order=1
+PageIndex.order=1
+PageSize.order=1
+query=查询
+title=系统日志
+titleA=titleA
+UserName.name=操作员
+UserName.order=1

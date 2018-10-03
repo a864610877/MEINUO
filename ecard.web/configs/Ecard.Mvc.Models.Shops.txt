@@ -1,0 +1,10 @@
+﻿DisplayName.order=1
+DisplayName.shortName=DisplayName
+Email.order=1
+Email.shortName=Email
+Name.order=1
+Name.shortName=Name
+OwnerName.order=1
+OwnerName.shortName=OwnerName
+State.order=1
+State.shortName=State

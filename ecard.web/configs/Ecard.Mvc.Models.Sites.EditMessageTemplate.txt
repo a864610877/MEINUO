@@ -1,0 +1,52 @@
+﻿description=设置系统参数
+Description.name=系统描述
+Description.order=3
+MessageTemplateOfAccountChangeName.explain=
+MessageTemplateOfAccountChangeName.name=换卡短信模板
+MessageTemplateOfAccountChangeName.order=29
+MessageTemplateOfAccountRenew.explain=
+MessageTemplateOfAccountRenew.name=延期短信模板
+MessageTemplateOfAccountRenew.order=28
+MessageTemplateOfAccountResume.explain=
+MessageTemplateOfAccountResume.name=启用卡号短信模板
+MessageTemplateOfAccountResume.order=27
+MessageTemplateOfAccountSuspend.explain=
+MessageTemplateOfAccountSuspend.name=停用卡号短信模板
+MessageTemplateOfAccountSuspend.order=26
+MessageTemplateOfAccountTransfer.explain=
+MessageTemplateOfAccountTransfer.name=转帐短信模板
+MessageTemplateOfAccountTransfer.order=25
+MessageTemplateOfBirthDate.explain=
+MessageTemplateOfBirthDate.name=会员生日短信模板 (#username# = 用户姓名)
+MessageTemplateOfBirthDate.order=12
+MessageTemplateOfDeal.explain=
+MessageTemplateOfDeal.name=交易短信模板
+MessageTemplateOfDeal.order=1
+MessageTemplateOfDealCode.explain=
+MessageTemplateOfDealCode.name=交易随机码消息模板（#code# = 验证码)
+MessageTemplateOfDealCode.order=40
+MessageTemplateOfDonePrePay.explain=
+MessageTemplateOfDonePrePay.name=完成预授权短信消息模板
+MessageTemplateOfDonePrePay.order=4
+MessageTemplateOfIdentity.explain=
+MessageTemplateOfIdentity.name=手机绑定短信消息模板 （#code# = 验证码)
+MessageTemplateOfIdentity.order=31
+MessageTemplateOfOpenReceipt.explain=
+MessageTemplateOfOpenReceipt.name=开发票消息模板
+MessageTemplateOfOpenReceipt.order=14
+MessageTemplateOfPrePay.explain=
+MessageTemplateOfPrePay.name=预授权消息模板
+MessageTemplateOfPrePay.order=3
+MessageTemplateOfRecharge.explain=
+MessageTemplateOfRecharge.name=充值短信
+MessageTemplateOfRecharge.order=13
+MessageTemplateOfShopDeal.explain=
+MessageTemplateOfShopDeal.name=清算短信模板
+MessageTemplateOfShopDeal.order=1
+MessageTemplateOfUnIdentity.explain=
+MessageTemplateOfUnIdentity.name=取消手机绑定短信消息模板 （#code# = 验证码)
+MessageTemplateOfUnIdentity.order=32
+Name.name=系统名称
+Name.order=1
+title=短信模版
+titleA=短信模版

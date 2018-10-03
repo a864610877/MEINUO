@@ -1,0 +1,12 @@
+﻿Amount.name=Amount
+Amount.order=1
+DisplayName.name=DisplayName
+DisplayName.order=1
+GoodBounded.name=GoodBounded
+GoodBounded.order=1
+GoodName.name=GoodName
+GoodName.order=1
+Price.name=Price
+Price.order=1
+Total.name=Total
+Total.order=1

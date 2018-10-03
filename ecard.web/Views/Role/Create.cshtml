@@ -1,0 +1,42 @@
+﻿@model EcardModelItem<CreateRole>
+@{ 
+   ViewDataDictionary views =  new ViewDataDictionary(ViewData);
+   views["propertyName"]="Item.Permissions";
+}
+@using (Html.BeginForm())
+{  <div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>
+    
+    <div class="create_div">
+      <ul class="forminfo" style="padding-top:10px;">
+        @Html.EditorFor(x => x.Item)
+    </ul>
+    <div style=" clear:both" />
+        @Html.Partial("MultiCheckList", Model.Item.Permissions, views)
+        <div class="submitDiv">
+            <input type="submit" class="scbtn" value="提交" />
+            @Html.ActionLink("List")</div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $(".create_field input").focus(function () {
+                $("[forprop='" + $(this).attr("id") + "']").show("1500");
+            });
+            $(".create_field select").click(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").show("1500");
+            });
+            $(".create_field input").blur(function () {
+                $("[forprop='" + $(this).attr("id") + "']").hide("1500");
+            });
+            $(".create_field select").mouseleave(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").hide("1500");
+            });
+        });   
+    
+    </script>
+}

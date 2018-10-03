@@ -1,0 +1,10 @@
+﻿Cancel.description=强制取消预授权
+Cancel.name=强制取消预授权
+description=预授权
+Done.description=强制完成预授权
+Done.name=强制完成预授权
+List=List
+List.description=预授权
+List.name=预授权
+List.shortName=L预授权
+name=预授权

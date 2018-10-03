@@ -1,0 +1,144 @@
+﻿<!--------中间更换内容------->
+@using Moonlit
+@model  Ecard.Mvc.Models.Orders.ListApplyRefundOrders
+<link href="/css/shop_style.css" rel="stylesheet" />
+<script type="text/javascript">
+    var pageS = 10;
+    var index = 0;
+    var ActionName = "";
+    var ActionUrl = "";
+    var jsonData = "";
+    function selectInput(choose) {
+        pageS = choose.value;
+        submitClicks(choose);
+    }
+    //获取数据
+    function AjaxGetData(PageIndex, PageSize) {
+
+        //var orderNo = $('#orderNo').val();
+        //var name = $('#name').val();
+        //var startTime = $('#startTime').val();
+        //var endTime = $('#endTime').val();
+        //var orderState = $("[id=orderState.Key]").val();
+        //var payState = $("[id=payState.Key]").val();
+        //var distributionstate = $("[id=distributionstate.Key]").val();
+        $.ajax({
+            url: "/Order/AjaxApplyRefundList",
+            data: {
+                PageIndex: PageIndex, PageSize: PageSize
+            },
+            type: "post",
+            //cache: false,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                var listVal = new Array();
+                listVal.push("orderId");
+                listVal.push("orderNo");
+                listVal.push("userName");
+                listVal.push("amount");
+                listVal.push("orderState");
+                listVal.push("payState");
+                listVal.push("payType");
+                listVal.push("distributionType");
+                listVal.push("distributionstate");
+                listVal.push("submitTime");
+                listVal.push("boor");
+                $.GetstrTrs(data, listVal, "orderId");
+            },
+            error: function () {
+                window.location.href = "/Home/Error";
+            }
+        })
+
+
+    }
+    //操作
+    function OperatorThis(RName, RUrl) {
+        ActionName = RName;
+        ActionUrl = RUrl;
+        switch (RName) {
+            case "OrderDetail":
+                window.location.href = RUrl;
+                break;
+        }
+    }
+
+</script>
+
+<div class="mainbar_wrapper">
+
+
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">>&nbsp; 订单列表</a></li>
+
+        </ul>
+    </div>
+
+    <div class="tool_view" style=" height:auto;">
+        <table id="selectTd">
+            <tr>
+                @Html.EditorForModel("condition")
+                <td>
+                    <input name="" type="button" onclick="submitClicks(this);" class="scbtn" style="height: 29px;" value="查询" />
+                </td>
+            </tr>
+        </table>
+
+        <div class="clear"></div>
+
+
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="gost_list">
+    <div class="gosttitle1">
+        <h2>订单信息</h2>
+    </div>
+
+    <div class="gostxinxi">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" onclick="bigChange(this)" name=" goodslist_checkbox_all" id="goodslist_checkbox_all"></th>
+                    @Html.Ths(Model.List, Model.GetItemType())
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodysNum">
+                @using (var scope = new IteratorScope())
+                {
+
+                    foreach (var item in Model.List)
+                    {
+
+                        <tr>
+                            <td><input type="checkbox" onclick="smallChange(this)" name="orderId" value="@item.orderId"></td>
+                            @Html.Tds(item, Model.GetItemType())
+                            @Html.ToolbarOfItem(Model.GetItemToobalActions(item))
+                        </tr>
+                        scope.Next();
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="list_bottom">
+            <div id="pagehtml">
+                @Html.Raw(Model.pageHtml)
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--------中间更换内容------->
+<script>
+    $('#orderId').val("");
+
+</script>

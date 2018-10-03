@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/momocha.css?v1" />
+    <script type='text/javascript' src='../js/jquery-2.1.0.js'></script>
+    <script type="text/javascript" src="../js/momocha.js?v1"></script>
+    <link rel="stylesheet" href="../css/feiaishi.css?v1" />
+    <link href="../css/weui.min.css" rel="stylesheet" />
+    <script src="../js/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="momocha-sidebar">
+        <ul>
+            <li>
+                <a href="index.html">商城首页</a>
+            </li>
+            <li>
+                <a href="ddzx.html">我的订单</a>
+            </li>
+            <li class="ahover">
+                <a href="gwc.html">购物车</a>
+            </li>
+            <li>
+                <a href="i.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="momocha-index">
+        <header class="momocha-bar bar-color">
+            <a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+            <a href="javascript:void(0)" class="bar-litle">购物车</a>
+            <a onclick="BtnDelete()" class="bar-ico gwc-delete bar-nav-delete" rel="off"></a>
+        </header>
+        <div class="gwc-nr">
+            <ul id="ShoppingCartList">
+
+            </ul>
+        </div>
+        <div class="jiesuan">
+            <div class="quanxuan"><input type="checkbox" name="checkbox" value="" id="shopcartCboxAll" onclick="shopcartCboxAll()">全选</div>
+            <div class="heji">
+                <div class="jiaqian">商品合计：<i id="TotalSelectAmt">¥0.00</i></div>
+                <div class="yunfei">运费：<i id="ShoppingFreight">¥0.00</i></div>
+            </div>
+            <div class="jiesuan-on" onclick="ShoppingCartSubmitBtn()"><a id="ShoppingCartSubmit">结算(0)</a></div>
+
+        </div>
+
+
+    </div>
+    
+    <script src="../js/fz.js"></script>
+    <script type="text/javascript">
+        var ShoppingFreight = 0;
+        var TotalSelectAmt = 0;
+        var TotalLoadAmt = 0;
+        var commodityIdList = '';
+        window.onload = load();
+        function load() {
+            $.openLoading("载入中...");
+            $.ajax({
+                type: "post",
+                data: {
+
+                },
+                dataType: "json",
+                url: "/JuMeiMall/GetShoppingCart",
+                success: function (json) {
+                    $.closeLoading();
+                    if (json != null) {
+                        if (json.Code != null && json.Code != "undefined" && json.Code == 110) {
+
+                            window.location.href = json.Msg;//获取Session
+
+
+                        } else if (json.CartDetailsList != null && json.CartDetailsList.length > 0) {
+                            var html = '';
+                            for (var i = 0; i < json.CartDetailsList.length; i++) {
+                                var str = GenerateShoppingCartHtml(json.CartDetailsList[i].Title, json.CartDetailsList[i].Price, json.CartDetailsList[i].OriPrice, json.CartDetailsList[i].quantity, json.CartDetailsList[i].Image, json.CartDetailsList[i].commodityId, json.CartDetailsList[i].Id, json.CartDetailsList[i].specification);
+                                html += str;
+                                TotalLoadAmt += json.CartDetailsList[i].Price * json.CartDetailsList[i].quantity;//总金额
+                            }
+                            $("#ShoppingCartList").html(html);//生成购物车列表
+
+                            ShoppingFreight = json.Freight;//运费
+
+
+
+                        } else {
+                            $.openDialog("您的购物车目前为空哦");
+                        }
+
+                        setTimeout(function () {
+                            $.getScript('../js/momocha-min.js', function () {
+                                fit();
+                                mosidebar();
+                                spnr();
+                                act0();
+                            });
+                        }, 200);
+                    }
+
+
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("获取订单失败，请稍后再试");
+                }
+            });
+        }
+
+        //生成购物车列表
+        function GenerateShoppingCartHtml(Title, Price, OriPrice, quantity, Image, commodityId, shoppingCartId, specification) {
+            var html = '';
+
+            html += '<li>';
+            html += '<div class="gwcli-select">';
+            html += '<input name="checkbox" value="' + commodityId + '" data-id="' + shoppingCartId + '" data-amt="' + (Price * 100) + '" class="CartChkbox" type="checkbox" onclick="UpdateStatistic()">';
+            html += '</div>';
+            html += '<div class="select-img"><a onclick="OpenGoodsDtl(' + commodityId + ')"><img src="' + Image + '"></a></div>';
+            html += '<div class="select-nr">';
+            html += '<div class="biaoti"><a onclick="OpenGoodsDtl(' + commodityId + ')">' + Title + '</a></div>';
+            html += '<div class="fubiaoti">' + specification + '</div>';
+            html += '<div class="gwc-quantity"><div class="danjia">¥' + Price + '</div><div class="xiugai"><i onclick="MinusQuant(\'Cnt' + shoppingCartId + '\')">-</i><input onchange="UpdateStatistic()" data-id="' + commodityId + '" id="Cnt' + shoppingCartId + '" class="quanityChg" type="number" value="' + quantity + '"><i onclick="AddQuant(\'Cnt' + shoppingCartId + '\')">+</i></div></div>';
+            html += '</div>';
+            html += '</li>';
+
+            return html;
+
+        }
+
+        //数量-1
+        function MinusQuant(CntId)
+        {
+            if (CntId != null && CntId != "undefined") {
+                var cntVal = $("#" + CntId).val();
+                var quant = parseInt(cntVal);
+                if (quant <=1) {
+                    $.openDialog("商品数量不能小于1件");
+                    return;
+                }
+                quant--;
+                $("#" + CntId).val(quant);
+                UpdateStatistic();
+            }
+            
+
+        }
+
+        //数量+1
+        function AddQuant(CntId) {
+            if (CntId != null && CntId != "undefined") {
+                var cntVal = $("#"+CntId).val();
+                var quant = parseInt(cntVal);
+                quant++;
+                $("#" + CntId).val(quant);
+                UpdateStatistic();
+
+            }
+
+        }
+        //删除购物车数据
+        function BtnDelete() {
+            var count = 0;//确认是否选择商品
+            var shoppingCartIdList = '';
+            var chkobj = document.getElementsByClassName('CartChkbox');
+            if (chkobj != null) {
+                for (var i = 0; i < chkobj.length; i++) {
+                    if (chkobj[i].checked) {
+                        count++;
+                        shoppingCartIdList += chkobj[i].attributes[2].value + ',';//Id
+
+                    }
+
+                }
+                if (count == 0) {
+                    $.openDialog("请选择您不需要的商品..");
+                    return;
+
+                } else {
+                    if (!confirm("确定要选中的商品删除吗？")) {
+                        return;
+                    }
+                    $.openLoading("删除中...");
+                    $.ajax({
+                        type: "post",
+                        data: {
+                            shoppingCartIdList: shoppingCartIdList
+
+                        },
+                        dataType: "json",
+                        url: "/JuMeiMall/DelShoppingCartById",
+                        success: function (json) {
+                            $.closeLoading();
+                            if (json != null) {
+                                if (json.Code != null && json.Code != "undefined" && json.Code == 110) {
+
+                                    window.location.href = json.Msg;//获取Session
+
+                                } else if (json.Code != null && json.Code != "undefined" && json.Code == -1) {
+                                    $.openDialog(json.Msg);
+                                } else {
+                                    $.openDialog('购物车商品已清除');
+                                    window.location.reload();
+                                }
+
+
+                            }
+
+
+                        },
+                        error: function () {
+                            $.closeLoading();
+                            $.openDialog("网络错误，请稍后再试，若多次失败请联系管理员");
+                        }
+                    });
+                }
+
+            }
+
+
+        }
+
+        //更新统计
+        function UpdateStatistic() {
+            TotalSelectAmt = 0;
+            var obtainSubmitCnt = 0;
+            commodityIdList = '';
+            var TotalCount = 0;
+            var chkobj = document.getElementsByClassName('CartChkbox');
+            if (chkobj != null) {
+
+                for (var i = 0; i < chkobj.length; i++) {
+                    if (chkobj[i].checked) {
+                        obtainSubmitCnt++;
+                        commodityIdList += chkobj[i].value + ';';//商品Id
+                        var quantityId = '#Cnt' + chkobj[i].attributes[2].value;
+                        var quant = parseInt($(quantityId).val());
+                        commodityIdList += quant + ';'//商品数量
+                        commodityIdList += chkobj[i].attributes[2].value + ',';//购物车ID
+                        var amt = parseInt(chkobj[i].attributes[3].value);
+                        TotalSelectAmt += (amt * quant / 100);//总价
+                        TotalCount = TotalSelectAmt.toFixed(2);
+
+                    }
+                }
+                //结算数量
+                $("#ShoppingCartSubmit").html('结算(' + obtainSubmitCnt + ')');
+                //商品金额
+                $("#TotalSelectAmt").html('¥' + TotalCount);
+                //商品运费
+                $("#ShoppingFreight").html('¥' + ShoppingFreight);
+
+
+
+            }
+
+
+
+        }
+
+
+        //全选btn
+        function shopcartCboxAll() {
+
+            if ($("#shopcartCboxAll").prop('checked')) {
+                $(".CartChkbox").prop('checked', true);
+                UpdateStatistic();
+            } else {
+                $(".CartChkbox").prop('checked', false);
+                commodityIdList = '';
+                //结算数量
+                $("#ShoppingCartSubmit").html('结算(0)');
+                //商品金额
+                $("#TotalSelectAmt").html('¥0');
+                //商品运费
+                $("#ShoppingFreight").html('¥0');
+            }
+
+
+
+        }
+
+        //购物车结算
+        function ShoppingCartSubmitBtn() {
+            if (commodityIdList == '' || commodityIdList == null || commodityIdList =='undefined') {
+                $.openDialog("结算商品数量不能为0");
+                return;
+            }
+            $.openLoading("处理中...");
+
+            $.ajax({
+                type: "post",
+                data: {
+                    commodityIdList: commodityIdList
+                },
+                dataType: "json",
+                url: "/JuMeiMall/GenerateOrder",
+                success: function (json) {
+                    $.closeLoading();
+                    if (json != null) {
+                        if (json.Code == 0) {
+                            window.location.href = ("qrdd.html?orderNo=" + json.Msg);
+                        } else if (json.Code == 110) {
+                            window.location.href = json.Msg;//获取Session
+                        } else {
+
+                            $.openDialog(json.Msg);
+                        }
+                    }
+
+
+
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("生成订单失败，请稍后再试");
+                }
+            });
+        }
+    </script>
+
+
+
+
+
+
+    <div class="momocha-screen"></div>
+
+    <div class="momocha-black"></div>
+
+
+</body>
+</html>

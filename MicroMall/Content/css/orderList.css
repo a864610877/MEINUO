@@ -1,0 +1,132 @@
+html {
+    background: #F5F5F5;
+}
+
+body {
+    margin: 0;
+}
+ul{
+    margin:0px;
+    padding:0px;
+}
+li {
+    margin: 0px;
+    padding: 0px;
+    list-style:none;
+}
+.title {
+    text-align: center;
+    height: 2.5rem;
+    background: #FFF;
+    line-height: 2.3rem;
+    color: #333;
+}
+.type{
+    width:100%;
+    height: 4.6875rem;
+    background:#FFF;
+    margin-top:0.3rem;
+}
+.type li {
+    float: left;
+    width: 5.175rem;
+    height: 4.6875rem;
+    text-align:center;
+    font-size:0.75rem;
+}
+    .type ul li img {
+        width: 1.875rem;
+        margin-top: 0.75rem;
+    }
+.list {
+    width: 100%;
+    margin-top: 0.18rem;    
+    overflow: hidden;
+    margin-bottom: 10rem;
+}
+.list ul li {
+    height: 9.8rem;
+    width: 100%;
+    padding: 0.8rem;
+    background: #FFF;
+    font-size: 0.96rem;
+    color: #111;
+    margin-top: 0.2rem;
+}
+.orderState {
+}
+
+.orderState .buyState1 {
+    color:#FF4500
+}
+.orderState .buyState2 {
+    color:#00CED1
+}
+.orderState .buyState3 {
+    color:#3CB371
+}
+.orderState .buyState4 {
+    color:#800000
+}
+.orderState .buyState5 {
+    color:#A9A9A9
+}
+
+.orderNo {
+    margin-top: 0.2rem;
+}
+.productImg {
+    margin-top: 1rem;
+    width: 5.625rem;
+    height: 5.625rem;
+}
+.productImg img {
+    width: 5.625rem;
+    height: 5.625rem;
+}
+.productTitle {
+    float: left;
+    margin-top: -6rem;
+    margin-left: 6.6rem;
+    padding-right: 2rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    padding-left: 0.5rem;
+    line-height: 1.2rem;
+}
+.productPrice {
+    float: left;
+    margin-top: -3.1rem;
+    margin-left: 7.2rem;    
+    color: #555;
+}
+.stateBtn {
+    float: right;
+    margin-right: 2rem;
+    margin-top: -1.3rem;
+}
+.stateBtn div {
+    width: 4.25rem;
+    text-align: center;
+    border-radius: 0.4rem;
+    float: left;
+    margin-left: 0.6rem;
+    line-height: 1.4rem;
+    padding: 0.28rem 0.5rem 0.3rem 0.5rem;
+    color:#FFF;
+}
+.stateBtn .ljzf_btn {
+    background: #E8BB66;
+}
+.stateBtn .cxdd_btn {
+    background: #D9B98E;
+}
+.stateBtn .qxdd_btn {
+    background: #E6E6E6;
+    color: #333;
+}
+.select_btn_color {
+    color:#DEB887;
+}

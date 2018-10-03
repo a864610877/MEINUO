@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>首页</title>
+        <link href="/css/weui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/css/momocha.css" />
+		<script type='text/javascript' src='/js/jquery-2.1.0.js'></script>
+		<script type="text/javascript" src="/js/momocha.js"></script>
+		<link rel="stylesheet" href="/css/feiaishi.css" />
+        <script src="/js/fz.js?v"></script>
+        <script src="/js/verifi.js"></script>
+
+	</head>
+
+	<body>
+		<div class="momocha-sidebar">
+			<ul>
+				<li>
+					<a href="index.html">商城首页</a>
+				</li>
+				<li>
+					<a href="sp.html">商品分类</a>
+				</li>
+				<li>
+					<a href="gwc.html">购物车</a>
+				</li>
+				<li>
+					<a href="i.html">个人中心</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="momocha-index">
+			<header class="momocha-bar bar-color">
+				<a href="javascript:history.back(-1)" class="bar-ico bar-return"></a>
+				<a href="javascript:void(0)" class="bar-litle">账号绑定</a>
+				<a href="add-tianjia.html" class="bar-ico  " rel="off"></a>
+			</header>
+			<div class="qrdd-index">
+				<ul class="i-weixin-bangding">
+					<li class="i-touxiang momocha-Appinterval"><i>头像</i><a href="javascript:void(0)"><img id="photo" src="img/banner1.jpg"></a></li>
+					<li class=" momocha-Appinterval add-input "><i>昵称</i><input type="text" id="name" disabled placeholder="姓名"></li>
+					<li class="i-tel momocha-Appinterval"><i>绑定手机</i><input type="text" placeholder="请输入手机号" id="mobile" ><a id="sendSms" href="javascript:void(0)" onclick="smsVerifi()">获取验证码</a></li>
+	 	            <li class=" momocha-Appinterval add-input "><i>验证码</i><input type="text" id="verifiCode" placeholder="请输入验证码"  /></li>
+	 	         </ul>
+	 	<div class="i-bangding momocha-Appinterval "><a onclick="verifiMoblie()" >确认绑定</a></div>
+	     </div>
+	 	
+	 
+	 </div>
+	<div class="momocha-screen"></div>
+	<div class="momocha-black "></div>
+     <script type="text/javascript">
+
+         var openid = getQueryString("openid");
+         var name =unescape(getQueryString("name"));
+         var photo = getQueryString("photo");
+         window.onload = function () {
+             $("#photo").attr("src", photo);
+             $("#name").val(name);
+         }
+         var F_InterValObj; //timer变量，控制时间
+         var F_count = 120; //间隔函数，1秒执行
+         var F_curCount=10; //当前剩余秒数
+         function F_SetRemainTime() {
+             if (F_curCount == 0) {
+                 window.clearInterval(F_InterValObj); //停止计时器
+                 $("#sendSms").attr("onclick", "smsVerifi()"); //启用按钮
+                 //$("#FbtnSendCode").attr("class", "surebtn");
+                 $("#sendSms").html("获取验证码");
+                 F_curCount = 10;
+             } else {
+                 F_curCount--;
+                 $("#sendSms").removeAttr("onclick");
+                 $("#sendSms").html(F_curCount + '秒后重置');
+             }
+         }
+         function smsVerifi() {
+             var mobile = $("#mobile").val();
+             if (mobile == null || mobile == "") {
+                 $.openDialog("请输入手机号！");
+                 return;
+             }
+             if (!checkMobile(mobile)) {
+                 $.openDialog("手机号格式错误！");
+                 return;
+             }
+             $.openLoading("获取中");
+             $.ajax({
+                 url: url + "/api/api/UserMgr/GetUserSMSByPhone_WX?CellPhone=" + mobile,
+                 data: {},
+                 type: "get",
+                 success: function (data) {
+                     $.closeLoading();
+                     if (data == null) {
+                         $.openDialog("请求错误");
+                         return;
+                     }
+                     if (data.IsSuccessful == true && data.StateCode==0) {
+                         $.openDialog("发送成功");
+                         F_InterValObj = window.setInterval(F_SetRemainTime, 1000);
+                         
+                     } else {
+                         $.openDialog(data.Msg);
+                     }
+                 },
+                 error: function () {
+                     $.closeLoading();
+                     $.openDialog("网络错误,请检查wifi设置");
+                 }
+             });
+         }
+         //验证验证码是否正确
+         function verifiMoblie() {
+             var mobile = $("#mobile").val();
+             if (mobile == null || mobile == "") {
+                 $.openDialog("请输入手机号！");
+                 return;
+             }
+             if (!checkMobile(mobile)) {
+                 $.openDialog("手机号格式错误！");
+                 return;
+             }
+             var verifiCode = $("#verifiCode").val();
+             if (verifiCode == null || verifiCode == "") {
+                 $.openDialog("请输入验证码！");
+                 return;
+             }
+             $.openLoading("验证码验证");
+             $.ajax({
+                 url: url +"/api/api/UserMgr/IsSMSCodeValid_WX",
+                 data: { Account: mobile, SMSCode: verifiCode },
+                 type: "post",
+                 success: function (data) {
+                     $.closeLoading();
+                     if (data == null) {
+                         $.openDialog("请求错误");
+                         return;
+                     }
+                     if (data.IsSuccessful == true) {
+                         if (data.StateCode == 0) {
+                             verifiUser(mobile);
+                         } else {
+                             $.openDialog(data.Msg);
+                         }
+                         
+                     } else {
+                         $.openDialog(data.Msg);
+                     }
+                 },
+                 error: function () {
+                     $.closeLoading();
+                     $.openDialog("网络错误,请检查wifi设置");
+                 }
+             });
+
+         }
+         //验证用户
+         function verifiUser(mobile) {
+             var verifiCode = $("#verifiCode").val();
+             if (verifiCode == null || verifiCode == "") {
+                 $.openDialog("请输入验证码！");
+                 return;
+             }
+             $.openLoading("手机号验证");
+             $.ajax({
+                 url: url + "/api/api/UserMgr/IsNewUser_WX",
+                 data: { Account: mobile },
+                 type: "post",
+                 success: function (data) {
+                     $.closeLoading();
+                     if (data == null) {
+                         $.openDialog("请求错误");
+                         return;
+                     }
+                     if (data.IsSuccessful == true && data.StateCode == 0) {
+                         window.location.href = "/WeChatViews/i-shemi.html?account=" + mobile + "&SMSCode=" + verifiCode + "&openid=" + openid;
+                         //用户不存在
+                     } else {
+                         //已注册直接绑定
+                         if (data.StateCode == 1005 || data.StateCode == "1005") {
+                             $.openLoading("绑定中");
+                             $.ajax({
+                                 url: "/PersonalCentre/BindMobile",
+                                 data: { mobile: mobile },
+                                 type: "post",
+                                 success: function (data) {
+                                     $.closeLoading();
+                                     if (data.Code == 0) {
+                                         $.openDialog("绑定成功");
+                                         window.location.href = "i.html";
+                                     } else {
+                                         $.openDialog(data.Msg);
+                                     }
+                                 },
+                                 error: function () {
+                                     $.closeLoading();
+                                     $.openDialog("网络错误，请联系管理员");
+                                 }
+                             });
+                             //用户存在
+                         } else {
+                             $.openDialog(data.Msg);
+                         }
+                         $.openDialog(data.Msg);
+                     }
+                 },
+                 error: function () {
+                     $.closeLoading();
+                     $.openDialog("网络错误,请检查wifi设置");
+                 }
+             });
+         }
+     </script>	
+</body>
+</html>

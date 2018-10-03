@@ -1,0 +1,3 @@
+﻿GoldMedalManager.name=金牌经理
+Manager.name=经理
+Member.name=会员

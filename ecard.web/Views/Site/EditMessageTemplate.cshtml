@@ -1,0 +1,133 @@
+﻿@model EcardModelItem<EditMessageTemplate>
+@using (Html.BeginForm())
+{ 
+    <div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">@Model.Localize("title")</a></li>
+    </ul>
+</div>
+    <div class="create_div" style="float: left; width:98%">
+        <ul class="forminfo" style="padding-top:10px;">
+            @Html.EditorFor(x => x.Item)
+            </ul>
+        <div id="tipsDiv" class="Tips">
+             <p style=" font-size:16px; font-family: Microsoft YaHei ! important; text-align:center; padding-top:10px;">
+         Tips：你可以用的变量如下：
+        </p>
+          <table class="tableExample">
+             <tr>
+             <td class="tdLeft">操作员:</td>
+             <td class="tdRight">#operator#</td>
+            </tr>
+             <tr>
+             <td class="tdLeft">交易流水号:</td>
+             <td class="tdRight"> #serial-no#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">交易获得积分:</td>
+             <td class="tdRight">#point#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">卡积分:</td>
+             <td class="tdRight">#account-point#/td>
+            </tr>
+            <tr>
+             <td class="tdLeft">当前时间:</td>
+             <td class="tdRight"> #now#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">会员姓名:</td>
+             <td class="tdRight">#username#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">卡号:</td>
+             <td class="tdRight"> #account-name#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">金额(交易/充值):</td>
+             <td class="tdRight">#amount#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">卡余额:</td>
+             <td class="tdRight">#account-amount#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">转出卡号(转账用):</td>
+             <td class="tdRight">#account-name#</td>
+            </tr>
+             <tr>
+             <td class="tdLeft">转入卡号(转账用):</td>
+             <td class="tdRight">#account-to-name#</td>
+            </tr>
+             <tr>
+             <td class="tdLeft">转出卡号余额:</td>
+             <td class="tdRight"> #account-amount#</td>
+            </tr>
+             <tr>
+             <td class="tdLeft">卡有效期:</td>
+             <td class="tdRight">#account-expireddate#</td>
+            </tr>
+             <tr>
+             <td class="tdLeft">旧卡号:</td>
+             <td class="tdRight"> #account-name#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">新卡号:</td>
+             <td class="tdRight"> #account-new-name#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">旧卡号:</td>
+             <td class="tdRight"> #account-name#</td>
+            </tr>
+            <tr>
+             <td class="tdLeft">验证码（手机绑定或者解绑）:</td>
+             <td class="tdRight"> #code#</td>
+            </tr>
+          </table>
+           
+           @* </p><p>
+            卡类型:#account-type#*@
+           @* </p><p>
+            交易类型:#type#*@ 
+           @* 支付方式:#deal-way#</p><p>
+            是否开发票:#is-recharged#
+            </p><p>*@
+            
+           
+        </div>
+        <div style="clear: both" />
+        <div class="submitDiv" style=" padding-bottom:10px;">
+            <input type="submit" class="scbtn" value="提交" />
+            @Html.ActionLink("List")</div>
+    </div>
+   
+    <script type="text/javascript">
+        $(function () {
+            $(".create_field input").focus(function () {
+                $("[forprop='" + $(this).attr("id") + "']").show("1500");
+            });
+            $(".create_field select").click(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").show("1500");
+            });
+            $(".create_field input").blur(function () {
+                $("[forprop='" + $(this).attr("id") + "']").hide("1500");
+            });
+            $(".create_field select").mouseleave(function () {
+                $("[forprop='" + $(this).attr("id") + "_Key']").hide("1500");
+            });
+        });
+        $(".forminfo label").width(200);
+    </script>
+}
+<style type="text/css">
+    .createTable textarea
+    {
+        width: 90%;
+    }
+     .textbox { BORDER-TOP:#7F9DB9 1px solid; BORDER-LEFT: #7F9DB9 1px solid; BORDER-RIGHT: #7F9DB9 1px solid; BORDER-BOTTOM:#7F9DB9 1px solid; FONT-FAMILY: "宋体", "Verdana","Arial", "Helvetica"; FONT-SIZE: 12px; TEXT-ALIGN: LIFT; width:500px;}
+      .Tips{ float:right; width: 30%;height: 730px;margin-top: -730px;margin-right: 10px;}
+      .tableExample{ text-align:center; margin:0px auto;}
+    .tableExample td{ padding:10px;}
+</style>

@@ -1,0 +1,244 @@
+﻿@model EcardModel
+@{
+    
+     
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>@Model.Site.DisplayName | @Model.Localize("title")</title>
+    <link href='@Url.Content("~/Content/StyleSheet.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/style.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/site.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/public.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/jquery.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/themes/base/messages.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/jquery.ui/ui-lightness/jquery-ui.css")' rel="stylesheet" type="text/css" />
+    <link href="../../Content/themes/base/application.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.json.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.validate.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/superfish.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery-ui.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.betterTooltip.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/tooltip.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/tablesorter.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/tablesorter-pager.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/jquery.urlParser.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/cookie.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/custom.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/moonlit.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/Scripts/api.js")'></script> 
+    @* <script src='@Url.Content("~/Skins/Default/Scripts/oxite.js")' type="text/javascript"></script>*@
+    <script type="text/javascript" src='@Url.Content("~/scripts/passtypes/" + Model.Site.PasswordType + ".js")'></script>
+@*       <script src="/Content/themes/t/scripts/swfobject.js" type="text/javascript"></script>
+    <script src="/Content/themes/t/scripts/components.js" type="text/javascript"></script>
+    <script src="/Content/themes/t/scripts/dealonline.js" type="text/javascript"></script>*@
+    <script src='@Url.Content("~/Scripts/XYTipsWindow-3.0-dev.js")' type="text/javascript"></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/postypes/T8U.js")'></script>
+    <link href='@Url.Content("~/Scripts/core.css")' rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <link href='@Url.Content("~/Content/themes/base/ie6.css")' rel="stylesheet" media="all">
+	<![endif]-->
+    <!--[if IE 7]>
+    <link href='@Url.Content("~/Content/themes/base/ie7.css")' rel="stylesheet" media="all">
+	<![endif]-->
+    <script type="text/javascript">
+        function showMenu(divId) {
+            $(".hitems").hide("fast");
+            $("#" + divId).show("fast");
+            $("#MenuSelectId").val(divId);
+        }
+    </script>
+</head>
+<body class="shadow">
+    <div id="topDiv" style=" height:72px; background-image:url('@Url.Content("~/Content/themes/base/images/body_background.png")'); background-repeat: repeat;">
+        <div class="logos">
+            <h3>@Model.Site.DisplayName</h3>
+        </div>
+        <div style="float: right; ">
+            <ul id="headerUL">
+                <li><a href="/">技术支持</a>&nbsp;|&nbsp;</li>
+                @*<li><a href="/" target="_blank">首页</a>&nbsp;|&nbsp;</li>
+                <li><a href="/editProfile" target="_blank">我的资料</a>&nbsp;|&nbsp;</li>*@
+                <li><a href="/">首页</a>&nbsp;|&nbsp;</li>
+                <li><a href="/editProfile">我的资料</a>&nbsp;|&nbsp;</li>
+                <li><a onclick=" logoff();return false;" href="#">退出</a> </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            function logoff() {
+                if (!confirm("您确定要退出当前系统？")) return false;
+                window.location.replace("/SignOut");
+                return false;
+            }
+        </script>
+    </div>
+    <div id="PageBody">
+        <table style="width:100%;">
+            <tr class="PageBodyTr">
+                <td style="width: 220px; vertical-align: top">
+                    <div id="sidebar" style="float: left; width: 220px">
+                        <div id="userInfoDiv" class="panel02" style="width: 210px;">
+                            @Html.DisplayFor(x => x.UserModel)
+                            <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                                <div class="portlet-header ui-widget-header">
+                                    功能菜单</div>
+                                <div class="portlet-content">
+                                    <div id="leftmenu" class="__box">
+                                        <div class="leftmenu">
+                                            <div id="menuRoot" class="nav">
+                                                <ul>
+                                                    @if (Model.Menus != null)
+                                                    {
+                                                        int i = 0;
+                                                        foreach (var menuItem1 in Model.Menus)
+                                                        {
+                                                            string myMenu = "menu_tree" + i.ToString();
+                                                            if (!string.IsNullOrWhiteSpace(menuItem1.Controller))
+                                                            { <li title="@menuItem1.Tooltip"><a href='@Url.Action(menuItem1.Action, menuItem1.Controller)'>@menuItem1.DisplayName</a></li> }
+                                                            else
+                                                            {
+                                                        <li class="hastree"><a title="请单击打开" onclick="showMenu('@myMenu')" href="javascript:void(0)">@menuItem1.DisplayName</a></li>
+                                                        <div id="@myMenu" style=" display:none" class="hitems">
+                                                            <ul>
+                                                                @foreach (var menuItem2 in menuItem1.Children)
+                                                                {
+                                                                    <li title="@menuItem2.Tooltip"><a myMeunId='@myMenu'  href='@Url.Action(menuItem2.Action, menuItem2.Controller)'>@menuItem2.DisplayName</a></li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                            }
+                                                            i += 1;
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 100%; vertical-align: top">
+                    <div class="right">
+                        <ul id="TabPage1" >
+                            <li id="Tab1" title="@Model.Localize("title")">@Model.Localize("titleA")</li>
+                   
+                            <li class="toolkit" id="mainPanel">
+                                @if (!(Model.User is AccountUser))
+                                {
+                                    <div style="margin-right: 1px;" class="device-selector">
+                                        <label>
+                                            打印机</label>
+                                        <select class="script-selector">
+                                            @foreach (var printerType in Model.Site.GetPrinters())
+                                            {
+                                                <option value='@Url.Content("~/scripts/printers/" + printerType.Id + ".js")'   @(Html.Raw(string.Equals(Model.Site.PrinterType, printerType.Id, StringComparison.OrdinalIgnoreCase) ? "selected='selected'" : ""))>@printerType.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+        
+                                    <div class="device-selector">
+                                        <a href="#" id="btnDisplayAll">全屏显示</a>
+                                        <label>
+                                            读卡器</label>
+                                        <select class="script-selector" id="dkq">
+                                            @foreach (var posType in SiteViewModel.GetPosTypes())
+                                            {
+                                                <option value='@Url.Content("~/scripts/postypes/" + posType + ".js")' @(Html.Raw(string.Equals(Model.Site.PosType, posType, StringComparison.OrdinalIgnoreCase) ? "selected='selected'" : ""))>@posType</option>
+                                            }
+                                        </select>
+                                    </div>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="cnt">
+                        <div id="dTab1" class="-">
+                            <div id="mainContent" style="margin-left: 10px; margin-right: 20px;">
+                                <div id="TopMessageDiv">
+                                <span id="TopMessageDivClose" style=" display:none; "   >[×]</span>
+                                    @foreach (var msg in Model.GetMessages(MessageType.Error))
+                                    {
+                                         
+                                        foreach (var line in msg.Messages)
+                                        {
+                                        <div class="response-msg error ui-corner-all  ui-over-hidden">
+                                            <span>
+                                                <br />@line</span>
+                                                <script>
+                                                    $("#TopMessageDivClose").show();
+                                                    $("#PageBody").keydown(function (e) {
+                                                       
+                                                        if (e.keyCode == 13) {
+                                                            $("#TopMessageDiv").hide("10000");
+                                                        }
+                                                    });
+                                                </script>
+                                        </div>
+                                        }
+                                    }
+                                    @foreach (var msg in Model.GetMessages(MessageType.Message))
+                                    {
+                                        foreach (var line in msg.Messages)
+                                        {
+                                        <div class="response-msg success ui-corner-all  ui-over-hidden">
+                                            <span>
+                                                <br />@line</span>
+                                                <script>
+                                                    $("#TopMessageDivClose").show();
+                                                    $("#PageBody").keydown(function (e) {
+                                                        
+                                                        if (e.keyCode == 13) {
+                                                            $("#TopMessageDiv").hide("10000");
+                                                        }
+                                                    });
+                                                                                                    
+                                                </script>
+                                        </div>
+                                        }
+                                    }
+                                    <script type="text/javascript">
+                                        $("#TopMessageDivClose").click(function (e) {
+                                            $("#TopMessageDiv").hide("10000");
+                                        });
+                                        $("#leftmenu a").each(function () {
+                                            if ($(this).attr("href") == window.location.pathname) {
+                                                $(".hitems").hide("fast");
+                                                $("#" + $(this).attr("myMeunId")).show("fast");
+                                                $("#MenuSelectId").val($(this).attr("myMeunId"));
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                                <div id="mainDiv">
+
+                                    @RenderBody()
+                                </div>
+                            </div>
+                            <div style="clear: both">
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 20px;">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="Footer">
+        <bgsound id="bgsound1" loop="0" style="display: none" src=""></bgsound>
+        <div class="left"></div>
+        <div class="right">
+            <a href="http://www.chinadenovo.com.cn" target="_blank">深圳帝纳达科技有限公司</a> &nbsp;&nbsp;
+            &nbsp;&nbsp;<br />
+            电话热线：4006393808 &nbsp;&nbsp; &nbsp;&nbsp;
+        </div>
+    </div>
+</body>
+</html>

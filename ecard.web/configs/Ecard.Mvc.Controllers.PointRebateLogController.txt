@@ -1,0 +1,4 @@
+﻿description=查看所有返利日志
+List.description=返利日志
+List.name=返利日志
+name=Ecard.Mvc.Controllers.PointRebateLogController

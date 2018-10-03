@@ -1,0 +1,282 @@
+html {
+            background:rgba(241, 241, 241,1);
+        }
+        .content {
+            padding-bottom: 5rem;
+        } 
+        .product_img img {
+            width: 100%;
+        }
+        .product_top {
+            padding:1rem;
+            background:#fff;
+            margin-top:-0.2rem;
+            padding-bottom: 0.5rem;
+        }
+        .product_top .top_l {
+            width: 14.5rem;
+            overflow:hidden;
+        }
+        .product_top .top_r {
+            width: 9.375rem;
+            height: 5.625rem;
+            overflow: hidden;
+            position:absolute;
+            color: #777;
+            font-weight:bold;
+        }
+        .product_top .top_r .img_l {
+            float: left;
+            text-align: center;
+            margin-left: 0.5rem;
+        }
+        .product_top .top_r .img_r {
+            float: left;
+            text-align: center;
+        }
+        .product_top .top_r .img_l img, .product_top .top_r .img_r img {
+            width: 3rem;
+        }
+        .fgx {
+            border-left: 0.1rem solid #d8d8d8;
+            width: 0.12rem;
+            height: 3.5rem;
+            float: left;
+            margin: 0.8rem;
+            margin-top: 0.66rem;
+            margin-left: 1.1rem;
+            margin-right: 1rem;
+        }
+        .title {
+            color: #444;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+        .price {
+            color: #FF0036;
+            font-family: Helvetica,sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: #FFF;
+            padding-left: 1rem;
+            padding-bottom: 0.7rem;
+            padding-top: 0.2rem;
+        }
+        .price_yj del {
+            color: #888;line-height: 2rem;
+        }
+        .vip {
+            padding: 1rem;
+            background: #fff;
+            margin-top:0.15rem;
+        }
+        .vip ul, .vip ul li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-weight: bold;
+            color: #666;
+            line-height: 2rem;
+            border-bottom: 0.048rem dashed #DDD;
+            font-size:0.9rem;
+        }
+        .vip_price1 {
+            color: #FF0036;
+            font-size: 0.7rem;
+        }
+        .vip_price2 {
+            color: #FF0036;
+        }
+        .vip_price3 {
+            background: #b59f76;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            font-size: 0.9rem;
+            color: #FFF;
+            margin-left: 1rem;
+            float: right;
+            line-height: 1.5rem;
+            margin-top: 0.533rem;
+            border-radius: 5rem 0rem 0rem 5rem;
+        }
+        .detail {
+            padding: 1rem;
+            background: #fff;
+            margin-top:0.25rem;
+        }
+        .bottom {
+            width: 100%;
+            height: 3.4375rem;
+            background: #fff;
+            border-top: 0.063rem solid #D8D8D8;
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+        }
+        .bottom_l {
+            width: 11.25rem;
+            float: left;
+            height: 3.4375rem;
+        }
+        .bottom_l1 {
+            width: 5.625rem;
+            height: 3.4375rem;
+            float: left;
+            text-align: center;
+        }
+            .bottom_l1 img {
+                width: 2rem;
+                margin-top: 0.1rem;
+            }
+        .bottom_l1 div {
+            line-height: 0.4rem;
+            color: #b59f76;
+            font-size: 0.9rem;
+        }
+        .bottom_l2 {
+            width: 5.625rem;
+            height: 3.4375rem;
+            float: left;
+            text-align:center;
+        }
+            .bottom_l2 img {
+                width: 2rem;
+                margin-top: 0.1rem;
+            }
+
+        .bottom_l2 div {
+            line-height: 0.4rem;
+            color: #b59f76;
+            font-size: 0.9rem;
+        }
+        .bottom_li div {
+            width: 5.625rem;
+        }
+        .bottom_r {
+            width: 14.625rem;
+            float: right;
+            height: 3.4375rem;
+        }
+        .bottom_r div {
+            width: 7.3rem;
+            float: left;
+            height: 3.4375rem;
+            text-align: center;
+            padding-top: 1rem;
+            font-size: 1rem;
+            color: #FFF;
+        }
+        #ProductDetail {
+            width:100%
+        }
+        #ProductDetail img {
+            width: 100%;
+            height:auto;
+        }
+         .spec {
+            width: 100%;
+            height: 65%;
+            overflow: auto;
+            position: fixed;
+            bottom: 0;
+            z-index: 2;
+            padding-bottom: 5rem;
+            background: #eee;
+            border-radius: 0.9rem 0.9em 0rem 0rem;
+            box-shadow: 8px 8px 8px #ddd, 8px -8px 8px #ddd, -8px 8px 8px #ddd, -8px -8px 8px #ddd;
+        }
+        .spec_content {
+            margin:2rem;
+            overflow:inherit;
+        }
+        .spec_content img {
+            width: 8rem;
+            border-radius: 0.5rem;
+            border: 0.12rem solid #D9B97C;
+        }
+        .f_l {
+            float:left;
+        }
+        .spec_price {
+            float:left;
+            margin-top: 5.3rem;
+            margin-left: 1rem;
+        }
+        .countNumber {
+            margin: 2rem;
+            font-size: 1.2rem;
+            color: #444;
+            float: left;
+            width: 84%;
+        }
+        .btn {
+            width: 1.875rem;
+            height: 1.875rem;
+            border: 0.0625rem solid #B59F76;
+            float: left;
+            font-size: 2rem;
+            color: #666;
+            text-align: center;
+            line-height: 1.4rem;
+        }
+        .number {
+            width: 2.5rem;
+            height: 1.875rem;
+            border: 0.0625rem solid #B59F76;
+            float: left;
+            border-left: 0rem;
+            border-right: 0rem;
+            line-height: 1.7rem;
+            text-align: center;
+            color: #555;
+        }
+        .spec_list {
+            color: #565656;
+            float: left;
+            margin-left: 2rem;
+            margin-right: 2rem;
+        }
+        .spec_list ul {
+            padding: 0;
+            margin-left: 0.5rem;
+        }
+        .spec_list li {
+            float: left;
+            list-style: none;
+            background: #F8f8f8;
+            margin: 0.4rem;
+            padding: 0.5rem;
+            padding-left: 0.8rem;
+            padding-right: 0.8rem;
+            border-radius: 0.4rem;
+            border: 0.063rem solid #D9B97C;
+        }
+        .cart_sub {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding-top: 1rem;
+            background: #EEE;
+        }
+        .cart_sub_btn {
+            width: 92%;
+            height: 2.5rem;
+            background: #D9B97C;
+            border-radius: 0.5rem;
+            margin-left: 4%;
+            text-align: center;
+            line-height: 2.5rem;
+            font-size: 1.3rem;
+            color: #FFF;
+            margin-bottom: 0.8rem;
+        }
+        .transparent {
+            width: 100%;
+            height: 24%;
+            position: fixed;
+            top: 0;
+        }
+        .spec_list .specSelectColor {
+            background: #D9B97C;
+            color: #FFF;
+        }

@@ -1,0 +1,6 @@
+﻿All.name=不限
+All.order=1
+Female.name=女
+Female.order=3
+Male.name=男
+Male.order=2

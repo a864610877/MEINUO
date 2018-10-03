@@ -1,0 +1,47 @@
+﻿@using System.Collections
+@using Moonlit
+@model Object
+@{
+    
+    var helper = EcardContext.Container.Resolve<SecurityHelper>();
+    var currentUser = helper.GetCurrentUser().CurrentUser;
+    
+}
+
+@foreach (var prop in ViewModelDescriptor.GetTypeDescriptor(ViewData.Model).Properties.Where(x => x.Show && x.Permission.Check(currentUser)).OrderBy(x => x.Order))
+{
+    if (prop.Hidden)
+    {
+         @Html.Editor(prop.PropertyName, prop.TemplateHint)
+    }
+    else
+    { 
+    
+    <li><label>@Html.LabelLocalize(prop)</label>
+    @if (prop.IsReadOnly)
+    {
+      <label style="margin-left: -100px">@Html.Display(prop.PropertyName, prop.TemplateHint)</label>
+    }
+    else
+    {
+        if (typeof(IItemList).IsAssignableFrom(prop.PropertyType))
+        {
+            ViewDataDictionary dict = new ViewDataDictionary(ViewData);
+            dict["propertyName"] = prop.PropertyName;
+            var items = prop.GetValue(Model);
+          @Html.Partial(prop.TemplateHint, items, dict)
+        }
+        else
+        {
+           @Html.Editor(prop.PropertyName, prop.TemplateHint)
+      var Localize = @Html.ExplainLocalize(prop);
+      @Html.ValidationMessage(prop.ValidatePropertyName)
+            //Html.TextBoxFor(d => "", new { @class = "dfinput", onblur = "checkMemberFormName(this);", @TempValue = Localize })
+            //@Html.TextBoxFor(d => prop.PropertyName, new { @class = "dfinput", onblur = "checkMemberFormName(this);", @TempValue = Localize })
+        }
+    }
+    </li>
+  
+    }
+}
+
