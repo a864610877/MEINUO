@@ -16,6 +16,11 @@ namespace MicroMall.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
+            if (Request.Cookies[SessionKeys.USERID] == null || Request.Cookies[SessionKeys.USERID].Value.ToString() == "")
+            {
+               RedirectToAction("Index", "login");
+                //return Json(new ResultMessage() { Code = -2, Msg = "/login/Index" });
+            }
             var items = filterContext.RouteData.Values;
             Session["openid"] = "oinSxuCTIHOHu3pj3pvcBgTZYXkI";
             Session["accountId"] = "33";
