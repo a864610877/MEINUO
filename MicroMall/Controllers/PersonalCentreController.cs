@@ -253,6 +253,89 @@ namespace MicroMall.Controllers
             return Json(new ResultMessage() { Code = -1, Msg = "订单不存在！" });
 
         }
+
+        [HttpPost]
+        public ActionResult DeletelOrder(int orderId)
+        {
+            if (Request.Cookies[SessionKeys.USERID] == null || Request.Cookies[SessionKeys.USERID].Value.ToString() == "")
+            {
+                return Json(new ResultMessage() { Code = -2, Msg = "/login/Index" });
+            }
+            var order = IOrderService.GetById(orderId);
+            if (order != null)
+            {
+                if (order.orderState != OrderStates.awaitPay&&order.orderState!= OrderStates.cancel && order.orderState != OrderStates.complete && order.orderState != OrderStates.completePJ)
+                    return Json(new ResultMessage() { Code = -1, Msg = "订单不可删除！" });
+                transaction.BeginTransaction();
+                order.orderState = OrderStates.cancel;
+                if (order.orderType == OrderType.normal)
+                {
+                    var details = IOrderDetailService.GetAllByOrderNo(order.orderNo).ToList();
+                    if (details != null && details.Count() > 0)
+                    {
+                        foreach (var detail in details)
+                        {
+                            var commodit = ICommodityService.GetById(detail.commodityId);
+                            if (commodit != null)
+                            {
+                                commodit.commodityInventory += detail.quantity;
+                                commodit.sellQuantity -= detail.quantity;
+                                commodit.sellQuantity1 -= detail.quantity;
+                                ICommodityService.Update(commodit);
+                            }
+                            IOrderDetailService.Delete(detail);
+                        }
+                    }
+                }
+                else if (order.orderType == OrderType.secondKill)
+                {
+                    var details = IOrderDetailService.GetAllByOrderNo(order.orderNo).ToList();
+                    if (details != null && details.Count() > 0)
+                    {
+                        foreach (var detail in details)
+                        {
+                            var secondKillCommodity = ISecondKillCommoditysService.GetBycommodityId(detail.commodityId);
+                            if (secondKillCommodity != null)
+                            {
+                                secondKillCommodity.payNum -= detail.quantity;
+                                secondKillCommodity.surplusNum += detail.quantity;
+                                ISecondKillCommoditysService.Update(secondKillCommodity);
+                            }
+                            IOrderDetailService.Delete(detail);
+                        }
+                    }
+                }
+                IOrderService.Delete(order);
+                //var commoditys = IOrderDetailService.GetAllOrderId(order.orderId);
+                //if (commoditys != null && commoditys.ToList().Count > 0)
+                //{
+                //    foreach (var item in commoditys.ToList())
+                //    {
+                //        ICommodityService.AddStorage(item.commodityId, item.quantity);
+                //        ICommodityService.MinussellQuantity(item.commodityId, item.quantity);
+                //    }
+                //}
+                // var account = IAccountService.GetById(order.userId);
+                //if (!string.IsNullOrWhiteSpace(account.openID))
+                //{
+                //    var message = new Fz_Messages();
+                //    message.accountId = account.accountId;
+                //    message.keyword1 = order.orderNo;
+                //    message.keyword2 = "已取消";
+                //    message.msg = "";
+                //    message.msgType = MsgType.orderState;
+                //    message.openId = account.openID;
+                //    message.state = MessagesState.staySend;
+                //    message.submitTime = DateTime.Now;
+                //    IMessagesService.Insert(message);
+                //}
+                IOrderService.Update(order);
+                transaction.Commit();
+                return Json(new ResultMessage() { Code = 0 });
+            }
+            return Json(new ResultMessage() { Code = -1, Msg = "订单不存在！" });
+
+        }
         [HttpPost]
         public ActionResult ConfirmReceipt(int orderId)
         {
@@ -1227,6 +1310,25 @@ namespace MicroMall.Controllers
                 throw new Exception("Something wrong during convert!");
             }
             return strbaser64;
+        }
+
+        public ActionResult MemberUp()
+        {
+            if (Request.Cookies[SessionKeys.USERID] == null || Request.Cookies[SessionKeys.USERID].Value.ToString() == "")
+            {
+                return RedirectToAction("Index", "login");
+                //return Json(new ResultMessage() { Code = -2, Msg = "/login/Index" });
+            }
+            var strId = Request.Cookies[SessionKeys.USERID].Value.ToString();
+            int userId = 0;
+            int.TryParse(strId, out userId);
+            if (userId <= 0)
+                return RedirectToAction("Index", "login");
+            var user = MembershipService.GetUserById(userId);
+            if (user == null)
+                return RedirectToAction("Index", "login");
+            var result = new MemberUpModel(user.Mobile);
+            return View(result);
         }
     }
 }

@@ -70,5 +70,11 @@ namespace Ecard.Services
         OrderDetail GetBycommodityIdAndOrderNo(int commodityId, string orderNo);
 
         QueryObject<OrderDetail> GetAllOrderId(int OrderId);
+        /// <summary>
+        /// 根据订单号删除订单明细
+        /// </summary>
+        /// <param name="orderNo"></param>
+        /// <returns></returns>
+        int DeleteOrderNo(string orderNo);
     }
 }

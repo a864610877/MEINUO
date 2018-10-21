@@ -1,0 +1,46 @@
+﻿@{
+   ViewBag.Title = "MemberUp";
+}
+@model MicroMall.Models.PersonalCentre.MemberUpModel
+<header data-am-widget="header" class="am-header am-header-default bgFFF border_b">
+    <div class="am-header-left am-header-nav">
+        <a href="#left-link" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%231c1c1c&quot;/&gt;&lt;/svg&gt;" alt="" />
+        </a>
+    </div>
+    <h1 class="am-header-title">
+        会员升级
+    </h1>
+</header>
+<div style="margin-top:5px;">
+    <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+        <ul class="am-slides">
+            <li>
+                <img src="/images/vipBanner.jpg">
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="add_addrs upPassword vipContent reg fs15">
+    <ul>
+        <li><span>手机号</span><input type="text" name="mobile" id="mobile"  value="@Model.Mobile"   @(string.IsNullOrWhiteSpace(Model.Mobile)?"":"disabled") placeholder="请输入手机号"></li>
+        <li><span>请选择会员等级</span></li>
+        <li><span>会员等级</span><label><samp class="xz on" value="member" >会员</samp><samp class="xz " value="shopowner">店长</samp><samp class="xz" value="shopkeeper">店主</samp></label></li>
+        <li><span>付费金额</span><label><samp class="xz on" value="member">@Model.Member</samp><samp class="xz" value="shopowner">@Model.Shopowner</samp><samp class="xz" value="shopkeeper">@Model.Shopkeeper</samp></label></li>
+    </ul>
+    <div class="am-container am-padding-vertical-xl">
+        <input type="button" value="支付" class="upBtn" />
+    </div>
+</div>
+<script>
+    //jQuery(".jifenMax2").slide({});
+    $(function () {
+        $(".xz").click(function () {
+            $(".xz").removeClass("on");
+            //$(this).addClass("on");
+            var value = $(this).attr("value");
+            $("[value='" + value + "']").addClass("on");
+        });
+    });
+
+</script>

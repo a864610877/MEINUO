@@ -263,6 +263,7 @@
     <Compile Include="Models\PersonalCentre\CodeImg.cs" />
     <Compile Include="Models\PersonalCentre\ListAmountOperationLogs.cs" />
     <Compile Include="Models\PersonalCentre\ListTeams.cs" />
+    <Compile Include="Models\PersonalCentre\MemberUpModel.cs" />
     <Compile Include="Models\PersonalCentre\MyCode.cs" />
     <Compile Include="Models\PersonalCentre\PersonalIndex.cs" />
     <Compile Include="Models\PerWebRequestLifetimeManager.cs" />
@@ -620,9 +621,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="css\amazeui.min.css" />
+    <Content Include="css\app -我的 副本.css" />
     <Content Include="css\app.css" />
     <Content Include="css\app2.css" />
     <Content Include="css\area.css" />
+    <Content Include="css\city.css" />
     <Content Include="css\CodeBgImg.css" />
     <Content Include="css\myCode.css" />
     <Content Include="css\swiper-4.3.5.min.css" />
@@ -684,6 +687,7 @@
     <Content Include="images\addIcon.png" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\buyCart.png" />
+    <Content Include="images\captcha.png" />
     <Content Include="images\cart.jpg" />
     <Content Include="images\close.png" />
     <Content Include="images\djs_time.png" />
@@ -695,7 +699,9 @@
     <Content Include="images\f_menu2.png" />
     <Content Include="images\f_menu3.png" />
     <Content Include="images\f_menu4.png" />
+    <Content Include="images\hzp.png" />
     <Content Include="images\j_ms.png" />
+    <Content Include="images\list_si.jpg" />
     <Content Include="images\miaosha.jpg" />
     <Content Include="images\miao_s.jpg" />
     <Content Include="images\ms_bg.jpg.png" />
@@ -729,15 +735,22 @@
     <Content Include="images\order5.png" />
     <Content Include="images\order5_h.png" />
     <Content Include="images\regBanner.jpg" />
+    <Content Include="images\shouType1.jpg" />
+    <Content Include="images\shouType2.jpg" />
+    <Content Include="images\sjBanner1.jpg" />
+    <Content Include="images\sjBanner2.jpg" />
+    <Content Include="images\sjBanner3.jpg" />
     <Content Include="images\tixian.png" />
     <Content Include="images\typeBanner.jpg" />
     <Content Include="images\userpx.png" />
     <Content Include="images\userTx.png" />
+    <Content Include="images\vipBanner.jpg" />
     <Content Include="images\xqMax.jpg" />
     <Content Include="images\xq_img.jpg" />
     <Content Include="images\xq_tu.jpg" />
     <Content Include="images\xuzhi.jpg" />
     <Content Include="images\x_ms.png" />
+    <Content Include="images\yitixian.png" />
     <Content Include="img\banner1.jpg" />
     <Content Include="img\banner2.jpg" />
     <Content Include="img\img1.jpg" />
@@ -763,6 +776,7 @@
     <Content Include="js\angular-ui-router.js" />
     <Content Include="js\angular.min.js" />
     <Content Include="js\city.data-3.js" />
+    <Content Include="js\city.js" />
     <Content Include="js\controller.js" />
     <Content Include="js\ddzx.js" />
     <Content Include="js\fz.js" />
@@ -798,6 +812,7 @@
     <Content Include="js\verifi.js" />
     <Content Include="js\vue.js" />
     <Content Include="js\WeChat.js" />
+    <Content Include="js\zepto.js" />
     <Content Include="NotifyUrl\Alipay.aspx" />
     <Content Include="NotifyUrl\AlipayNotifyUrl.aspx" />
     <Content Include="Web.config" />
@@ -964,6 +979,7 @@
     <Content Include="Views\User\RecommendLog.cshtml" />
     <Content Include="Views\Commodity\AddReview.cshtml" />
     <Content Include="Views\JuMeiMall\SecondKill.cshtml" />
+    <Content Include="Views\PersonalCentre\MemberUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ecard.infrastructure\Ecard.Infrastructure.csproj">

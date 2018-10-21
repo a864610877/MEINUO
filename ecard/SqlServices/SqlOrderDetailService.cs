@@ -105,5 +105,11 @@ namespace Ecard.SqlServices
              string sql = "select  * from fz_OrderDetails  where orderNo=@orderNo";
              return new QueryObject<OrderDetail>(_databaseInstance, sql, new { orderNo = orderNo });
          }
+
+        public int DeleteOrderNo(string orderNo)
+        {
+            string sql = "delete from fz_OrderDetails  where orderNo=@orderNo";
+            return  _databaseInstance.ExecuteNonQuery(sql, new { orderNo = orderNo});
+        }
     }
 }

@@ -30,6 +30,7 @@
                    <div class="order_list_button am-text-right">
                        @if (item.orderState == Ecard.Models.OrderStates.awaitPay)
                        {
+                           <a href="javascript:void(0)" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
                            <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">立即支付</a>
                            <a href="" onclick="CancelOrder('@item.orderId')" class="bg_e6e6e6">取消订单</a>
                        }
@@ -39,11 +40,20 @@
                        else if (item.orderState == Ecard.Models.OrderStates.shipped)
                        {
 
-                        <a href="#" onclick="ConfirmReceipt('@item.orderId')" class="bg_e8bb67">确认收货</a>
+                           <a href="#" onclick="ConfirmReceipt('@item.orderId')" class="bg_e8bb67">确认收货</a>
                        }
                        else if (item.orderState == Ecard.Models.OrderStates.complete)
                        {
-                        <a href="/Commodity/AddReview?commodityId=@item.commodityId&orderNo=@item.orderNo" class="bg_e8bb67">评价</a>
+                           <a href="" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
+                           <a href="/Commodity/AddReview?commodityId=@item.commodityId&orderNo=@item.orderNo" class="bg_e8bb67">评价</a>
+                       }
+                       else if (item.orderState == Ecard.Models.OrderStates.cancel)
+                       {
+                           <a href="" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
+                       }
+                       else if (item.orderState == Ecard.Models.OrderStates.completePJ)
+                       {
+                           <a href="" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
                        }
                        <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
                    </div>
@@ -94,7 +104,7 @@
                 success: function (data) {
                     $.closeLoading();
                     if (data.Code == 0) {
-                        $.openDialog("取消成功");
+                        alert("取消成功");
                         window.location.reload();
                     }
                     else if (data.Code == -2) {
@@ -113,6 +123,35 @@
         
     }
 
+    function DeleteOrder(orderId) {
+        if (confirm("确定删除订单？")) {
+            $.openLoading("删除中");
+            $.ajax({
+                url: "/PersonalCentre/DeletelOrder",
+                data: { orderId: orderId },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    $.closeLoading();
+                    if (data.Code == 0) {
+                        alert("删除成功");
+                        window.location.reload();
+                    }
+                    else if (data.Code == -2) {
+                        $.openDialogUrl("请重新登录", data.Msg);
+                    }
+                    else {
+                        $.openDialog(data.Msg);
+                    }
+                },
+                error: function () {
+                    $.closeLoading();
+                    $.openDialog("系统异常，请检查网络");
+                }
+            });
+        }
+
+    }
 </script>
 @*<div class="border_list bgFFF mb5 am-container">
     <h2>订单状态：<span class="c_ab5555">未付款</span></h2>

@@ -33,10 +33,31 @@
         <li><a href="/JuMeiMall/JuMeiMallSearchIndex?commodityCategoryId=@Model.CateMallList[7].commodityCategoryId"><img src="/images/menu8.png" alt=""><p>@Model.CateMallList[7].Categoryname</p></a></li>
     </ul>
 </div>
-<div class="h_tit bgFFF am-container color_b59f76">
-    <h2>热销推荐<a href="#" class="am-fr">更多＞</a></h2>
+<div class="h_tit h_tit2 bgFFF am-container color_b59f76">
+    <h2>热销推荐<span class="am-fr"><a href="javascript:;" id="showType1" onclick="setTab('showType',1,2)"><img src="/images/shouType1.jpg" alt=""></a><a href="javascript:;" id="showType2" onclick="setTab('showType',2,2)"><img src="/images/shouType2.jpg" alt=""></a></span></h2>
 </div>
-<div class="h_proList">
+<div class="h_proList_sider" id="con_showType_1">
+
+    @if (Model.JuMeiMallExList != null && Model.JuMeiMallExList.Count > 0)
+    {
+        foreach (var item in Model.JuMeiMallExList)
+        {
+
+
+            <div class="h_proList_siderItme am-cf">
+                <a href="/JuMeiMall/GoodsDetails?id=@item.commodityId" class="simgBox"><img src="@item.images" alt=""></a>
+                <div class="n_shopsjInfo">
+                    <h2><a href="/JuMeiMall/GoodsDetails?id=@item.commodityId">@item.commodityName</a></h2>
+                </div>
+                <div class="s_addrs">
+                    <h3>￥@item.commodityPrice</h3>
+                    <p>积分：@item.commodityJifen</p>
+                </div>
+            </div>
+        }
+    }
+</div>
+<div class="h_proList" id="con_showType_2"  style="display:none;">
     <ul class="am-avg-sm-2 color_b59f76">
         @if (Model.JuMeiMallExList != null && Model.JuMeiMallExList.Count > 0)
         {
@@ -58,3 +79,14 @@
      
     </ul>
 </div>
+<script>
+    // 新增 18-10-14
+    function setTab(name, cursel, n) {
+        for (i = 1; i <= n; i++) {
+            var menu = document.getElementById(name + i);
+            var con = document.getElementById("con_" + name + "_" + i);
+            menu.className = i == cursel ? "hover" : "";
+            con.style.display = i == cursel ? "block" : "none";
+        }
+    }
+</script>
