@@ -140,11 +140,11 @@ namespace Ecard.Models
         /// </summary>
         public const int Member = 0;
         /// <summary>
-        /// 经理
+        /// 店主
         /// </summary>
         public const int Manager = 2;
         /// <summary>
-        /// 金牌经理
+        /// 店长
         /// </summary>
 
         public const int GoldMedalManager = 3;
@@ -152,13 +152,15 @@ namespace Ecard.Models
         public static string GetName(int value)
         {
             switch (value)
-            { 
+            {
+                case not:
+                    return "无";
                 case Member:
                     return "会员";
                 case Manager:
-                    return "经理";
+                    return "店长";
                 case GoldMedalManager:
-                    return "金牌经理";
+                    return "店主";
                 default:
                     return "无";
             }

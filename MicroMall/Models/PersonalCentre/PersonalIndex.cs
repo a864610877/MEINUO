@@ -29,6 +29,19 @@ namespace MicroMall.Models.PersonalCentre
         public decimal rebateAmount { get; set; }
 
         public int ID { get; set; }
+
+        /// <summary>
+        /// 总积分
+        /// </summary>
+        public decimal presentExp { get; set; }
+        /// <summary>
+        /// 可用于提）
+        /// </summary>
+        public decimal activatePoint { get; set; }
+        /// <summary>
+        /// 提现积分汇总
+        /// </summary>
+        public decimal withdrawPoint { get; set; }
     }
 
     public class PersonalIndexExpress: PersonalIndex

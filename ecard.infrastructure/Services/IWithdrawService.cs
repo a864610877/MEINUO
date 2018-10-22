@@ -18,6 +18,8 @@ namespace Ecard.Services
 
         DataTables<WithdrawModel> Query(WithdrawRequest request);
         DataTables<Withdraw> Query(UserWithdrawRequest request, string openId);
+
+        decimal GetUserIdPoint(int userId);
     }
 
     public class WithdrawRequest : PageRequest

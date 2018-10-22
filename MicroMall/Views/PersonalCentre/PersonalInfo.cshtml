@@ -24,9 +24,9 @@
 <div class="userInfo fs15">
     <ul>
         <li>推荐码<span class="am-fr"><input type="text" readonly="readonly" name="" value="@Model.orangeKey"></span></li>
-        <li>可提现积分<span class="am-fr"><input type="text" name="" value="@Model.activatePoint" readonly="readonly"></span></li>  <!-- 不可编辑加 readonly="readonly" -->
-        <li>总积分<span class="am-fr"><input type="text" name="" readonly="readonly" value="@Model.presentExp"></span></li>
-        <li>累计收益<span class="am-fr"><input type="text" name="user"  readonly="readonly"  onchange="updateUser()" value="@Model.presentExp">元</span></li>
+        <li>可提现积分<span class="am-fr"><input type="text" value="@Model.activatePoint" readonly="readonly"></span></li>  <!-- 不可编辑加 readonly="readonly" -->
+        <li>总积分<span class="am-fr"><input type="text"  readonly="readonly" value="@Model.presentExp"></span></li>
+        <li>累计收益<span class="am-fr"><input type="text"   readonly="readonly"  value="@Model.presentExp">元</span></li>
         <li>性别<span class="am-fr" id="sex"><input type="text" name="sex" data-value="" value="@Model.Genders" readonly="readonly" class="sex"></span></li>
         <div class="sexBox">
             <dl>
@@ -59,7 +59,7 @@
    });
     var updateUser = function () {
         var obj = {
-            user: $("input[name='user']").val(),
+            //user: "",
             sex: $(".sex").data("value") == "" ? 0 : parseInt($(".sex").data("value")),
             email: $("input[name='email']").val(),
             addreno: $("input[name='addreno']").val(),

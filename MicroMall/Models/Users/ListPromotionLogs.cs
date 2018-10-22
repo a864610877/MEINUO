@@ -19,6 +19,8 @@ namespace MicroMall.Models.Users
         public IOperationAmountLogsService OperationAmountLogsService { get; set; }
         [Dependency]
          public IAccountService AccountService { get; set; }
+        [Dependency]
+        public IWithdrawService WithdrawService { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -33,6 +35,15 @@ namespace MicroMall.Models.Users
 
         public decimal presentExp { get; set; }
 
+        /// <summary>
+        /// 可用于提）
+        /// </summary>
+        public decimal activatePoint { get; set; }
+        /// <summary>
+        /// 提现积分汇总
+        /// </summary>
+        public decimal withdrawPoint { get; set; }
+
         public void reayd()
         {
             RecommendLogs = new ListPromotionLog();
@@ -40,22 +51,29 @@ namespace MicroMall.Models.Users
         }
         public void Query(int userId)
         {
-           var request = new MemberRecommendLogRequest();
-           request.salerId = userId;
-           request.PageSize = 1000;
-           var query = RecommendLogService.MemberQuery(request);
+            //var request = new MemberRecommendLogRequest();
+            //request.salerId = userId;
+            //request.PageSize = 1000;
+            var account = AccountService.GetByUserId(userId);
+            var query = RecommendLogService.GetList(account.accountId);
            if(query!=null)
            {
-               RecommendLogs.List = query.ModelList.Select(x => new PromotionModel() { submitTime = x.submitTime.ToString(), Name = string.Format("推荐会员{0}成功", x.userName) }).ToList();
-               Page(request.PageIndex, request.PageSize, query.TotalCount, RecommendLogs);
+               RecommendLogs.List = query.Select(x => new PromotionModel() {  Name = x.DisplayName,value=x.grade.ToString(),tj=x.tj }).ToList();
+               //Page(request.PageIndex, request.PageSize, query.TotalCount, RecommendLogs);
            }
-           var account=AccountService.GetByUserId(userId);
+          
            presentExp = account.presentExp;
+           activatePoint = account.activatePoint;
            grade = AccountGrade.GetName(account.grade);
+           withdrawPoint = WithdrawService.GetUserIdPoint(account.userId);
            var query1 = RebateLogService.GetRebateLog(account.accountId);
            if(query1!=null)
            {
-               PointLogs.List = query1.Select(x => new PromotionModel() { value=x.reateAmount.ToString(), submitTime = x.submitTime.ToString(), Name = string.Format("来自{0}的消费", x.DisplayName) }).ToList();
+                PointLogs.List = query1.Select(x => new PromotionModel() {
+                    value = x.reateAmount.ToString(), submitTime = x.submitTime.ToString(),
+                    Name = string.Format("来自{0}的会员佣金", x.DisplayName),
+                    type = x.type == RebateType.zero ? "" : x.type == RebateType.one ? "会员分享奖励" : x.type == RebateType.two ? "店长分享奖励" : x.type == RebateType.three ? "店主分享奖励" : ""
+               }).ToList();
               // Page(request1.PageIndex, request1.PageSize, query1.TotalCount, PointLogs);
            }
         }

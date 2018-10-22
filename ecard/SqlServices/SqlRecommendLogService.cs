@@ -76,5 +76,13 @@ namespace Ecard.SqlServices
             int.TryParse(item, out count);
             return count;
         }
+
+        public List<RecommendLogss> GetList(int accountId)
+        {
+            string sql = @"select ('直推：'+DisplayName) as  DisplayName,grade,0 as tj from fz_Accounts a join Users u on a.userId=u.UserId   where salerId=@accountId 
+                           union all
+                           select ('二级推荐：'+DisplayName) as  DisplayName,grade,1 as tj from fz_Accounts a join Users u on a.userId=u.UserId where salerId in (select a1.accountId from fz_Accounts a1  where salerId=@accountId )";
+            return new QueryObject<RecommendLogss>(_databaseInstance, sql, new { accountId = accountId }).ToList();
+        }
     }
 }

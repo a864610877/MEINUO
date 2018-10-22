@@ -38,4 +38,6 @@ namespace Ecard.Models
         /// </summary>
         public DateTime submitTime { get; set; }
     }
+
+    
 }

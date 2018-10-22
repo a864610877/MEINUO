@@ -42,14 +42,12 @@
     {
         foreach (var item in Model.JuMeiMallExList)
         {
-
-
             <div class="h_proList_siderItme am-cf">
                 <a href="/JuMeiMall/GoodsDetails?id=@item.commodityId" class="simgBox"><img src="@item.images" alt=""></a>
                 <div class="n_shopsjInfo">
                     <h2><a href="/JuMeiMall/GoodsDetails?id=@item.commodityId">@item.commodityName</a></h2>
                 </div>
-                <div class="s_addrs">
+                <div class="s_addrs2">
                     <h3>￥@item.commodityPrice</h3>
                     <p>积分：@item.commodityJifen</p>
                 </div>

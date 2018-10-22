@@ -113,8 +113,7 @@ namespace MicroMall.Controllers
                         account.openID = userInfo.openid;
                         user.Photo = userInfo.headimgurl.Replace("/0", "/132");
                         MembershipService.UpdateUser(user);
-                        IAccountService.Update(account);
-                        
+                        IAccountService.Update(account);                        
                     }
                     catch (Exception ex)
                     {
@@ -132,6 +131,10 @@ namespace MicroMall.Controllers
                 request.photo = string.IsNullOrWhiteSpace(user.Photo) ? "" : user.Photo;
                 request.name =user.DisplayName;
                 request.grade = AccountGrade.GetName(account.grade);
+                request.presentExp = account.presentExp;
+                request.activatePoint = account.activatePoint;
+                decimal wpoint = WithdrawService.GetUserIdPoint(account.userId);
+                request.withdrawPoint = wpoint;
                 return View(request);
                 //request.saleAmount = IAccountService.SaleAmount(user.accountId, 0);
                 //request.rebateAmount = IRebateService.GetRebateAmount(user.accountId);
@@ -911,7 +914,7 @@ namespace MicroMall.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePersonalInfo(string user,int sex,string email,string addreno)
+        public ActionResult UpdatePersonalInfo(int sex,string email,string addreno)
         {
             if (Request.Cookies[SessionKeys.USERID] == null || Request.Cookies[SessionKeys.USERID].Value.ToString() == "")
             {
@@ -924,13 +927,11 @@ namespace MicroMall.Controllers
             if (userId <= 0)
                 return RedirectToAction("Index", "login");
             var userModel = MembershipService.GetUserById(userId);
-            if (user == null)
-                return RedirectToAction("Index", "login");
+            
             var account = IAccountService.GetByUserId(userId);
             if (account == null)
                 return Content("账号异常，请联系管理员！");
             userModel.Gender = sex;
-            userModel.DisplayName = user;
             userModel.Email = email;
             int userAddressId = account.defaultAddressId;
             UserAddress address= UserAddressService.GetById(userAddressId);

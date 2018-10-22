@@ -32,6 +32,19 @@ namespace Ecard.Services
         int RecommendCount(string UserName);
         DataTables<RecommendLog> MemberQuery(MemberRecommendLogRequest request);
 
+        List<RecommendLogss> GetList(int userId);
+       
+
+    }
+    public class RecommendLogss
+    {
+        public string DisplayName { get; set; }
+
+        public int grade { get; set; }
+        /// <summary>
+        /// 0直推 1二级推荐
+        /// </summary>
+        public int tj { get; set; }
     }
 }
 

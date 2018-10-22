@@ -51,9 +51,21 @@ namespace Ecard.Models
 
     public class RebateType
     {
-        public const int zero = 0;
+        /// <summary>
+        /// 普通会员
+        /// </summary>
+        public const int zero = -1;
+        /// <summary>
+        /// vip会员
+        /// </summary>
         public const int one = 1;
+        /// <summary>
+        /// 店长
+        /// </summary>
         public const int two = 2;
+        /// <summary>
+        /// 店主
+        /// </summary>
         public const int three = 3;
     }
 

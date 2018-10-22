@@ -13,32 +13,145 @@
         分销纪录
     </h1>
 </header>
-<div class="jifenSidea bgFFF am-container mb5">
+@*<div class="jifenSidea bgFFF am-container mb5">
     <span><b>@Model.presentExp</b>积分</span>
     <span class="user_dj am-fr">等级：@Model.grade</span>
+</div>*@
+<div class="userImgBox bgFFF mb5 am-container">
+    <ul class="am-avg-sm-3 am-text-center fs14 am-padding-vertical-sm border_t" style="border-top:0;">
+        <li>
+            <a href="#">
+                <img src="/images/jifen.png" alt="" width="30">
+                <p class="y_num">@Model.presentExp</p>
+                <p>总积分</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="/images/yitixian.png" alt="" width="30">
+                <p class="y_num">@Model.withdrawPoint</p>
+                <p>已提现</p>
+            </a>
+        </li>
+        <li>
+            <a href="/Withdraw/Withdraw">
+                <img src="/images/tixian.png" alt="" width="30">
+                <p class="y_num">@Model.activatePoint</p>
+                <p>积分提现</p>
+            </a>
+        </li>
+    </ul>
 </div>
 <div class="jifenMax2">
     <div class="hd">
         <ul class="jifen_tab bgFFF fs15 am-text-center am-avg-sm-2">
-            <li><a href="#">我的推荐</a></li>
-            <li class="on"><a href="#">购买记录</a></li>
+            <li><a href="#">我的团队</a></li>
+            <li class="on"><a href="#">分享记录</a></li>
         </ul>
     </div>
     <div class="bd">
         <ul>
-            @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
-            {
-                foreach (var item in Model.RecommendLogs.List)
-                { 
-                       <div class="jifen_lists bgFFF am-container">
-                        <span></span>
-                        <h2>@item.Name</h2>
-                        <p>@item.submitTime</p>
-                      </div>
-                 @*<div class="am-text-center am-padding-vertical-lg"><a class="am-btn am-btn-default am-btn-raduis">加载更多</a></div>*@
-                }
-            }
+            <div class="mytji bgFFF am-container am-padding-bottom-sm" style="margin-top:2px;">
+                <h2>总人数：@(Model.RecommendLogs != null ? Model.RecommendLogs.List.Count : 0)人　　直推人数：@(Model.RecommendLogs != null ? Model.RecommendLogs.List.Where(x=>x.tj==0).Count() : 0)人</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>VIP会员</th>
+                            <th>店长</th>
+                            <th>店主</th>
+                            <th>普通会员</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
+                        {
+                            var pt = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.not.ToString()).ToList();
+                            var vip = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.Member.ToString()).ToList();
+                            var shopowner = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.Manager.ToString()).ToList();
+                            var shopkeeper = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.GoldMedalManager.ToString()).ToList();
+
+                            int max = pt.Count;
+                            if (max < vip.Count)
+                            {
+                                max = vip.Count;
+                            }
+                            if (max < shopowner.Count)
+                            {
+                                max = shopowner.Count;
+                            }
+
+                            if (max < shopkeeper.Count)
+                            {
+                                max = shopkeeper.Count;
+                            }
+                            for (int i = 0; i < max; i++)
+                            {
+                                <tr>
+                                    @if (vip.Count > i)
+                                    {
+                                        <td>@vip[i].Name</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+
+                                    @if (shopowner.Count > i)
+                                    {
+                                        <td>@shopowner[i].Name</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+
+                                    @if (shopkeeper.Count > i)
+                                    {
+                                        <td>@shopkeeper[i].Name</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                    @if (pt.Count > i)
+                                    {
+                                        <td>@pt[i].Name</td>
+                                    }
+                                    else
+                                    {
+                                        <td></td>
+                                    }
+                                </tr>
+                            }
+
+                        }
+
+                        @*<tr>
+            <td>直推：admin</td>
+            <td>直推：admin</td>
+            <td>直推：admin</td>
+            <td>直推：admin</td>
+        </tr>
+        <tr>
+            <td>二级推荐：admin</td>
+            <td>二级推荐：admin</td>
+            <td>二级推荐：admin</td>
+            <td>二级推荐：admin</td>
+        </tr>
+        <tr>
+            <td>二级推荐：admin</td>
+            <td>二级推荐：admin</td>
+            <td>二级推荐：admin</td>
+            <td>二级推荐：admin</td>
+        </tr>*@
+                    </tbody>
+                    </table>
+            </div>
+
+
            
+
         </ul>
         <ul>
             @if (Model.PointLogs != null && Model.PointLogs.List.Count > 0)
@@ -47,9 +160,16 @@
                 {
                     <div class="jifen_lists bgFFF am-container">
                         <span>+@item.value</span>
-                        <h2>@item.Name</h2>
+                        <h2>@item.type</h2>
+                        <h4>@item.Name</h4>
                         <p>@item.submitTime</p>
                     </div>
+
+                    @*<div class="jifen_lists bgFFF am-container">
+                    <span>+@item.value</span>
+                    <h2>@item.Name</h2>
+                    <p>@item.submitTime</p>
+                </div>*@
                     @*<div class="am-text-center am-padding-vertical-lg"><a class="am-btn am-btn-default am-btn-raduis">加载更多</a></div>*@
                 }
             }

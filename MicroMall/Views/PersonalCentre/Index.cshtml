@@ -19,16 +19,25 @@
     <div class="userTxInfo align-center-vertical">
         <h2><b>@Model.name</b> <span><img src="/images/huangguang.png" width="22"></span><p>等级：@Model.grade</p></h2>
     </div>
-    <ul class="am-avg-sm-2 am-text-center fs14 am-padding-vertical-sm border_t">
+    <ul class="am-avg-sm-3 am-text-center fs14 am-padding-vertical-sm border_t">
         <li>
             <a href="#">
                 <img src="/images/jifen.png" alt="" width="30">
+                <p class="y_num">@Model.presentExp</p>
                 <p>我的积分</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="/images/yitixian.png" alt="" width="30">
+                <p class="y_num">@Model.withdrawPoint</p>
+                <p>已提现</p>
             </a>
         </li>
         <li>
             <a href="/Withdraw/Withdraw">
                 <img src="/images/tixian.png" alt="" width="30">
+                <p class="y_num">@Model.activatePoint</p>
                 <p>积分提现</p>
             </a>
         </li>
