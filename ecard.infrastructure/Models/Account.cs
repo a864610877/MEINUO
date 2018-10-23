@@ -136,7 +136,7 @@ namespace Ecard.Models
         /// </summary>
         public const int not = -1;
         /// <summary>
-        /// 会员
+        /// vip会员
         /// </summary>
         public const int Member = 0;
         /// <summary>
@@ -156,7 +156,7 @@ namespace Ecard.Models
                 case not:
                     return "无";
                 case Member:
-                    return "会员";
+                    return "vip会员";
                 case Manager:
                     return "店长";
                 case GoldMedalManager:

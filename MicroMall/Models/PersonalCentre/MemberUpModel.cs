@@ -8,7 +8,7 @@ namespace MicroMall.Models.PersonalCentre
     public class MemberUpModel
     {
         public MemberUpModel() { }
-        public MemberUpModel(string mobile="", decimal member=118,decimal shopowner=238,decimal shopkeeper=358)
+        public MemberUpModel(string mobile="", decimal member= MemberUpPirce.member, decimal shopowner= MemberUpPirce.shopowner, decimal shopkeeper= MemberUpPirce.shopkeeper)
         {
             Mobile = mobile;
             Member = member;
@@ -25,5 +25,21 @@ namespace MicroMall.Models.PersonalCentre
         /// 店主
         /// </summary>
         public decimal Shopkeeper { get; set; }
+    }
+
+    public class MemberUpPirce
+    {
+        /// <summary>
+        /// vip会员
+        /// </summary>
+        public const decimal member = 118;
+        /// <summary>
+        /// 店长
+        /// </summary>
+        public const decimal shopowner = 238;
+        /// <summary>
+        /// 店主
+        /// </summary>
+        public const decimal shopkeeper = 358;
     }
 }

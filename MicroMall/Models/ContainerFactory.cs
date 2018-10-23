@@ -100,6 +100,7 @@ namespace MicroMall.Models
                 .RegisterType<IRebateLogService,SqlRebateLogService>()
                 .RegisterType<ISecondKillSetService,SqlSecondKillSetService>()
                 .RegisterType<ISecondKillCommoditysService, SqlSecondKillCommoditysService>()
+                .RegisterType<IPayOrderService,SqlPayOrderService>()
                 .RegisterType<IDashboardItemRepository, DashboardItemRepository>(new ContainerControlledLifetimeManager())
                 .RegisterType<IRegisterRoutes, EcardRoutes>(
                     new InjectionConstructor(

@@ -25,7 +25,13 @@ namespace MicroMall.Controllers
         JsApiPay jsApiPay = new JsApiPay();
         public ActionResult Index()
         {
-            return View();
+            HttpCookie cookie = new HttpCookie(SessionKeys.USERID, "1012");
+            Response.Cookies.Add(cookie);
+            Session[SessionKeys.USERID] = "1012";
+            return RedirectToAction("index", "PersonalCentre");
+            //string redirect_uri = Server.UrlEncode(System.Configuration.ConfigurationManager.AppSettings["USERLOGIN_NOTIFY_URL"].ToString());
+            //string url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + WxPayConfig.APPID + "&redirect_uri=" + redirect_uri + "&response_type=code&scope=snsapi_userinfo&state=#wechat_redirect";
+            //return Redirect(url);
         }
 
 
@@ -100,7 +106,6 @@ namespace MicroMall.Controllers
             //jsApiPay.GetOpenidAndAccessTokenFromCode(code);
             if (string.IsNullOrEmpty(code))
             {
-                //return Json(new ResultMessage() { Code = -1, Msg = "参数错误，请联系管理员！" });
                 return Content("您拒绝了授权！");
             }
             OAuthAccessTokenResult result = null;
@@ -128,73 +133,39 @@ namespace MicroMall.Controllers
                 if (user == null)
                 {
                     OAuthUserInfo userInfo = Senparc.Weixin.MP.AdvancedAPIs.OAuthApi.GetUserInfo(result.access_token, result.openid);
-                    user = new Account();
-                    user.gender = userInfo.sex;
-                    user.name = userInfo.nickname;
-                    user.openID = openid;
-                    user.state = AccountStates.Normal;
-                    user.submitTime = DateTime.Now;
-                    //WxPayAPI.Log.Info(this.GetType().ToString(), string.Format("---头像:{0}---", userInfo.headimgurl));
-                    user.photo = userInfo.headimgurl.Replace("/0", "/132");
-                    //WxPayAPI.Log.Info(this.GetType().ToString(), user.gender+";"+user.name+";"+user.openID+";"+user.state+";"+user.photo);
-                    //return Redirect(string.Format("/WeChatViews/i-banding.html?openid={0}&name={1}&photo={2}", openid, userInfo.nickname, userInfo.headimgurl.Replace("/0", "/132")));
-                    if (IAccountService.Insert(user) > 0)
-                    {
-                        Session["openid"] = openid;
-                        Session["accountId"] = user.accountId;
-                        return Redirect(string.Format("/WeChatViews/i-banding.html?openid={0}&name={1}&photo={2}", openid,System.Web.HttpUtility.UrlEncode(userInfo.nickname), userInfo.headimgurl.Replace("/0", "/132")));
-                        //if (state == "1")
-                        //    return Redirect("/WeChatViews/JuMeiMallIndex.html?id=" + user.accountId);
-                        //else if (state == "2")
-                        //    return Redirect("/WeChatViews/PersonalCentre.html?id=" + user.accountId);
-                        //else if (state == "3")
-                        //    return Redirect("/WeChatViews/MyOrder.html?id=" + user.accountId);
-                        //else if (state == "4")
-                        //{
-                        //    return Redirect("/WeChatViews/MyTeam.html?id=" + user.accountId);
-                        //}
-                        //else if (state == "5")
-                        //{
-                        //    return Redirect("/WeChatViews/AdressSetting.html?id=" + user.accountId);
-                        //}
-                        //else if (state == "6")
-                        //{
-                        //    return Redirect("/WeChatViews/AdressSetting.html?id=" + user.accountId);
-                        //}
-                        //else
-                        //    return Redirect("/WeChatViews/JuMeiMallIndex.html?id=" + user.accountId);
-                    }
+                    AccountUser modelUser = new AccountUser();
+                    modelUser.Address = "";
+                    modelUser.DisplayName = userInfo.nickname;
+                    modelUser.Email = "";
+                    modelUser.Gender = userInfo.sex;
+                    modelUser.Mobile = "";
+                    modelUser.Name = userInfo.openid;
+                    modelUser.Photo = userInfo.headimgurl.Replace("/0", "/132");
+                    //modelUser.SetPassword(Password);
+                    modelUser.State = UserStates.Normal;
+                    MembershipService.CreateUser(modelUser);
+                    Account modelAccount = new Account();
+                    modelAccount.activatePoint = 0;
+                    modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                    modelAccount.openID = userInfo.openid;
+                    modelAccount.salerId = 0;
+                    modelAccount.state = AccountStates.Normal;
+                    modelAccount.submitTime = DateTime.Now;
+                    modelAccount.userId = modelUser.UserId;
+                    modelAccount.grade = AccountGrade.not;
+                    IAccountService.Insert(modelAccount);
+                    HttpCookie cookie = new HttpCookie(SessionKeys.USERID, modelUser.UserId.ToString());
+                    Response.Cookies.Add(cookie);
+                    Session[SessionKeys.USERID] = modelUser.UserId;
                 }
                 else
                 {
-                    OAuthUserInfo userInfo = Senparc.Weixin.MP.AdvancedAPIs.OAuthApi.GetUserInfo(result.access_token, result.openid);
-                    Session["openid"] = openid;
-                    Session["accountId"] = user.accountId;
-                    user.photo = userInfo.headimgurl.Replace("/0", "/132");
-                    user.name = userInfo.nickname;
-                    IAccountService.Update(user);
-                    if (string.IsNullOrWhiteSpace(user.mobile))
-                    {
-                        //未绑定手机号，跳转绑定手机号
-                        return Redirect(string.Format("/WeChatViews/i-banding.html?openid={0}&name={1}&photo={2}", openid, System.Web.HttpUtility.UrlEncode(userInfo.nickname), userInfo.headimgurl.Replace("/0", "/132")));
-                    }
-                    if (state == "1")
-                        return Redirect("/WeChatViews/index.html?id=" + user.accountId);
-                    else if (state == "2")
-                        return Redirect("/WeChatViews/i.html?id=" + user.accountId);
-                    else if (state == "3")
-                        return Redirect("/WeChatViews/i.html?id=" + user.accountId);
-                    else if (state == "4")
-                        return Redirect("/WeChatViews/i.html?id=" + user.accountId);
-                    else if (state == "5")
-                    {
-                        return Redirect("/WeChatViews/i.html?id=" + user.accountId);
-                    }
-                    else
-                        return Redirect("/WeChatViews/index.html?id=" + user.accountId);
-
+                    var modelUser = MembershipService.GetUserById(user.userId);
+                    HttpCookie cookie = new HttpCookie(SessionKeys.USERID, modelUser.UserId.ToString());
+                    Response.Cookies.Add(cookie);
+                    Session[SessionKeys.USERID] = modelUser.UserId;
                 }
-                return Content("授权失败！");
+                return RedirectToAction("index", "PersonalCentre");
             }
             catch (Exception ex)
             {

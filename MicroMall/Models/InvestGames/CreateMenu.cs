@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using WxPayAPI;
 
 namespace MicroMall.Models.InvestGames
 {
@@ -64,23 +65,20 @@ namespace MicroMall.Models.InvestGames
 
         public string MpCreate()
         {
-            var set = SetWeChatService.GetById(1);
-            var access_token = AccessTokenContainer.GetToken(set.appID);// Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(set.appID, set.AppSecret).access_token;
-           
+            //var set = SetWeChatService.GetById(1);
+            var access_token = AccessTokenContainer.GetToken(WxPayConfig.APPID);// Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(set.appID, set.AppSecret).access_token;          
             ButtonGroup bg = new ButtonGroup();
-            bg.button.Add(new SingleClickButton
+            bg.button.Add(new SingleViewButton
             { 
-              name="我要注册",
-              key = "Register",
-              type = ButtonType.click.ToString(),
-              //url = "http://www.baidu.com/",
+              name="微信商城",
+              type = ButtonType.view.ToString(),
+              url =System.Configuration.ConfigurationManager.AppSettings["wxUrl"].ToString(),
             });
             bg.button.Add(new SingleViewButton()
             {
-                name = "微商城",
-                //key = "OneClick",
+                name = "秒杀专区",
                 type = ButtonType.view.ToString(),
-                url = "http://shop.leipengcar.com/",
+                url = System.Configuration.ConfigurationManager.AppSettings["wxUrl1"].ToString(),
             });
             var result = Senparc.Weixin.MP.CommonAPIs.CommonApi.CreateMenu(access_token, bg);
             return result.errmsg;

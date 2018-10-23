@@ -177,6 +177,7 @@
     <Compile Include="SqlServices\SqlOrangeKeyAndopenIDService.cs" />
     <Compile Include="SqlServices\SqlOrderDetailService.cs" />
     <Compile Include="SqlServices\SqlOrderService.cs" />
+    <Compile Include="SqlServices\SqlPayOrderService.cs" />
     <Compile Include="SqlServices\SqlProvinceService.cs" />
     <Compile Include="SqlServices\SqlRebateLogService.cs" />
     <Compile Include="SqlServices\SqlRebateService.cs" />

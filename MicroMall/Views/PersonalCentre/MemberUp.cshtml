@@ -25,11 +25,11 @@
     <ul>
         <li><span>手机号</span><input type="text" name="mobile" id="mobile"  value="@Model.Mobile"   @(string.IsNullOrWhiteSpace(Model.Mobile)?"":"disabled") placeholder="请输入手机号"></li>
         <li><span>请选择会员等级</span></li>
-        <li><span>会员等级</span><label><samp class="xz on" value="member" >会员</samp><samp class="xz " value="shopowner">店长</samp><samp class="xz" value="shopkeeper">店主</samp></label></li>
+        <li><span>会员等级</span><label><samp class="xz on" value="member" >vip会员</samp><samp class="xz " value="shopowner">店长</samp><samp class="xz" value="shopkeeper">店主</samp></label></li>
         <li><span>付费金额</span><label><samp class="xz on" value="member">@Model.Member</samp><samp class="xz" value="shopowner">@Model.Shopowner</samp><samp class="xz" value="shopkeeper">@Model.Shopkeeper</samp></label></li>
     </ul>
     <div class="am-container am-padding-vertical-xl">
-        <input type="button" value="支付" class="upBtn" />
+        <input type="button" value="支付" onclick="pay()" class="upBtn" />
     </div>
 </div>
 <script>
@@ -42,5 +42,36 @@
             $("[value='" + value + "']").addClass("on");
         });
     });
+
+    function pay() {
+        var item = $(".on").attr("value");
+        if (item == "") {
+            $.openDialog("页面错误，请重新进入");
+            return;
+        }
+        $.openLoading("支付中");
+        $.ajax({
+            url: "/PersonalCentre/MemberUpPlace",
+            data: { item: item},
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                $.closeLoading();
+                if (data.Code == 0) {
+                    $.webChatPay(data.Msg);
+                }
+                else if (data.Code == -2) {
+                    window.location.href = data.Msg;
+                }
+                else {
+                    $.openDialog(data.Msg);
+                }
+            },
+            error: function () {
+                $.closeLoading();
+                $.openDialog("系统异常，请检查忘了");
+            }
+        });
+    }
 
 </script>

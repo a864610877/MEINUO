@@ -172,16 +172,7 @@ namespace MicroMall.Models.Regists
                 modelAccount.submitTime = DateTime.Now;
                 modelAccount.userId = modelUser.UserId;
                 modelAccount.grade = AccountGrade.not;
-                //modelAccount.withdrawPoint = 0;
-                
                 AccountService.Insert(modelAccount);
-                //OperationPointLog log = new OperationPointLog();
-                //log.account = OperationPointLogTypes.presentExp;
-                //log.point = site.givePoint;
-                //log.remark = "注册赠送";
-                //log.submitTime = DateTime.Now;
-                //log.userId = modelAccount.userId;
-                //OperationPointLogService.Insert(log);
                 if (salerId > 0)
                 {
                     RecommendLog recommendlog = new RecommendLog();
@@ -191,18 +182,6 @@ namespace MicroMall.Models.Regists
                     recommendlog.userId = modelUser.UserId;
                     recommendlog.userName = Mobile;
                     RecommendLogService.Insert(recommendlog);
-                    //if (site.recommendPoint > 0)
-                    //{
-                    //    //saleAccont.notActivatePoint += site.recommendPoint;
-                    //    OperationPointLog pointlog = new OperationPointLog();
-                    //    pointlog.account = OperationPointLogTypes.notActivatePoint;
-                    //    pointlog.point = site.recommendPoint;
-                    //    pointlog.remark = string.Format("推荐会员{0}", modelUser.DisplayName);
-                    //    pointlog.submitTime = DateTime.Now;
-                    //    pointlog.userId = saleAccont.userId;
-                    //    OperationPointLogService.Insert(pointlog);
-                    //    AccountService.Update(saleAccont);
-                    //}
                 }
                 TransactionHelper.Commit();
                 return new ResultMessage() { Code = 0 };

@@ -153,6 +153,7 @@
     <Compile Include="Models\IPageOfList.cs" />
     <Compile Include="Models\IRecordVersion.cs" />
     <Compile Include="Models\OperationPointLogModel.cs" />
+    <Compile Include="Models\PayOrder.cs" />
     <Compile Include="Models\RecommendLogModel.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\SecondKillCommoditys.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Services\IJuMeiMallService.cs" />
     <Compile Include="Services\IMessagesService.cs" />
     <Compile Include="Services\IOperationAmountLogsService.cs" />
+    <Compile Include="Services\IPayOrderService.cs" />
     <Compile Include="Services\IRebateLogService.cs" />
     <Compile Include="Services\IRebateService.cs" />
     <Compile Include="Services\IRecommendLogService.cs" />

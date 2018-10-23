@@ -29,6 +29,7 @@ namespace WxPayAPI
         private readonly ISiteService ISiteService;
         private readonly IOperationAmountLogsService IOperationAmountLogsService;
         private readonly ILog4netService ILog4netService;
+        private readonly IPayOrderService payOrderService;
 
         
         public IRebateService IRebateService { get; set; }
@@ -41,6 +42,7 @@ namespace WxPayAPI
             IAccountService = new SqlAccountService(_database.OpenInstance());
             IOperationAmountLogsService = new SqlOperationAmountLogsService(_database.OpenInstance(), IAccountService, ISiteService);
             IRebateService = new SqlRebateService(_database.OpenInstance(), IAccountService, ISiteService, IOperationAmountLogsService, ILog4netService);
+            payOrderService = new SqlPayOrderService(_database.OpenInstance());
         }
 
         public override void ProcessNotify()
@@ -90,6 +92,7 @@ namespace WxPayAPI
                                 var item = new QueryObject<Ecard.Models.Order>(_databaseInstance, sql, new { orderNo = orderNo }).FirstOrDefault();
                                 if (item != null)
                                 {
+                                    #region 商城订单
                                     if (item.payState == Ecard.Models.PayStates.non_payment && item.orderState == Ecard.Models.OrderStates.awaitPay)
                                     {
                                         decimal amount = 0;
@@ -137,6 +140,30 @@ namespace WxPayAPI
                                             page.Response.End();
                                         }
                                     }
+                                    #endregion
+                                }
+                                else
+                                {
+                                    #region payorder 订单
+                                    var sqlPayOrder = "select * from PayOrder where orderNo=@orderNo";
+                                    var payOrder = new QueryObject<Ecard.Models.PayOrder>(_databaseInstance, sqlPayOrder, new { orderNo = orderNo }).FirstOrDefault();
+                                    if (payOrder != null)
+                                    {
+                                        if (payOrder.orderState == PayOrderStates.awaitPay)
+                                        {
+                                            payOrder.orderState = PayOrderStates.paid;
+                                            payOrder.payTime = DateTime.Now;
+                                            _databaseInstance.Update(payOrder, "PayOrder");
+                                            
+                                            if (payOrder.orderType == PayOrderTypes.MmeberUp)
+                                            {
+                                                #region 会员升级订单
+                                                 //返利
+                                                #endregion
+                                            }
+                                        }
+                                    }
+                                    #endregion
                                 }
 
                             }

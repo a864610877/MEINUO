@@ -23,6 +23,8 @@ using WxPayAPI;
 using System.Transactions;
 using Common;
 using Newtonsoft.Json;
+using Senparc.Weixin.MP.CommonAPIs;
+using System.Net;
 
 namespace MicroMall.Controllers
 {
@@ -54,7 +56,8 @@ namespace MicroMall.Controllers
         public IUserAddressService UserAddressService { get; set; }
         [Dependency, NoRender]
         public ISecondKillCommoditysService ISecondKillCommoditysService { get; set; }
-
+        [Dependency, NoRender]
+        public IPayOrderService PayOrderService { get; set; }
         public PersonalCentreController(IAccountService IAccountService, IGradesService IGradesService, IRebateService IRebateService, IUnityContainer _container,
             IOrderDetailService IOrderDetailService, ICommodityService ICommodityService, IOperationAmountLogsService OperationAmountLogsService,
             IWithdrawService WithdrawService, ISiteService ISiteService,IMessagesService IMessagesService)
@@ -909,8 +912,6 @@ namespace MicroMall.Controllers
                 return Content("系统错误，请联系管理员！");
                 // return Json(new ResultMessage() { Code = -1, Msg = "系统错误，请联系管理员" });
             }
-
-            
         }
 
         [HttpPost]
@@ -1213,15 +1214,35 @@ namespace MicroMall.Controllers
             var account = IAccountService.GetByUserId(userId);
             if (account == null)
                 return Json(new ResultMessage() { Code = -1, Msg = "账号异常，请联系管理员" });
-            string url = site.Url + "/Regists/Regist?orangeKey=" + account.orangeKey + "&dd";// + HttpUtility.UrlEncode("id=" + account.userId + "");
-            string path="";
-            var ms = new MemoryStream();
-            if (QRCodeHelper.GetQRCode(url, ms))
+            if(!string.IsNullOrWhiteSpace(account.qrCodeUrl))
+                return Json(new ResultMessage() { Code = 0, Msg = account.qrCodeUrl });
+            string url = "";
+            if (string.IsNullOrWhiteSpace(account.ticket))
             {
-                Image image = Image.FromStream(ms);
-                path = "/QrCodeImages/Qr/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
-                image.Save(Server.MapPath(path));
+                var access_token = AccessTokenContainer.GetToken(WxPayConfig.APPID);
+                var reult = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.CreateByStr(access_token, account.orangeKey, 5000);
+                account.ticket = reult.ticket;
+                url = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.GetShowQrCodeUrl(account.ticket);
             }
+            else if (string.IsNullOrWhiteSpace(account.qrCodeUrl))
+            {
+                url = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.GetShowQrCodeUrl(account.ticket);
+            }
+            //return Json(new ResultMessage() { Code = 0, Msg = account.qrCodeUrl });
+
+
+
+           // url = site.Url + "/Regists/Regist?orangeKey=" + account.orangeKey + "&dd";// + HttpUtility.UrlEncode("id=" + account.userId + "");
+            string path = "";
+            path = "/QrCodeImages/Qr/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
+            SavePhotoFromUrl(path, url);
+            //var ms = new MemoryStream();
+            //if (QRCodeHelper.GetQRCode(url, ms))
+            //{
+            //    Image image = Image.FromStream(ms);
+            //    path = "/QrCodeImages/Qr/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
+            //    image.Save(Server.MapPath(path));
+            //}
             Image imgBack = System.Drawing.Image.FromFile(Server.MapPath("/images/PosterBack.jpg"));     //相框图片  
             Image img = System.Drawing.Image.FromFile(Server.MapPath(path));
             Bitmap map = new Bitmap(imgBack, new Size(imgBack.Width, imgBack.Height));//照片图片
@@ -1284,7 +1305,19 @@ namespace MicroMall.Controllers
             return filename;//返回相对路径
         }
 
-
+        public bool SavePhotoFromUrl(string path, string Url)
+        {
+            HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create(Url);
+            HttpWebResponse webresponse = (HttpWebResponse)webrequest.GetResponse();
+            if (webresponse.StatusCode == HttpStatusCode.OK)
+            {
+                System.Drawing.Image image = System.Drawing.Image.FromStream(webresponse.GetResponseStream());
+                image.Save(Server.MapPath(path)); //保存在本地文件夹
+                image.Dispose(); //释放资源
+            }
+            return true;
+            
+        }
         public Bitmap GetImageFromBase64(string base64string)
         {
             byte[] b = Convert.FromBase64String(base64string);
@@ -1330,6 +1363,77 @@ namespace MicroMall.Controllers
                 return RedirectToAction("Index", "login");
             var result = new MemberUpModel(user.Mobile);
             return View(result);
+        }
+        [HttpPost]
+        public ActionResult MemberUpPlace(string item)
+        {
+            if (Request.Cookies[SessionKeys.USERID] == null || Request.Cookies[SessionKeys.USERID].Value.ToString() == "")
+            {
+                return Json(new ResultMessage() { Code = -2, Msg = "/login/Index" });
+            }
+            var strId = Request.Cookies[SessionKeys.USERID].Value.ToString();
+            int userId = 0;
+            int.TryParse(strId, out userId);
+            if (userId <= 0)
+                return Json(new ResultMessage() { Code = -2, Msg = "/login/Index" });
+            var user = MembershipService.GetUserById(userId);
+            if (user == null)
+                return Json(new ResultMessage() { Code = -2, Msg = "/login/Index" });
+            var account = IAccountService.GetByUserId(userId);
+            if (account == null)
+                return Json(new ResultMessage() { Code = -1, Msg = "账号异常，请联系管理员处理" });
+            decimal amount = 0;
+            if (item == PayOrderItems.member)
+                amount = MemberUpPirce.member;
+            else if(item== PayOrderItems.shopowner)
+                amount = MemberUpPirce.shopowner;
+            else if (item == PayOrderItems.shopkeeper)
+                amount = MemberUpPirce.shopkeeper;
+            else
+                return Json(new ResultMessage() { Code = -1, Msg = "选择的项目不存在" });
+            var tran = transaction.BeginTransaction();
+           
+            try
+            {
+                var orderNo = "66" + string.Format("{0:yyyyMMddHHmmssffff}", DateTime.Now);
+                Ecard.Models.PayOrder order = new Ecard.Models.PayOrder();
+                order.amount = amount;
+                order.IsRebate = false;
+                order.item = item;
+                order.orderNo = orderNo;
+                order.orderState = PayOrderStates.awaitPay;
+                order.orderType = PayOrderTypes.MmeberUp;
+                order.payAmount = amount;
+                order.submitTime = DateTime.Now;
+                order.userId = userId;
+                PayOrderService.Insert(order);
+
+                JsApiPay jsApiPay = new JsApiPay();
+                jsApiPay.openid = account.openID;
+                jsApiPay.total_fee = (int)(order.payAmount * 100);
+                WxPayData unifiedOrderResult = jsApiPay.GetUnifiedOrderResult(order.orderNo);
+                string wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数                    
+                WxPayAPI.Log.Debug(this.GetType().ToString(), "wxJsApiParam : " + wxJsApiParam);
+                tran.Commit();
+
+                return Json(new ResultMessage() { Code = 0, Msg = wxJsApiParam });
+                //在页面上显示订单信息
+                //Response.Write("<span style='color:#00CD00;font-size:20px'>订单详情：</span><br/>");
+                //Response.Write("<span style='color:#00CD00;font-size:20px'>" + unifiedOrderResult.ToPrintStr() + "</span>");
+
+            }
+            catch (Exception ex)
+            {
+                WxPayAPI.Log.Error(this.GetType().ToString(), ex.Message.ToString());
+                return Json(new ResultMessage() { Code = -1, Msg = ex.Message.ToString() });
+                //Response.Write("<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试" + "</span>");
+                //submit.Visible = false;
+            }
+            finally
+            {
+                tran.Dispose();
+            }
+
         }
     }
 }

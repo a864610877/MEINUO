@@ -15,6 +15,8 @@ using System.Web.Configuration;
 using Ecard.Services;
 using Microsoft.Practices.Unity;
 using Ecard.Models;
+using Ecard;
+using WxPayAPI;
 
 namespace MessageHandle
 {
@@ -67,15 +69,15 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
             }
             else if (requestMessage.Content == "Register")
             {
-                var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
-                responseMessage.Articles.Add(new Article()
-                {
-                    Title = "速度，加入雷鹏汽车吧！",
-                    Description = "注册，成为会员即赠送积分！",
-                    PicUrl = "http://shop.leipengcar.com/MsgImages/one.jpg",//requestMessage.PicUrl,
-                    Url = "http://shop.leipengcar.com/Regists/Regist?openId=" + requestMessage.FromUserName
-                });
-                return responseMessage;
+                //var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
+                //responseMessage.Articles.Add(new Article()
+                //{
+                //    Title = "速度，加入雷鹏汽车吧！",
+                //    Description = "注册，成为会员即赠送积分！",
+                //    PicUrl = "http://shop.leipengcar.com/MsgImages/one.jpg",//requestMessage.PicUrl,
+                //    Url = "http://shop.leipengcar.com/Regists/Regist?openId=" + requestMessage.FromUserName
+                //});
+                //return responseMessage;
             }
             return null;//返回null，则继续执行OnTextRequest或OnEventRequest
         }
@@ -230,7 +232,78 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
         {
             //通过扫描关注
             var responseMessage = CreateResponseMessage<ResponseMessageText>();
-            responseMessage.Content = "通过扫描关注。";
+            var AccountService = _container.Resolve<IAccountService>();
+            var MembershipService = _container.Resolve<IMembershipService>();
+            var TransactionHelper = _container.Resolve<TransactionHelper>();
+            var RecommendLogService = _container.Resolve<IRecommendLogService>();
+            var item = AccountService.GetByopenID(requestMessage.FromUserName);
+            var userWX=Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(WxPayConfig.APPID, requestMessage.FromUserName);
+            if (item == null)
+            {
+                string orangeKey = requestMessage.EventKey.Replace("qrscene_", "");
+                int salerId = 0;
+                Account saleAccont = null;
+                if (!string.IsNullOrWhiteSpace(orangeKey))
+                {
+                    saleAccont = AccountService.GetByorangeKey(orangeKey);
+                    if (saleAccont == null)
+                    {
+                    }
+                    else
+                     salerId = saleAccont.accountId;
+                }
+                TransactionHelper.BeginTransaction();
+                AccountUser modelUser = new AccountUser();
+                modelUser.Address ="" ;
+                modelUser.DisplayName = userWX.nickname;
+                modelUser.Email = "";
+                modelUser.Gender = userWX.sex;
+                modelUser.Mobile = "";
+                modelUser.Name = requestMessage.FromUserName;
+                modelUser.Photo = userWX.headimgurl.Replace("/0", "/132");
+                //modelUser.SetPassword(Password);
+                modelUser.State = UserStates.Normal;
+                MembershipService.CreateUser(modelUser);
+                Account modelAccount = new Account();
+                //var QrCodeResult = CreateQrCode();
+                //modelAccount.ticket = QrCodeResult.ticket;
+                modelAccount.activatePoint = 0;
+                //modelAccount.notActivatePoint = 0;
+                modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                //modelAccount.payPoint = 0;
+                modelAccount.openID = requestMessage.FromUserName;
+                //modelAccount.presentExp = site.givePoint;
+                modelAccount.salerId = salerId;
+                modelAccount.state = AccountStates.Normal;
+                modelAccount.submitTime = DateTime.Now;
+                modelAccount.userId = modelUser.UserId;
+                modelAccount.grade = AccountGrade.not;
+                AccountService.Insert(modelAccount);
+                if (salerId > 0)
+                {
+                    RecommendLog recommendlog = new RecommendLog();
+                    recommendlog.remark = string.Format("推荐了{0}", userWX.nickname);
+                    recommendlog.salerId = saleAccont.userId;
+                    recommendlog.submitTime = DateTime.Now;
+                    recommendlog.userId = modelUser.UserId;
+                    recommendlog.userName = requestMessage.FromUserName;
+                    RecommendLogService.Insert(recommendlog);
+                    string msg = string.Format("恭喜您,您成功推荐了【{0}】成为了您的直属粉丝，时间：{1}", userWX.nickname, DateTime.Now);
+                    Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(WxPayConfig.APPID, requestMessage.FromUserName, msg);
+                }
+                responseMessage.Content = "快去成为会员吧";
+                //responseMessage.Articles.Add(new Article()
+                //{
+                //    Title = "速度，加入雷鹏汽车吧！",
+                //    Description = "注册，成为会员即赠送积分！",
+                //    PicUrl = "http://shop.leipengcar.com/MsgImages/one.jpg",//requestMessage.PicUrl,
+                //    Url = "http://shop.leipengcar.com/Regists/Regist?openId=" + requestMessage.FromUserName
+                //});
+            }
+            else
+            {
+
+            }
             return responseMessage;
         }
 
@@ -255,80 +328,80 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
         /// <returns></returns>
         public override IResponseMessageBase OnEvent_SubscribeRequest(RequestMessageEvent_Subscribe requestMessage)
         {
-            var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageNews>(requestMessage);
-            var OrangeKeyAndopenIDService = _container.Resolve<IOrangeKeyAndopenIDService>();
-            var item = OrangeKeyAndopenIDService.GetByopenID(requestMessage.FromUserName);
+            var responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(requestMessage);
+            var AccountService = _container.Resolve<IAccountService>();
+            var MembershipService = _container.Resolve<IMembershipService>();
+            var TransactionHelper = _container.Resolve<TransactionHelper>();
+            var RecommendLogService = _container.Resolve<IRecommendLogService>();
+            var item = AccountService.GetByopenID(requestMessage.FromUserName);
+            
+            var userWX = Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(WxPayConfig.APPID, requestMessage.FromUserName);
             if (item == null)
             {
-                OrangeKeyAndopenID model = new OrangeKeyAndopenID();
-                model.messageId = requestMessage.FromUserName + responseMessage.CreateTime;
-                model.openID = requestMessage.FromUserName;
-                model.orangeKey = requestMessage.EventKey.Replace("qrscene_", "");
-                model.submitTime = DateTime.Now;
-                OrangeKeyAndopenIDService.Insert(model);
-                responseMessage.Articles.Add(new Article()
+                string orangeKey = requestMessage.EventKey.Replace("qrscene_", "");
+                int salerId = 0;
+                Account saleAccont = null;
+                if (!string.IsNullOrWhiteSpace(orangeKey))
                 {
-                    Title = "速度，加入雷鹏汽车吧！",
-                    Description = "注册，成为会员即赠送积分！",
-                    PicUrl = "http://shop.leipengcar.com/MsgImages/one.jpg",//requestMessage.PicUrl,
-                    Url = "http://shop.leipengcar.com/Regists/Regist?openId=" + requestMessage.FromUserName
-                });
-
-                responseMessage.Articles.Add(new Article()
+                    saleAccont = AccountService.GetByorangeKey(orangeKey);
+                    if (saleAccont == null)
+                    {
+                         
+                    }
+                    else
+                        salerId = saleAccont.accountId;
+                }
+                TransactionHelper.BeginTransaction();
+                AccountUser modelUser = new AccountUser();
+                modelUser.Address = "";
+                modelUser.DisplayName = userWX.nickname;
+                modelUser.Email = "";
+                modelUser.Gender = userWX.sex;
+                modelUser.Mobile = "";
+                modelUser.Name = requestMessage.FromUserName;
+                modelUser.Photo = userWX.headimgurl.Replace("/0", "/132");
+                //modelUser.SetPassword(Password);
+                modelUser.State = UserStates.Normal;
+                MembershipService.CreateUser(modelUser);
+                Account modelAccount = new Account();
+                //var QrCodeResult = CreateQrCode();
+                //modelAccount.ticket = QrCodeResult.ticket;
+                modelAccount.activatePoint = 0;
+                //modelAccount.notActivatePoint = 0;
+                modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                //modelAccount.payPoint = 0;
+                modelAccount.openID = requestMessage.FromUserName;
+                //modelAccount.presentExp = site.givePoint;
+                modelAccount.salerId = salerId;
+                modelAccount.state = AccountStates.Normal;
+                modelAccount.submitTime = DateTime.Now;
+                modelAccount.userId = modelUser.UserId;
+                modelAccount.grade = AccountGrade.not;
+                AccountService.Insert(modelAccount);
+                if (salerId > 0)
                 {
-                    Title = "支付测试！",
-                    Description = "支付测试！",
-                    PicUrl = "http://shop.leipengcar.com/MsgImages/one.jpg",//requestMessage.PicUrl,
-                    Url = "http://shop.leipengcar.com/WeChat/pay.aspx"
-                });
+                    RecommendLog recommendlog = new RecommendLog();
+                    recommendlog.remark = string.Format("推荐了{0}", userWX.nickname);
+                    recommendlog.salerId = saleAccont.userId;
+                    recommendlog.submitTime = DateTime.Now;
+                    recommendlog.userId = modelUser.UserId;
+                    recommendlog.userName = requestMessage.FromUserName;
+                    RecommendLogService.Insert(recommendlog);
+                    string msg = string.Format("恭喜您,您成功推荐了【{0}】成为了您的直属粉丝，时间：{1}", userWX.nickname,DateTime.Now);
+                    Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(WxPayConfig.APPID, requestMessage.FromUserName, msg);
+                }
+                responseMessage.Content = "快去成为会员吧";
+                //responseMessage.Articles.Add(new Article()
+                //{
+                //    Title = "速度，加入雷鹏汽车吧！",
+                //    Description = "注册，成为会员即赠送积分！",
+                //    PicUrl = "http://shop.leipengcar.com/MsgImages/one.jpg",//requestMessage.PicUrl,
+                //    Url = "http://shop.leipengcar.com/Regists/Regist?openId=" + requestMessage.FromUserName
+                //});
             }
             else
             {
-               var AccountService = _container.Resolve<IAccountService>();
-               var account = AccountService.GetByopenID(requestMessage.FromUserName);
-               if (account == null)
-               {
-                   if (requestMessage.EventKey != null)
-                   {
-                       item.orangeKey = requestMessage.EventKey.Replace("qrscene_", "");
-                       OrangeKeyAndopenIDService.Update(item);
-                   }
-                   responseMessage.Articles.Add(new Article()
-                   {
-                       Title = "速度，加入雷鹏汽车吧！",
-                       Description = "注册，成为会员即赠送积分！",
-                       PicUrl = "http://shop.leipengcar.com//MsgImages/one.jpg",//requestMessage.PicUrl,
-                       Url = "http://shop.leipengcar.com//Regists/Regist?openId=" + requestMessage.FromUserName
-                   });
-                   responseMessage.Articles.Add(new Article()
-                   {
-                       Title = "支付测试！",
-                       Description = "支付测试！",
-                       PicUrl = "http://shop.leipengcar.com//MsgImages/one.jpg",//requestMessage.PicUrl,
-                       Url = "http://shop.leipengcar.com/WeChat/pay.aspx"
-                   });
-               }
-               else
-               {
-                   responseMessage.Articles.Add(new Article()
-                   {
-                       Title = "欢迎进入微商城！",
-                       Description = "欢迎进入微商城！",
-                       PicUrl = "http://shop.leipengcar.com//MsgImages/two.jpg",//requestMessage.PicUrl,
-                       Url = "http://shop.leipengcar.com/"
-                   });
-                   //responseMessage.Articles.Add(new Article()
-                   //{
-                   //    //Title = "注销！",
-                   //    //Description = "注销！",
-                   //    //PicUrl = "http://tecent.fuzhongcs.com/MsgImages/one.jpg",//requestMessage.PicUrl,
-                   //    //Url = "http://tecent.fuzhongcs.com/User/LogOff"
-                   //    Title = "支付测试！",
-                   //    Description = "支付测试！",
-                   //    PicUrl = "http://wx.fuzhongweb.com//MsgImages/one.jpg",//requestMessage.PicUrl,
-                   //    Url = "http://wx.fuzhongweb.com/WeChat/pay.aspx"
-                   //});
-               }
+               
             }
 
            
