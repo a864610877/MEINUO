@@ -13,3 +13,4 @@ create table PayOrder--订单支付
   remark nvarchar(200),--备注
   submitTime datetime --下单时间
 )
+select * from PayOrder

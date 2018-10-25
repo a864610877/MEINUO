@@ -35,7 +35,7 @@
             </dl>
         </div>
         <li>邮箱<span class="am-fr"><input type="text" name="email" onchange="updateUser()" value="@Model.Email"></span></li>
-        <li>手机号<span class="am-fr"><input type="text" readonly="readonly" name="" value="@Model.Mobile"></span></li>
+        <li>手机号<span class="am-fr"><input type="text" name="mobile" onchange="updateUser()" value="@Model.Mobile"></span></li>
         <li style="display:none">住址<span class="am-fr"><input type="text" name="addreno" onchange="updateUser()" value="@Model.detailaddress"></span></li>       
     </ul>
 </div>
@@ -63,6 +63,7 @@
             sex: $(".sex").data("value") == "" ? 0 : parseInt($(".sex").data("value")),
             email: $("input[name='email']").val(),
             addreno: $("input[name='addreno']").val(),
+            mobile: $("input[name='mobile']").val(),
         };
         //alert(JSON.stringify(obj));
 

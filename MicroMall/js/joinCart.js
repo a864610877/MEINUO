@@ -19,10 +19,43 @@ function reduceNum(el) {
 }
 
 var joinCart = function () {
+
+    var Specification = "";
+    var i = 0;
+    var b = true;
+    var txt = "";
+    $(".gwcsx").each(function () {
+        if ($(this).find("span").length > 0) {
+            var s = "";
+            var name = $(this).find("span").attr("data-name");
+
+            $(this).find("span").each(function () {
+                if ($(this).hasClass("checkbox")) {
+                    s = name + "：" + $(this).html();
+                    return;
+                }
+            });
+            if (s == null || s == "") {
+                txt = "请选择" + name;
+                b = false;
+                return false;
+            }
+            if (i == 0)
+                Specification = s;
+            else
+                Specification += "," + s;
+            i++;
+        }
+    });
+    if (b == false) {
+        alert(txt);
+        return;
+    }
+
     var obj = {
         commonid: $("#commonid").val(),
         num: $("#num").text(),
-        spenName: $(".checkbox").text(),
+        spenName: Specification,
     }
 
     //alert("obj:"+JSON.stringify(obj));

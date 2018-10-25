@@ -33,6 +33,7 @@ namespace Ecard.Mvc.Models.Orders
         public string commodityName { get { return orderDetail.commodityName; } }
         public decimal price { get { return orderDetail.price; } }
         public int quantity { get { return orderDetail.quantity; } }
+        public string specification { get { return orderDetail.specification; } }
 
 
         [NoRender]

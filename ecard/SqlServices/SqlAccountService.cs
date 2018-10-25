@@ -112,6 +112,18 @@ namespace Ecard.SqlServices
             string sql = "select * from fz_Accounts where Mobile=@Mobile";
             return new QueryObject<Account>(_databaseInstance, sql, new {Mobile=Mobile }).FirstOrDefault();
         }
+
+        public int GetSalerCount(int accountId)
+        {
+            int total = 0;
+            string sql = "select COUNT(1) as total from fz_Accounts where salerId=@salerId and grade in (0,2,3)";
+            var count = _databaseInstance.ExecuteScalar(sql, new { salerId = accountId }).ToString();
+            if (!string.IsNullOrWhiteSpace(count))
+            {
+                int.TryParse(count, out total);
+            }
+            return total;
+        }
     }
 
    public class AmountModel

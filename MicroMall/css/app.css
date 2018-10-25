@@ -1,7 +1,7 @@
 /*
 * @Author: Bobbi
 * @Date:   2018-05-24 14:59:54
-* @Last Modified time: 2018-10-23 17:25:07
+* @Last Modified time: 2018-10-24 10:19:57
 */
 body{max-width:640px;margin:0 auto;}
 p,ul,li,h1,h2,h3,h4,h5,h6,dl{margin:0;padding:0;font-weight:lighter;}
@@ -295,3 +295,11 @@ a:focus{color:}
 
 /* 新增18-10-23 */
 .h_proList_siderItme .n_shopsjInfo h2{padding-bottom:5px;}
+
+.car_proText h2{padding-bottom:50px;}
+.buycartList{height:auto;min-height:90px;}
+.car_proInfo .car_proText{padding-left:10rem;}
+.jiajian{left:10.7rem;}
+
+.h_proList_siderItme .home_h2{padding-right:0;}
+.h_proList_siderItme .home_h2 h2{padding-bottom:50px;padding-right:0;}

@@ -128,7 +128,7 @@ namespace WxPayAPI
                                             _databaseInstance.Commit();
                                             Log.Debug(this.GetType().ToString(), "开始返利 : " + orderNo);
                                             if (item.orderType == OrderType.normal)
-                                                IRebateService.Rebate2(item.orderId);
+                                                IRebateService.Rebate3(item.orderId);
                                             Log.Debug(this.GetType().ToString(), "返利结束 : " + orderNo);
                                         }
                                         else
@@ -151,15 +151,31 @@ namespace WxPayAPI
                                     {
                                         if (payOrder.orderState == PayOrderStates.awaitPay)
                                         {
+                                            _databaseInstance.BeginTransaction();
                                             payOrder.orderState = PayOrderStates.paid;
                                             payOrder.payTime = DateTime.Now;
                                             _databaseInstance.Update(payOrder, "PayOrder");
-                                            
+
+                                            var account = IAccountService.GetByUserId(payOrder.userId);
+                                            if (account != null)
+                                            {
+                                                int grade = -1;
+                                                if (payOrder.item == PayOrderItems.member)
+                                                    grade = AccountGrade.Member;
+                                                else if(payOrder.item == PayOrderItems.shopowner)
+                                                    grade = AccountGrade.Manager;
+                                                else if (payOrder.item == PayOrderItems.shopkeeper)
+                                                    grade = AccountGrade.GoldMedalManager;
+                                                if (account.grade < grade)
+                                                    account.grade = grade;
+                                                _databaseInstance.Update(account, "fz_Accounts");
+                                            }
+                                            _databaseInstance.Commit();
                                             if (payOrder.orderType == PayOrderTypes.MmeberUp)
                                             {
-                                                #region 会员升级订单
-                                                 //返利
-                                                #endregion
+                                                Log.Debug(this.GetType().ToString(), "开始推荐返利 : " + orderNo);
+                                                 IRebateService.Rebate4(payOrder.Id);
+                                                Log.Debug(this.GetType().ToString(), "返利推荐结束 : " + orderNo);
                                             }
                                         }
                                     }

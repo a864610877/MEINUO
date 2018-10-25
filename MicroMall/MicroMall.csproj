@@ -621,9 +621,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="css\amazeui.min.css" />
-    <Content Include="css\app -我的 副本.css" />
     <Content Include="css\app.css" />
-    <Content Include="css\app2.css" />
     <Content Include="css\area.css" />
     <Content Include="css\city.css" />
     <Content Include="css\CodeBgImg.css" />

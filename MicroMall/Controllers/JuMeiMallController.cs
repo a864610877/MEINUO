@@ -667,19 +667,13 @@ namespace MicroMall.Controllers
                     string wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数                    
                     WxPayAPI.Log.Debug(this.GetType().ToString(), "wxJsApiParam : " + wxJsApiParam);
                     return Json(new ResultMessage() { Code = 0, Msg = wxJsApiParam });
-                    //在页面上显示订单信息
-                    //Response.Write("<span style='color:#00CD00;font-size:20px'>订单详情：</span><br/>");
-                    //Response.Write("<span style='color:#00CD00;font-size:20px'>" + unifiedOrderResult.ToPrintStr() + "</span>");
 
                 }
                 catch (Exception ex)
                 {
                     WxPayAPI.Log.Error(this.GetType().ToString(), ex.Message.ToString());
                     return Json(new ResultMessage() { Code = -1, Msg = ex.Message.ToString() });
-                    //Response.Write("<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试" + "</span>");
-                    //submit.Visible = false;
                 }
-                return Json(model);
             }
             catch (Exception ex)
             {

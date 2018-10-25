@@ -15,12 +15,12 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="stylesheet" href="/css/amazeui.min.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/app.css?v1.6">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/amazeui.min.js"></script>
     <script src="/js/jquery.SuperSlide.2.1.1.js"></script>
-    <script src="/js/fz.js?v1.0"></script>
-    <script src="/js/joinCart.js"></script>
+    <script src="/js/fz.js?v1.3"></script>
+    <script src="/js/joinCart.js?v2"></script>
     <style type="text/css">
         .checkbox {
             background: #0026ff !important;
@@ -209,12 +209,12 @@
             foreach (var item in Model.listAattribute)
             {
                 <h2>@item.model.Name</h2>
-                <div class="shuxing fs15">
+                <div class="shuxing fs15 gwcsx">
                     @if (item.list != null && item.list.Count > 0)
                     {
                         foreach (var item1 in item.list)
                         {
-                            <span onclick="checkspen($(this))" class="aaaa">@item1.value</span>
+                            <span onclick="checkspen($(this))" data-name="@item.model.Name" >@item1.value</span>
                         }
                     }
 
@@ -253,15 +253,16 @@
         {
             foreach (var item in Model.listAattribute)
             {
+               
                 <h2>@item.model.Name</h2>
                 <div class="shuxing fs15 buyshuxin">
                     @if (item.list != null && item.list.Count > 0)
-{
-    foreach (var item1 in item.list)
-    {
-        <span onclick="checkspen($(this))" class="aaaa_buy">@item1.value</span>
-    }
-}
+                      {
+                          foreach (var item1 in item.list)
+                          {
+                              <span onclick="checkspen($(this))" data-name="@item.model.Name" class="aaaa_buy">@item1.value</span>
+                          }
+                      }
 
                 </div>
             }
@@ -305,19 +306,43 @@
             var quantity = $("#goodnum_buy").val();
             var commodityId = $("#commonid_buy").val();
             var Specification = "";
-            if ($(".buyshuxin").find("span").length > 0)
-            {
-                $(".aaaa_buy").each(function () {
-                    if ($(this).hasClass("checkbox")) {
-                        Specification = $(this).html();
-                        return;
+            var i = 0;
+            var b = true;
+            var txt = "";
+            $(".buyshuxin").each(function () {
+                if ($(this).find("span").length > 0) {
+                    var s = "";
+                    var name = $(this).find("span").attr("data-name");
+
+                    $(this).find("span").each(function () {
+                        if ($(this).hasClass("checkbox")) {
+                            s = name + "：" + $(this).html();
+                            return;
+                        } 
+                    });
+                    if (s == null || s == "") {
+                        txt = "请选择" + name;
+                        b = false;
+                        return false;
                     }
-                });
-                if (Specification == "") {
-                    alert("请选择属性");
-                    return;
+                    if (i == 0)
+                        Specification = s;
+                    else
+                        Specification += "," + s;
+                    i++;
                 }
+            });
+            if (b == false) {
+                alert(txt);
+                return;
             }
+            //if ($(".buyshuxin").find("span").length > 0) {
+            //    if (Specification == "") {
+            //        alert("请选择属性");
+            //        return;
+            //    }
+            //}
+
             $.openLoading("生成订单中");
             $.ajax({
                 url: "/JuMeiMall/GenerateGDtlOrder",

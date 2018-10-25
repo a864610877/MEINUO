@@ -67,6 +67,14 @@ namespace Ecard.Models
         /// 店主
         /// </summary>
         public const int three = 3;
+        /// <summary>
+        /// 商城购物返利
+        /// </summary>
+        public const int gw = 4;
+        /// <summary>
+        /// 推荐返利
+        /// </summary>
+        public const int tj = 5;
     }
 
     public class RebateLog

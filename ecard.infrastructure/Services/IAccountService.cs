@@ -74,6 +74,12 @@ namespace Ecard.Services
         /// <param name="accountId"></param>
         /// <returns></returns>
         Account GetByMobile(string Mobile);
+        /// <summary>
+        /// 获取推荐会员级别以上的数量
+        /// </summary>
+        /// <param name="accountId"></param>
+        /// <returns></returns>
+        int GetSalerCount(int accountId);
     }
 
     public class AccountSale

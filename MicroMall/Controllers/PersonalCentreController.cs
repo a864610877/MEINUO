@@ -58,6 +58,8 @@ namespace MicroMall.Controllers
         public ISecondKillCommoditysService ISecondKillCommoditysService { get; set; }
         [Dependency, NoRender]
         public IPayOrderService PayOrderService { get; set; }
+        [Dependency, NoRender]
+        public DatabaseInstance _databaseInstance { get; set; }
         public PersonalCentreController(IAccountService IAccountService, IGradesService IGradesService, IRebateService IRebateService, IUnityContainer _container,
             IOrderDetailService IOrderDetailService, ICommodityService ICommodityService, IOperationAmountLogsService OperationAmountLogsService,
             IWithdrawService WithdrawService, ISiteService ISiteService,IMessagesService IMessagesService)
@@ -915,7 +917,7 @@ namespace MicroMall.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePersonalInfo(int sex,string email,string addreno)
+        public ActionResult UpdatePersonalInfo(int sex,string email,string addreno,string mobile)
         {
             if (Request.Cookies[SessionKeys.USERID] == null || Request.Cookies[SessionKeys.USERID].Value.ToString() == "")
             {
@@ -934,6 +936,7 @@ namespace MicroMall.Controllers
                 return Content("账号异常，请联系管理员！");
             userModel.Gender = sex;
             userModel.Email = email;
+            userModel.Mobile = mobile;
             int userAddressId = account.defaultAddressId;
             UserAddress address= UserAddressService.GetById(userAddressId);
             int state = -1; 
@@ -1415,25 +1418,56 @@ namespace MicroMall.Controllers
                 string wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数                    
                 WxPayAPI.Log.Debug(this.GetType().ToString(), "wxJsApiParam : " + wxJsApiParam);
                 tran.Commit();
-
                 return Json(new ResultMessage() { Code = 0, Msg = wxJsApiParam });
-                //在页面上显示订单信息
-                //Response.Write("<span style='color:#00CD00;font-size:20px'>订单详情：</span><br/>");
-                //Response.Write("<span style='color:#00CD00;font-size:20px'>" + unifiedOrderResult.ToPrintStr() + "</span>");
-
             }
             catch (Exception ex)
             {
                 WxPayAPI.Log.Error(this.GetType().ToString(), ex.Message.ToString());
                 return Json(new ResultMessage() { Code = -1, Msg = ex.Message.ToString() });
-                //Response.Write("<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试" + "</span>");
-                //submit.Visible = false;
             }
             finally
             {
                 tran.Dispose();
             }
 
+        }
+
+        public void cs(string orderNo)
+        {
+            #region payorder 订单
+            var sqlPayOrder = "select * from PayOrder where orderNo=@orderNo";
+            var payOrder = new QueryObject<Ecard.Models.PayOrder>(_databaseInstance, sqlPayOrder, new { orderNo = orderNo }).FirstOrDefault();
+            if (payOrder != null)
+            {
+                if (payOrder.orderState == PayOrderStates.awaitPay)
+                {
+                    _databaseInstance.BeginTransaction();
+                    payOrder.orderState = PayOrderStates.paid;
+                    payOrder.payTime = DateTime.Now;
+                    _databaseInstance.Update(payOrder, "PayOrder");
+
+                    var account = IAccountService.GetByUserId(payOrder.userId);
+                    if (account != null)
+                    {
+                        int grade = -1;
+                        if (payOrder.item == PayOrderItems.member)
+                            grade = AccountGrade.Member;
+                        else if (payOrder.item == PayOrderItems.shopowner)
+                            grade = AccountGrade.Manager;
+                        else if (payOrder.item == PayOrderItems.shopkeeper)
+                            grade = AccountGrade.GoldMedalManager;
+                        if (account.grade < grade)
+                            account.grade = grade;
+                        _databaseInstance.Update(account, "fz_Accounts");
+                    }
+                    _databaseInstance.Commit();
+                    if (payOrder.orderType == PayOrderTypes.MmeberUp)
+                    {
+                        IRebateService.Rebate4(payOrder.Id);
+                    }
+                }
+            }
+            #endregion
         }
     }
 }

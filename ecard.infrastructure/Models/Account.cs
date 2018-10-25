@@ -140,13 +140,12 @@ namespace Ecard.Models
         /// </summary>
         public const int Member = 0;
         /// <summary>
-        /// 店主
+        /// 店长
         /// </summary>
         public const int Manager = 2;
         /// <summary>
-        /// 店长
+        /// 店主
         /// </summary>
-
         public const int GoldMedalManager = 3;
 
         public static string GetName(int value)

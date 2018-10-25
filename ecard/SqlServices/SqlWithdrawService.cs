@@ -73,10 +73,10 @@ namespace Ecard.SqlServices
 
         public decimal GetUserIdPoint(int userId)
         {
-            string sql = string.Format("select sum(point) as point from fz_Withdraws where userId=@userId and state in ({0},{1})", WithdrawStates.notaudit, WithdrawStates.success);
-            var point = _databaseInstance.ExecuteScalar(sql, new { userId = userId });
-            if (point != null)
-                return decimal.Parse(point.ToString());
+            string sql = string.Format("select  sum(point) as point from fz_Withdraws where userId=@userId and state in ({0},{1})", WithdrawStates.notaudit, WithdrawStates.success);
+            var point = _databaseInstance.ExecuteScalar(sql, new { userId = userId }).ToString();
+            if (!string.IsNullOrWhiteSpace(point))
+                return decimal.Parse(point);
             return 0;
         }
     }

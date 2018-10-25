@@ -915,7 +915,8 @@ namespace MicroMall.Models.JuMeiMallIndex
                 //    IMessagesService.Insert(message);
                 //}
                 tran.Commit();
-               // RebateService.Rebate2(model.orderId);
+                //测试
+               // RebateService.Rebate3(model.orderId);
                 return new ResultMessage() { Code = 0, Msg = model.orderNo };
             }
             catch (Exception ex)

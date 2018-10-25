@@ -79,9 +79,8 @@ namespace Ecard.SqlServices
         public List<ReviewExpress> GetGoodsReviewNew(int goodsId)
         {
 
-            string sql = @"SELECT a.*,d.DisplayName userName,d.photo,c.Name cateName FROM fz_Reviews a WITH(NOLOCK) JOIN fz_Commoditys b WITH(NOLOCK)
-                            ON a.CommodityId = b.commodityId LEFT JOIN fz_Specifications c WITH(NOLOCK)
-                            ON b.specificationId = c.specificationId JOIN dbo.Users d WITH(NOLOCK)
+            string sql = @"SELECT a.*,d.DisplayName userName,d.photo,'' as cateName FROM fz_Reviews a WITH(NOLOCK) JOIN fz_Commoditys b WITH(NOLOCK)
+                            ON a.CommodityId = b.commodityId JOIN dbo.Users d WITH(NOLOCK)
                             ON a.UserId = d.UserId WHERE a.CommodityId = @CommodityId AND a.State=2 ORDER BY a.SubmitTime DESC";
 
             return new QueryObject<ReviewExpress>(_databaseInstance, sql, new { CommodityId = goodsId }).ToList();

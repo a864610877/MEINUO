@@ -12,3 +12,6 @@ price.shortNameFormat={0}
 quantity.order=1
 quantity.shortName=购买数量
 quantity.shortNameFormat={0}
+specification.order=1
+specification.shortName=属性
+specification.shortNameFormat={0}
