@@ -29,6 +29,7 @@ namespace WxPayAPI
                 NOTIFY_URL = item.NOTIFY_URL;
                 USER_NOTIFY_URL = item.USER_NOTIFY_URL;
                 USERRegister_NOTIFY_URL = item.USERRegister_NOTIFY_URL;
+                TOKEN = item.token;
             }
         }
         //=======【基本信息设置】=====================================
@@ -48,7 +49,7 @@ namespace WxPayAPI
         */
         public static string SSLCERT_PATH = "cert/apiclient_cert.p12";
         public static string SSLCERT_PASSWORD = "1483978602";//商户号
-
+        public static string TOKEN = "";
 
 
         //=======【支付结果通知url】===================================== 

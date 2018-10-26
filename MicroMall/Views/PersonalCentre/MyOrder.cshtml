@@ -41,21 +41,25 @@
                        {
 
                            <a href="#" onclick="ConfirmReceipt('@item.orderId')" class="bg_e8bb67">确认收货</a>
+                           <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
                        }
                        else if (item.orderState == Ecard.Models.OrderStates.complete)
                        {
                            <a href="" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
                            <a href="/Commodity/AddReview?commodityId=@item.commodityId&orderNo=@item.orderNo" class="bg_e8bb67">评价</a>
+                           <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
                        }
                        else if (item.orderState == Ecard.Models.OrderStates.cancel)
                        {
                            <a href="" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
+                           <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
                        }
                        else if (item.orderState == Ecard.Models.OrderStates.completePJ)
                        {
                            <a href="" onclick="DeleteOrder(@item.orderId)" class="bg_e6e6e6">删除订单</a>
+                           <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
                        }
-                       <a href="/JuMeiMall/BuyDetails?orderNo=@item.orderNo" class="bg_e8bb67">查看订单</a>
+
                    </div>
                </div>
            </div>

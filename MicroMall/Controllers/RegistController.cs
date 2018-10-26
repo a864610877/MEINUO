@@ -18,6 +18,7 @@ namespace MicroMall.Controllers
 
         public ActionResult Regist(string orangeKey)
         {
+            return Content("已失效，请重新生成扫描");
             var request = _container.Resolve<RegistRequest>();
             request.orangeKey = orangeKey;
             return View(request);

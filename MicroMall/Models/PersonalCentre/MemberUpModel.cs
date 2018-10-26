@@ -32,14 +32,14 @@ namespace MicroMall.Models.PersonalCentre
         /// <summary>
         /// vip会员 118
         /// </summary>
-        public const decimal member = 1;//
+        public const decimal member = 1118;//
         /// <summary>
         /// 店长 238
         /// </summary>
-        public const decimal shopowner = 2;
+        public const decimal shopowner = 238;
         /// <summary>
         /// 店主 358
         /// </summary>
-        public const decimal shopkeeper = 3;
+        public const decimal shopkeeper = 358;
     }
 }

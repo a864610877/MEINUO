@@ -231,16 +231,20 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
         public override IResponseMessageBase OnEvent_ScanRequest(RequestMessageEvent_Scan requestMessage)
         {
             //通过扫描关注
+            WxPayAPI.Log.Info(this.GetType().ToString(), "进入扫描关注 openId: "+ requestMessage.FromUserName);
             var responseMessage = CreateResponseMessage<ResponseMessageText>();
             var AccountService = _container.Resolve<IAccountService>();
             var MembershipService = _container.Resolve<IMembershipService>();
             var TransactionHelper = _container.Resolve<TransactionHelper>();
             var RecommendLogService = _container.Resolve<IRecommendLogService>();
             var item = AccountService.GetByopenID(requestMessage.FromUserName);
-            var userWX=Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(WxPayConfig.APPID, requestMessage.FromUserName);
+            
+            string salerOpenId = "";
+            var userWX = Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(WxPayConfig.APPID, requestMessage.FromUserName);
             if (item == null)
             {
                 string orangeKey = requestMessage.EventKey.Replace("qrscene_", "");
+                WxPayAPI.Log.Info(this.GetType().ToString(), "进入扫描关注 orangeKey: " + orangeKey);
                 int salerId = 0;
                 Account saleAccont = null;
                 if (!string.IsNullOrWhiteSpace(orangeKey))
@@ -248,13 +252,19 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
                     saleAccont = AccountService.GetByorangeKey(orangeKey);
                     if (saleAccont == null)
                     {
+
                     }
                     else
-                     salerId = saleAccont.accountId;
+                    {
+                        WxPayAPI.Log.Info(this.GetType().ToString(), "进入扫描关注 salerOpenId: " + saleAccont.openID);
+                        salerId = saleAccont.accountId;
+                        salerOpenId = saleAccont.openID;
+                    }
+
                 }
                 TransactionHelper.BeginTransaction();
                 AccountUser modelUser = new AccountUser();
-                modelUser.Address ="" ;
+                modelUser.Address = "";
                 modelUser.DisplayName = userWX.nickname;
                 modelUser.Email = "";
                 modelUser.Gender = userWX.sex;
@@ -288,10 +298,15 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
                     recommendlog.userId = modelUser.UserId;
                     recommendlog.userName = requestMessage.FromUserName;
                     RecommendLogService.Insert(recommendlog);
-                    string msg = string.Format("恭喜您,您成功推荐了【{0}】成为了您的直属粉丝，时间：{1}", userWX.nickname, DateTime.Now);
-                    Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(WxPayConfig.APPID, requestMessage.FromUserName, msg);
+                    if (!string.IsNullOrWhiteSpace(salerOpenId))
+                    {
+                        string msg = string.Format("恭喜您,您成功推荐了【{0}】成为了您的直属粉丝，时间：{1}", userWX.nickname, DateTime.Now);
+                        Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(WxPayConfig.APPID, salerOpenId, msg);
+                    }
+
                 }
                 responseMessage.Content = "快去成为会员吧";
+                TransactionHelper.Commit();
                 //responseMessage.Articles.Add(new Article()
                 //{
                 //    Title = "速度，加入雷鹏汽车吧！",
@@ -334,11 +349,13 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
             var TransactionHelper = _container.Resolve<TransactionHelper>();
             var RecommendLogService = _container.Resolve<IRecommendLogService>();
             var item = AccountService.GetByopenID(requestMessage.FromUserName);
-            
+            WxPayAPI.Log.Info(this.GetType().ToString(), "进入订阅（关注） openId: " + requestMessage.FromUserName);
+            string salerOpenId = "";
             var userWX = Senparc.Weixin.MP.AdvancedAPIs.UserApi.Info(WxPayConfig.APPID, requestMessage.FromUserName);
             if (item == null)
             {
                 string orangeKey = requestMessage.EventKey.Replace("qrscene_", "");
+                WxPayAPI.Log.Info(this.GetType().ToString(), "进入订阅（关注） orangeKey: " + orangeKey);
                 int salerId = 0;
                 Account saleAccont = null;
                 if (!string.IsNullOrWhiteSpace(orangeKey))
@@ -346,10 +363,15 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
                     saleAccont = AccountService.GetByorangeKey(orangeKey);
                     if (saleAccont == null)
                     {
-                         
+                       
                     }
                     else
+                    {
                         salerId = saleAccont.accountId;
+                        salerOpenId = saleAccont.openID;
+                        WxPayAPI.Log.Info(this.GetType().ToString(), "进入订阅（关注） salerOpenId: " + saleAccont.openID);
+                    }
+                        
                 }
                 TransactionHelper.BeginTransaction();
                 AccountUser modelUser = new AccountUser();
@@ -387,10 +409,15 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
                     recommendlog.userId = modelUser.UserId;
                     recommendlog.userName = requestMessage.FromUserName;
                     RecommendLogService.Insert(recommendlog);
-                    string msg = string.Format("恭喜您,您成功推荐了【{0}】成为了您的直属粉丝，时间：{1}", userWX.nickname,DateTime.Now);
-                    Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(WxPayConfig.APPID, requestMessage.FromUserName, msg);
+                    if (!string.IsNullOrWhiteSpace(salerOpenId))
+                    {
+                        string msg = string.Format("恭喜您,您成功推荐了【{0}】成为了您的直属粉丝，时间：{1}", userWX.nickname, DateTime.Now);
+                        Senparc.Weixin.MP.AdvancedAPIs.CustomApi.SendText(WxPayConfig.APPID, salerOpenId, msg);
+                    }
+                    
                 }
                 responseMessage.Content = "快去成为会员吧";
+                TransactionHelper.Commit();
                 //responseMessage.Articles.Add(new Article()
                 //{
                 //    Title = "速度，加入雷鹏汽车吧！",

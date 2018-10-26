@@ -1217,7 +1217,8 @@ namespace MicroMall.Controllers
             var account = IAccountService.GetByUserId(userId);
             if (account == null)
                 return Json(new ResultMessage() { Code = -1, Msg = "账号异常，请联系管理员" });
-            if(!string.IsNullOrWhiteSpace(account.qrCodeUrl))
+            account.qrCodeUrl = "";
+            if (!string.IsNullOrWhiteSpace(account.qrCodeUrl))
                 return Json(new ResultMessage() { Code = 0, Msg = account.qrCodeUrl });
             string url = "";
             if (string.IsNullOrWhiteSpace(account.ticket))
