@@ -1151,7 +1151,6 @@
     <Content Include="Scripts\jquery.jqprint-0.3.js" />
     <Content Include="Scripts\jquery.json.js" />
     <Content Include="Scripts\jscharts.js" />
-    <Content Include="Scripts\kindeditor-4.1.10\asp.net\bin\LitJSON.dll" />
     <Content Include="Scripts\kindeditor-4.1.10\asp.net\demo.aspx" />
     <Content Include="Scripts\kindeditor-4.1.10\asp.net\README.txt" />
     <Content Include="Scripts\kindeditor-4.1.10\asp\demo.asp" />
@@ -1513,7 +1512,6 @@
     <Content Include="Views\AdminUser\List.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Log\List.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\List.cshtml" />
@@ -1730,8 +1728,10 @@
     <Folder Include="drivers\" />
     <Folder Include="MicroMalls\AdImages\" />
     <Folder Include="MicroMalls\AttributeImages\" />
+    <Folder Include="Scripts\kindeditor-4.1.10\asp.net\bin\" />
     <Folder Include="Scripts\kindeditor-4.1.10\attached\" />
     <Folder Include="UploadFile\" />
+    <Folder Include="Views\Log\" />
     <Folder Include="Views\Shared\ItemTemplates\" />
   </ItemGroup>
   <ItemGroup>

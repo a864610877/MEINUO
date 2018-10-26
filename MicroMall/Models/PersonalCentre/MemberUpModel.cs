@@ -30,16 +30,16 @@ namespace MicroMall.Models.PersonalCentre
     public class MemberUpPirce
     {
         /// <summary>
-        /// vip会员
+        /// vip会员 118
         /// </summary>
-        public const decimal member = 118;
+        public const decimal member = 1;//
         /// <summary>
-        /// 店长
+        /// 店长 238
         /// </summary>
-        public const decimal shopowner = 238;
+        public const decimal shopowner = 2;
         /// <summary>
-        /// 店主
+        /// 店主 358
         /// </summary>
-        public const decimal shopkeeper = 358;
+        public const decimal shopkeeper = 3;
     }
 }
