@@ -83,6 +83,7 @@ namespace Ecard.Models
         public decimal reateAmount { get; set; }
 
         public string DisplayName { get; set; }
+        public int userId { get; set; }
 
         public int type { get; set; }
 

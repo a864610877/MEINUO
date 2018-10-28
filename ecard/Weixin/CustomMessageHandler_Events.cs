@@ -279,7 +279,8 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
                 //modelAccount.ticket = QrCodeResult.ticket;
                 modelAccount.activatePoint = 0;
                 //modelAccount.notActivatePoint = 0;
-                modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                string myOrangeKey = (modelUser.UserId + 10000).ToString();
+                modelAccount.orangeKey = myOrangeKey.PadLeft(modelUser.UserId.ToString().Length + 2, '0');
                 //modelAccount.payPoint = 0;
                 modelAccount.openID = requestMessage.FromUserName;
                 //modelAccount.presentExp = site.givePoint;
@@ -388,9 +389,10 @@ Nuget地址：https://www.nuget.org/packages/Senparc.Weixin.MP",
                 Account modelAccount = new Account();
                 //var QrCodeResult = CreateQrCode();
                 //modelAccount.ticket = QrCodeResult.ticket;
-                modelAccount.activatePoint = 0;
+                modelAccount.activatePoint = 0; string myOrangeKey = (modelUser.UserId + 10000).ToString();
+                modelAccount.orangeKey = myOrangeKey.PadLeft(modelUser.UserId.ToString().Length + 2, '0');
                 //modelAccount.notActivatePoint = 0;
-                modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                // modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
                 //modelAccount.payPoint = 0;
                 modelAccount.openID = requestMessage.FromUserName;
                 //modelAccount.presentExp = site.givePoint;

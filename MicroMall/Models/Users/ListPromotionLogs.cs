@@ -71,7 +71,7 @@ namespace MicroMall.Models.Users
            {
                 PointLogs.List = query1.Select(x => new PromotionModel() {
                     value = x.reateAmount.ToString(), submitTime = x.submitTime.ToString(),
-                    Name = string.Format("来自{0}的会员佣金", x.DisplayName),
+                    Name = string.Format("来自{0}的会员佣金", x.userId),
                     type = x.type == RebateType.zero ? "" : x.type == RebateType.tj ? "推荐会员分享奖励" : x.type == RebateType.gw ? "推荐会员购物奖励" : ""
                }).ToList();
               // Page(request1.PageIndex, request1.PageSize, query1.TotalCount, PointLogs);

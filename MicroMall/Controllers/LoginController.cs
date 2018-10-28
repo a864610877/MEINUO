@@ -146,7 +146,9 @@ namespace MicroMall.Controllers
                     MembershipService.CreateUser(modelUser);
                     Account modelAccount = new Account();
                     modelAccount.activatePoint = 0;
-                    modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                    string myOrangeKey = (modelUser.UserId + 10000).ToString();
+                    modelAccount.orangeKey = myOrangeKey.PadLeft(modelUser.UserId.ToString().Length + 2, '0');
+                    // modelAccount.orangeKey = modelUser.UserId.ToString().PadLeft(modelUser.UserId.ToString().Length + 2, '0');
                     modelAccount.openID = userInfo.openid;
                     modelAccount.salerId = 0;
                     modelAccount.state = AccountStates.Normal;
