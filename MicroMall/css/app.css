@@ -289,7 +289,7 @@ a:focus{color:}
 .vipContent ul li span{display: inline-block;width:auto;color:#b59f76}
 
 /* 新增18-10-22 */
-.y_num{font-size:12px;color:#b59f76;}
+.y_num{font-size:12px;color:#b59f76; font-weight:bold}
 .order_list_proInfo h3{min-height:36px}
 .border_list p.am-text-right{padding-bottom:25px;}
 
