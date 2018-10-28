@@ -1,7 +1,7 @@
 /*
 * @Author: Bobbi
 * @Date:   2018-05-24 14:59:54
-* @Last Modified time: 2018-10-24 10:19:57
+* @Last Modified time: 2018-10-28 15:43:29
 */
 body{max-width:640px;margin:0 auto;}
 p,ul,li,h1,h2,h3,h4,h5,h6,dl{margin:0;padding:0;font-weight:lighter;}
@@ -303,3 +303,11 @@ a:focus{color:}
 
 .h_proList_siderItme .home_h2{padding-right:0;}
 .h_proList_siderItme .home_h2 h2{padding-bottom:50px;padding-right:0;}
+
+
+/* 新增 10-28 */
+.dianzhang_tab .dianzhang_nav li{font-size:16px;text-align:center;line-height:40px;}
+.dianzhang_tab .dianzhang_nav li.on{border-bottom:3px solid #b59f76;color:#b59f76;}
+
+.dianzhang_tab .bd li{border-bottom:1px solid #ddd;padding:0 15px;line-height:40px;font-size:14px;}
+.mytji h2.pdd_lr{padding:0 15px;margin-bottom:5px;}

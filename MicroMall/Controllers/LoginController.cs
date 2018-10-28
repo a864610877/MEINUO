@@ -25,9 +25,9 @@ namespace MicroMall.Controllers
         JsApiPay jsApiPay = new JsApiPay();
         public ActionResult Index()
         {
-            //HttpCookie cookie = new HttpCookie(SessionKeys.USERID, "1020");
+            //HttpCookie cookie = new HttpCookie(SessionKeys.USERID, "24");
             //Response.Cookies.Add(cookie);
-            //Session[SessionKeys.USERID] = "1020";
+            //Session[SessionKeys.USERID] = "24";
             //return RedirectToAction("index", "PersonalCentre");
             string redirect_uri = Server.UrlEncode(System.Configuration.ConfigurationManager.AppSettings["USERLOGIN_NOTIFY_URL"].ToString());
             string url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + WxPayConfig.APPID + "&redirect_uri=" + redirect_uri + "&response_type=code&scope=snsapi_userinfo&state=#wechat_redirect";

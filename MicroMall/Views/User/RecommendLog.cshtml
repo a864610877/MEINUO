@@ -52,101 +52,61 @@
     <div class="bd">
         <ul>
             <div class="mytji bgFFF am-container am-padding-bottom-sm" style="margin-top:2px;">
-                <h2>总人数：@(Model.RecommendLogs != null ? Model.RecommendLogs.List.Count : 0)人　　直推人数：@(Model.RecommendLogs != null ? Model.RecommendLogs.List.Where(x=>x.tj==0).Count() : 0)人</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>VIP会员</th>
-                            <th>店长</th>
-                            <th>店主</th>
-                            <th>无</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
-                        {
-                            var pt = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.not.ToString()).ToList();
-                            var vip = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.Member.ToString()).ToList();
-                            var shopowner = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.Manager.ToString()).ToList();
-                            var shopkeeper = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.GoldMedalManager.ToString()).ToList();
-
-                            int max = pt.Count;
-                            if (max < vip.Count)
+                <h2 class="pdd_lr">总人数：@(Model.RecommendLogs != null ? Model.RecommendLogs.List.Count : 0)人　　直推人数：@(Model.RecommendLogs != null ? Model.RecommendLogs.List.Where(x => x.tj == 0).Count() : 0)人</h2>
+             
+                <div class="dianzhang_tab">
+                    <div class="hd">
+                        <ul class="dianzhang_nav am-avg-sm-4">
+                            <li class="on">vip会员</li>
+                            <li>店长</li>
+                            <li>店主</li>
+                            <li>普通会员</li>
+                        </ul>
+                    </div>
+                    <div class="bd">
+                        <ul>
+                            @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
                             {
-                                max = vip.Count;
+                                var vip = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.Member.ToString()).ToList();
+                                foreach (var item in vip)
+                                {
+                                   <li>@item.Name</li>
+                                }
                             }
-                            if (max < shopowner.Count)
+                            </ul>
+                        <ul>
+                            @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
                             {
-                                max = shopowner.Count;
+                                var shopowner = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.Manager.ToString()).ToList();
+                                foreach (var item in shopowner)
+                                {
+                                    <li>@item.Name</li>
+                                }
                             }
-
-                            if (max < shopkeeper.Count)
+                        </ul>
+                        <ul>
+                            @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
                             {
-                                max = shopkeeper.Count;
+                                var shopkeeper = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.GoldMedalManager.ToString()).ToList();
+                                foreach (var item in shopkeeper)
+                                {
+                                    <li>@item.Name</li>
+                                }
                             }
-                            for (int i = 0; i < max; i++)
+                        </ul>
+                        <ul>
+                            @if (Model.RecommendLogs != null && Model.RecommendLogs.List.Count > 0)
                             {
-                                <tr>
-                                    @if (vip.Count > i)
-                                    {
-                                        <td>@vip[i].Name</td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
-
-                                    @if (shopowner.Count > i)
-                                    {
-                                        <td>@shopowner[i].Name</td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
-
-                                    @if (shopkeeper.Count > i)
-                                    {
-                                        <td>@shopkeeper[i].Name</td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
-                                    @if (pt.Count > i)
-                                    {
-                                        <td>@pt[i].Name</td>
-                                    }
-                                    else
-                                    {
-                                        <td></td>
-                                    }
-                                </tr>
+                                var pt = Model.RecommendLogs.List.Where(x => x.value == Ecard.Models.AccountGrade.not.ToString()).ToList();
+                                foreach (var item in pt)
+                                {
+                                    <li>@item.Name</li>
+                                }
                             }
+                        </ul>
+                    </div>
+                </div>
 
-                        }
-
-                        @*<tr>
-            <td>直推：admin</td>
-            <td>直推：admin</td>
-            <td>直推：admin</td>
-            <td>直推：admin</td>
-        </tr>
-        <tr>
-            <td>二级推荐：admin</td>
-            <td>二级推荐：admin</td>
-            <td>二级推荐：admin</td>
-            <td>二级推荐：admin</td>
-        </tr>
-        <tr>
-            <td>二级推荐：admin</td>
-            <td>二级推荐：admin</td>
-            <td>二级推荐：admin</td>
-            <td>二级推荐：admin</td>
-        </tr>*@
-                    </tbody>
-                    </table>
             </div>
 
 
@@ -178,4 +138,5 @@
 </div>
 <script type="text/javascript">
     jQuery(".jifenMax2").slide({});
+    jQuery(".dianzhang_tab").slide({});
 </script>
