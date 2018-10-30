@@ -129,14 +129,13 @@ $(".shanchuEdit").click(function () {
 
 //删除属性
 function DeleteSp(obj) {
-    var le = $(".txet_suxing").length;
-    if (le < 2) {
-        alert("规格是必须的");
-        return;
-    }
+    //var le = $(".txet_suxing").length;
+    //if (le < 2) {
+    //    alert("规格是必须的");
+    //    return;
+    //}
     if (confirm("确定要删除此规格吗？")) {
         $(obj).parent().parent().remove();
-
         //var spid = $(obj).parent().prev().find("input").val();
         //var id = $("#CommIdhidde").val();
         //$.ajax({

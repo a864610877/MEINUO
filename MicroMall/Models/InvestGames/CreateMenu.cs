@@ -80,6 +80,12 @@ namespace MicroMall.Models.InvestGames
                 type = ButtonType.view.ToString(),
                 url = System.Configuration.ConfigurationManager.AppSettings["wxUrl1"].ToString(),
             });
+            bg.button.Add(new SingleViewButton()
+            {
+                name = "个人中心",
+                type = ButtonType.view.ToString(),
+                url = System.Configuration.ConfigurationManager.AppSettings["wxUrl2"].ToString(),
+            });
             var result = Senparc.Weixin.MP.CommonAPIs.CommonApi.CreateMenu(access_token, bg);
             return result.errmsg;
         }

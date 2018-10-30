@@ -142,31 +142,32 @@ namespace Ecard.Mvc.Controllers
         /// <param name="spid"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        //public ActionResult DeleteSp(string spid, int id)
-        //{
-        //    var comm = commodityService.GetById(id);
-        //    if (comm != null)
-        //    {
-        //        var a = comm.specificationId;
-        //        var start = (spid + ",").Trim();
-        //        var end = "," + spid;
-        //        if (a.StartsWith(start))
-        //        {
-        //            a = a.Substring(spid.Length + 1);
-        //        }
-        //        else if (a.EndsWith(end.Trim()))
-        //        {
-        //            a = a.Substring(0, a.Length - (spid.Length + 1));
-        //        }
-        //        else
-        //        {
-        //            a = a.Replace("," + spid + ",", ",");
-        //        }
-        //        comm.specificationId = a;
-        //        commodityService.Update(comm);
-        //    }
-        //    return Json(1);
-        //}
+        [HttpPost]
+        public ActionResult DeleteSp(string spid, int id)
+        {
+            var comm = commodityService.GetById(id);
+            if (comm != null)
+            {
+                var a = comm.specificationId;
+                var start = (spid + ",").Trim();
+                var end = "," + spid;
+                if (a.StartsWith(start))
+                {
+                    a = a.Substring(spid.Length + 1);
+                }
+                else if (a.EndsWith(end.Trim()))
+                {
+                    a = a.Substring(0, a.Length - (spid.Length + 1));
+                }
+                else
+                {
+                    a = a.Replace("," + spid + ",", ",");
+                }
+                comm.specificationId = a;
+                commodityService.Update(comm);
+            }
+            return Json(1);
+        }
 
         /// <summary>
         ///批量上架
