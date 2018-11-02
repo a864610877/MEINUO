@@ -26,12 +26,12 @@ namespace Ecard.Mvc.Models.RecommendLogs
         }
         [NoRender]
         public int recommendLogId { get { return InnerObject.recommendLogId; } }
-
+        [NoRender]
         public string salerName { get { return InnerObject.salerName; } }
 
         public string saler { get { return InnerObject.saler; } }
         public string salerphone { get { return InnerObject.salerphone; } }
-
+        [NoRender]
         public string userName { get { return InnerObject.userName; } }
         public string user { get { return InnerObject.user; } }
         public string userphone { get { return InnerObject.userphone; } }

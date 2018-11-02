@@ -713,38 +713,38 @@ select userId, COUNT(1) as tatol from fz_Orders where userId in (select userId f
             _databaseInstance.Update(order, "PayOrder");
             #region 一级返利
             decimal oneAmount = 0;//一级返利金额
-            var one = IAccountService.GetById(account.salerId);
+            var one = IAccountService.GetById(account.salerId);//推荐人
             if (one == null)
             {
                 WxPayAPI.Log.Debug("Ecard.SqlServices.SqlRebateService.Rebate4", orderId + "返利结束");
                 Transaction.Commit();
                 return true;
             }
-            if (item == PayOrderItems.member)
+            if (item == PayOrderItems.member)//购买会员
             {
-                if (one.grade == AccountGrade.Member)
+                if (one.grade == AccountGrade.Member)//推荐人是会员
                     oneAmount = 48;
-                else if (one.grade == AccountGrade.Manager)
-                    oneAmount = 96;
-                else if (one.grade == AccountGrade.GoldMedalManager)
-                    oneAmount = 143;
-            }
-            else if (item == PayOrderItems.shopowner)
-            {
-                if (one.grade == AccountGrade.Member)
+                else if (one.grade == AccountGrade.Manager)//推荐人是店长
                     oneAmount = 53;
-                else if (one.grade == AccountGrade.Manager)
-                    oneAmount = 107;
-                else if (one.grade == AccountGrade.GoldMedalManager)
-                    oneAmount = 160;
-            }
-            else if (item == PayOrderItems.shopkeeper)
-            {
-                if (one.grade == AccountGrade.Member)
+                else if (one.grade == AccountGrade.GoldMedalManager)//推荐人是店主
                     oneAmount = 59;
-                else if (one.grade == AccountGrade.Manager)
+            }
+            else if (item == PayOrderItems.shopowner)//购买店长
+            {
+                if (one.grade == AccountGrade.Member)//推荐人是会员
+                    oneAmount = 96;
+                else if (one.grade == AccountGrade.Manager)//推荐人是店长
+                    oneAmount = 107;
+                else if (one.grade == AccountGrade.GoldMedalManager)//推荐人是店主
                     oneAmount = 119;
-                else if (one.grade == AccountGrade.GoldMedalManager)
+            }
+            else if (item == PayOrderItems.shopkeeper)//购买店主
+            {
+                if (one.grade == AccountGrade.Member)//推荐人是会员
+                    oneAmount = 143;
+                else if (one.grade == AccountGrade.Manager)//推荐人是店长
+                    oneAmount = 160;
+                else if (one.grade == AccountGrade.GoldMedalManager)//推荐人是店主
                     oneAmount = 179;
             }
             else
@@ -803,25 +803,25 @@ select userId, COUNT(1) as tatol from fz_Orders where userId in (select userId f
                 if (two.grade == AccountGrade.Member)
                     twoAmount = 18;
                 else if (two.grade == AccountGrade.Manager)
-                    twoAmount = 25;
+                    twoAmount = 20;
                 else if (two.grade == AccountGrade.GoldMedalManager)
-                    twoAmount = 36;
+                    twoAmount = 23;
             }
             else if (item == PayOrderItems.shopowner)
             {
                 if (two.grade == AccountGrade.Member)
-                    twoAmount = 20;
+                    twoAmount = 25;
                 else if (two.grade == AccountGrade.Manager)
                     twoAmount = 30;
                 else if (two.grade == AccountGrade.GoldMedalManager)
-                    twoAmount = 46;
+                    twoAmount = 48;
             }
             else if (item == PayOrderItems.shopkeeper)
             {
                 if (one.grade == AccountGrade.Member)
-                    oneAmount = 23;
+                    oneAmount = 36;
                 else if (one.grade == AccountGrade.Manager)
-                    oneAmount = 48;
+                    oneAmount = 46;
                 else if (one.grade == AccountGrade.GoldMedalManager)
                     oneAmount = 70;
             }
@@ -875,11 +875,11 @@ select userId, COUNT(1) as tatol from fz_Orders where userId in (select userId f
                 Transaction.Commit();
                 return true;
             }
-            if (item == PayOrderItems.member)
+            if (three.grade == AccountGrade.Member)
                 threeAmount = 2;
-            else if (item == PayOrderItems.shopowner)
+            else if (three.grade == AccountGrade.Manager)
                 threeAmount = 4;
-            else if (item == PayOrderItems.shopkeeper)
+            else if (three.grade == AccountGrade.GoldMedalManager)
                 threeAmount = 5;
             if (threeAmount > 0)
             {
