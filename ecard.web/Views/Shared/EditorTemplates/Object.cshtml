@@ -34,8 +34,9 @@
         else
         {
            @Html.Editor(prop.PropertyName, prop.TemplateHint)
-      var Localize = @Html.ExplainLocalize(prop);
-      @Html.ValidationMessage(prop.ValidatePropertyName)
+            var Localize = Html.ExplainLocalize(prop);
+            Html.ValidationMessage(prop.ValidatePropertyName);
+            
             //Html.TextBoxFor(d => "", new { @class = "dfinput", onblur = "checkMemberFormName(this);", @TempValue = Localize })
             //@Html.TextBoxFor(d => prop.PropertyName, new { @class = "dfinput", onblur = "checkMemberFormName(this);", @TempValue = Localize })
         }

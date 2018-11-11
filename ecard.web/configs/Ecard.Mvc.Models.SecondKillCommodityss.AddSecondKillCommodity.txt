@@ -2,6 +2,7 @@
 commodityNo.name=商品编码
 commodityNo.order=1
 messages.success=添加成功
+messages.请输入商品编码=messages.请输入商品编码
 num.explain=秒杀数量
 num.name=秒杀数量
 num.order=1
